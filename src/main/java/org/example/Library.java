@@ -192,23 +192,27 @@ public class Library {
     public void rentABookByTitle(User user) {
         Scanner scanner = new Scanner(System.in);
         int index = 0;
-        for (Book books : listOfBooks) {
-            System.out.println("Available books:");
-            System.out.println("Index " + index + " " + books.toString());
-            index++;
-        }
-        System.out.println("Pass title");
-        String title = scanner.nextLine();
-
-        for(Book book: listOfBooks){
-            if(book.getTitle().equalsIgnoreCase(title)) {
-                user.assignBookToUser(book);
-                System.out.println("Book rented " + book.getTitle());
-                listOfBooks.remove(book);
-                break;
+        if(listOfBooks.isEmpty()){
+            System.out.println("List of books is empty");
+        }else{
+            for (Book books : listOfBooks) {
+                System.out.println("Available books:");
+                System.out.println("Index " + index + " " + books.toString());
+                index++;
             }
-            else{
-                System.out.println("No books on the list with that title");
+            System.out.println("Pass title");
+            String title = scanner.nextLine();
+
+            for(Book book: listOfBooks){
+                if(book.getTitle().equalsIgnoreCase(title)) {
+                    user.assignBookToUser(book);
+                    System.out.println("Book rented " + book.getTitle());
+                    listOfBooks.remove(book);
+                    break;
+                }
+                else{
+                    System.out.println("No books on the list with that title");
+                }
             }
         }
     }

@@ -64,4 +64,54 @@ public class Logic {
             userFromList.showBooks();
         }
     }
+
+    public void adminFlow(){
+        while (true) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Decide what you want to do:\n" +
+                    "1: Add a book\n" +
+                    "2: Return info of all books\n" +
+                    "3: Return specific info of a book\n" +
+                    "4: Delete book\n" +
+                    "5: Update book\n" +
+                    "7: Change user\n" +
+                    "8: Add user\n"+
+                    "6: Log out");
+            String decision = scanner.nextLine();
+            if (decision.equalsIgnoreCase("6")) {
+                System.out.println("Thanks for visiting");
+                break;
+            }
+            if (decision.equalsIgnoreCase("7")) {
+                break;
+            }
+            if (decision.equalsIgnoreCase("8")) {
+                usersDataBase.addUserToDatabase(library);
+                System.out.println("Registration confirmed");
+            }
+            bookShopFlow(decision);
+        }
+    }
+    public void userFlow(String userSelection){
+        while (true) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Decide what you want to do:\n" +
+                    "1: Rent a book\n" +
+                    "2: Show book assigned to User\n"+
+                    "3: Change user\n" +
+                    "4: Log out");
+
+            String decision = scanner.nextLine();
+
+            userActionFlow(decision,userSelection);
+
+            if (decision.equalsIgnoreCase("3")) {
+                System.out.println("Thanks for visiting");
+                break;
+            }
+            if (decision.equalsIgnoreCase("4")) {
+                break;
+            }
+        }
+    }
 }
