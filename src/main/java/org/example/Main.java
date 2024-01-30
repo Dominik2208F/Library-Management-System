@@ -3,23 +3,20 @@ package org.example;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Hudini's library. Register user first");
         Library library = new Library();
         UsersDataBase usersDataBase = new UsersDataBase();
         Logic logic;
-
         usersDataBase.createNewUser(library);
 
         while (true) {
-
-            System.out.println("Select user to log in");
-            for(User users : usersDataBase.listOfUser){
-                System.out.println("Name: "+ users.getName());
-            }
-            String userSelection = scanner.nextLine();
             logic = new Logic(library,usersDataBase);
+            usersDataBase.getAllAvailableUser();
+            String userSelection = scanner.nextLine();
+
 
             if (userSelection.equalsIgnoreCase("Admin")) {
                 while (true) {
@@ -31,7 +28,7 @@ public class Main {
                             "5: Update book\n" +
                             "7: Change user\n" +
                             "8: Add user\n"+
-                            "6: Exit library");
+                            "6: Log out");
                     String decision = scanner.nextLine();
                     if (decision.equalsIgnoreCase("6")) {
                         System.out.println("Thanks for visiting");

@@ -18,35 +18,35 @@ public class Logic {
             case "1":
                 do {
                     library.addBookToLibrary();
-                    System.out.println("Do you want to go back to main menu. Y/N");
+                    System.out.println("Go back to main menu. Y/N");
                     decisionInner = scanner.nextLine();
                 } while (!decisionInner.equalsIgnoreCase("Y"));
                 break;
             case "2":
                 do {
                     library.returnAllBooksInfo();
-                    System.out.println("Do you want to go back to main menu. Y/N");
+                    System.out.println("Go back to main menu. Y/N");
                     decisionInner = scanner.nextLine();
                 } while (!decisionInner.equalsIgnoreCase("Y"));
                 break;
             case "3":
                 do {
                     library.returnSpecificBookInfoFromLibrary();
-                    System.out.println("Do you want to go back to main menu. Y/N");
+                    System.out.println("Go back to main menu. Y/N");
                     decisionInner = scanner.nextLine();
                 } while (!decisionInner.equalsIgnoreCase("Y"));
                 break;
             case "4":
                 do {
                     library.deleteBookFromLibrary();
-                    System.out.println("Do you want to go back to main menu. Y/N");
+                    System.out.println("Go back to main menu. Y/N");
                     decisionInner = scanner.nextLine();
                 } while (!decisionInner.equalsIgnoreCase("Y"));
                 break;
             case "5": {
                 do {
                     library.updateBookInfoInTheLibrary();
-                    System.out.println("Do you want to go back to main menu. Y/N");
+                    System.out.println("Go back to main menu. Y/N");
                     decisionInner = scanner.nextLine();
                 } while (!decisionInner.equalsIgnoreCase("Y"));
                 break;
@@ -64,5 +64,4 @@ public class Logic {
             userFromList.showBooks();
         }
     }
-
 }

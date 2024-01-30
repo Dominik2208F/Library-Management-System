@@ -11,6 +11,12 @@ public class UsersDataBase {
 
     }
 
+    public void getAllAvailableUser(){
+        System.out.println("Select user to log in");
+        for(User users : listOfUser){
+            System.out.println("Name: "+ users.getName());
+        }
+    }
     public void addUserToDatabase(Library library){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Pass name of user");
@@ -35,7 +41,7 @@ public class UsersDataBase {
             addUserToDatabase(library);
             System.out.println("User added sucessfully");
             System.out.println("Users availabe " +listOfUser.size());
-            System.out.println("Do you want to add next user Y/N");
+            System.out.println("Add next user? Type: Y/N");
             String decisionInner = scanner.nextLine();
             if(decisionInner.equalsIgnoreCase("N")){
                 break;
