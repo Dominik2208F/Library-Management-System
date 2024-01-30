@@ -1,15 +1,15 @@
 package org.example;
 
-import javax.xml.crypto.Data;
-import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class User {
 
     Library  library;
-    Book book;
+    List<Book> books;
     public User(String name) {
         this.name = name;
-
+        books= new ArrayList<>();
     }
 
     private String name;
@@ -27,9 +27,11 @@ public class User {
     }
 
     public void assignBookToUser(Book book){
-        this.book=book;
+        books.add(book);
     }
-    public void showBook(){
-        System.out.println(book.toString());
+    public void showBooks(){
+        for(Book book : books){
+            System.out.println(book.toString());
+        }
     }
 }

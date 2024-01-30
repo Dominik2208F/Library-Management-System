@@ -72,7 +72,7 @@ public class Main {
                     }
                     if (decision.equalsIgnoreCase("2")) {
                         User userFromList = usersDataBase.returnObjectOfUserByName(userSelection);
-                        userFromList.showBook();
+                        userFromList.showBooks();
                     }
                     if (decision.equalsIgnoreCase("3")) {
                         System.out.println("Thanks for visiting");
