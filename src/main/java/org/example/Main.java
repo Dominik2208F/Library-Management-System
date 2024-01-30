@@ -16,14 +16,18 @@ public class Main {
             logic = new Logic(library,usersDataBase);
             usersDataBase.getAllAvailableUser();
             String userSelection = scanner.nextLine();
-
-            if (userSelection.equalsIgnoreCase("Admin")) {
-                logic.adminFlow();
-            } else if(usersDataBase.listOfUser.contains(userSelection)) {
-                logic.userFlow(userSelection);
+            if(usersDataBase.checkifUserExist(userSelection)) {
+                switch (userSelection) {
+                    case "Admin":
+                        logic.adminFlow();
+                        break;
+                    default:
+                        logic.userFlow(userSelection);
+                        break;
+                }
             }
             else{
-                break;
+                System.out.println("User does not exist");
             }
         }
     }

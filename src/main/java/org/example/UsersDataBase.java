@@ -11,6 +11,14 @@ public class UsersDataBase {
 
     }
 
+    public boolean checkifUserExist(String name){
+        for(User user :listOfUser){
+            if(user.getName().equalsIgnoreCase(name)){
+                return true;
+            }
+        }
+        return false;
+    }
     public void getAllAvailableUser(){
         System.out.println("Select user to log in");
         for(User users : listOfUser){
