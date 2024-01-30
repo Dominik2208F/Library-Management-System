@@ -24,7 +24,7 @@ public class UsersDataBase {
     public void getAllAvailableUser() {
         System.out.println("Select user to log in");
         for (User users : listOfUser) {
-            System.out.println("Name: " + users.getName());
+            System.out.println("Index: " + users.getCurrentIndex() + " Name: " + users.getName());
         }
         System.out.println("Exit library type 0");
     }

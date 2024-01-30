@@ -6,7 +6,8 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to Hudini's library\n Register user first");
+        System.out.println("Welcome to Hudini's library\n" +
+                "Register user first");
 
         Library library = new Library();  //set library
         UsersDataBase usersDataBase = new UsersDataBase(); //set database that store User object

@@ -212,16 +212,18 @@ public class Library {
             }
             System.out.println("Pass title");
             String title = scanner.nextLine();
+            boolean booksFound=false;
             for(Book book: listOfBooks){
                 if(book.getTitle().equals(title)) {
                     user.assignBookToUser(book);
                     System.out.println("Book rented " + book.getTitle());
                     listOfBooks.remove(book);
+                    booksFound=true;
                     break;
                 }
-                else{
-                    System.out.println("No books on the list with that title");
-                }
+            }
+            if(!booksFound){
+                System.out.println("No books on the list with that title");
             }
         }
     }
@@ -238,17 +240,18 @@ public class Library {
             }
             System.out.println("Pass title");
             String title = scanner.nextLine();
-
+            boolean bookFound=false;
             for(Book book: user.books){
                 if(book.getTitle().equals(title)) {
                     user.UnassignBookFromUser(book);
                     System.out.println("Book returned " + book.getTitle());
                     listOfBooks.add(book);
+                    bookFound=true;
                     break;
                 }
-                else{
-                    System.out.println("No books on the list with that title");
-                }
+            }
+            if (!bookFound) {
+                System.out.println("No books on the list with that title");
             }
         }
     }

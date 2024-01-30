@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 public class Logic {
 
-    Library library;
-    UsersDataBase usersDataBase;
+    private Library library;
+    private UsersDataBase usersDataBase;
    public Logic(Library library,UsersDataBase usersDataBase){
        this.library= library;
        this.usersDataBase= usersDataBase;
    }
 
-    public void bookShopFlow(String decision){
+    public void adminActions(String decision){
         String decisionInner = "";
         Scanner scanner = new Scanner(System.in);
         switch (decision) {
@@ -53,8 +53,7 @@ public class Logic {
             }
         }
     }
-
-    public void userActionFlow(String decision,String user){
+    public void userActions(String decision,String user){
         if (decision.equalsIgnoreCase("1")) {
             User userFromList = usersDataBase.returnObjectOfUserByName(user);
             library.rentABookByTitle(userFromList);
@@ -68,7 +67,25 @@ public class Logic {
             userFromList.showBooks();
         }
     }
+    public void userFlow(String userSelection){
+        while (true) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Decide what you want to do:\n" +
+                    "1: Rent a book\n" +
+                    "2: Return a book\n"+
+                    "3: Show book assigned to User\n"+
+                    "4: Change user");
 
+            String decision = scanner.nextLine();
+
+            userActions(decision,userSelection);
+
+            if (decision.equalsIgnoreCase("4")) {
+                System.out.println("Thanks for visiting");
+                break;
+            }
+        }
+    }
     public void adminFlow(){
         while (true) {
             Scanner scanner = new Scanner(System.in);
@@ -89,26 +106,7 @@ public class Logic {
                 usersDataBase.addUserToDatabase();
                 System.out.println("Registration confirmed");
             }
-            bookShopFlow(decision);
-        }
-    }
-    public void userFlow(String userSelection){
-        while (true) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Decide what you want to do:\n" +
-                    "1: Rent a book\n" +
-                    "2: Return a book\n"+
-                    "3: Show book assigned to User\n"+
-                    "4: Change user");
-
-            String decision = scanner.nextLine();
-
-            userActionFlow(decision,userSelection);
-
-            if (decision.equalsIgnoreCase("4")) {
-                System.out.println("Thanks for visiting");
-                break;
-            }
+            adminActions(decision);
         }
     }
 }

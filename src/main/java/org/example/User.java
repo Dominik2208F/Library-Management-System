@@ -8,13 +8,19 @@ public class User {
     List<Book> books;
     private String name;
     private String password;
+    private static int index = 0;
+    private int currentIndex;
     public User(String name,String password) {
         this.name = name;
         this.password=password;
+        this.currentIndex=++index;
         books= new ArrayList<>();
     }
     public String getPassword() {
         return password;
+    }
+    public int getCurrentIndex() {
+        return currentIndex;
     }
     public void setName(String name) {
         this.name = name;
