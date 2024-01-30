@@ -190,9 +190,10 @@ public class Library {
 
     public void rentABookByTitle(String title,User user) {
         for(Book book: listOfBooks){
-            if(book.getTitle().equalsIgnoreCase(title));
-            user.assignBookToUser(book);
-            System.out.println("Book rented");
+            if(book.getTitle().equalsIgnoreCase(title)) {
+                user.assignBookToUser(book);
+                System.out.println("Book rented" + book.getTitle());
+            }
         }
     }
 }
