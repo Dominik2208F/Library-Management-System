@@ -35,6 +35,16 @@ public class Library {
         returnSizeOfLibrary();
     }
 
+    public void addDefaultBooksToLibrary(){
+        listOfBooks.add(new Book("Alicja w Krainie czarów",
+                new Author("Leonidas","Staff","12-12-1960")
+                ,"1998",new Genre("Przygodowa"),250));
+
+        listOfBooks.add(new Book("Miś koralgol",
+                new Author("Mirosław","Wielkopolski","11-12-1960")
+                ,"1998",new Genre("Przygodowa"),154));
+    }
+
     public void returnAllBooksInfo() {
         int index = 0;
         if (listOfBooks.isEmpty()) {

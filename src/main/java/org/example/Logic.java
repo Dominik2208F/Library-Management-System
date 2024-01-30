@@ -70,7 +70,7 @@ public class Logic {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Decide what you want to do:\n" +
                     "1: Add a book\n" +
-                    "2: Return info of all books\n" +
+                    "2: Return info of all available books\n" +
                     "3: Return specific info of a book\n" +
                     "4: Delete book\n" +
                     "5: Update book\n" +

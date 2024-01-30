@@ -27,9 +27,16 @@ public class UsersDataBase {
     }
     public void addUserToDatabase(Library library){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Pass name of user");
+        System.out.println("Set name of user");
         String name = scanner.nextLine();
-        User user = new User(name);
+        System.out.println("Set password of user");
+        String password=scanner.nextLine();
+        User user = new User(name,password);
+        user.setLibrary(library);
+        listOfUser.add(user);
+    }
+    public void addAdminDatabase(Library library){
+        User user = new User("Admin","admin");
         user.setLibrary(library);
         listOfUser.add(user);
     }
@@ -45,15 +52,35 @@ public class UsersDataBase {
 
     public void createNewUser(Library library){
         while(true) {
-            Scanner scanner = new Scanner(System.in);
+
             addUserToDatabase(library);
             System.out.println("User added sucessfully");
-            System.out.println("Users availabe " +listOfUser.size());
+            System.out.println("Available users");
+            for(User users : listOfUser){
+                System.out.println("Name: "+ users.getName());
+            }
             System.out.println("Add next user? Type: Y/N");
+            Scanner scanner = new Scanner(System.in);
             String decisionInner = scanner.nextLine();
             if(decisionInner.equalsIgnoreCase("N")){
                 break;
             }
         }
+    }
+    public void createDefaultAdminUser(Library library){
+        addAdminDatabase(library);
+    }
+
+    public boolean validateAdminLogin(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Type password to Admin account");
+        String password = scanner.nextLine();
+        return returnObjectOfUserByName("Admin").getPassword().equalsIgnoreCase(password);
+    }
+    public boolean validateUserLogin(String name){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Type password to " + name + " account");
+        String password = scanner.nextLine();
+        return returnObjectOfUserByName(name).getPassword().equalsIgnoreCase(password);
     }
 }

@@ -7,13 +7,20 @@ public class User {
 
     Library  library;
     List<Book> books;
+    private String name;
+    private String password;
     public User(String name) {
         this.name = name;
         books= new ArrayList<>();
     }
-
-    private String name;
-
+    public User(String name,String password) {
+        this.name = name;
+        this.password=password;
+        books= new ArrayList<>();
+    }
+    public String getPassword() {
+        return password;
+    }
     public void setName(String name) {
         this.name = name;
     }

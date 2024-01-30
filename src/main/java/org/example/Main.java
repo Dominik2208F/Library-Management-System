@@ -11,19 +11,30 @@ public class Main {
         Library library = new Library();
         UsersDataBase usersDataBase = new UsersDataBase();
         Logic logic = new Logic(library,usersDataBase);
+        library.addDefaultBooksToLibrary();
+        usersDataBase.createDefaultAdminUser(library);
         usersDataBase.createNewUser(library);
 
         while (true) {
-
             usersDataBase.getAllAvailableUser();
             String userSelection = scanner.nextLine();
             if(usersDataBase.checkifUserExist(userSelection)) {
                 switch (userSelection) {
                     case "Admin":
-                        logic.adminFlow();
-                        break;
+                        if(usersDataBase.validateAdminLogin()) {
+                            logic.adminFlow();
+                        }
+                        else{
+                            System.out.println("Wrong password.");
+                        }
+                       break;
                     default:
-                        logic.userFlow(userSelection);
+                        if(usersDataBase.validateUserLogin(userSelection)) {
+                            logic.userFlow(userSelection);
+                        }
+                        else{
+                            System.out.println("Wrong password");
+                        }
                         break;
                 }
             }
