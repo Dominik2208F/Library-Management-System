@@ -8,17 +8,20 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Hudini's library. Register user first");
 
-        Library library = new Library();
-        UsersDataBase usersDataBase = new UsersDataBase();
-        Logic logic = new Logic(library,usersDataBase);
-        library.addDefaultBooksToLibrary();
-        usersDataBase.createDefaultAdminUser(library);
-        usersDataBase.createNewUser(library);
+        Library library = new Library();  //set library
+        UsersDataBase usersDataBase = new UsersDataBase(); //set database that store User object
+        Logic logic = new Logic(library,usersDataBase); // logic stores workflow logic
+        library.addDefaultBooksToLibrary(); // add default books to library
+        usersDataBase.createDefaultAdminUser(library); // add admin to library
+        usersDataBase.createNewUser(library);  // create new Users object
 
         while (true) {
             usersDataBase.getAllAvailableUser();
             String userSelection = scanner.nextLine();
-            if(usersDataBase.checkifUserExist(userSelection)) {
+            if(userSelection.equals("0")){
+                break;
+            }
+            if(usersDataBase.checkIfUserExist(userSelection)) {
                 switch (userSelection) {
                     case "Admin":
                         if(usersDataBase.validateAdminLogin()) {

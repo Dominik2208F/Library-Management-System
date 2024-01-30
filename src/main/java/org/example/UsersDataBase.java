@@ -11,9 +11,9 @@ public class UsersDataBase {
 
     }
 
-    public boolean checkifUserExist(String name){
+    public boolean checkIfUserExist(String name){
         for(User user :listOfUser){
-            if(user.getName().equalsIgnoreCase(name)){
+            if(user.getName().equals(name)){
                 return true;
             }
         }
@@ -24,6 +24,7 @@ public class UsersDataBase {
         for(User users : listOfUser){
             System.out.println("Name: "+ users.getName());
         }
+        System.out.println("Exit library type 0");
     }
     public void addUserToDatabase(Library library){
         Scanner scanner = new Scanner(System.in);
