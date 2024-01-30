@@ -30,15 +30,14 @@ public class User {
         books.add(book);
     }
     public void showBooks(){
-        for(Book book : books){
-            System.out.println(book.toString());
+        if(!books.isEmpty()) {
+            for (Book book : books) {
+                System.out.println(book.toString());
+            }
+        }
+        else{
+            System.out.println("User does not havy any books");
         }
     }
 
-    public User addNewUserToDataBase(String name,UsersDataBase usersDataBase){
-
-        User user= new User(name);
-        usersDataBase.listOfUser.add(user);
-        return user;
-    }
 }

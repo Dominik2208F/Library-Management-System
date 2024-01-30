@@ -55,12 +55,9 @@ public class Logic {
     }
 
     public void userActionFlow(String decision,String user){
-       Scanner scanner = new Scanner(System.in);
         if (decision.equalsIgnoreCase("1")) {
             User userFromList = usersDataBase.returnObjectOfUserByName(user);
-            System.out.println("Pass title");
-            String decision1 = scanner.nextLine();
-            library.rentABookByTitle(decision1, userFromList);
+            library.rentABookByTitle(userFromList);
         }
         if (decision.equalsIgnoreCase("2")) {
             User userFromList = usersDataBase.returnObjectOfUserByName(user);
