@@ -10,7 +10,9 @@ public class UsersDataBase {
 
     }
 
-    public void addUser(User user){
+    public void addUserToDatabase(String Name,Library library){
+        User user = new User(Name);
+        user.setLibrary(library);
         listOfUser.add(user);
     }
 
@@ -22,4 +24,5 @@ public class UsersDataBase {
         }
         return null;
     }
+
 }

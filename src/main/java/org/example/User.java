@@ -34,4 +34,11 @@ public class User {
             System.out.println(book.toString());
         }
     }
+
+    public User addNewUserToDataBase(String name,UsersDataBase usersDataBase){
+
+        User user= new User(name);
+        usersDataBase.listOfUser.add(user);
+        return user;
+    }
 }

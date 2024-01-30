@@ -8,14 +8,11 @@ public class Main {
         System.out.println("Welcome to Hudini's library. Register user first");
         Library library = new Library();
         UsersDataBase usersDataBase = new UsersDataBase();
-        User user;
+        Logic logic=null;
         while(true) {
             System.out.println("Pass name of user");
             String name = scanner.nextLine();
-            System.out.println("Registration confirmed");
-            user= new User(name);
-            user.setLibrary(library);
-            usersDataBase.addUser(user);
+            usersDataBase.addUserToDatabase(name,library);
             System.out.println("User added sucessfully");
             System.out.println("Users availabe " +usersDataBase.listOfUser.size());
             System.out.println("Do you want to add next user Y/N");
@@ -43,6 +40,7 @@ public class Main {
                             "4: Delete book\n" +
                             "5: Update book\n" +
                             "7: Change user\n" +
+                            "8: Add user\n"+
                             "6: Exit library");
                     String decision = scanner.nextLine();
                     if (decision.equalsIgnoreCase("6")) {
@@ -52,7 +50,13 @@ public class Main {
                     if (decision.equalsIgnoreCase("7")) {
                         break;
                     }
-                    Logic logic = new Logic(library);
+                    if (decision.equalsIgnoreCase("8")) {
+                        System.out.println("Pass name of user");
+                        String name = scanner.nextLine();
+                        usersDataBase.addUserToDatabase(name,library);
+                        System.out.println("Registration confirmed");
+                    }
+                    logic = new Logic(library,usersDataBase);
                     logic.bookShopFlow(decision);
                 }
             } else {
@@ -61,19 +65,10 @@ public class Main {
                             "1: Rent a book\n" +
                             "2: Show book assigned to User\n"+
                             "3: Change user\n" +
-                            "4: Exit library");
+                            "4: Exit User");
 
                     String decision = scanner.nextLine();
-                    if (decision.equalsIgnoreCase("1")) {
-                        User userFromList = usersDataBase.returnObjectOfUserByName(userSelection);
-                        System.out.println("Pass title");
-                        String decision1 = scanner.nextLine();
-                        library.rentABookByTitle(decision1, userFromList);
-                    }
-                    if (decision.equalsIgnoreCase("2")) {
-                        User userFromList = usersDataBase.returnObjectOfUserByName(userSelection);
-                        userFromList.showBooks();
-                    }
+                    logic.userActionFlow(decision,userSelection);
                     if (decision.equalsIgnoreCase("3")) {
                         System.out.println("Thanks for visiting");
                         break;
