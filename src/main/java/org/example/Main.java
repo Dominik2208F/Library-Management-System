@@ -8,19 +8,9 @@ public class Main {
         System.out.println("Welcome to Hudini's library. Register user first");
         Library library = new Library();
         UsersDataBase usersDataBase = new UsersDataBase();
-        Logic logic=null;
-        while(true) {
-            System.out.println("Pass name of user");
-            String name = scanner.nextLine();
-            usersDataBase.addUserToDatabase(name,library);
-            System.out.println("User added sucessfully");
-            System.out.println("Users availabe " +usersDataBase.listOfUser.size());
-            System.out.println("Do you want to add next user Y/N");
-            String decisionInner = scanner.nextLine();
-            if(decisionInner.equalsIgnoreCase("N")){
-                break;
-            }
-        }
+        Logic logic;
+
+        usersDataBase.createNewUser(library);
 
         while (true) {
 
@@ -29,7 +19,7 @@ public class Main {
                 System.out.println("Name: "+ users.getName());
             }
             String userSelection = scanner.nextLine();
-
+            logic = new Logic(library,usersDataBase);
 
             if (userSelection.equalsIgnoreCase("Admin")) {
                 while (true) {
@@ -51,12 +41,9 @@ public class Main {
                         break;
                     }
                     if (decision.equalsIgnoreCase("8")) {
-                        System.out.println("Pass name of user");
-                        String name = scanner.nextLine();
-                        usersDataBase.addUserToDatabase(name,library);
+                        usersDataBase.addUserToDatabase(library);
                         System.out.println("Registration confirmed");
                     }
-                    logic = new Logic(library,usersDataBase);
                     logic.bookShopFlow(decision);
                 }
             } else {
@@ -68,7 +55,9 @@ public class Main {
                             "4: Exit User");
 
                     String decision = scanner.nextLine();
+
                     logic.userActionFlow(decision,userSelection);
+
                     if (decision.equalsIgnoreCase("3")) {
                         System.out.println("Thanks for visiting");
                         break;
