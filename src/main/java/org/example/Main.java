@@ -6,14 +6,14 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to Hudini's library. Register user first");
+        System.out.println("Welcome to Hudini's library\n Register user first");
 
         Library library = new Library();  //set library
         UsersDataBase usersDataBase = new UsersDataBase(); //set database that store User object
         Logic logic = new Logic(library,usersDataBase); // logic stores workflow logic
         library.addDefaultBooksToLibrary(); // add default books to library
-        usersDataBase.createDefaultAdminUser(library); // add admin to library
-        usersDataBase.createNewUser(library);  // create new Users object
+        usersDataBase.createDefaultAdminUser(); // add admin to library
+        usersDataBase.createNewUser();  // create new Users object
 
         while (true) {
             usersDataBase.getAllAvailableUser();

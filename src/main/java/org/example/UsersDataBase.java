@@ -6,39 +6,41 @@ import java.util.Scanner;
 
 public class UsersDataBase {
 
-    List<User> listOfUser= new ArrayList<>();
+    List<User> listOfUser = new ArrayList<>();
+
     public UsersDataBase() {
 
     }
 
-    public boolean checkIfUserExist(String name){
-        for(User user :listOfUser){
-            if(user.getName().equals(name)){
+    public boolean checkIfUserExist(String name) {
+        for (User user : listOfUser) {
+            if (user.getName().equals(name)) {
                 return true;
             }
         }
         return false;
     }
-    public void getAllAvailableUser(){
+
+    public void getAllAvailableUser() {
         System.out.println("Select user to log in");
-        for(User users : listOfUser){
-            System.out.println("Name: "+ users.getName());
+        for (User users : listOfUser) {
+            System.out.println("Name: " + users.getName());
         }
         System.out.println("Exit library type 0");
     }
-    public void addUserToDatabase(Library library){
+
+    public void addUserToDatabase() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Set name of user");
         String name = scanner.nextLine();
         System.out.println("Set password of user");
-        String password=scanner.nextLine();
-        User user = new User(name,password);
-        user.setLibrary(library);
+        String password = scanner.nextLine();
+        User user = new User(name, password);
         listOfUser.add(user);
     }
-    public void addAdminDatabase(Library library){
-        User user = new User("Admin","admin");
-        user.setLibrary(library);
+
+    public void addAdminDatabase() {
+        User user = new User("Admin", "admin");
         listOfUser.add(user);
     }
 
@@ -51,34 +53,36 @@ public class UsersDataBase {
         return null;
     }
 
-    public void createNewUser(Library library){
-        while(true) {
+    public void createNewUser() {
+        while (true) {
 
-            addUserToDatabase(library);
+            addUserToDatabase();
             System.out.println("User added sucessfully");
             System.out.println("Available users");
-            for(User users : listOfUser){
-                System.out.println("Name: "+ users.getName());
+            for (User users : listOfUser) {
+                System.out.println("Name: " + users.getName());
             }
             System.out.println("Add next user? Type: Y/N");
             Scanner scanner = new Scanner(System.in);
             String decisionInner = scanner.nextLine();
-            if(decisionInner.equalsIgnoreCase("N")){
+            if (decisionInner.equalsIgnoreCase("N")) {
                 break;
             }
         }
     }
-    public void createDefaultAdminUser(Library library){
-        addAdminDatabase(library);
+
+    public void createDefaultAdminUser() {
+        addAdminDatabase();
     }
 
-    public boolean validateAdminLogin(){
+    public boolean validateAdminLogin() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Type password to Admin account");
         String password = scanner.nextLine();
         return returnObjectOfUserByName("Admin").getPassword().equalsIgnoreCase(password);
     }
-    public boolean validateUserLogin(String name){
+
+    public boolean validateUserLogin(String name) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Type password to " + name + " account");
         String password = scanner.nextLine();

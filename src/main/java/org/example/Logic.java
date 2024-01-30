@@ -61,6 +61,10 @@ public class Logic {
         }
         if (decision.equalsIgnoreCase("2")) {
             User userFromList = usersDataBase.returnObjectOfUserByName(user);
+            library.returnBookByTitle(userFromList);
+        }
+        if (decision.equalsIgnoreCase("3")) {
+            User userFromList = usersDataBase.returnObjectOfUserByName(user);
             userFromList.showBooks();
         }
     }
@@ -75,18 +79,14 @@ public class Logic {
                     "4: Delete book\n" +
                     "5: Update book\n" +
                     "7: Change user\n" +
-                    "8: Add user\n"+
-                    "6: Log out");
+                    "8: Add user");
             String decision = scanner.nextLine();
-            if (decision.equalsIgnoreCase("6")) {
+            if (decision.equalsIgnoreCase("7")) {
                 System.out.println("Thanks for visiting");
                 break;
             }
-            if (decision.equalsIgnoreCase("7")) {
-                break;
-            }
             if (decision.equalsIgnoreCase("8")) {
-                usersDataBase.addUserToDatabase(library);
+                usersDataBase.addUserToDatabase();
                 System.out.println("Registration confirmed");
             }
             bookShopFlow(decision);
@@ -97,19 +97,16 @@ public class Logic {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Decide what you want to do:\n" +
                     "1: Rent a book\n" +
-                    "2: Show book assigned to User\n"+
-                    "3: Change user\n" +
-                    "4: Log out");
+                    "2: Return a book\n"+
+                    "3: Show book assigned to User\n"+
+                    "4: Change user");
 
             String decision = scanner.nextLine();
 
             userActionFlow(decision,userSelection);
 
-            if (decision.equalsIgnoreCase("3")) {
-                System.out.println("Thanks for visiting");
-                break;
-            }
             if (decision.equalsIgnoreCase("4")) {
+                System.out.println("Thanks for visiting");
                 break;
             }
         }
