@@ -6,45 +6,66 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to Hudini's library\n" +
-                "Register user first");
-        UsersDataBase usersDataBase = new UsersDataBase();
-        Library library = new Library(usersDataBase);  //set dataBase of Users in library
+         LibraryDataBase libraryDataBase= new LibraryDataBase();
+        Library library=null; // z pętli
+        //DEFAULT LIBRARY
+        UsersDataBase usersDataBaseOsiedlowa = new UsersDataBase();
+        Library libraryOsiedlowa = new Library(usersDataBaseOsiedlowa, "Osiedlowa");
+        libraryDataBase.addLibrary(libraryOsiedlowa);
+        libraryOsiedlowa.addDefaultBooksToOsiedlowaLibrary();
+        usersDataBaseOsiedlowa.createDefaultAdminUser();
 
-        Logic logic = new Logic(library); // logic stores workflow logic
+        UsersDataBase usersDataBaseHudini= new UsersDataBase();
+        Library libraryHudini = new Library(usersDataBaseHudini, "Hudini");
+        libraryDataBase.addLibrary(libraryHudini);
+        libraryHudini.addDefaultBooksToLibrary();
+        usersDataBaseHudini.createDefaultAdminUser();
 
-        library.addDefaultBooksToLibrary(); // add default books to library
-        usersDataBase.createDefaultAdminUser(); // add admin to library
-        usersDataBase.createNewUser();  // create new Users object
+
 
         while (true) {
-            usersDataBase.getAllAvailableUser();
-            String userSelection = scanner.nextLine();
-            if(userSelection.equals("0")){
-                break;
-            }
-            if(usersDataBase.checkIfUserExist(userSelection)) {
-                switch (userSelection) {
-                    case "Admin":
-                        if(usersDataBase.validateAdminLogin()) {
-                            logic.adminFlow();
-                        }
-                        else{
-                            System.out.println("Wrong password.");
-                        }
-                       break;
-                    default:
-                        if(usersDataBase.validateUserLogin(userSelection)) {
-                            logic.userFlow(userSelection);
-                        }
-                        else{
-                            System.out.println("Wrong password");
-                        }
-                        break;
+            System.out.println("Select a library to visit");
+            for(Library librarySpec : libraryDataBase.listOfLibrary) {
+                System.out.println(librarySpec.getNameOfLibrary());
                 }
-            }
-            else{
-                System.out.println("User does not exist");
+            String librarydecision = scanner.nextLine();
+            //LIBRARY SELECTION
+                    for(Library librarySpec : libraryDataBase.listOfLibrary) {
+                        if (librarySpec.getNameOfLibrary().contains(librarydecision)) {
+                            library = librarySpec;
+                            break;
+                        }
+                    }
+
+
+            //USER ACTION
+            while(true) {
+                library.getLibraryUserDataBase().getAllAvailableUser();
+            //    library.getLibraryUserDataBase().createNewUser();
+                String userSelection = scanner.nextLine();
+                if (userSelection.equals("0")) {
+                    break;
+                }
+                if (library.getLibraryUserDataBase().checkIfUserExist(userSelection)) {
+                    switch (userSelection) {
+                        case "Admin":
+                            if (library.getLibraryUserDataBase().validateAdminLogin()) {
+                                library.adminFlow();
+                            } else {
+                                System.out.println("Wrong password.");
+                            }
+                            break;
+                        default:
+                            if (library.getLibraryUserDataBase().validateUserLogin(userSelection)) {
+                                library.userFlow(userSelection);
+                            } else {
+                                System.out.println("Wrong password");
+                            }
+                            break;
+                    }
+                } else {
+                    System.out.println("User does not exist");
+                }
             }
         }
     }
