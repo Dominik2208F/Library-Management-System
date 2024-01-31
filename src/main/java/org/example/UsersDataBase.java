@@ -26,7 +26,8 @@ public class UsersDataBase {
         for (User users : listOfUser) {
             System.out.println("Index: " + users.getCurrentIndex() + " Name: " + users.getName());
         }
-        System.out.println("Exit library type 0");
+        System.out.println("---------");
+        System.out.println("Go back to library selection type switch");
     }
 
     public void addUserToDatabase() {

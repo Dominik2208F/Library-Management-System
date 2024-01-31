@@ -41,9 +41,9 @@ public class Main {
             //USER ACTION
             while(true) {
                 library.getLibraryUserDataBase().getAllAvailableUser();
-            //    library.getLibraryUserDataBase().createNewUser();
+            //    library.getLibraryUserDataBase().createNewUser(); ? Jak zrobić to dodawanie użytkowników na początku Y/N ?
                 String userSelection = scanner.nextLine();
-                if (userSelection.equals("0")) {
+                if (userSelection.equals("switch")) {
                     break;
                 }
                 if (library.getLibraryUserDataBase().checkIfUserExist(userSelection)) {

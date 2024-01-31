@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="przeniesienie bazy danych do klasy library">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/LibraryDataBase.java" afterDir="false" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="dwie biblioteki, zapisywanie stanu między obiektami.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Library.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Logic.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UsersDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UsersDataBase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706705222509</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="dwie biblioteki, zapisywanie stanu między obiektami.">
+      <created>1706710922727</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1706710922727</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -201,7 +206,8 @@
     <MESSAGE value="returning books" />
     <MESSAGE value="fix do wypożyczania ksiażek i oddawania" />
     <MESSAGE value="przeniesienie bazy danych do klasy library" />
-    <option name="LAST_COMMIT_MESSAGE" value="przeniesienie bazy danych do klasy library" />
+    <MESSAGE value="dwie biblioteki, zapisywanie stanu między obiektami." />
+    <option name="LAST_COMMIT_MESSAGE" value="dwie biblioteki, zapisywanie stanu między obiektami." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
