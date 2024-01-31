@@ -5,15 +5,15 @@ import java.util.Scanner;
 public class Flow {
 
     Library flowLibrary;
-    SetUp setup;
-    public Flow(SetUp setUp) {
-        this.setup=setUp;
+    LibraryDataBase libraryDataBase;
+    public Flow(LibraryDataBase libraryDataBase) {
+        this.libraryDataBase=libraryDataBase;
     }
 
     public void mainFlow(){
         Scanner scanner = new Scanner(System.in);
 
-        flowLibrary= setup.selectLibraryInstanceToVisit();  // assign library instance to flowLibrary variable to work on
+        flowLibrary= selectLibraryInstanceToVisit();  // assign library instance to flowLibrary variable to work on
 
         flowLibrary.getLibraryUserDataBase().addUserToLibrary(); // add user to that library through database of User
 
@@ -153,6 +153,25 @@ public class Flow {
         if (decision.equalsIgnoreCase("3")) {
             User userFromList = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(user);
             userFromList.showBooks();
+        }
+    }
+
+    public Library selectLibraryInstanceToVisit(){
+        System.out.println("Select a library to visit");
+        Scanner scanner = new Scanner(System.in);
+        while(true) {
+            for (Library librarySpec : libraryDataBase.listOfLibrary) {
+                System.out.println(librarySpec.getNameOfLibrary());
+            }
+            String librarydecision = scanner.nextLine();
+            //LIBRARY SELECTION
+            for (Library librarySpec : libraryDataBase.listOfLibrary) {
+                if (librarySpec.getNameOfLibrary().contains(librarydecision)) {
+                    return librarySpec;
+
+                }
+            }
+            System.out.println("Wrong library name. Try once again");
         }
     }
 }

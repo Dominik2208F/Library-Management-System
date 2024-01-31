@@ -12,7 +12,7 @@ public class Main {
         SetUp.createDefaultLibrariesSetUp("Osiedlowa");
         SetUp.createDefaultLibrariesSetUp("Hudini");
 
-        Flow flow = new Flow(SetUp);
+        Flow flow = new Flow(libraryDataBase);
 
         while (true) {
             flow.mainFlow();
