@@ -5,62 +5,46 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
-         LibraryDataBase libraryDataBase= new LibraryDataBase();
-        Library library=null; // z pętli
-        //DEFAULT LIBRARY
-        UsersDataBase usersDataBaseOsiedlowa = new UsersDataBase();
-        Library libraryOsiedlowa = new Library(usersDataBaseOsiedlowa, "Osiedlowa");
-        libraryDataBase.addLibrary(libraryOsiedlowa);
-        libraryOsiedlowa.addDefaultBooksToOsiedlowaLibrary();
-        usersDataBaseOsiedlowa.createDefaultAdminUser();
+        LibraryDataBase libraryDataBase= new LibraryDataBase();
+        SetUp SetUp = new SetUp(libraryDataBase);
+        Library currentLibrary=null;
 
-        UsersDataBase usersDataBaseHudini= new UsersDataBase();
-        Library libraryHudini = new Library(usersDataBaseHudini, "Hudini");
-        libraryDataBase.addLibrary(libraryHudini);
-        libraryHudini.addDefaultBooksToLibrary();
-        usersDataBaseHudini.createDefaultAdminUser();
 
+        SetUp.createDefaultSetUpOsiedlowa();
+        SetUp.createDefaultSetUpHudini();
 
 
         while (true) {
-            System.out.println("Select a library to visit");
-            for(Library librarySpec : libraryDataBase.listOfLibrary) {
-                System.out.println(librarySpec.getNameOfLibrary());
-                }
-            String librarydecision = scanner.nextLine();
-            //LIBRARY SELECTION
-                    for(Library librarySpec : libraryDataBase.listOfLibrary) {
-                        if (librarySpec.getNameOfLibrary().contains(librarydecision)) {
-                            library = librarySpec;
-                            break;
-                        }
-                    }
+            currentLibrary= SetUp.selectLibraryInstanceToVisit();
             //ASIGN USER TO LIBRARY
-            library.getLibraryUserDataBase().addUserToLibrary();
+            currentLibrary.getLibraryUserDataBase().addUserToLibrary();
+
+
          boolean forceSwitchLibrary=false;
             //USER ACTION
             while(true) {
                 if(forceSwitchLibrary){
                     break;
                 }
-                library.getLibraryUserDataBase().getAllAvailableUserSwitch();
+                currentLibrary.getLibraryUserDataBase().getAllAvailableUserSwitch();
                 String userSelection = scanner.nextLine();
                 if (userSelection.equals("switch")) {
                     break;
                 }
-                if (library.getLibraryUserDataBase().checkIfUserExist(userSelection)) {
+                if (currentLibrary.getLibraryUserDataBase().checkIfUserExist(userSelection)) {
                     switch (userSelection) {
                         case "Admin":
-                            if (library.getLibraryUserDataBase().validateAdminLogin()) {
-                                forceSwitchLibrary =library.adminFlow();
+                            if (currentLibrary.getLibraryUserDataBase().validateAdminLogin()) {
+                                forceSwitchLibrary =currentLibrary.adminFlow();
                             } else {
                                 System.out.println("Wrong password.");
                             }
                             break;
                         default:
-                            if (library.getLibraryUserDataBase().validateUserLogin(userSelection)) {
-                                library.userFlow(userSelection);
+                            if (currentLibrary.getLibraryUserDataBase().validateUserLogin(userSelection)) {
+                                currentLibrary.userFlow(userSelection);
                             } else {
                                 System.out.println("Wrong password");
                             }
