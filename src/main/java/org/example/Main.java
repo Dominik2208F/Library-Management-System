@@ -12,8 +12,8 @@ public class Main {
         Library currentLibrary=null;
 
 
-        SetUp.createDefaultSetUpOsiedlowa();
-        SetUp.createDefaultSetUpHudini();
+        SetUp.createDefaultLibrariesSetUp("Osiedlowa");
+        SetUp.createDefaultLibrariesSetUp("Hudini");
 
 
         while (true) {

@@ -10,22 +10,19 @@ public class SetUp {
     }
 
 
-    public void createDefaultSetUpOsiedlowa(){
-
-        UsersDataBase usersDataBaseOsiedlowa = new UsersDataBase();
-        Library libraryOsiedlowa = new Library(usersDataBaseOsiedlowa, "Osiedlowa");
-        libraryDataBase.addLibrary(libraryOsiedlowa);
-        libraryOsiedlowa.addDefaultBooksToOsiedlowaLibrary();
-        usersDataBaseOsiedlowa.createDefaultAdminUser();
+    public void createDefaultLibrariesSetUp(String name){
+        UsersDataBase usersDataBase =new UsersDataBase();
+        Library library = new Library(usersDataBase, name);
+        libraryDataBase.addLibrary(library);
+        if(name.equals("Osiedlowa")) {
+            library.addDefaultBooksToOsiedlowaLibrary();
+            usersDataBase.createDefaultAdminUser();
+        }
+        else{
+            library.addDefaultBooksToLibrary();
+            usersDataBase.createDefaultAdminUser();
+        }
     }
-    public void createDefaultSetUpHudini(){
-        UsersDataBase usersDataBaseHudini= new UsersDataBase();
-        Library libraryHudini = new Library(usersDataBaseHudini, "Hudini");
-        libraryDataBase.addLibrary(libraryHudini);
-        libraryHudini.addDefaultBooksToLibrary();
-        usersDataBaseHudini.createDefaultAdminUser();
-    }
-
     public Library selectLibraryInstanceToVisit(){
         System.out.println("Select a library to visit");
         Scanner scanner = new Scanner(System.in);

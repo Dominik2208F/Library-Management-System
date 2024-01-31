@@ -125,7 +125,7 @@ public class Library {
         System.out.println("Type index of book to remove");
         int input = scanner.nextInt();
         listOfBooks.remove(input);
-        System.out.println("Books has been deleted sucessfully from " +getNameOfLibrary() + "library");
+        System.out.println("Books has been deleted sucessfully from " +getNameOfLibrary() + " library");
     }
     public void deleteBooksByTitleFromLibrary() {
         Scanner scanner = new Scanner(System.in);
