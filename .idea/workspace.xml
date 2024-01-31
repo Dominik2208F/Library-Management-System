@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="set Up class +">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="wywalenie 2 różnych metod do generowania defaultowych bibliotek">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Flow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Library.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SetUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SetUp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706719967677</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="wywalenie 2 różnych metod do generowania defaultowych bibliotek">
+      <created>1706738878926</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1706738878926</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -247,16 +254,12 @@
     <MESSAGE value="add user to library before workflow" />
     <MESSAGE value="force switch by admin to library" />
     <MESSAGE value="set Up class +" />
-    <option name="LAST_COMMIT_MESSAGE" value="set Up class +" />
+    <MESSAGE value="wywalenie 2 różnych metod do generowania defaultowych bibliotek" />
+    <option name="LAST_COMMIT_MESSAGE" value="wywalenie 2 różnych metod do generowania defaultowych bibliotek" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/Library.java</url>
-          <line>141</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/UsersDataBase.java</url>
           <line>88</line>
