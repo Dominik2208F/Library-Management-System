@@ -21,7 +21,7 @@ public class UsersDataBase {
         return false;
     }
 
-    public void getAllAvailableUser() {
+    public void getAllAvailableUserSwitch() {
         System.out.println("Select user to log in");
         for (User users : listOfUser) {
             System.out.println("Index: " + users.getCurrentIndex() + " Name: " + users.getName());
@@ -29,7 +29,12 @@ public class UsersDataBase {
         System.out.println("---------");
         System.out.println("Go back to library selection type switch");
     }
-
+    public void getAllAvailableUser() {
+        System.out.println("Available users");
+        for (User users : listOfUser) {
+            System.out.println("Index: " + users.getCurrentIndex() + " Name: " + users.getName());
+        }
+    }
     public void addUserToDatabase() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Set name of user");

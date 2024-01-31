@@ -36,12 +36,21 @@ public class Main {
                             break;
                         }
                     }
-
-
-            //USER ACTION
             while(true) {
                 library.getLibraryUserDataBase().getAllAvailableUser();
-            //    library.getLibraryUserDataBase().createNewUser(); ? Jak zrobić to dodawanie użytkowników na początku Y/N ?
+                System.out.println("Add new user? 'Y/N'");
+                String addUser = scanner.nextLine();
+                if (addUser.equals("Y")) {
+                    library.getLibraryUserDataBase().createNewUser();
+                    break;
+                }
+                else{
+                    break;
+                }
+            }
+            //USER ACTION
+            while(true) {
+                library.getLibraryUserDataBase().getAllAvailableUserSwitch();
                 String userSelection = scanner.nextLine();
                 if (userSelection.equals("switch")) {
                     break;
