@@ -38,9 +38,12 @@ public class Main {
                     }
             //ASIGN USER TO LIBRARY
             library.getLibraryUserDataBase().addUserToLibrary();
-
+         boolean forceSwitchLibrary=false;
             //USER ACTION
             while(true) {
+                if(forceSwitchLibrary){
+                    break;
+                }
                 library.getLibraryUserDataBase().getAllAvailableUserSwitch();
                 String userSelection = scanner.nextLine();
                 if (userSelection.equals("switch")) {
@@ -50,7 +53,7 @@ public class Main {
                     switch (userSelection) {
                         case "Admin":
                             if (library.getLibraryUserDataBase().validateAdminLogin()) {
-                                library.adminFlow();
+                                forceSwitchLibrary =library.adminFlow();
                             } else {
                                 System.out.println("Wrong password.");
                             }

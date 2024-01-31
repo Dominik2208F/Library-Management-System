@@ -342,7 +342,7 @@ public class Library {
             }
         }
     }
-    public void adminFlow(){
+    public boolean adminFlow(){
         while (true) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Decide what you want to do:\n" +
@@ -352,18 +352,24 @@ public class Library {
                     "4: Delete book\n" +
                     "5: Update book\n" +
                     "7: Change user\n" +
-                    "8: Add user");
+                    "8: Add user\n"+
+                    "9: Change library");
             String decision = scanner.nextLine();
             if (decision.equalsIgnoreCase("7")) {
-                System.out.println("Thanks for visiting");
+                System.out.println("Thanks for visiting.You are going to user selection view");
                 break;
             }
             if (decision.equalsIgnoreCase("8")) {
                 getLibraryUserDataBase().addUserToDatabase();
                 System.out.println("Registration confirmed");
             }
+            if (decision.equalsIgnoreCase("9")) {
+                System.out.println("Thanks for visiting. You are going to library selection view");
+                return true;
+            }
             adminActions(decision);
         }
+        return false;
     }
 
 }
