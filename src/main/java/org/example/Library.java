@@ -9,6 +9,14 @@ public class Library {
 
     private final List<Book> listOfBooks = new ArrayList<>();
 
+    private UsersDataBase libraryUserDataBase;
+
+    public Library(UsersDataBase usersDataBase){
+        this.libraryUserDataBase=usersDataBase;
+    }
+    public UsersDataBase getLibraryUserDataBase() {
+        return libraryUserDataBase;
+    }
     public void addBookToLibrary() {
 
         Scanner scanner = new Scanner(System.in);

@@ -8,10 +8,11 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Hudini's library\n" +
                 "Register user first");
+        UsersDataBase usersDataBase = new UsersDataBase();
+        Library library = new Library(usersDataBase);  //set dataBase of Users in library
 
-        Library library = new Library();  //set library
-        UsersDataBase usersDataBase = new UsersDataBase(); //set database that store User object
-        Logic logic = new Logic(library,usersDataBase); // logic stores workflow logic
+        Logic logic = new Logic(library); // logic stores workflow logic
+
         library.addDefaultBooksToLibrary(); // add default books to library
         usersDataBase.createDefaultAdminUser(); // add admin to library
         usersDataBase.createNewUser();  // create new Users object

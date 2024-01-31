@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class Logic {
 
     private Library library;
-    private UsersDataBase usersDataBase;
-   public Logic(Library library,UsersDataBase usersDataBase){
+
+   public Logic(Library library){
        this.library= library;
-       this.usersDataBase= usersDataBase;
+
    }
 
     public void adminActions(String decision){
@@ -55,15 +55,15 @@ public class Logic {
     }
     public void userActions(String decision,String user){
         if (decision.equalsIgnoreCase("1")) {
-            User userFromList = usersDataBase.returnObjectOfUserByName(user);
+            User userFromList = library.getLibraryUserDataBase().returnObjectOfUserByName(user);
             library.rentABookByTitle(userFromList);
         }
         if (decision.equalsIgnoreCase("2")) {
-            User userFromList = usersDataBase.returnObjectOfUserByName(user);
+            User userFromList = library.getLibraryUserDataBase().returnObjectOfUserByName(user);
             library.returnBookByTitle(userFromList);
         }
         if (decision.equalsIgnoreCase("3")) {
-            User userFromList = usersDataBase.returnObjectOfUserByName(user);
+            User userFromList = library.getLibraryUserDataBase().returnObjectOfUserByName(user);
             userFromList.showBooks();
         }
     }
@@ -103,7 +103,7 @@ public class Logic {
                 break;
             }
             if (decision.equalsIgnoreCase("8")) {
-                usersDataBase.addUserToDatabase();
+                library.getLibraryUserDataBase().addUserToDatabase();
                 System.out.println("Registration confirmed");
             }
             adminActions(decision);
