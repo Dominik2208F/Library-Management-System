@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="poprawki">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="add user to library before workflow">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UsersDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UsersDataBase.java" afterDir="false" />
@@ -199,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706711738650</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="add user to library before workflow">
+      <created>1706717187957</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1706717187957</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -215,7 +222,8 @@
     <MESSAGE value="przeniesienie bazy danych do klasy library" />
     <MESSAGE value="dwie biblioteki, zapisywanie stanu między obiektami." />
     <MESSAGE value="poprawki" />
-    <option name="LAST_COMMIT_MESSAGE" value="poprawki" />
+    <MESSAGE value="add user to library before workflow" />
+    <option name="LAST_COMMIT_MESSAGE" value="add user to library before workflow" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -227,13 +235,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/UsersDataBase.java</url>
-          <line>73</line>
+          <line>88</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Main.java</url>
-          <line>46</line>
-          <option name="timeStamp" value="9" />
+          <line>6</line>
+          <properties class="org.example.Main" method="main">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

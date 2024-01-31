@@ -36,18 +36,9 @@ public class Main {
                             break;
                         }
                     }
-            while(true) {
-                library.getLibraryUserDataBase().getAllAvailableUser();
-                System.out.println("Add new user? 'Y/N'");
-                String addUser = scanner.nextLine();
-                if (addUser.equals("Y")) {
-                    library.getLibraryUserDataBase().createNewUser();
-                    break;
-                }
-                else{
-                    break;
-                }
-            }
+            //ASIGN USER TO LIBRARY
+            library.getLibraryUserDataBase().addUserToLibrary();
+
             //USER ACTION
             while(true) {
                 library.getLibraryUserDataBase().getAllAvailableUserSwitch();

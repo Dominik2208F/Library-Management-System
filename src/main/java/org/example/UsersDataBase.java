@@ -35,6 +35,21 @@ public class UsersDataBase {
             System.out.println("Index: " + users.getCurrentIndex() + " Name: " + users.getName());
         }
     }
+    public void addUserToLibrary(){
+        Scanner scanner = new Scanner(System.in);
+        while(true) {
+            getAllAvailableUser();
+            System.out.println("Add new user? 'Y/N'");
+            String addUser = scanner.nextLine();
+            if (addUser.equals("Y")) {
+                createNewUser();
+                break;
+            }
+            else{
+                break;
+            }
+        }
+    }
     public void addUserToDatabase() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Set name of user");
