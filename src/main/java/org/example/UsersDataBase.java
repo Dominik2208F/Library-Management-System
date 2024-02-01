@@ -22,14 +22,13 @@ public class UsersDataBase {
     }
 
     public void getAllAvailableUserSwitch() {
-        System.out.println("Select user to log in");
+        System.out.println("Type 'Name' of User to log into");
+        System.out.println("Type 'Switch' to change library");
         int index=0;
         for (User users : listOfUser) {
             System.out.println("Index: " +index + " Name: " + users.getName());
             index++;
         }
-        System.out.println("---------");
-        System.out.println("Go back to library selection type switch");
     }
     public void getAllAvailableUser() {
         System.out.println("Available users");

@@ -45,7 +45,6 @@ public class Library {
                 break;
             }catch(InputMismatchException e){
                 System.out.println("Invalid input. Please enter a valid number");
-                // Clear the buffer
                 scanner.nextLine();
             }
         }
@@ -58,12 +57,12 @@ public class Library {
         returnSizeOfLibrary();
     }
     public void addDefaultBooksToLibrary(){
-        listOfBooks.add(new Book("Alicja w Krainie czarów",
+        listOfBooks.add(new Book("Alicja w Krainie Mugoli",
                 new Author("Leonidas","Staff","12-12-1960")
                 ,"1998",new Genre("Przygodowa"),250));
 
-        listOfBooks.add(new Book("Miś koralgol",
-                new Author("Mirosław","Wielkopolski","11-12-1960")
+        listOfBooks.add(new Book("Misiek koralgol",
+                new Author("Adam","Wielkopolski","11-12-1960")
                 ,"1998",new Genre("Przygodowa"),154));
     }
     public void addDefaultBooksToOsiedlowaLibrary(){
@@ -71,7 +70,7 @@ public class Library {
                 new Author("Wincent","Staff","12-12-1960")
                 ,"1943",new Genre("Akcji"),12));
 
-        listOfBooks.add(new Book("Mała Wróżka",
+        listOfBooks.add(new Book("Przygody Kundla",
                 new Author("Angel","Hrabio","11-12-1960")
                 ,"1965",new Genre("Dramat"),122));
     }
