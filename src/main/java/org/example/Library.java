@@ -37,8 +37,18 @@ public class Library {
         System.out.println("Podaj gatunek książki:");
         String genreName = scanner.next();
         System.out.println("Podaj ilość stron:");
-        int amountOfPage = scanner.nextInt();
+        int amountOfPage;
 
+        while(true) {
+            try {
+                amountOfPage = scanner.nextInt();
+                break;
+            }catch(InputMismatchException e){
+                System.out.println("Invalid input. Please enter a valid number");
+                // Clear the buffer
+                scanner.nextLine();
+            }
+        }
         Author author = new Author(authorName, authorSurname, dateOfBirthday);
         Genre genre = new Genre(genreName);
         Book book = new Book(title, author, dateOfBirthday, genre, amountOfPage);
