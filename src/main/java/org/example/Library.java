@@ -2,6 +2,7 @@ package org.example;
 
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -69,8 +70,8 @@ public class Library {
         if (listOfBooks.isEmpty()) {
             System.out.println(getNameOfLibrary() +" Library is empty.Add some book");
         }
+        System.out.println("Available books in:" + getNameOfLibrary());
         for (Book books : listOfBooks) {
-            System.out.println("Available books in:" + getNameOfLibrary());
             System.out.println("Index " + index + " " + books.toString());
             index++;
         }
@@ -81,31 +82,40 @@ public class Library {
     public void returnSpecificBookInfoFromLibrary() {
         if (!listOfBooks.isEmpty()) {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Type info you want to access:\n" +
-                    "Title\n" +
-                    "Author\n" +
-                    "Production date\n" +
-                    "Genre\n" +
-                    "Pages");
-
-            String input = scanner.nextLine();
             System.out.println("Type index of books you want to access");
 
             int index=0;
+            System.out.println("Available books in:" + getNameOfLibrary());
             for (Book books : listOfBooks) {
-                System.out.println("Available books in:" + getNameOfLibrary());
-                System.out.println("Index " + index + " " + books.toString());
+                System.out.println("Index " + index + " " + books.getTitle());
                 index++;
             }
-
-            int indexOfBookInList = scanner.nextInt();
-            if (listOfBooks.size() < indexOfBookInList + 1) {
-                System.out.println("No book with that index");
+            int indexOfBookInList;
+            while (true) {
+                try {
+                    indexOfBookInList = scanner.nextInt();
+                    if (listOfBooks.size() < indexOfBookInList + 1) {
+                        System.out.println("No book with that index.Try once again");
+                    } else {
+                        break;
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid input. Please enter a valid number");
+                    // Clear the buffer
+                    scanner.nextLine();
+                }
             }
-            else {
 
+            scanner.nextLine();
                     while (true) {
                     boolean operationDone = true;
+                        System.out.println("Type info you want to access:\n" +
+                                "Title\n" +
+                                "Author\n" +
+                                "Production date\n" +
+                                "Genre\n" +
+                                "Pages");
+                        String input = scanner.nextLine();
                     switch (input) {
                         case "Title":
                             System.out.println(listOfBooks.get(indexOfBookInList).getTitle());
@@ -132,7 +142,7 @@ public class Library {
                         System.out.println("Invalid field name.Try once again");
                     }
                 }
-            }
+
         } else {
             System.out.println(getNameOfLibrary() +" Library is empty, add some book");
         }
@@ -183,11 +193,16 @@ public class Library {
 
             int index = 0;
             while (true) {
-                index = scanner.nextInt();
-                if (index + 1 > listOfBooks.size()) {
-                    System.out.println("Wrong index.Try once again");
-                } else {
-                    break;
+                try {
+                    index = scanner.nextInt();
+                    if (index + 1 > listOfBooks.size()) {
+                        System.out.println("Wrong index.Try once again");
+                    } else {
+                        break;
+                    }
+                }catch (InputMismatchException e){
+                    System.out.println("Invalid input. Please enter a valid number");
+                    scanner.nextLine();
                 }
             }
             scanner.nextLine();
@@ -223,9 +238,17 @@ public class Library {
                         System.out.println("Genre: " + listOfBooks.get(index).getGenre().toString());
                         break;
                     case "Pages":
-                        System.out.println("Type new amount:");
-                        int amount = scanner.nextInt();
-                        listOfBooks.get(index).setAmountOfPage(amount);
+                        while(true) {
+                            System.out.println("Type new amount:");
+                            try {
+                                int amount = scanner.nextInt();
+                                listOfBooks.get(index).setAmountOfPage(amount);
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Invalid input. Please enter a valid number");
+                                scanner.nextLine();
+                            }
+                        }
                         break;
                     default:
                         operationDone=false;
@@ -249,8 +272,8 @@ public class Library {
         if(listOfBooks.isEmpty()){
             System.out.println("List of books is empty");
         }else{
+            System.out.println("Available books in: " +getNameOfLibrary());
             for (Book books : listOfBooks) {
-                System.out.println("Available books in: " +getNameOfLibrary());
                 System.out.println("Index " + index + " " + books.toString());
                 index++;
             }
@@ -260,7 +283,7 @@ public class Library {
             for(Book book: listOfBooks){
                 if(book.getTitle().equals(title)) {
                     user.assignBookToUser(book);
-                    System.out.println("Book rented " + book.getTitle());
+                    System.out.println("Book " + book.getTitle()+" has been borrowed");
                     listOfBooks.remove(book);
                     booksFound=true;
                     break;

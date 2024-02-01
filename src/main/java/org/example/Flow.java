@@ -84,9 +84,9 @@ public class Flow {
         while (true) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Decide what you want to do:\n" +
-                    "1: Rent a book\n" +
+                    "1: Borrow a book\n" +
                     "2: Return a book\n"+
-                    "3: Show book assigned to User\n"+
+                    "3: Show book borrowed by User\n"+
                     "4: Change user\n" +
                     "5: Change library");
 

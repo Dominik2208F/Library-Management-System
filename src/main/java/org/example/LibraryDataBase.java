@@ -18,5 +18,6 @@ public class LibraryDataBase {
     }
     public void addLibrary(Library library){
         listOfLibrary.add(library);
+        System.out.println("Library " +library.getNameOfLibrary() + " has been added");
     }
 }

@@ -38,7 +38,7 @@ public class User {
             }
         }
         else{
-            System.out.println("User does not havy any books");
+            System.out.println("User does not havy any books borrowed");
         }
     }
 
