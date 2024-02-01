@@ -82,38 +82,55 @@ public class Library {
         if (!listOfBooks.isEmpty()) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Type info you want to access:\n" +
-                    "title\n" +
-                    "author\n" +
-                    "date of production\n" +
-                    "genre\n" +
-                    "Amount of Page");
+                    "Title\n" +
+                    "Author\n" +
+                    "Production date\n" +
+                    "Genre\n" +
+                    "Pages");
 
             String input = scanner.nextLine();
             System.out.println("Type index of books you want to access");
 
+            int index=0;
+            for (Book books : listOfBooks) {
+                System.out.println("Available books in:" + getNameOfLibrary());
+                System.out.println("Index " + index + " " + books.toString());
+                index++;
+            }
+
             int indexOfBookInList = scanner.nextInt();
             if (listOfBooks.size() < indexOfBookInList + 1) {
                 System.out.println("No book with that index");
-            } else {
-                switch (input) {
-                    case "title":
-                        System.out.println(listOfBooks.get(indexOfBookInList).getTitle());
-                        break;
-                    case "author":
-                        System.out.println("Author: " + listOfBooks.get(indexOfBookInList).getAuthor().toString());
-                        break;
-                    case "date of production":
-                        System.out.println("Date of Production: " + listOfBooks.get(indexOfBookInList).getDateOfProduction());
-                        break;
-                    case "genre":
-                        System.out.println("Genre: " + listOfBooks.get(indexOfBookInList).getGenre().toString());
-                        break;
-                    case "Amount of Page":
-                        System.out.println("Amount of Pages: " + listOfBooks.get(indexOfBookInList).getAmountOfPage());
-                        break;
-                    default:
-                        System.out.println("Invalid field name");
+            }
+            else {
 
+                    while (true) {
+                    boolean operationDone = true;
+                    switch (input) {
+                        case "Title":
+                            System.out.println(listOfBooks.get(indexOfBookInList).getTitle());
+                            break;
+                        case "Author":
+                            System.out.println("Author: " + listOfBooks.get(indexOfBookInList).getAuthor().toString());
+                            break;
+                        case "Production date":
+                            System.out.println("Date of Production: " + listOfBooks.get(indexOfBookInList).getDateOfProduction());
+                            break;
+                        case "Genre":
+                            System.out.println("Genre: " + listOfBooks.get(indexOfBookInList).getGenre().toString());
+                            break;
+                        case "Pages":
+                            System.out.println("Amount of Pages: " + listOfBooks.get(indexOfBookInList).getAmountOfPage());
+                            break;
+                        default:
+                            operationDone=false;
+                    }
+                    if(operationDone){
+                        break;
+                    }
+                    else{
+                        System.out.println("Invalid field name.Try once again");
+                    }
                 }
             }
         } else {
@@ -122,14 +139,25 @@ public class Library {
     }
     public void deleteBooksByTitleFromLibrary() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Type title of book to remove");
-        String input = scanner.nextLine();
-        for (int i = 0; i < listOfBooks.size(); i++) {
-            if (listOfBooks.get(i).getTitle().equals(input)) {
-                listOfBooks.remove(i);
+            boolean bookFound=false;
+            while (true) {
+                System.out.println("Type title of book to remove");
+                String input = scanner.nextLine();
+                for (int i = 0; i < listOfBooks.size(); i++) {
+                    if (listOfBooks.get(i).getTitle().equals(input)) {
+                        listOfBooks.remove(i);
+                        System.out.println("Books has been deleted sucessfully from " + getNameOfLibrary() + " library");
+                        bookFound=true;
+                        break;
+                    }
+                }
+                if(bookFound){
+                    break;
+                }
+                else{
+                    System.out.println("Wrong book title. Try once again");
+                }
             }
-        }
-        System.out.println("Books has been deleted sucessfully from " +getNameOfLibrary() + " library");
     }
     public void deleteBookFromLibrary() {
         if (!listOfBooks.isEmpty()) {
@@ -146,56 +174,71 @@ public class Library {
     public void updateBookInfoInTheLibrary() {
         if (!listOfBooks.isEmpty()) {
             Scanner scanner = new Scanner(System.in);
-            int index = 0;
+            int counter=0;
             System.out.println("Type index of book to update");
+                for (Book books : listOfBooks) {
+                    System.out.println("Index " + counter + " " + books.toString());
+                    counter++;
+                }
+
+            int index = 0;
             while (true) {
                 index = scanner.nextInt();
                 if (index + 1 > listOfBooks.size()) {
-                    System.out.println("Wrong index. Max index in library is " + listOfBooks.size());
+                    System.out.println("Wrong index.Try once again");
                 } else {
                     break;
                 }
             }
             scanner.nextLine();
-            System.out.println("Type info you want to access:\n" +
-                    "title\n" +
-                    "author\n" +
-                    "date of production\n" +
-                    "genre\n" +
-                    "Amount of Page");
-            String input = scanner.nextLine();
-            switch (input) {
-                case "title":
-                    System.out.println("Type new title: ");
-                    String title = scanner.nextLine();
-                    listOfBooks.get(index).setTitle(title);
-                    break;
-                case "author":
-                    System.out.println("Type new First Name:");
-                    String name = scanner.nextLine();
-                    System.out.println("Type new Second Name:");
-                    String secondname = scanner.nextLine();
-                    listOfBooks.get(index).getAuthor().setFirstName(name);
-                    listOfBooks.get(index).getAuthor().setLastName(secondname);
-                    break;
-                case "date of production":
-                    System.out.println("Set date of production");
-                    String datOfProduction = scanner.nextLine();
-                    listOfBooks.get(index).setDateOfProduction(datOfProduction);
-                    break;
-                case "genre":
-                    System.out.println("Genre: " + listOfBooks.get(index).getGenre().toString());
-                    break;
-                case "Amount of Page":
-                    System.out.println("Type new amount:");
-                    int amount = scanner.nextInt();
-                    listOfBooks.get(index).setAmountOfPage(amount);
-                    break;
-                default:
-                    System.out.println("Invalid field name");
+            while(true) {
+                boolean operationDone =true;
+                System.out.println("Type info you want to access:\n" +
+                        "Title\n" +
+                        "Author\n" +
+                        "Production date\n" +
+                        "Genre\n" +
+                        "Pages");
+                String input = scanner.nextLine();
+                switch (input) {
+                    case "Title":
+                        System.out.println("Type new title: ");
+                        String title = scanner.nextLine();
+                        listOfBooks.get(index).setTitle(title);
+                        break;
+                    case "Author":
+                        System.out.println("Type new First Name:");
+                        String name = scanner.nextLine();
+                        System.out.println("Type new Second Name:");
+                        String secondname = scanner.nextLine();
+                        listOfBooks.get(index).getAuthor().setFirstName(name);
+                        listOfBooks.get(index).getAuthor().setLastName(secondname);
+                        break;
+                    case "Production date":
+                        System.out.println("Set date of production");
+                        String datOfProduction = scanner.nextLine();
+                        listOfBooks.get(index).setDateOfProduction(datOfProduction);
+                        break;
+                    case "Genre":
+                        System.out.println("Genre: " + listOfBooks.get(index).getGenre().toString());
+                        break;
+                    case "Pages":
+                        System.out.println("Type new amount:");
+                        int amount = scanner.nextInt();
+                        listOfBooks.get(index).setAmountOfPage(amount);
+                        break;
+                    default:
+                        operationDone=false;
 
+                }
+                if(operationDone) {
+                    System.out.println("Books has been updated sucessfully");
+                    break;
+                }
+                else{
+                    System.out.println("Invalid field name.Try once again");
+                }
             }
-            System.out.println("Books has been updated sucessfully");
         } else {
             System.out.println("Library is empty. Add some books");
         }

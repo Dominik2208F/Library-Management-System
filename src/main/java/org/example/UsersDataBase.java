@@ -49,8 +49,11 @@ public class UsersDataBase {
                 createNewUser();
                 break;
             }
-            else{
+            else if(addUser.equals("N")){
                 break;
+            }
+            else{
+                System.out.println("Type 'Y' or 'N'");
             }
         }
     }
@@ -62,7 +65,6 @@ public class UsersDataBase {
         String password = scanner.nextLine();
         User user = new User(name, password);
         listOfUser.add(user);
-        System.out.println("User registration confirmed");
     }
 
     public void addAdminDatabase() {

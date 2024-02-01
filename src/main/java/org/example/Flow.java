@@ -203,7 +203,7 @@ public class Flow {
             String librarydecision = scanner.nextLine();
             //LIBRARY SELECTION
             for (Library librarySpec : libraryDataBase.listOfLibrary) {
-                if (librarySpec.getNameOfLibrary().contains(librarydecision)) {
+                if (librarySpec.getNameOfLibrary().equalsIgnoreCase(librarydecision)) {
                     return librarySpec;
 
                 }
