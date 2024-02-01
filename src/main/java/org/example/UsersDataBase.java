@@ -58,6 +58,7 @@ public class UsersDataBase {
         String password = scanner.nextLine();
         User user = new User(name, password);
         listOfUser.add(user);
+        System.out.println("User registration confirmed");
     }
 
     public void addAdminDatabase() {

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class User {
 
-    List<Book> books;
+    List<Book> Userbooks;
     private String name;
     private String password;
     private static int index = 0;
@@ -14,7 +14,7 @@ public class User {
         this.name = name;
         this.password=password;
         this.currentIndex=++index;
-        books= new ArrayList<>();
+        Userbooks= new ArrayList<>();
     }
     public String getPassword() {
         return password;
@@ -31,14 +31,14 @@ public class User {
     }
 
     public void assignBookToUser(Book book){
-        books.add(book);
+        Userbooks.add(book);
     }
     public void UnassignBookFromUser(Book book){
-        books.remove(book);
+        Userbooks.remove(book);
     }
     public void showBooks(){
-        if(!books.isEmpty()) {
-            for (Book book : books) {
+        if(!Userbooks.isEmpty()) {
+            for (Book book : Userbooks) {
                 System.out.println(book.toString());
             }
         }

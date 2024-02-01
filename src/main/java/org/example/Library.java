@@ -231,10 +231,10 @@ public class Library {
     public void returnBookByTitle(User user) {
         Scanner scanner = new Scanner(System.in);
         int index = 0;
-        if(user.books.isEmpty()){
+        if(user.Userbooks.isEmpty()){
             System.out.println("You have no books to return");
         }else{
-            for (Book books : user.books) {
+            for (Book books : user.Userbooks) {
                 System.out.println("Available books to return:");
                 System.out.println("Index " + index + " " + books.toString());
                 index++;
@@ -242,7 +242,7 @@ public class Library {
             System.out.println("Pass title");
             String title = scanner.nextLine();
             boolean bookFound=false;
-            for(Book book: user.books){
+            for(Book book: user.Userbooks){
                 if(book.getTitle().equals(title)) {
                     user.UnassignBookFromUser(book);
                     System.out.println("Book returned " + book.getTitle());

@@ -11,9 +11,9 @@ public class SetUp {
 
 
     public void createDefaultLibrariesSetUp(String name){
-        UsersDataBase usersDataBase =new UsersDataBase();
-        Library library = new Library(usersDataBase, name);
-        libraryDataBase.addLibrary(library); // add each library to DataBase
+        UsersDataBase usersDataBase =new UsersDataBase(); // baza danych to instancji biblioteki
+        Library library = new Library(usersDataBase, name); // nowa instancja biblioteki
+        libraryDataBase.addLibrary(library); // add each library to DataBaseLibrary
         if(name.equals("Osiedlowa")) {
             library.addDefaultBooksToOsiedlowaLibrary();
             usersDataBase.createDefaultAdminUser();

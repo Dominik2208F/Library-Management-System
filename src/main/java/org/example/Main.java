@@ -1,6 +1,5 @@
 package org.example;
 
-import java.util.Scanner;
 
 public class Main {
 
@@ -10,7 +9,7 @@ public class Main {
         SetUp SetUp = new SetUp(libraryDataBase);
 
         SetUp.createDefaultLibrariesSetUp("Osiedlowa");
-        SetUp.createDefaultLibrariesSetUp("Hudini");
+        SetUp.createDefaultLibrariesSetUp("Wojewódzka");
 
         Flow flow = new Flow(libraryDataBase);
 
