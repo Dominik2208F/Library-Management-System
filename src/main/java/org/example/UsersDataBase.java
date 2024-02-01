@@ -23,16 +23,20 @@ public class UsersDataBase {
 
     public void getAllAvailableUserSwitch() {
         System.out.println("Select user to log in");
+        int index=0;
         for (User users : listOfUser) {
-            System.out.println("Index: " + users.getCurrentIndex() + " Name: " + users.getName());
+            System.out.println("Index: " +index + " Name: " + users.getName());
+            index++;
         }
         System.out.println("---------");
         System.out.println("Go back to library selection type switch");
     }
     public void getAllAvailableUser() {
         System.out.println("Available users");
+        int index=0;
         for (User users : listOfUser) {
-            System.out.println("Index: " + users.getCurrentIndex() + " Name: " + users.getName());
+            System.out.println("Index: " + index + " Name: " + users.getName());
+            index++;
         }
     }
     public void addUserToLibrary(){
