@@ -62,7 +62,8 @@ public class Flow {
                     "5: Update book\n" +
                     "7: Change user\n" +
                     "8: Add user\n"+
-                    "9: Change library");
+                    "9: Change library\n"+
+                    "10: Add library");
             String decision = scanner.nextLine();
             if (decision.equalsIgnoreCase("7")) {
                 System.out.println("Thanks for visiting.You are going to user selection view");
@@ -143,6 +144,19 @@ public class Flow {
                     decisionInner = scanner.nextLine();
                 } while (!decisionInner.equalsIgnoreCase("Y"));
                 break;
+
+            }
+            case "10": {
+                do {
+                    System.out.println("Pass name of library");
+                    String name = scanner.nextLine();
+                    UsersDataBase usersDataBase = new UsersDataBase();
+                    usersDataBase.addAdminDatabase();
+                    Library library = new Library(usersDataBase, name);
+                    libraryDataBase.addLibrary(library);
+                    System.out.println("Go back to main menu. Y/N");
+                    decisionInner = scanner.nextLine();
+                }while(!decisionInner.equalsIgnoreCase("Y"));
             }
         }
     }
