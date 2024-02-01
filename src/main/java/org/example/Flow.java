@@ -27,7 +27,7 @@ public class Flow {
             }
             flowLibrary.getLibraryUserDataBase().getAllAvailableUserSwitch(); // Users assigned to that library instance
             String userSelection = scanner.nextLine();
-            if (userSelection.equals("switch")) {
+            if (userSelection.equals("Switch")) {
                 break;
             }
             if (flowLibrary.getLibraryUserDataBase().checkIfUserExist(userSelection)) {
