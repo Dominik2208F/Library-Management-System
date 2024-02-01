@@ -147,17 +147,35 @@ public class Flow {
         }
     }
     public void userActions(String decision,String user){
-        if (decision.equalsIgnoreCase("1")) {
-            User userFromList = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(user);
-            flowLibrary.rentABookByTitle(userFromList);
-        }
-        if (decision.equalsIgnoreCase("2")) {
-            User userFromList = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(user);
-            flowLibrary.returnBookByTitle(userFromList);
-        }
-        if (decision.equalsIgnoreCase("3")) {
-            User userFromList = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(user);
-            userFromList.showBooks();
+        String decisionInner = "";
+        Scanner scanner = new Scanner(System.in);
+        User userFromList;
+        switch(decision) {
+            case "1":
+                do {
+                    userFromList = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(user);
+                    flowLibrary.rentABookByTitle(userFromList);
+                    System.out.println("Go back to main menu. Y/N");
+                    decisionInner = scanner.nextLine();
+                }while(!decisionInner.equalsIgnoreCase("Y"));
+                break;
+            case "2":
+                do {
+                    userFromList = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(user);
+                    flowLibrary.returnBookByTitle(userFromList);
+                    System.out.println("Go back to main menu. Y/N");
+                    decisionInner = scanner.nextLine();
+                }while(!decisionInner.equalsIgnoreCase("Y"));
+                break;
+
+            case "3":
+                do {
+                    userFromList = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(user);
+                    userFromList.showBooks();
+                    System.out.println("Go back to main menu. Y/N");
+                    decisionInner = scanner.nextLine();
+                }while(!decisionInner.equalsIgnoreCase("Y"));
+                break;
         }
     }
 
