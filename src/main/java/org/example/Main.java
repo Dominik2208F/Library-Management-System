@@ -6,7 +6,10 @@ import javax.sound.midi.Soundbank;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Library menagemet system v1.Loading a default library...");
+
+        System.out.println("Library menagement system v1 by Dominik Jakubaszek");
+        System.out.println("Loading a default libraries set up");
+
         LibraryDataBase libraryDataBase= new LibraryDataBase();
         SetUp SetUp = new SetUp(libraryDataBase);
 

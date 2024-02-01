@@ -1,5 +1,6 @@
 package org.example;
 
+import java.nio.file.Path;
 import java.util.Scanner;
 
 public class Flow {
@@ -60,23 +61,25 @@ public class Flow {
                     "3: Return specific info of a book\n" +
                     "4: Delete book\n" +
                     "5: Update book\n" +
-                    "7: Change user\n" +
-                    "8: Add user\n"+
-                    "9: Change library\n"+
-                    "10: Add library");
+                    "6: Change user\n" +
+                    "7: Add user\n"+
+                    "8: Change library\n"+
+                    "9: Add library");
             String decision = scanner.nextLine();
-            if (decision.equalsIgnoreCase("7")) {
-                System.out.println("Thanks for visiting.You are going to user selection view");
-                break;
+            if(!(Integer.parseInt(decision)>9)) {
+                if (decision.equalsIgnoreCase("6")) {
+                    System.out.println("Thanks for visiting.You are going to user selection view");
+                    break;
+                }
+                if (decision.equalsIgnoreCase("8")) {
+                    System.out.println("Thanks for visiting. You are going to library selection view");
+                    return true;
+                }
+                adminActions(decision);
             }
-            if (decision.equalsIgnoreCase("8")) {
-                flowLibrary.getLibraryUserDataBase().addUserToDatabase();
+            else{
+                System.out.println("No action assigned to that number.Type correct number");
             }
-            if (decision.equalsIgnoreCase("9")) {
-                System.out.println("Thanks for visiting. You are going to library selection view");
-                return true;
-            }
-            adminActions(decision);
         }
         return false;
     }
@@ -92,15 +95,19 @@ public class Flow {
 
             String decision = scanner.nextLine();
 
-            userActions(decision,userSelection);
-
-            if (decision.equalsIgnoreCase("4")) {
-                System.out.println("Thanks for visiting");
-                break;
+            if(!(Integer.parseInt(decision)>5)) {
+                userActions(decision, userSelection);
+                if (decision.equalsIgnoreCase("4")) {
+                    System.out.println("Thanks for visiting");
+                    break;
+                }
+                if (decision.equalsIgnoreCase("5")) {
+                    System.out.println("Thanks for visiting. You are going to library selection view");
+                    return true;
+                }
             }
-            if (decision.equalsIgnoreCase("5")) {
-                System.out.println("Thanks for visiting. You are going to library selection view");
-                return  true;
+            else{
+                System.out.println("No action assigned to that number.Type correct number");
             }
         }
         return false;
@@ -108,55 +115,168 @@ public class Flow {
     public void adminActions(String decision){
         String decisionInner = "";
         Scanner scanner = new Scanner(System.in);
+        boolean exitMenu=false;
         switch (decision) {
             case "1":
-                do {
+                while(true) {
                     flowLibrary.addBookToLibrary();
-                    System.out.println("Go back to main menu. Y/N");
-                    decisionInner = scanner.nextLine();
-                } while (!decisionInner.equalsIgnoreCase("Y"));
+                    while (true) {
+                        System.out.println("Go back to main menu. Type Y/N");
+                        decisionInner = scanner.nextLine();
+                        if (decisionInner.equalsIgnoreCase("Y")) {
+                            exitMenu=true;
+                            break;
+                        } else if(decisionInner.equalsIgnoreCase("N")) {
+                        break;
+                        }
+                        else{
+                            System.out.println("Wrong answer.Type 'Y' or 'N'");
+                        }
+                    }
+
+                    if(exitMenu){
+                        break;
+                    }
+                }
                 break;
             case "2":
-                do {
-                    flowLibrary.returnAllBooksInfo();
-                    System.out.println("Go back to main menu. Y/N");
-                    decisionInner = scanner.nextLine();
-                } while (!decisionInner.equalsIgnoreCase("Y"));
-                break;
-            case "3":
-                do {
-                    flowLibrary.returnSpecificBookInfoFromLibrary();
-                    System.out.println("Go back to main menu. Y/N");
-                    decisionInner = scanner.nextLine();
-                } while (!decisionInner.equalsIgnoreCase("Y"));
-                break;
-            case "4":
-                do {
-                    flowLibrary.deleteBookFromLibrary();
-                    System.out.println("Go back to main menu. Y/N");
-                    decisionInner = scanner.nextLine();
-                } while (!decisionInner.equalsIgnoreCase("Y"));
-                break;
-            case "5": {
-                do {
-                    flowLibrary.updateBookInfoInTheLibrary();
-                    System.out.println("Go back to main menu. Y/N");
-                    decisionInner = scanner.nextLine();
-                } while (!decisionInner.equalsIgnoreCase("Y"));
-                break;
+                    while(true){
+                        flowLibrary.returnAllBooksInfo();
+                        while (true) {
+                            System.out.println("Go back to main menu. Type Y/N");
+                            decisionInner = scanner.nextLine();
+                            if (decisionInner.equalsIgnoreCase("Y")) {
+                                exitMenu=true;
+                                break;
+                            } else if(decisionInner.equalsIgnoreCase("N")) {
+                                break;
+                            }
+                            else{
+                                System.out.println("Wrong answer.Type 'Y' or 'N'");
+                            }
+                        }
 
-            }
-            case "10": {
-                do {
+                        if(exitMenu){
+                            break;
+                        }
+                    }
+                    break;
+            case "3":
+                    while(true) {
+                        flowLibrary.returnSpecificBookInfoFromLibrary();
+                        while (true) {
+                            System.out.println("Go back to main menu. Type Y/N");
+                            decisionInner = scanner.nextLine();
+                            if (decisionInner.equalsIgnoreCase("Y")) {
+                                exitMenu=true;
+                                break;
+                            } else if(decisionInner.equalsIgnoreCase("N")) {
+                                break;
+                            }
+                            else{
+                                System.out.println("Wrong answer.Type 'Y' or 'N'");
+                            }
+                        }
+
+                        if(exitMenu){
+                            break;
+                        }
+                    }
+                    break;
+            case "4":
+              while(true) {
+                  flowLibrary.deleteBookFromLibrary();
+                  while (true) {
+                      System.out.println("Go back to main menu. Type Y/N");
+                      decisionInner = scanner.nextLine();
+                      if (decisionInner.equalsIgnoreCase("Y")) {
+                          exitMenu=true;
+                          break;
+                      } else if(decisionInner.equalsIgnoreCase("N")) {
+                          break;
+                      }
+                      else{
+                          System.out.println("Wrong answer.Type 'Y' or 'N'");
+                      }
+                  }
+
+                  if(exitMenu){
+                      break;
+                  }
+              }
+                break;
+            case "5":
+               while(true) {
+                   flowLibrary.updateBookInfoInTheLibrary();
+                   while (true) {
+                       System.out.println("Go back to main menu. Type Y/N");
+                       decisionInner = scanner.nextLine();
+                       if (decisionInner.equalsIgnoreCase("Y")) {
+                           exitMenu=true;
+                           break;
+                       } else if(decisionInner.equalsIgnoreCase("N")) {
+                           break;
+                       }
+                       else{
+                           System.out.println("Wrong answer.Type 'Y' or 'N'");
+                       }
+                   }
+
+                   if(exitMenu){
+                       break;
+                   }
+               }
+                break;
+            case "7":
+                while (true) {
+                    flowLibrary.getLibraryUserDataBase().addUserToDatabase();
+
+                    while (true) {
+                        System.out.println("Go back to main menu. Type Y/N");
+                        decisionInner = scanner.nextLine();
+                        if (decisionInner.equalsIgnoreCase("Y")) {
+                            exitMenu = true;
+                            break;
+                        } else if (decisionInner.equalsIgnoreCase("N")) {
+                            break;
+                        } else {
+                            System.out.println("Wrong answer.Type 'Y' or 'N'");
+                        }
+                    }
+
+                    if (exitMenu) {
+                        break;
+                    }
+                }
+                break;
+            case "9": {
+                while(true) {
+
                     System.out.println("Pass name of library");
                     String name = scanner.nextLine();
                     UsersDataBase usersDataBase = new UsersDataBase();
                     usersDataBase.addAdminDatabase();
                     Library library = new Library(usersDataBase, name);
                     libraryDataBase.addLibrary(library);
-                    System.out.println("Go back to main menu. Y/N");
-                    decisionInner = scanner.nextLine();
-                }while(!decisionInner.equalsIgnoreCase("Y"));
+
+                    while (true) {
+                        System.out.println("Go back to main menu. Type Y/N");
+                        decisionInner = scanner.nextLine();
+                        if (decisionInner.equalsIgnoreCase("Y")) {
+                            exitMenu=true;
+                            break;
+                        } else if(decisionInner.equalsIgnoreCase("N")) {
+                            break;
+                        }
+                        else{
+                            System.out.println("Wrong answer.Type 'Y' or 'N'");
+                        }
+                    }
+
+                    if(exitMenu){
+                        break;
+                    }
+                }
             }
         }
     }
@@ -164,37 +284,79 @@ public class Flow {
         String decisionInner = "";
         Scanner scanner = new Scanner(System.in);
         User userFromList;
+        boolean exitMenu=false;
         switch(decision) {
             case "1":
-                do {
+                while (true) {
                     userFromList = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(user);
                     flowLibrary.rentABookByTitle(userFromList);
-                    System.out.println("Go back to main menu. Y/N");
-                    decisionInner = scanner.nextLine();
-                }while(!decisionInner.equalsIgnoreCase("Y"));
+                    while (true) {
+                        System.out.println("Go back to main menu. Type Y/N");
+                        decisionInner = scanner.nextLine();
+                        if (decisionInner.equalsIgnoreCase("Y")) {
+                            exitMenu = true;
+                            break;
+                        } else if (decisionInner.equalsIgnoreCase("N")) {
+                            break;
+                        } else {
+                            System.out.println("Wrong answer.Type 'Y' or 'N'");
+                        }
+                    }
+
+                    if (exitMenu) {
+                        break;
+                    }
+                }
                 break;
             case "2":
-                do {
+                while(true) {
                     userFromList = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(user);
                     flowLibrary.returnBookByTitle(userFromList);
-                    System.out.println("Go back to main menu. Y/N");
-                    decisionInner = scanner.nextLine();
-                }while(!decisionInner.equalsIgnoreCase("Y"));
-                break;
+                    while (true) {
+                        System.out.println("Go back to main menu. Type Y/N");
+                        decisionInner = scanner.nextLine();
+                        if (decisionInner.equalsIgnoreCase("Y")) {
+                            exitMenu = true;
+                            break;
+                        } else if (decisionInner.equalsIgnoreCase("N")) {
+                            break;
+                        } else {
+                            System.out.println("Wrong answer.Type 'Y' or 'N'");
+                        }
+                    }
 
+                    if (exitMenu) {
+                        break;
+                    }
+                }
+                break;
             case "3":
-                do {
+                while(true) {
                     userFromList = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(user);
                     userFromList.showBooks();
-                    System.out.println("Go back to main menu. Y/N");
-                    decisionInner = scanner.nextLine();
-                }while(!decisionInner.equalsIgnoreCase("Y"));
+                    while (true) {
+                        System.out.println("Go back to main menu. Type Y/N");
+                        decisionInner = scanner.nextLine();
+                        if (decisionInner.equalsIgnoreCase("Y")) {
+                            exitMenu = true;
+                            break;
+                        } else if (decisionInner.equalsIgnoreCase("N")) {
+                            break;
+                        } else {
+                            System.out.println("Wrong answer.Type 'Y' or 'N'");
+                        }
+                    }
+
+                    if (exitMenu) {
+                        break;
+                    }
+                }
                 break;
         }
     }
 
     public Library selectLibraryInstanceToVisit(){
-        System.out.println("Select a library to visit");
+        System.out.println("Type a name of a library to visit");
         Scanner scanner = new Scanner(System.in);
         while(true) {
             for (Library librarySpec : libraryDataBase.listOfLibrary) {

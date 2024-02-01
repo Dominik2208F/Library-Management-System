@@ -77,7 +77,7 @@ public class Library {
         }
     }
     public void returnSizeOfLibrary() {
-        System.out.println("Size of the" + getNameOfLibrary()+ "library is " + listOfBooks.size());
+        System.out.println("Size of the " + getNameOfLibrary()+ " library is " + listOfBooks.size());
     }
     public void returnSpecificBookInfoFromLibrary() {
         if (!listOfBooks.isEmpty()) {
@@ -269,6 +269,7 @@ public class Library {
     public void rentABookByTitle(User user) {
         Scanner scanner = new Scanner(System.in);
         int index = 0;
+        boolean booksFound = false;
         if(listOfBooks.isEmpty()){
             System.out.println("List of books is empty");
         }else{
@@ -277,26 +278,32 @@ public class Library {
                 System.out.println("Index " + index + " " + books.toString());
                 index++;
             }
-            System.out.println("Pass title");
-            String title = scanner.nextLine();
-            boolean booksFound=false;
-            for(Book book: listOfBooks){
-                if(book.getTitle().equals(title)) {
-                    user.assignBookToUser(book);
-                    System.out.println("Book " + book.getTitle()+" has been borrowed");
-                    listOfBooks.remove(book);
-                    booksFound=true;
-                    break;
+
+            while(true) {
+                System.out.println("Pass title");
+                String title = scanner.nextLine();
+                for (Book book : listOfBooks) {
+                    if (book.getTitle().equals(title)) {
+                        user.assignBookToUser(book);
+                        System.out.println("Book " + book.getTitle() + " has been borrowed");
+                        listOfBooks.remove(book);
+                        booksFound = true;
+                        break;
+                    }
                 }
-            }
-            if(!booksFound){
-                System.out.println("No books on the list with that title");
+                if (booksFound) {
+                   break;
+                }
+                else{
+                    System.out.println("Wrong book title.Please try once again");
+                }
             }
         }
     }
     public void returnBookByTitle(User user) {
         Scanner scanner = new Scanner(System.in);
         int index = 0;
+        boolean bookFound = false;
         if(user.Userbooks.isEmpty()){
             System.out.println("You have no books to return");
         }else{
@@ -305,20 +312,24 @@ public class Library {
                 System.out.println("Index " + index + " " + books.toString());
                 index++;
             }
-            System.out.println("Pass title");
-            String title = scanner.nextLine();
-            boolean bookFound=false;
-            for(Book book: user.Userbooks){
-                if(book.getTitle().equals(title)) {
-                    user.UnassignBookFromUser(book);
-                    System.out.println("Book returned " + book.getTitle());
-                    listOfBooks.add(book);
-                    bookFound=true;
-                    break;
+
+            while(true) {
+                System.out.println("Pass title of book to return");
+                String title = scanner.nextLine();
+                for (Book book : user.Userbooks) {
+                    if (book.getTitle().equals(title)) {
+                        user.UnassignBookFromUser(book);
+                        System.out.println("Book returned " + book.getTitle());
+                        listOfBooks.add(book);
+                        bookFound = true;
+                        break;
+                    }
                 }
-            }
-            if (!bookFound) {
-                System.out.println("No books on the list with that title");
+                if (bookFound) {
+                    break;
+                }else{
+                    System.out.println("Wrong book title.Please try once again");
+                }
             }
         }
     }
