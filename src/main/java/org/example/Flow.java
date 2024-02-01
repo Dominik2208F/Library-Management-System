@@ -40,7 +40,7 @@ public class Flow {
                         break;
                     default:
                         if (flowLibrary.getLibraryUserDataBase().validateUserLogin(userSelection)) {
-                            userFlow(userSelection);
+                            forceSwitchLibrary=userFlow(userSelection);
                         } else {
                             System.out.println("Wrong password");
                         }
@@ -70,7 +70,6 @@ public class Flow {
             }
             if (decision.equalsIgnoreCase("8")) {
                 flowLibrary.getLibraryUserDataBase().addUserToDatabase();
-                System.out.println("User registration confirmed");
             }
             if (decision.equalsIgnoreCase("9")) {
                 System.out.println("Thanks for visiting. You are going to library selection view");
@@ -80,14 +79,15 @@ public class Flow {
         }
         return false;
     }
-    public void userFlow(String userSelection){
+    public boolean userFlow(String userSelection){
         while (true) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Decide what you want to do:\n" +
                     "1: Rent a book\n" +
                     "2: Return a book\n"+
                     "3: Show book assigned to User\n"+
-                    "4: Change user");
+                    "4: Change user\n" +
+                    "5: Change library");
 
             String decision = scanner.nextLine();
 
@@ -97,7 +97,12 @@ public class Flow {
                 System.out.println("Thanks for visiting");
                 break;
             }
+            if (decision.equalsIgnoreCase("5")) {
+                System.out.println("Thanks for visiting. You are going to library selection view");
+                return  true;
+            }
         }
+        return false;
     }
     public void adminActions(String decision){
         String decisionInner = "";
