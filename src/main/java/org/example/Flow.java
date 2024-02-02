@@ -64,9 +64,10 @@ public class Flow {
                     "6: Change user\n" +
                     "7: Add user\n"+
                     "8: Change library\n"+
-                    "9: Add library");
+                    "9: Add library\n" +
+                    "10: Delete user");
             String decision = scanner.nextLine();
-            if(!(Integer.parseInt(decision)>9)) {
+            if(!(Integer.parseInt(decision)>10)) {
                 if (decision.equalsIgnoreCase("6")) {
                     System.out.println("Thanks for visiting.You are going to user selection view");
                     break;
@@ -91,11 +92,12 @@ public class Flow {
                     "2: Return a book\n"+
                     "3: Show book borrowed by User\n"+
                     "4: Change user\n" +
-                    "5: Change library");
+                    "5: Change library\n" +
+                    "6: Show available book to borrow");
 
             String decision = scanner.nextLine();
 
-            if(!(Integer.parseInt(decision)>5)) {
+            if(!(Integer.parseInt(decision)>6)) {
                 userActions(decision, userSelection);
                 if (decision.equalsIgnoreCase("4")) {
                     System.out.println("Thanks for visiting");
@@ -230,7 +232,6 @@ public class Flow {
             case "7":
                 while (true) {
                     flowLibrary.getLibraryUserDataBase().addUserToDatabase();
-
                     while (true) {
                         System.out.println("Go back to main menu. Type Y/N");
                         decisionInner = scanner.nextLine();
@@ -249,7 +250,7 @@ public class Flow {
                     }
                 }
                 break;
-            case "9": {
+            case "9":
                 while(true) {
 
                     System.out.println("Pass name of library");
@@ -277,7 +278,29 @@ public class Flow {
                         break;
                     }
                 }
-            }
+                break;
+            case "10":
+                while(true) {
+                    flowLibrary.getLibraryUserDataBase().deleteUserFromDatabase();
+                    while (true) {
+                        System.out.println("Go back to main menu. Type Y/N");
+                        decisionInner = scanner.nextLine();
+                        if (decisionInner.equalsIgnoreCase("Y")) {
+                            exitMenu=true;
+                            break;
+                        } else if(decisionInner.equalsIgnoreCase("N")) {
+                            break;
+                        }
+                        else{
+                            System.out.println("Wrong answer.Type 'Y' or 'N'");
+                        }
+                    }
+
+                    if(exitMenu){
+                        break;
+                    }
+                }
+
         }
     }
     public void userActions(String decision,String user){
@@ -334,6 +357,27 @@ public class Flow {
                 while(true) {
                     userFromList = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(user);
                     userFromList.showBooks();
+                    while (true) {
+                        System.out.println("Go back to main menu. Type Y/N");
+                        decisionInner = scanner.nextLine();
+                        if (decisionInner.equalsIgnoreCase("Y")) {
+                            exitMenu = true;
+                            break;
+                        } else if (decisionInner.equalsIgnoreCase("N")) {
+                            break;
+                        } else {
+                            System.out.println("Wrong answer.Type 'Y' or 'N'");
+                        }
+                    }
+
+                    if (exitMenu) {
+                        break;
+                    }
+                }
+                break;
+            case "6":
+                while(true) {
+                    flowLibrary.returnAllBooksInfo();
                     while (true) {
                         System.out.println("Go back to main menu. Type Y/N");
                         decisionInner = scanner.nextLine();

@@ -63,7 +63,61 @@ public class UsersDataBase {
         System.out.println("Set password of user");
         String password = scanner.nextLine();
         User user = new User(name, password);
-        listOfUser.add(user);
+        boolean userExist=false;
+        for(User users: listOfUser){
+
+            if(users.getName().equalsIgnoreCase(user.getName())){
+                userExist=true;
+                break;
+            }
+        }
+        if(!userExist) {
+            listOfUser.add(user);
+            System.out.println("User " + user.getName() + " has been added");
+        }
+        else{
+            System.out.println("You cannot twice the same user");
+        }
+    }
+    public void deleteUserFromDatabase() {
+
+
+        if(!(listOfUser.size() ==1)) {
+            System.out.println("Available users");
+            int index = 0;
+            for (User users : listOfUser) {
+                if(users.getName().equals("Admin")){
+                    continue;
+                }
+                System.out.println("Index: " + index + " Name: " + users.getName());
+                index++;
+            }
+
+            boolean userFound=false;
+            while (true) {
+                System.out.println("Type name of user to delete");
+                Scanner scanner = new Scanner(System.in);
+                String name = scanner.nextLine().trim();
+
+                for (User user : listOfUser) {
+                    if (user.getName().equals(name)) {
+                        listOfUser.remove(user);
+                        userFound = true;
+                        System.out.println("User named " + name + " has been deleted");
+                        break;
+                    }
+                }
+                if (userFound) {
+                    break;
+                }
+                else {
+                    System.out.println("User not found. Try once again");
+                }
+            }
+        }
+        else{
+            System.out.println("List of user to delete is empty");
+        }
     }
 
     public void addAdminDatabase() {
