@@ -32,7 +32,7 @@ public class Flow {
             }
             if (flowLibrary.getLibraryUserDataBase().checkIfUserExist(userSelection)) {
                 switch (userSelection) {
-                    case "Admin":
+                    case "Library Admin":
                         if (flowLibrary.getLibraryUserDataBase().validateAdminLogin()) {
                             forceSwitchLibrary =adminFlow();
                         } else {
@@ -64,16 +64,22 @@ public class Flow {
                     "6: Change user\n" +
                     "7: Add user\n"+
                     "8: Change library\n"+
-                    "9: Add library\n" +
-                    "10: Delete user");
+                    "9: Add Sub-Partner Library\n" +
+                    "10: Delete user\n"+
+                    "11: Delete current library");
             String decision = scanner.nextLine();
-            if(!(Integer.parseInt(decision)>10)) {
+            if(!(Integer.parseInt(decision)>11)) {
                 if (decision.equalsIgnoreCase("6")) {
                     System.out.println("Thanks for visiting.You are going to user selection view");
                     break;
                 }
                 if (decision.equalsIgnoreCase("8")) {
                     System.out.println("Thanks for visiting. You are going to library selection view");
+                    return true;
+                }
+                if (decision.equalsIgnoreCase("11")) {
+                    libraryDataBase.removeLibrary();
+                    System.out.println("Admin logged out from library");
                     return true;
                 }
                 adminActions(decision);
@@ -120,26 +126,24 @@ public class Flow {
         boolean exitMenu=false;
         switch (decision) {
             case "1":
-                while(true) {
-                    flowLibrary.addBookToLibrary();
                     while (true) {
-                        System.out.println("Go back to main menu. Type Y/N");
-                        decisionInner = scanner.nextLine();
-                        if (decisionInner.equalsIgnoreCase("Y")) {
-                            exitMenu=true;
+                        flowLibrary.addBookToLibrary();
+                        while (true) {
+                            System.out.println("Go back to main menu. Type Y/N");
+                            decisionInner = scanner.nextLine();
+                            if (decisionInner.equalsIgnoreCase("Y")) {
+                                exitMenu = true;
+                                break;
+                            } else if (decisionInner.equalsIgnoreCase("N")) {
+                                break;
+                            } else {
+                                System.out.println("Wrong answer.Type 'Y' or 'N'");
+                            }
+                        }
+                        if (exitMenu) {
                             break;
-                        } else if(decisionInner.equalsIgnoreCase("N")) {
-                        break;
-                        }
-                        else{
-                            System.out.println("Wrong answer.Type 'Y' or 'N'");
                         }
                     }
-
-                    if(exitMenu){
-                        break;
-                    }
-                }
                 break;
             case "2":
                     while(true){
@@ -300,7 +304,7 @@ public class Flow {
                         break;
                     }
                 }
-
+                break;
         }
     }
     public void userActions(String decision,String user){

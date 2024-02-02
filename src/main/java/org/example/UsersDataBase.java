@@ -76,7 +76,7 @@ public class UsersDataBase {
             System.out.println("User " + user.getName() + " has been added");
         }
         else{
-            System.out.println("You cannot twice the same user");
+            System.out.println("You cannot add twice the same user");
         }
     }
     public void deleteUserFromDatabase() {
@@ -121,7 +121,7 @@ public class UsersDataBase {
     }
 
     public void addAdminDatabase() {
-        User user = new User("Admin", "admin");
+        User user = new User("Library Admin", "admin");
         listOfUser.add(user);
     }
 
@@ -158,9 +158,9 @@ public class UsersDataBase {
 
     public boolean validateAdminLogin() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Type password to Admin account");
+        System.out.println("Type password to Library Admin account");
         String password = scanner.nextLine();
-        return returnObjectOfUserByName("Admin").getPassword().equalsIgnoreCase(password);
+        return returnObjectOfUserByName("Library Admin").getPassword().equalsIgnoreCase(password);
     }
 
     public boolean validateUserLogin(String name) {

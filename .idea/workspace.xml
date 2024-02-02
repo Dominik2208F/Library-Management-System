@@ -9,9 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="obsługa chyba wszystkich błedów?">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="obsluga dwoch tych samych uzytkonikow + usuniecie usera">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Flow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Flow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LibraryDataBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UsersDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UsersDataBase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -348,7 +349,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706829811408</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="obsluga dwoch tych samych uzytkonikow + usuniecie usera">
+      <created>1706886160557</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1706886160557</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -363,7 +371,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="admin/user" />
     <MESSAGE value="dodawanie użytkownika" />
     <MESSAGE value="refaktoring" />
     <MESSAGE value="Usuwanie książki po wypożyczeniu" />
@@ -388,7 +395,8 @@
     <MESSAGE value="obsługa wyjątków update" />
     <MESSAGE value="1 export od java" />
     <MESSAGE value="obsługa chyba wszystkich błedów?" />
-    <option name="LAST_COMMIT_MESSAGE" value="obsługa chyba wszystkich błedów?" />
+    <MESSAGE value="obsluga dwoch tych samych uzytkonikow + usuniecie usera" />
+    <option name="LAST_COMMIT_MESSAGE" value="obsluga dwoch tych samych uzytkonikow + usuniecie usera" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -397,6 +405,17 @@
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Users.java</url>
           <line>88</line>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/Flow.java</url>
+          <line>90</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/LibraryDataBase.java</url>
+          <line>8</line>
+          <properties field="listOfLibrary" class="org.example.LibraryDataBase" />
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
