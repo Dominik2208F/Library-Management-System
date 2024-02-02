@@ -56,24 +56,25 @@ public class Flow {
         while (true) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Decide what you want to do:\n" +
-                    "1: Add a book\n" +
-                    "2: Return info of all available books\n" +
-                    "3: Return specific info of a book\n" +
+                    "1: Add a book to library\n" +
+                    "2: Return info of all available books in library\n" +
+                    "3: Return specific info of a book in library\n" +
                     "4: Delete book\n" +
                     "5: Update book\n" +
-                    "6: Change user\n" +
-                    "7: Add user\n"+
-                    "8: Change library\n"+
+                    "6: Change user among current library\n" +
+                    "7: Add user to this library\n"+
+                    "8: Delete user from that library\n"+
                     "9: Add Sub-Partner Library\n" +
-                    "10: Delete user\n"+
-                    "11: Delete current library");
+                    "10: Change library\n"+
+                    "11: Delete current library\n" +
+                    "12: Return info about borrowed book among library");
             String decision = scanner.nextLine();
-            if(!(Integer.parseInt(decision)>11)) {
+            if(!(Integer.parseInt(decision)>12)) {
                 if (decision.equalsIgnoreCase("6")) {
                     System.out.println("Thanks for visiting.You are going to user selection view");
                     break;
                 }
-                if (decision.equalsIgnoreCase("8")) {
+                if (decision.equalsIgnoreCase("10")) {
                     System.out.println("Thanks for visiting. You are going to library selection view");
                     return true;
                 }
@@ -283,9 +284,31 @@ public class Flow {
                     }
                 }
                 break;
-            case "10":
+            case "8":
                 while(true) {
                     flowLibrary.getLibraryUserDataBase().deleteUserFromDatabase();
+                    while (true) {
+                        System.out.println("Go back to main menu. Type Y/N");
+                        decisionInner = scanner.nextLine();
+                        if (decisionInner.equalsIgnoreCase("Y")) {
+                            exitMenu=true;
+                            break;
+                        } else if(decisionInner.equalsIgnoreCase("N")) {
+                            break;
+                        }
+                        else{
+                            System.out.println("Wrong answer.Type 'Y' or 'N'");
+                        }
+                    }
+
+                    if(exitMenu){
+                        break;
+                    }
+                }
+                break;
+            case "12":
+                while(true) {
+                    flowLibrary.getInfoAboutBorrowedBooksAmongsUser();
                     while (true) {
                         System.out.println("Go back to main menu. Type Y/N");
                         decisionInner = scanner.nextLine();

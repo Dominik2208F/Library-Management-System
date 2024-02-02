@@ -9,11 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="obsluga dwoch tych samych uzytkonikow + usuniecie usera">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="usuwanie obecnej biblioteki skutkuje wylogowaniem">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Flow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Flow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LibraryDataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UsersDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UsersDataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Library.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -356,7 +355,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706886160557</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="usuwanie obecnej biblioteki skutkuje wylogowaniem">
+      <created>1706916665829</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1706916665829</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -371,7 +377,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="dodawanie użytkownika" />
     <MESSAGE value="refaktoring" />
     <MESSAGE value="Usuwanie książki po wypożyczeniu" />
     <MESSAGE value="switch case na main" />
@@ -396,7 +401,8 @@
     <MESSAGE value="1 export od java" />
     <MESSAGE value="obsługa chyba wszystkich błedów?" />
     <MESSAGE value="obsluga dwoch tych samych uzytkonikow + usuniecie usera" />
-    <option name="LAST_COMMIT_MESSAGE" value="obsluga dwoch tych samych uzytkonikow + usuniecie usera" />
+    <MESSAGE value="usuwanie obecnej biblioteki skutkuje wylogowaniem" />
+    <option name="LAST_COMMIT_MESSAGE" value="usuwanie obecnej biblioteki skutkuje wylogowaniem" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -408,7 +414,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Flow.java</url>
-          <line>90</line>
+          <line>91</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">

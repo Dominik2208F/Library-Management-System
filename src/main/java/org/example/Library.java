@@ -19,6 +19,22 @@ public class Library {
     public UsersDataBase getLibraryUserDataBase() {
         return libraryUserDataBase;
     }
+
+    public void getInfoAboutBorrowedBooksAmongsUser(){
+
+        if(!(libraryUserDataBase.listOfUser.size()==1)) {
+            for (User user : libraryUserDataBase.listOfUser) {
+                if(user.getName().equals("Library Admin")){
+                    continue;
+                }
+                System.out.println("User " + user.getName() +" has borrowed a book "+ user.Userbooks.toString());
+            }
+        }
+        else{
+            System.out.println("Add some user to library");
+        }
+    }
+
     public String getNameOfLibrary() {
         return NameOfLibrary;
     }
