@@ -1,6 +1,5 @@
 package org.example.LibraryManager;
 
-import org.example.LibraryManager.Library;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,8 +7,7 @@ import java.util.Scanner;
 
 public class LibraryDataBase {
 
-    List<Library> listOfLibrary;
-
+    private List<Library> listOfLibrary;
     public LibraryDataBase() {
         listOfLibrary = new ArrayList<>();
     }

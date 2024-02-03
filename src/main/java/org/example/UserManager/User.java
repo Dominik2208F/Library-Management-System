@@ -7,7 +7,7 @@ import java.util.List;
 
 public class User {
 
-    List<Book> Userbooks;
+    private List<Book> Userbooks;
     private String name;
     private String password;
 
@@ -17,6 +17,9 @@ public class User {
         Userbooks = new ArrayList<>();
     }
 
+    public List<Book> getUserbooks() {
+        return Userbooks;
+    }
     public String getPassword() {
         return password;
     }

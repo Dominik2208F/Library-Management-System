@@ -6,10 +6,13 @@ import java.util.Scanner;
 
 public class UsersDataBase {
 
-    List<User> listOfUser = new ArrayList<>();
+    private List<User> listOfUser = new ArrayList<>();
 
     public UsersDataBase() {
 
+    }
+    public List<User> getListOfUser() {
+        return listOfUser;
     }
 
     public boolean checkIfUserExist(String name) {

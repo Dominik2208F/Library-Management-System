@@ -26,12 +26,12 @@ public class Library {
 
     public void getInfoAboutBorrowedBooksAmongsUser() {
 
-        if (!(libraryUserDataBase.listOfUser.size() == 1)) {
-            for (User user : libraryUserDataBase.listOfUser) {
+        if (!(libraryUserDataBase.getListOfUser().size() == 1)) {
+            for (User user : libraryUserDataBase.getListOfUser()) {
                 if (user.getName().equals("Library Admin")) {
                     continue;
                 }
-                System.out.println("User " + user.getName() + " has borrowed a book " + user.Userbooks.toString());
+                System.out.println("User " + user.getName() + " has borrowed a book " + user.getUserbooks().toString());
             }
         } else {
             System.out.println("Add some user to library");
@@ -340,10 +340,10 @@ public class Library {
         Scanner scanner = new Scanner(System.in);
         int index = 0;
         boolean bookFound = false;
-        if (user.Userbooks.isEmpty()) {
+        if (user.getUserbooks().isEmpty()) {
             System.out.println("You have no books to return");
         } else {
-            for (Book books : user.Userbooks) {
+            for (Book books : user.getUserbooks()) {
                 System.out.println("Available books to return:");
                 System.out.println("Index " + index + " " + books.toString());
                 index++;
@@ -352,7 +352,7 @@ public class Library {
             while (true) {
                 System.out.println("Pass title of book to return");
                 String title = scanner.nextLine();
-                for (Book book : user.Userbooks) {
+                for (Book book : user.getUserbooks()) {
                     if (book.getTitle().equals(title)) {
                         user.UnassignBookFromUser(book);
                         System.out.println("Book returned " + book.getTitle());

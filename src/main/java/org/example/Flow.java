@@ -434,12 +434,12 @@ public class Flow {
         System.out.println("Type a name of a library to visit");
         Scanner scanner = new Scanner(System.in);
         while(true) {
-            for (Library librarySpec : libraryDataBase.listOfLibrary) {
+            for (Library librarySpec : libraryDataBase.getListOfLibrary()) {
                 System.out.println(librarySpec.getNameOfLibrary());
             }
             String librarydecision = scanner.nextLine();
             //LIBRARY SELECTION
-            for (Library librarySpec : libraryDataBase.listOfLibrary) {
+            for (Library librarySpec : libraryDataBase.getListOfLibrary()) {
                 if (librarySpec.getNameOfLibrary().equalsIgnoreCase(librarydecision)) {
                     return librarySpec;
 
