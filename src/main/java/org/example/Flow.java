@@ -61,13 +61,13 @@ public class Flow {
                     "3: Return specific info of a book in library\n" +
                     "4: Delete book\n" +
                     "5: Update book\n" +
-                    "6: Change user among current library\n" +
-                    "7: Add user to this library\n"+
-                    "8: Delete user from that library\n"+
+                    "6: Change user\n" +
+                    "7: Add user \n"+
+                    "8: Delete user \n"+
                     "9: Add Sub-Partner Library\n" +
                     "10: Change library\n"+
-                    "11: Delete current library\n" +
-                    "12: Return info about borrowed book among library");
+                    "11: Delete library\n" +
+                    "12: Borrowed books by Users");
             String decision = scanner.nextLine();
             if(!(Integer.parseInt(decision)>12)) {
                 if (decision.equalsIgnoreCase("6")) {

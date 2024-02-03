@@ -12,25 +12,25 @@ public class Library {
     private UsersDataBase libraryUserDataBase;
     private String NameOfLibrary;
 
-    public Library(UsersDataBase usersDataBase,String nameOfLibrary){
-        this.libraryUserDataBase=usersDataBase;
-        this.NameOfLibrary=nameOfLibrary;
+    public Library(UsersDataBase usersDataBase, String nameOfLibrary) {
+        this.libraryUserDataBase = usersDataBase;
+        this.NameOfLibrary = nameOfLibrary;
     }
+
     public UsersDataBase getLibraryUserDataBase() {
         return libraryUserDataBase;
     }
 
-    public void getInfoAboutBorrowedBooksAmongsUser(){
+    public void getInfoAboutBorrowedBooksAmongsUser() {
 
-        if(!(libraryUserDataBase.listOfUser.size()==1)) {
+        if (!(libraryUserDataBase.listOfUser.size() == 1)) {
             for (User user : libraryUserDataBase.listOfUser) {
-                if(user.getName().equals("Library Admin")){
+                if (user.getName().equals("Library Admin")) {
                     continue;
                 }
-                System.out.println("User " + user.getName() +" has borrowed a book "+ user.Userbooks.toString());
+                System.out.println("User " + user.getName() + " has borrowed a book " + user.Userbooks.toString());
             }
-        }
-        else{
+        } else {
             System.out.println("Add some user to library");
         }
     }
@@ -38,6 +38,7 @@ public class Library {
     public String getNameOfLibrary() {
         return NameOfLibrary;
     }
+
     public void addBookToLibrary() {
 
         Scanner scanner = new Scanner(System.in);
@@ -55,11 +56,11 @@ public class Library {
         System.out.println("Podaj ilość stron:");
         int amountOfPage;
 
-        while(true) {
+        while (true) {
             try {
                 amountOfPage = scanner.nextInt();
                 break;
-            }catch(InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a valid number");
                 scanner.nextLine();
             }
@@ -72,44 +73,50 @@ public class Library {
         System.out.println("Book with title " + book.getTitle() + " has been added");
         returnSizeOfLibrary();
     }
-    public void addDefaultBooksToLibrary(){
+
+    public void addDefaultBooksToLibrary() {
         listOfBooks.add(new Book("Alicja w Krainie Mugoli",
-                new Author("Leonidas","Staff","12-12-1960")
-                ,"1998",new Genre("Przygodowa"),250));
+                new Author("Leonidas", "Staff", "12-12-1960")
+                , "1998", new Genre("Przygodowa"), 250));
 
         listOfBooks.add(new Book("Misiek koralgol",
-                new Author("Adam","Wielkopolski","11-12-1960")
-                ,"1998",new Genre("Przygodowa"),154));
+                new Author("Adam", "Wielkopolski", "11-12-1960")
+                , "1998", new Genre("Przygodowa"), 154));
     }
-    public void addDefaultBooksToOsiedlowaLibrary(){
+
+    public void addDefaultBooksToOsiedlowaLibrary() {
         listOfBooks.add(new Book("Kot w butach",
-                new Author("Wincent","Staff","12-12-1960")
-                ,"1943",new Genre("Akcji"),12));
+                new Author("Wincent", "Staff", "12-12-1960")
+                , "1943", new Genre("Akcji"), 12));
 
         listOfBooks.add(new Book("Przygody Kundla",
-                new Author("Angel","Hrabio","11-12-1960")
-                ,"1965",new Genre("Dramat"),122));
+                new Author("Angel", "Hrabio", "11-12-1960")
+                , "1965", new Genre("Dramat"), 122));
     }
+
     public void returnAllBooksInfo() {
         int index = 0;
         if (listOfBooks.isEmpty()) {
-            System.out.println(getNameOfLibrary() +" Library is empty.Add some book");
-        }
-        System.out.println("Available books in:" + getNameOfLibrary());
-        for (Book books : listOfBooks) {
-            System.out.println("Index " + index + " " + books.toString());
-            index++;
+            System.out.println(getNameOfLibrary() + " Library is empty.Add some book");
+        } else {
+            System.out.println("Available books in:" + getNameOfLibrary());
+            for (Book books : listOfBooks) {
+                System.out.println("Index " + index + " " + books.toString());
+                index++;
+            }
         }
     }
+
     public void returnSizeOfLibrary() {
-        System.out.println("Size of the " + getNameOfLibrary()+ " library is " + listOfBooks.size());
+        System.out.println("Size of the " + getNameOfLibrary() + " library is " + listOfBooks.size());
     }
+
     public void returnSpecificBookInfoFromLibrary() {
         if (!listOfBooks.isEmpty()) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Type index of books you want to access");
 
-            int index=0;
+            int index = 0;
             System.out.println("Available books in:" + getNameOfLibrary());
             for (Book books : listOfBooks) {
                 System.out.println("Index " + index + " " + books.getTitle());
@@ -132,68 +139,68 @@ public class Library {
             }
 
             scanner.nextLine();
-                    while (true) {
-                    boolean operationDone = true;
-                        System.out.println("Type info you want to access:\n" +
-                                "Title\n" +
-                                "Author\n" +
-                                "Production date\n" +
-                                "Genre\n" +
-                                "Pages");
-                        String input = scanner.nextLine();
-                    switch (input) {
-                        case "Title":
-                            System.out.println(listOfBooks.get(indexOfBookInList).getTitle());
-                            break;
-                        case "Author":
-                            System.out.println("Author: " + listOfBooks.get(indexOfBookInList).getAuthor().toString());
-                            break;
-                        case "Production date":
-                            System.out.println("Date of Production: " + listOfBooks.get(indexOfBookInList).getDateOfProduction());
-                            break;
-                        case "Genre":
-                            System.out.println("Genre: " + listOfBooks.get(indexOfBookInList).getGenre().toString());
-                            break;
-                        case "Pages":
-                            System.out.println("Amount of Pages: " + listOfBooks.get(indexOfBookInList).getAmountOfPage());
-                            break;
-                        default:
-                            operationDone=false;
-                    }
-                    if(operationDone){
-                        break;
-                    }
-                    else{
-                        System.out.println("Invalid field name.Try once again");
-                    }
-                }
-
-        } else {
-            System.out.println(getNameOfLibrary() +" Library is empty, add some book");
-        }
-    }
-    public void deleteBooksByTitleFromLibrary() {
-        Scanner scanner = new Scanner(System.in);
-            boolean bookFound=false;
             while (true) {
-                System.out.println("Type title of book to remove");
+                boolean operationDone = true;
+                System.out.println("Type info you want to access:\n" +
+                        "Title\n" +
+                        "Author\n" +
+                        "Production date\n" +
+                        "Genre\n" +
+                        "Pages");
                 String input = scanner.nextLine();
-                for (int i = 0; i < listOfBooks.size(); i++) {
-                    if (listOfBooks.get(i).getTitle().equals(input)) {
-                        listOfBooks.remove(i);
-                        System.out.println("Books has been deleted sucessfully from " + getNameOfLibrary() + " library");
-                        bookFound=true;
+                switch (input) {
+                    case "Title":
+                        System.out.println(listOfBooks.get(indexOfBookInList).getTitle());
                         break;
-                    }
+                    case "Author":
+                        System.out.println("Author: " + listOfBooks.get(indexOfBookInList).getAuthor().toString());
+                        break;
+                    case "Production date":
+                        System.out.println("Date of Production: " + listOfBooks.get(indexOfBookInList).getDateOfProduction());
+                        break;
+                    case "Genre":
+                        System.out.println("Genre: " + listOfBooks.get(indexOfBookInList).getGenre().toString());
+                        break;
+                    case "Pages":
+                        System.out.println("Amount of Pages: " + listOfBooks.get(indexOfBookInList).getAmountOfPage());
+                        break;
+                    default:
+                        operationDone = false;
                 }
-                if(bookFound){
+                if (operationDone) {
                     break;
-                }
-                else{
-                    System.out.println("Wrong book title. Try once again");
+                } else {
+                    System.out.println("Invalid field name.Try once again");
                 }
             }
+
+        } else {
+            System.out.println(getNameOfLibrary() + " Library is empty, add some book");
+        }
     }
+
+    public void deleteBooksByTitleFromLibrary() {
+        Scanner scanner = new Scanner(System.in);
+        boolean bookFound = false;
+        while (true) {
+            System.out.println("Type title of book to remove");
+            String input = scanner.nextLine();
+            for (int i = 0; i < listOfBooks.size(); i++) {
+                if (listOfBooks.get(i).getTitle().equals(input)) {
+                    listOfBooks.remove(i);
+                    System.out.println("Books has been deleted sucessfully from " + getNameOfLibrary() + " library");
+                    bookFound = true;
+                    break;
+                }
+            }
+            if (bookFound) {
+                break;
+            } else {
+                System.out.println("Wrong book title. Try once again");
+            }
+        }
+    }
+
     public void deleteBookFromLibrary() {
         if (!listOfBooks.isEmpty()) {
             System.out.println("Available books in:" + getNameOfLibrary());
@@ -203,18 +210,19 @@ public class Library {
             deleteBooksByTitleFromLibrary();
 
         } else {
-            System.out.println(getNameOfLibrary()+ " Library is empty. You cannot delete book");
+            System.out.println(getNameOfLibrary() + " Library is empty. You cannot delete book");
         }
     }
+
     public void updateBookInfoInTheLibrary() {
         if (!listOfBooks.isEmpty()) {
             Scanner scanner = new Scanner(System.in);
-            int counter=0;
+            int counter = 0;
             System.out.println("Type index of book to update");
-                for (Book books : listOfBooks) {
-                    System.out.println("Index " + counter + " " + books.toString());
-                    counter++;
-                }
+            for (Book books : listOfBooks) {
+                System.out.println("Index " + counter + " " + books.toString());
+                counter++;
+            }
 
             int index = 0;
             while (true) {
@@ -225,14 +233,14 @@ public class Library {
                     } else {
                         break;
                     }
-                }catch (InputMismatchException e){
+                } catch (InputMismatchException e) {
                     System.out.println("Invalid input. Please enter a valid number");
                     scanner.nextLine();
                 }
             }
             scanner.nextLine();
-            while(true) {
-                boolean operationDone =true;
+            while (true) {
+                boolean operationDone = true;
                 System.out.println("Type info you want to access:\n" +
                         "Title\n" +
                         "Author\n" +
@@ -263,7 +271,7 @@ public class Library {
                         System.out.println("Genre: " + listOfBooks.get(index).getGenre().toString());
                         break;
                     case "Pages":
-                        while(true) {
+                        while (true) {
                             System.out.println("Type new amount:");
                             try {
                                 int amount = scanner.nextInt();
@@ -276,14 +284,13 @@ public class Library {
                         }
                         break;
                     default:
-                        operationDone=false;
+                        operationDone = false;
 
                 }
-                if(operationDone) {
+                if (operationDone) {
                     System.out.println("Books has been updated sucessfully");
                     break;
-                }
-                else{
+                } else {
                     System.out.println("Invalid field name.Try once again");
                 }
             }
@@ -291,20 +298,21 @@ public class Library {
             System.out.println("Library is empty. Add some books");
         }
     }
+
     public void rentABookByTitle(User user) {
         Scanner scanner = new Scanner(System.in);
         int index = 0;
         boolean booksFound = false;
-        if(listOfBooks.isEmpty()){
+        if (listOfBooks.isEmpty()) {
             System.out.println("List of books is empty");
-        }else{
-            System.out.println("Available books in: " +getNameOfLibrary());
+        } else {
+            System.out.println("Available books in: " + getNameOfLibrary());
             for (Book books : listOfBooks) {
                 System.out.println("Index " + index + " " + books.toString());
                 index++;
             }
 
-            while(true) {
+            while (true) {
                 System.out.println("Pass title");
                 String title = scanner.nextLine();
                 for (Book book : listOfBooks) {
@@ -317,28 +325,28 @@ public class Library {
                     }
                 }
                 if (booksFound) {
-                   break;
-                }
-                else{
+                    break;
+                } else {
                     System.out.println("Wrong book title.Please try once again");
                 }
             }
         }
     }
+
     public void returnBookByTitle(User user) {
         Scanner scanner = new Scanner(System.in);
         int index = 0;
         boolean bookFound = false;
-        if(user.Userbooks.isEmpty()){
+        if (user.Userbooks.isEmpty()) {
             System.out.println("You have no books to return");
-        }else{
+        } else {
             for (Book books : user.Userbooks) {
                 System.out.println("Available books to return:");
                 System.out.println("Index " + index + " " + books.toString());
                 index++;
             }
 
-            while(true) {
+            while (true) {
                 System.out.println("Pass title of book to return");
                 String title = scanner.nextLine();
                 for (Book book : user.Userbooks) {
@@ -352,7 +360,7 @@ public class Library {
                 }
                 if (bookFound) {
                     break;
-                }else{
+                } else {
                     System.out.println("Wrong book title.Please try once again");
                 }
             }

@@ -1,24 +1,23 @@
 package org.example;
 
 
-
 public class SetUp {
 
     private LibraryDataBase libraryDataBase;
-    public SetUp(LibraryDataBase libraryDataBase){
-        this.libraryDataBase=libraryDataBase;
+
+    public SetUp(LibraryDataBase libraryDataBase) {
+        this.libraryDataBase = libraryDataBase;
     }
 
 
-    public void createDefaultLibrariesSetUp(String name){
-        UsersDataBase usersDataBase =new UsersDataBase(); // baza danych to instancji biblioteki
+    public void createDefaultLibrariesSetUp(String name) {
+        UsersDataBase usersDataBase = new UsersDataBase(); // baza danych to instancji biblioteki
         Library library = new Library(usersDataBase, name); // nowa instancja biblioteki
         libraryDataBase.addLibrary(library); // add each library to DataBaseLibrary
-        if(name.equals("Osiedlowa")) {
+        if (name.equals("Osiedlowa")) {
             library.addDefaultBooksToOsiedlowaLibrary();
             usersDataBase.createDefaultAdminUser();
-        }
-        else{
+        } else {
             library.addDefaultBooksToLibrary();
             usersDataBase.createDefaultAdminUser();
         }

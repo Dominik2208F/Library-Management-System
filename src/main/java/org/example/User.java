@@ -9,14 +9,16 @@ public class User {
     private String name;
     private String password;
 
-    public User(String name,String password) {
+    public User(String name, String password) {
         this.name = name;
-        this.password=password;
-        Userbooks= new ArrayList<>();
+        this.password = password;
+        Userbooks = new ArrayList<>();
     }
+
     public String getPassword() {
         return password;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -25,19 +27,20 @@ public class User {
         return name;
     }
 
-    public void assignBookToUser(Book book){
+    public void assignBookToUser(Book book) {
         Userbooks.add(book);
     }
-    public void UnassignBookFromUser(Book book){
+
+    public void UnassignBookFromUser(Book book) {
         Userbooks.remove(book);
     }
-    public void showBooks(){
-        if(!Userbooks.isEmpty()) {
+
+    public void showBooks() {
+        if (!Userbooks.isEmpty()) {
             for (Book book : Userbooks) {
                 System.out.println(book.toString());
             }
-        }
-        else{
+        } else {
             System.out.println("User does not havy any books borrowed");
         }
     }

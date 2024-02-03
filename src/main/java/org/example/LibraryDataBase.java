@@ -7,25 +7,29 @@ import java.util.Scanner;
 public class LibraryDataBase {
 
     List<Library> listOfLibrary;
-    public LibraryDataBase(){
-        listOfLibrary= new ArrayList<>();
+
+    public LibraryDataBase() {
+        listOfLibrary = new ArrayList<>();
     }
 
     public List<Library> getListOfLibrary() {
         return listOfLibrary;
     }
+
     public void setListOfLibrary(List<Library> listOfLibrary) {
         this.listOfLibrary = listOfLibrary;
     }
-    public void addLibrary(Library library){
-        listOfLibrary.add(library);
-        System.out.println("Library " +library.getNameOfLibrary() + " has been added");
-    }
-    public void removeLibrary(){
 
-        if(!(listOfLibrary.size()==0)) {
+    public void addLibrary(Library library) {
+        listOfLibrary.add(library);
+        System.out.println("Library " + library.getNameOfLibrary() + " has been added");
+    }
+
+    public void removeLibrary() {
+
+        if (!(listOfLibrary.size() == 0)) {
             Scanner scanner = new Scanner(System.in);
-            boolean libraryFound=false;
+            boolean libraryFound = false;
             while (true) {
                 System.out.println("Are you sure? Pass name of library to delete");
                 String name = scanner.nextLine();
@@ -39,13 +43,11 @@ public class LibraryDataBase {
                 }
                 if (libraryFound) {
                     break;
-                }
-                else {
+                } else {
                     System.out.println("Library not found. Try once again");
                 }
             }
-        }
-        else{
+        } else {
             System.out.println("Library list to delete is empty");
         }
     }

@@ -35,6 +35,7 @@ public class Book {
     public int getAmountOfPage() {
         return amountOfPage;
     }
+
     @Override
     public String toString() {
         return "Title: " + title +
@@ -43,6 +44,7 @@ public class Book {
                 ", Genre: " + genre +
                 ", Amount of Pages: " + amountOfPage;
     }
+
     public void setTitle(String title) {
         this.title = title;
     }

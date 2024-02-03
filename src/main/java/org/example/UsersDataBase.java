@@ -24,38 +24,39 @@ public class UsersDataBase {
     public void getAllAvailableUserSwitch() {
         System.out.println("Type 'Name' of User to log into");
         System.out.println("Type 'Switch' to change library");
-        int index=0;
-        for (User users : listOfUser) {
-            System.out.println("Index: " +index + " Name: " + users.getName());
-            index++;
-        }
-    }
-    public void getAllAvailableUser() {
-        System.out.println("Available users");
-        int index=0;
+        int index = 0;
         for (User users : listOfUser) {
             System.out.println("Index: " + index + " Name: " + users.getName());
             index++;
         }
     }
-    public void addUserToLibrary(){
+
+    public void getAllAvailableUser() {
+        System.out.println("Available users");
+        int index = 0;
+        for (User users : listOfUser) {
+            System.out.println("Index: " + index + " Name: " + users.getName());
+            index++;
+        }
+    }
+
+    public void addUserToLibrary() {
         Scanner scanner = new Scanner(System.in);
-        while(true) {
+        while (true) {
             getAllAvailableUser();
             System.out.println("Add new user? 'Y/N'");
             String addUser = scanner.nextLine();
             if (addUser.equals("Y")) {
                 createNewUser();
                 break;
-            }
-            else if(addUser.equals("N")){
+            } else if (addUser.equals("N")) {
                 break;
-            }
-            else{
+            } else {
                 System.out.println("Type 'Y' or 'N'");
             }
         }
     }
+
     public void addUserToDatabase() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Set name of user");
@@ -63,37 +64,37 @@ public class UsersDataBase {
         System.out.println("Set password of user");
         String password = scanner.nextLine();
         User user = new User(name, password);
-        boolean userExist=false;
-        for(User users: listOfUser){
+        boolean userExist = false;
+        for (User users : listOfUser) {
 
-            if(users.getName().equalsIgnoreCase(user.getName())){
-                userExist=true;
+            if (users.getName().equalsIgnoreCase(user.getName())) {
+                userExist = true;
                 break;
             }
         }
-        if(!userExist) {
+        if (!userExist) {
             listOfUser.add(user);
             System.out.println("User " + user.getName() + " has been added");
-        }
-        else{
+        } else {
             System.out.println("You cannot add twice the same user");
         }
     }
+
     public void deleteUserFromDatabase() {
 
 
-        if(!(listOfUser.size() ==1)) {
+        if (!(listOfUser.size() == 1)) {
             System.out.println("Available users");
             int index = 0;
             for (User users : listOfUser) {
-                if(users.getName().equals("Admin")){
+                if (users.getName().equals("Admin")) {
                     continue;
                 }
                 System.out.println("Index: " + index + " Name: " + users.getName());
                 index++;
             }
 
-            boolean userFound=false;
+            boolean userFound = false;
             while (true) {
                 System.out.println("Type name of user to delete");
                 Scanner scanner = new Scanner(System.in);
@@ -109,13 +110,11 @@ public class UsersDataBase {
                 }
                 if (userFound) {
                     break;
-                }
-                else {
+                } else {
                     System.out.println("User not found. Try once again");
                 }
             }
-        }
-        else{
+        } else {
             System.out.println("List of user to delete is empty");
         }
     }
