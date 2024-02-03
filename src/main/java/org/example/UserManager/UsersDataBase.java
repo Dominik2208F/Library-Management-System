@@ -171,4 +171,5 @@ public class UsersDataBase {
         String password = scanner.nextLine();
         return returnObjectOfUserByName(name).getPassword().equalsIgnoreCase(password);
     }
+
 }

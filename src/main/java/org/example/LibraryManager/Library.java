@@ -38,6 +38,29 @@ public class Library {
         }
     }
 
+    public boolean getAllAvailableUserToReturnABook() {
+        if(!(libraryUserDataBase.getListOfUser().size() ==1)) {
+            System.out.println("Available users to manage");
+            int index = 0;
+            for (User users : libraryUserDataBase.getListOfUser()) {
+                if (users.getName().equals("Admin")) {
+                    continue;
+                }
+                System.out.println("Index: " + index + " Name: " + users.getName());
+                index++;
+                return true;
+            }
+        }
+        else{
+            System.out.println("Add user to manage their books");
+            return false;
+        }
+        return false;
+    }
+
+
+
+
     public String getNameOfLibrary() {
         return NameOfLibrary;
     }
@@ -341,7 +364,7 @@ public class Library {
         int index = 0;
         boolean bookFound = false;
         if (user.getUserbooks().isEmpty()) {
-            System.out.println("You have no books to return");
+            System.out.println("No books to return");
         } else {
             for (Book books : user.getUserbooks()) {
                 System.out.println("Available books to return:");

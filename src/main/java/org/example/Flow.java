@@ -68,7 +68,7 @@ public class Flow {
                     "6: Change user\n" +
                     "7: Add user \n"+
                     "8: Delete user \n"+
-                    "9: Add Sub-Partner Library\n" +
+                    "9: Return book of a given User\n" +
                     "10: Change library\n"+
                     "11: Delete library\n" +
                     "12: Borrowed books by Users");
@@ -262,14 +262,15 @@ public class Flow {
                 break;
             case "9":
                 while(true) {
+                    User userFromList;
+                    String UserToManage;
+                    if(flowLibrary.getAllAvailableUserToReturnABook()){
+                        System.out.println("Type name of user you want to manage");
+                        UserToManage = scanner.nextLine();
 
-                    System.out.println("Pass name of library");
-                    String name = scanner.nextLine();
-                    UsersDataBase usersDataBase = new UsersDataBase();
-                    usersDataBase.addAdminDatabase();
-                    Library library = new Library(usersDataBase, name);
-                    libraryDataBase.addLibrary(library);
-
+                        userFromList = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(UserToManage);
+                        flowLibrary.returnBookByTitle(userFromList);
+                    }
                     while (true) {
                         System.out.println("Go back to main menu. Type Y/N");
                         decisionInner = scanner.nextLine();
