@@ -28,7 +28,7 @@ public class Library {
 
         if (!(libraryUserDataBase.getListOfUser().size() == 1)) {
             for (User user : libraryUserDataBase.getListOfUser()) {
-                if (user.getName().equals("Library Admin")) {
+                if (user.getName().equals("Admin")) {
                     continue;
                 }
                 System.out.println("User " + user.getName() + " has borrowed a book " + user.getUserbooks().toString());

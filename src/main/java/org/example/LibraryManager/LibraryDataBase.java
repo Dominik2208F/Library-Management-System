@@ -12,6 +12,15 @@ public class LibraryDataBase {
         listOfLibrary = new ArrayList<>();
     }
 
+    public void setLibraryFlow(Library libraryFlow) {
+        this.libraryFlow = libraryFlow;
+    }
+
+    public Library getLibraryFlow() {
+        return libraryFlow;
+    }
+
+    private Library libraryFlow;
     public List<Library> getListOfLibrary() {
         return listOfLibrary;
     }
@@ -31,8 +40,17 @@ public class LibraryDataBase {
             Scanner scanner = new Scanner(System.in);
             boolean libraryFound = false;
             while (true) {
-                System.out.println("Are you sure? Pass name of library to delete");
-                String name = scanner.nextLine();
+                String name;
+                while(true) {
+                    System.out.println("Are you sure? Pass name of library to delete");
+                    name = scanner.nextLine();
+                    if (libraryFlow.getNameOfLibrary().equals(name)) {
+                        System.out.println("You cannot delete current library");
+                    }
+                    else{
+                        break;
+                    }
+                }
                 for (Library library : listOfLibrary) {
                     if (library.getNameOfLibrary().equals(name)) {
                         listOfLibrary.remove(library);

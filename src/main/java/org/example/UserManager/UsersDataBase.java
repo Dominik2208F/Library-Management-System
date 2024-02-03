@@ -123,7 +123,7 @@ public class UsersDataBase {
     }
 
     public void addAdminDatabase() {
-        User user = new User("Library Admin", "admin");
+        User user = new User("Admin", "admin");
         listOfUser.add(user);
     }
 
@@ -162,7 +162,7 @@ public class UsersDataBase {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Type password to Library Admin account");
         String password = scanner.nextLine();
-        return returnObjectOfUserByName("Library Admin").getPassword().equalsIgnoreCase(password);
+        return returnObjectOfUserByName("Admin").getPassword().equalsIgnoreCase(password);
     }
 
     public boolean validateUserLogin(String name) {

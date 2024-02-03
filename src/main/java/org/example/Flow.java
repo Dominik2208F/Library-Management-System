@@ -36,7 +36,7 @@ public class Flow {
             }
             if (flowLibrary.getLibraryUserDataBase().checkIfUserExist(userSelection)) {
                 switch (userSelection) {
-                    case "Library Admin":
+                    case "Admin":
                         if (flowLibrary.getLibraryUserDataBase().validateAdminLogin()) {
                             forceSwitchLibrary =adminFlow();
                         } else {
@@ -83,6 +83,7 @@ public class Flow {
                     return true;
                 }
                 if (decision.equalsIgnoreCase("11")) {
+                    libraryDataBase.setLibraryFlow(flowLibrary);
                     libraryDataBase.removeLibrary();
                     System.out.println("Admin logged out from library");
                     return true;

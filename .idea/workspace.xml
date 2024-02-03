@@ -9,13 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="formatowanie">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="enkapsulacja">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Flow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Flow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Author.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Library.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/LibraryDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/LibraryDataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UserManager/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UserManager/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UserManager/UsersDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UserManager/UsersDataBase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -387,7 +385,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706919027304</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="enkapsulacja">
+      <created>1706919339522</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1706919339522</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -402,7 +407,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="switch case na main" />
     <MESSAGE value="obsługa haseł" />
     <MESSAGE value="program exit" />
     <MESSAGE value="returning books" />
@@ -427,7 +431,8 @@
     <MESSAGE value="usuwanie obecnej biblioteki skutkuje wylogowaniem" />
     <MESSAGE value="informacje o pozyczonych ksiazkach" />
     <MESSAGE value="formatowanie" />
-    <option name="LAST_COMMIT_MESSAGE" value="formatowanie" />
+    <MESSAGE value="enkapsulacja" />
+    <option name="LAST_COMMIT_MESSAGE" value="enkapsulacja" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -439,7 +444,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Flow.java</url>
-          <line>95</line>
+          <line>96</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
