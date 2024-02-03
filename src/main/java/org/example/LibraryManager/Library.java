@@ -1,5 +1,8 @@
-package org.example;
+package org.example.LibraryManager;
 
+
+import org.example.UserManager.User;
+import org.example.UserManager.UsersDataBase;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;

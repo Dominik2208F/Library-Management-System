@@ -1,4 +1,6 @@
-package org.example;
+package org.example.LibraryManager;
+
+import org.example.LibraryManager.Library;
 
 import java.util.ArrayList;
 import java.util.List;

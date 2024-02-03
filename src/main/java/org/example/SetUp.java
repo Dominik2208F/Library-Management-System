@@ -1,6 +1,10 @@
 package org.example;
 
 
+import org.example.LibraryManager.Library;
+import org.example.LibraryManager.LibraryDataBase;
+import org.example.UserManager.UsersDataBase;
+
 public class SetUp {
 
     private LibraryDataBase libraryDataBase;

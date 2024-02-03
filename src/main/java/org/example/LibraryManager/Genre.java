@@ -1,4 +1,4 @@
-package org.example;
+package org.example.LibraryManager;
 
 public class Genre {
     private String name;
