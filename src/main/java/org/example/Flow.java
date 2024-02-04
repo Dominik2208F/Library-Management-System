@@ -11,11 +11,16 @@ public class Flow {
 
     Library flowLibrary;
     LibraryDataBase libraryDataBase;
+
+    LibraryManagementFrame libraryManagementFrame;
     public Flow(LibraryDataBase libraryDataBase) {
         this.libraryDataBase=libraryDataBase;
     }
 
     public void mainFlow(){
+
+        libraryManagementFrame =new LibraryManagementFrame(libraryDataBase);
+
         Scanner scanner = new Scanner(System.in);
 
         flowLibrary= selectLibraryInstanceToVisit();  // assign library instance to flowLibrary variable to work on
