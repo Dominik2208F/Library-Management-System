@@ -82,12 +82,6 @@ public class Flow {
                     System.out.println("Thanks for visiting. You are going to library selection view");
                     return true;
                 }
-                if (decision.equalsIgnoreCase("11")) {
-                    libraryDataBase.setLibraryFlow(flowLibrary);
-                    libraryDataBase.removeLibrary();
-                    System.out.println("Admin logged out from library");
-                    return true;
-                }
                 adminActions(decision);
             }
             else{
@@ -333,9 +327,32 @@ public class Flow {
                         break;
                     }
                 }
+            case "11":
+                while(true) {
+                    libraryDataBase.setLibraryFlow(flowLibrary);
+                    libraryDataBase.removeLibrary();
+                    while (true) {
+                        System.out.println("Go back to main menu. Type Y/N");
+                        decisionInner = scanner.nextLine();
+                        if (decisionInner.equalsIgnoreCase("Y")) {
+                            exitMenu=true;
+                            break;
+                        } else if(decisionInner.equalsIgnoreCase("N")) {
+                            break;
+                        }
+                        else{
+                            System.out.println("Wrong answer.Type 'Y' or 'N'");
+                        }
+                    }
+
+                    if(exitMenu){
+                        break;
+                    }
+                }
                 break;
         }
     }
+
     public void userActions(String decision,String user){
         String decisionInner = "";
         Scanner scanner = new Scanner(System.in);
