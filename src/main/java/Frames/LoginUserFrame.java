@@ -39,8 +39,17 @@ public class LoginUserFrame extends JFrame {
 
                 if (flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChoose.ChoosenUserName).getPassword().equalsIgnoreCase(password)) {
                     JOptionPane.showConfirmDialog(null,"Confirm your choice");
-                    setVisible(false);
-                    userChoose.setVisible(false);
+                    if(userChoose.ChoosenUserName.equals("Admin")){
+
+                        setVisible(false);
+                        userChoose.setVisible(false);
+                    }
+                    else{
+
+                        setVisible(false);
+                        userChoose.setVisible(false);
+                        new UserActionFrame(userChoose,library);
+                    }
                 }
                 else{
                     JOptionPane.showMessageDialog(null,"Wrong password try again","Error",JOptionPane.ERROR_MESSAGE);
