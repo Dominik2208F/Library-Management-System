@@ -94,13 +94,6 @@
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
     </task>
-    <task id="LOCAL-00005" summary="refaktoring">
-      <created>1706610152010</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1706610152010</updated>
-    </task>
     <task id="LOCAL-00006" summary="Usuwanie książki po wypożyczeniu">
       <created>1706611469364</created>
       <option name="number" value="00006" />
@@ -437,7 +430,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707146748995</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="mechanizm pożyczania. Mechanizm zwracania do zrobienia">
+      <created>1707147196791</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1707147196791</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -494,7 +494,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>70</line>
+          <line>73</line>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">

@@ -7,6 +7,8 @@ import org.example.UserManager.User;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class UserActionFrame extends JFrame {
@@ -63,12 +65,15 @@ public class UserActionFrame extends JFrame {
                     list.setModel(modifiedModel);
                     ConfirmChoice.setEnabled(false);
                     JOptionPane.showMessageDialog(null, "No books to return", "Warning", JOptionPane.WARNING_MESSAGE);
+                    borrowButtonClicked=false;
                 } else {
                     ConfirmChoice.setEnabled(true);
                     for (Book Book : user.getUserbooks()) {
                         modifiedModel.addElement(Book.toString());
                     }
                     list.setModel(modifiedModel);
+                    borrowButtonClicked=false;
+                    returnButtonClicked=true;
                 }
 
             }
@@ -100,15 +105,18 @@ public class UserActionFrame extends JFrame {
                         modifiedModel.addElement(book.toString());
                     }
                     list.setModel(modifiedModel);
+                    borrowButtonClicked=false;
                 } else {
                     for (Book book : userFromList.getUserbooks()) {
                         modifiedModel.addElement(book.toString());
                     }
                     list.setModel(modifiedModel);
+                    ConfirmChoice.setEnabled(false);
                     JOptionPane.showMessageDialog(null,
                             "No borrowed books", "Warning", JOptionPane.WARNING_MESSAGE);
+                    borrowButtonClicked=false;
                 }
-                ConfirmChoice.setEnabled(false);
+
             }
         });
 
@@ -123,41 +131,84 @@ public class UserActionFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 ConfirmChoice.setEnabled(true);
+                if (borrowButtonClicked) {
+                    if (list.getSelectedIndex() != -1) {
 
-                if (list.getSelectedIndex() != -1) {
+                        DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+                        int selectedBookIndex = list.getSelectedIndex();
 
-                    DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-                    int selectedBookIndex = list.getSelectedIndex();
+                        //assign User instance
+                        User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.ChoosenUserName);
 
-                    //assign User instance
-                    User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.ChoosenUserName);
-
-                    //Assign book to user;
+                        //Assign book to user;
 
 
-                    String titleOfBookToAssignToUser=flowLibrary.getListOfBooks().get(selectedBookIndex).getTitle();
+                        String titleOfBookToAssignToUser = flowLibrary.getListOfBooks().get(selectedBookIndex).getTitle();
 
-                    //Assign book to user;
-                    for(Book book :flowLibrary.getListOfBooks()){
-                        if(book.getTitle().equals(titleOfBookToAssignToUser)){
-                            user.assignBookToUser(book);
+                        //Assign book to user;
+                        for (Book book : flowLibrary.getListOfBooks()) {
+                            if (book.getTitle().equals(titleOfBookToAssignToUser)) {
+                                user.assignBookToUser(book);
+                            }
                         }
+
+                        //Remove book from list
+                        flowLibrary.getListOfBooks().remove(selectedBookIndex);
+                        //
+
+                        //refresh list of JList
+                        for (Book books : flowLibrary.getListOfBooks()) {
+                            modifiedModel.addElement(books.toString());
+                        }
+
+                        list.setModel(modifiedModel);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Choose at least one book", "Error", JOptionPane.ERROR_MESSAGE);
                     }
-
-                    //Remove book from list
-                    flowLibrary.getListOfBooks().remove(selectedBookIndex);
-                    //
-
-                    //refresh list of JList
-                    for (Book books : flowLibrary.getListOfBooks()) {
-                        modifiedModel.addElement(books.toString());
-                    }
-
-                    list.setModel(modifiedModel);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Choose at least one book", "Error", JOptionPane.ERROR_MESSAGE);
                 }
+                else if(returnButtonClicked){
+
+                    if(list.getSelectedIndex() != -1){
+
+                        DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+                        int selectedBookIndexUserList = list.getSelectedIndex();
+
+                        //assign User instance
+                        User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.ChoosenUserName);
+
+                        //Assign book to user;
+
+
+                        String titleOfBookToUnassingFromUser = user.getUserbooks().get(selectedBookIndexUserList).getTitle();
+
+                        List<Book> userBooksCopy = new ArrayList<>(user.getUserbooks());
+
+                        for (Book book : userBooksCopy) {
+                            if (book.getTitle().equals(titleOfBookToUnassingFromUser)) {
+                                user.UnassignBookFromUser(book);
+                                flowLibrary.getListOfBooks().add(book);
+                            }
+                        }
+
+
+
+                        for (Book Book : user.getUserbooks()) {
+                            modifiedModel.addElement(Book.toString());
+                        }
+                        list.setModel(modifiedModel);
+
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "Choose at least one book", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+
+
+
+                }
+
+
             }
+
         });
 
 
@@ -198,6 +249,7 @@ public class UserActionFrame extends JFrame {
                     }
                     list.setModel(modifiedModel);
                     ConfirmChoice.setEnabled(true);
+                    borrowButtonClicked=true;
                 }
             }
 
