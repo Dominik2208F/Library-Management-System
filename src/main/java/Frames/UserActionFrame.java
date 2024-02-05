@@ -59,15 +59,18 @@ public class UserActionFrame extends JFrame {
                 User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.ChoosenUserName);
 
                 if (user.getUserbooks().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "No books to return", "Warning", JOptionPane.WARNING_MESSAGE);
+
+                    list.setModel(modifiedModel);
                     ConfirmChoice.setEnabled(false);
+                    JOptionPane.showMessageDialog(null, "No books to return", "Warning", JOptionPane.WARNING_MESSAGE);
                 } else {
+                    ConfirmChoice.setEnabled(true);
                     for (Book Book : user.getUserbooks()) {
                         modifiedModel.addElement(Book.toString());
                     }
                     list.setModel(modifiedModel);
                 }
-                ConfirmChoice.setEnabled(true);
+
             }
         });
 

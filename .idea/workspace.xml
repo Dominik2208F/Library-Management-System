@@ -9,13 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="dodany panel do usera bez akcji">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="mechanizm pożyczania. Mechanizm zwracania do zrobienia">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Library.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SetUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SetUp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,20 +93,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00003" summary="admin/user">
-      <created>1706606971683</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1706606971683</updated>
-    </task>
-    <task id="LOCAL-00004" summary="dodawanie użytkownika">
-      <created>1706609073146</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1706609073146</updated>
     </task>
     <task id="LOCAL-00005" summary="refaktoring">
       <created>1706610152010</created>
@@ -441,7 +423,21 @@
       <option name="project" value="LOCAL" />
       <updated>1707133998133</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="wracanie do biblioteki oraz usera">
+      <created>1707137094366</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1707137094366</updated>
+    </task>
+    <task id="LOCAL-00053" summary="mechanizm pożyczania. Mechanizm zwracania do zrobienia">
+      <created>1707146748995</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1707146748995</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -456,8 +452,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="force switch by admin to library" />
-    <MESSAGE value="set Up class +" />
     <MESSAGE value="wywalenie 2 różnych metod do generowania defaultowych bibliotek" />
     <MESSAGE value="nowe flow aplikacji +klasa" />
     <MESSAGE value="nowe flow" />
@@ -481,7 +475,9 @@
     <MESSAGE value="obsluga bledow i okienko logowania" />
     <MESSAGE value="dodawanie scrollowania po liście userów" />
     <MESSAGE value="dodany panel do usera bez akcji" />
-    <option name="LAST_COMMIT_MESSAGE" value="dodany panel do usera bez akcji" />
+    <MESSAGE value="wracanie do biblioteki oraz usera" />
+    <MESSAGE value="mechanizm pożyczania. Mechanizm zwracania do zrobienia" />
+    <option name="LAST_COMMIT_MESSAGE" value="mechanizm pożyczania. Mechanizm zwracania do zrobienia" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -495,6 +491,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Flow.java</url>
           <line>95</line>
           <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/UserManager/User.java</url>
@@ -511,6 +512,7 @@
       <configuration name="Application">
         <watch expression="book.getTitle()" />
         <watch expression="book.getTitle().equals(title)" />
+        <watch expression="GetTitleOfBook(FullBookDescription)" />
       </configuration>
     </watches-manager>
   </component>
