@@ -9,12 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="enkapsulacja">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="rozdzielone 3 ramki">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Flow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Flow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Library.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/LibraryDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/LibraryDataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UserManager/UsersDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UserManager/UsersDataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,12 +56,18 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dominik.jakubaszek/Desktop/BookShop&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Frames" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
@@ -392,7 +398,42 @@
       <option name="project" value="LOCAL" />
       <updated>1706919339522</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="zabezpieczenie do usuniecia własnej biblioteki">
+      <created>1706964866100</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1706964866100</updated>
+    </task>
+    <task id="LOCAL-00045" summary="zwracanie ksiazki przez admina za uzytkownika">
+      <created>1706967251202</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1706967251202</updated>
+    </task>
+    <task id="LOCAL-00046" summary="usuwanie biblioteki">
+      <created>1707051901252</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1707051901252</updated>
+    </task>
+    <task id="LOCAL-00047" summary="3 ramki pierwsze">
+      <created>1707089127345</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1707089127345</updated>
+    </task>
+    <task id="LOCAL-00048" summary="rozdzielone 3 ramki">
+      <created>1707090059870</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1707090059870</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -407,11 +448,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="obsługa haseł" />
-    <MESSAGE value="program exit" />
-    <MESSAGE value="returning books" />
-    <MESSAGE value="fix do wypożyczania ksiażek i oddawania" />
-    <MESSAGE value="przeniesienie bazy danych do klasy library" />
     <MESSAGE value="dwie biblioteki, zapisywanie stanu między obiektami." />
     <MESSAGE value="poprawki" />
     <MESSAGE value="add user to library before workflow" />
@@ -432,7 +468,12 @@
     <MESSAGE value="informacje o pozyczonych ksiazkach" />
     <MESSAGE value="formatowanie" />
     <MESSAGE value="enkapsulacja" />
-    <option name="LAST_COMMIT_MESSAGE" value="enkapsulacja" />
+    <MESSAGE value="zabezpieczenie do usuniecia własnej biblioteki" />
+    <MESSAGE value="zwracanie ksiazki przez admina za uzytkownika" />
+    <MESSAGE value="usuwanie biblioteki" />
+    <MESSAGE value="3 ramki pierwsze" />
+    <MESSAGE value="rozdzielone 3 ramki" />
+    <option name="LAST_COMMIT_MESSAGE" value="rozdzielone 3 ramki" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -444,8 +485,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Flow.java</url>
-          <line>96</line>
+          <line>95</line>
           <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/UserManager/User.java</url>
+          <line>38</line>
+          <properties class="org.example.UserManager.User" method="UnassignBookFromUser">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

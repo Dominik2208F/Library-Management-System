@@ -41,10 +41,20 @@ public class AddUserFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String username = usernameField.getText();
                 char[] passwordchar= passwordField.getPassword();
-                String password= new String(passwordchar);
-                flowLibrary.getLibraryUserDataBase().getListOfUser().add(new User(username,password));
-                userChooseIFrame.updateListOfUsers();
-                setVisible(false);
+
+                if(username.isEmpty()){
+                    JOptionPane.showMessageDialog(null,"Username cannot be empty","Error",JOptionPane.ERROR_MESSAGE);
+                }
+                else if(passwordchar.length==0){
+                    JOptionPane.showMessageDialog(null,"Password cannot be empty","Error",JOptionPane.ERROR_MESSAGE);
+                }
+                else{
+                    String password= new String(passwordchar);
+                    flowLibrary.getLibraryUserDataBase().getListOfUser().add(new User(username,password));
+
+                    userChooseIFrame.updateListOfUsers();
+                    setVisible(false);
+                }
             }
         });
 
@@ -55,8 +65,10 @@ public class AddUserFrame extends JFrame {
         add(saveButton);
 
         setSize(300,200);
+        setTitle("Add new User");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
+        setResizable(false);
         setVisible(true);
     }
 

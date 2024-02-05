@@ -28,42 +28,46 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
         }
 
         list = new JList<>(libraryListPanel);
-        list.setBounds(30,50, 100,50);
+        list.setBounds(70,50, 100,40);
         add(list);
         //
-        label = new JLabel("Select library to visit");
-        label.setBounds(50,10, 150,20);
+        label = new JLabel("Select library");
+        label.setBounds(79,10, 125,40);
         add(label);
         //
         selectedLibrary = new JLabel("Selected library");
-        selectedLibrary.setBounds(50,120, 150,20);
-        add(selectedLibrary);
-        //
+        selectedLibrary.setBounds(120,220, 150,20);
+
         buttonConfirm= new JButton("Confirm");
-        buttonConfirm.setBounds(150,50, 100,40);
+        buttonConfirm.setBounds(70,100, 100,40);
         add(buttonConfirm);
         buttonConfirm.addActionListener(this);
         //
-        setSize(300,200);
+        setSize(250,350);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
+        setResizable(false);
         setVisible(true);
     }
 
     public void IfButtonClicked(){
-        String selectedLibraryText = list.getSelectedValue();
-        selectedLibrary.setText("Selected library is " + selectedLibraryText);
-
-        for (Library librarySpec : libraryDataBase.getListOfLibrary()) {
-            if (librarySpec.getNameOfLibrary().equalsIgnoreCase(selectedLibraryText)) {
-                flowLibrary=librarySpec;
-
-            }
+        if(list.isSelectionEmpty()){
+        JOptionPane.showMessageDialog(LibraryManagementFrame.this,"You have to choose at least 1 library","Error",JOptionPane.ERROR_MESSAGE);
         }
+        else {
+            String selectedLibraryText = list.getSelectedValue();
+            selectedLibrary.setText("Selected library is " + selectedLibraryText);
 
-        UserChooseIFrame userChooseIFrame = new UserChooseIFrame(flowLibrary);
-        dispose();
-        userChooseIFrame.setVisible(true);
+            for (Library librarySpec : libraryDataBase.getListOfLibrary()) {
+                if (librarySpec.getNameOfLibrary().equalsIgnoreCase(selectedLibraryText)) {
+                    flowLibrary = librarySpec;
+
+                }
+            }
+            UserChooseIFrame userChooseIFrame = new UserChooseIFrame(flowLibrary);
+            dispose();
+            userChooseIFrame.setVisible(true);
+        }
     }
 
 

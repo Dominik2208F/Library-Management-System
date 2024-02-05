@@ -14,7 +14,7 @@ public class UserChooseIFrame extends JFrame {
     JButton confirmUser;
     JButton addUser;
     JList<String> list;
-
+    String ChoosenUserName;
     Library flowLibrary;
     public UserChooseIFrame(Library library){
     this.flowLibrary=library;
@@ -28,30 +28,34 @@ public class UserChooseIFrame extends JFrame {
 
         list = new JList<>(listOfUsersFromLibrary);
 
-        list.setBounds(30,50, 100,50);
+        list.setBounds(70,50, 100,60);
         add(list);
         //
-        availableUser = new JLabel("Available User");
-        availableUser.setBounds(50,10, 150,20);
+        availableUser = new JLabel("Available Users");
+        availableUser.setBounds(70,10, 150,20);
         add(availableUser);
         //
         selectedUser = new JLabel("Selected User");
         selectedUser.setBounds(50,120, 150,20);
-        add(selectedUser);
-        //
+
         confirmUser= new JButton("Confirm");
-        confirmUser.setBounds(150,50, 100,40);
+        confirmUser.setBounds(70,120, 100,40);
         add(confirmUser);
         //
         addUser= new JButton("Add User");
-        addUser.setBounds(150,90,100,30);
+        addUser.setBounds(70,170,100,30);
         add(addUser);
         confirmUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (list.getSelectedValue().isEmpty()) {
+                    JOptionPane.showMessageDialog(null,"Choose at least 1 user","Error",JOptionPane.ERROR_MESSAGE);
+                } else {
+                    ChoosenUserName = list.getSelectedValue();
 
-                String selectedUserText= list.getSelectedValue();
-                selectedUser.setText("Selected User is " + selectedUserText);
+                    new LoginUserFrame(UserChooseIFrame.this, library);
+
+                }
             }
         });
 
@@ -63,9 +67,12 @@ public class UserChooseIFrame extends JFrame {
             }
         });
         //
-        setSize(300,200);
+
+        setSize(250,350);
+        setTitle("Choose user");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
+        setResizable(false);
         setVisible(true);
     }
 
