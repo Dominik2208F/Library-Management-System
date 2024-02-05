@@ -1,7 +1,7 @@
 package org.example.LibraryManager;
 
 
-public class Author {
+public class Author implements Comparable<Author> {
 
     private String firstName;
     private String lastName;
@@ -41,5 +41,10 @@ public class Author {
 
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    @Override
+    public int compareTo(Author o) {
+        return lastName.compareTo(o.lastName);
     }
 }

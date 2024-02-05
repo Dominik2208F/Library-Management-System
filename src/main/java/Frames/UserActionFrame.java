@@ -31,6 +31,8 @@ public class UserActionFrame extends JFrame {
     JCheckBox ascendingCheckBox;
     JCheckBox descendingCheckBox;
 
+    private JComboBox<String> sortComboBox;
+
     private boolean borrowButtonClicked = false;
     private boolean returnButtonClicked = false;
 
@@ -45,6 +47,53 @@ public class UserActionFrame extends JFrame {
         add(list);
 
 
+        sortComboBox = new JComboBox<>(new String[]{"Title", "Author", "Genre"});
+        sortComboBox.setBounds(500, 160, 160, 30);
+        add(sortComboBox);
+
+        sortComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+                List<Book> temporaryList = new ArrayList<>();
+
+                // Kopiuj listę książek do tymczasowej listy
+                temporaryList.addAll(flowLibrary.getListOfBooks());
+                Comparator<Book> comparator = null;
+                String selectedSortOption = (String) sortComboBox.getSelectedItem();
+
+                // implementacje IComparable w klasach
+                if ("Title".equals(selectedSortOption)) {
+                    comparator = Comparator.comparing(Book::getTitle);
+                } else if ("Author".equals(selectedSortOption)) {
+                    comparator = Comparator.comparing(Book::getAuthor);
+                } else if ("Genre".equals(selectedSortOption)) {
+                    comparator = Comparator.comparing(Book::getGenre);
+                }
+                //
+                if(!ascendingCheckBox.isSelected() && !descendingCheckBox.isSelected()){
+                    JOptionPane.showMessageDialog(null, "Choose ascending or descending type and try again", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                else {
+                    if (comparator != null) {
+                        if (ascendingCheckBox.isSelected()) {
+                            Collections.sort(temporaryList, comparator);
+                        }
+
+
+                        if (descendingCheckBox.isSelected()) {
+                            Collections.sort(temporaryList, comparator.reversed());
+                        }
+
+                    }
+
+                    for (Book book : temporaryList) {
+                        modifiedModel.addElement(book.toString());
+                    }
+                    list.setModel(modifiedModel);
+                }
+            }
+        });
         //
         ascendingCheckBox = new JCheckBox("Sort Ascending");
         ascendingCheckBox.setBounds(250, 120, 150, 30);
@@ -56,7 +105,7 @@ public class UserActionFrame extends JFrame {
         ascendingCheckBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+            /*
                 if (ascendingCheckBox.isSelected()) {
                     DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                     List<Book> temporaryList = new ArrayList<>();
@@ -69,7 +118,9 @@ public class UserActionFrame extends JFrame {
                     }
                     list.setModel(modifiedModel);
                 }
+                */
             }
+
         });
 
         ascendingCheckBox.addItemListener(new ItemListener() {
@@ -85,6 +136,7 @@ public class UserActionFrame extends JFrame {
         descendingCheckBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                /*
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                     if (descendingCheckBox.isSelected()) {
                     List<Book> temporaryList = new ArrayList<>();
@@ -97,6 +149,8 @@ public class UserActionFrame extends JFrame {
                     }
                     list.setModel(modifiedModel);
                 }
+                */
+
             }
         });
 
@@ -203,6 +257,7 @@ public class UserActionFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 ascendingCheckBox.setVisible(true);
                 descendingCheckBox.setVisible(true);
+                sortComboBox.setVisible(true);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
                 if (flowLibrary.getListOfBooks().isEmpty()) {
@@ -224,11 +279,13 @@ public class UserActionFrame extends JFrame {
         });
 
 
+
         ConfirmChoice.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ascendingCheckBox.setVisible(false);
                 descendingCheckBox.setVisible(false);
+                sortComboBox.setVisible(false);
                 ConfirmChoice.setEnabled(true);
                 if (borrowButtonClicked) {
                     if (list.getSelectedIndex() != -1) {
@@ -316,6 +373,7 @@ public class UserActionFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 ascendingCheckBox.setVisible(false);
                 descendingCheckBox.setVisible(false);
+                sortComboBox.setVisible(false);
                 new UserChooseIFrame(userChooseIFrame.flowLibrary, userChooseIFrame.libraryManagementFrame);
                 setVisible(false);
             }
@@ -327,6 +385,7 @@ public class UserActionFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 ascendingCheckBox.setVisible(false);
                 descendingCheckBox.setVisible(false);
+                sortComboBox.setVisible(false);
                 new LibraryManagementFrame(userChooseIFrame.libraryManagementFrame.libraryDataBase);
                 setVisible(false);
             }
@@ -337,6 +396,7 @@ public class UserActionFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 ascendingCheckBox.setVisible(false);
                 descendingCheckBox.setVisible(false);
+                sortComboBox.setVisible(false);
                 borrowButtonClicked = true;
                 ConfirmChoice.setEnabled(true);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
@@ -373,6 +433,7 @@ public class UserActionFrame extends JFrame {
         setVisible(true);
         ascendingCheckBox.setVisible(false);
         descendingCheckBox.setVisible(false);
+        sortComboBox.setVisible(false);
 
     }
 

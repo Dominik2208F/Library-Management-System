@@ -111,7 +111,16 @@ public class Library {
 
         listOfBooks.add(new Book("Misiek koralgol",
                 new Author("Adam", "Wielkopolski", "11-12-1960")
-                , "1998", new Genre("Przygodowa"), 154));
+                , "1998", new Genre("Akcji"), 154));
+
+        listOfBooks.add(new Book("Przygody Van Goka",
+                new Author("Piotr", "Adamczyk", "11-12-1960")
+                , "1998", new Genre("ScienceFiction"), 154));
+
+        listOfBooks.add(new Book("Krolewna z zamku",
+                new Author("Beata", "Bodnar", "11-12-1960")
+                , "1998", new Genre("Romans"), 154));
+
     }
 
     public void addDefaultBooksToPruszkowskaLibrary() {
@@ -122,6 +131,15 @@ public class Library {
         listOfBooks.add(new Book("Przygody Kundla",
                 new Author("Angel", "Hrabio", "11-12-1960")
                 , "1965", new Genre("Dramat"), 122));
+
+        listOfBooks.add(new Book("Finansowy spokoj",
+                new Author("Anna", "Danienko", "11-12-1960")
+                , "1998", new Genre("Finansowe"), 154));
+
+        listOfBooks.add(new Book("Relaks Akademicki",
+                new Author("Ewa", "Cylian", "11-12-1960")
+                , "1998", new Genre("Akademickie"), 154));
+
     }
 
     public void returnAllBooksInfo() {
