@@ -30,6 +30,7 @@ public class UserActionFrame extends JFrame {
     UserChooseIFrame userChooseIFrame;
     JCheckBox ascendingCheckBox;
     JCheckBox descendingCheckBox;
+    JLabel booksLabel;
 
     private JComboBox<String> sortComboBox;
 
@@ -51,6 +52,9 @@ public class UserActionFrame extends JFrame {
         sortComboBox.setBounds(500, 160, 160, 30);
         add(sortComboBox);
 
+        booksLabel= new JLabel("Books");
+        booksLabel.setBounds(400, 5, 40, 30);
+        add(booksLabel);
         sortComboBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -211,7 +215,7 @@ public class UserActionFrame extends JFrame {
         add(BorrowAbook);
 
         showborrowedBook = new JButton("Show borrowed books");
-        showborrowedBook.setBounds(40, 180, 180, 30);
+        showborrowedBook.setBounds(40, 180, 200, 30);
         add(showborrowedBook);
 
         showborrowedBook.addActionListener(new ActionListener() {
@@ -302,9 +306,11 @@ public class UserActionFrame extends JFrame {
                         String titleOfBookToAssignToUser = flowLibrary.getListOfBooks().get(selectedBookIndex).getTitle();
 
                         //Assign book to user;
+                        Book bookborrowed=null;
                         for (Book book : flowLibrary.getListOfBooks()) {
                             if (book.getTitle().equals(titleOfBookToAssignToUser)) {
                                 user.assignBookToUser(book);
+                                bookborrowed=book;
                             }
                         }
 
@@ -318,8 +324,13 @@ public class UserActionFrame extends JFrame {
                         }
 
                         list.setModel(modifiedModel);
+                        JOptionPane.showMessageDialog(null, "Book " + bookborrowed.getTitle()+ " has been borrowed successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
+                        if(flowLibrary.getListOfBooks().isEmpty()){
+                            ConfirmChoice.setEnabled(false);
+                        }
                     } else {
-                        JOptionPane.showMessageDialog(null, "Choose at least one book", "Error", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Choose at least one book", "Error", JOptionPane.ERROR_MESSAGE);
+
                     }
                 }
                 else if(returnButtonClicked){
@@ -338,11 +349,12 @@ public class UserActionFrame extends JFrame {
                         String titleOfBookToUnassingFromUser = user.getUserbooks().get(selectedBookIndexUserList).getTitle();
 
                         List<Book> userBooksCopy = new ArrayList<>(user.getUserbooks());
-
+                        Book bookborrowed=null;
                         for (Book book : userBooksCopy) {
                             if (book.getTitle().equals(titleOfBookToUnassingFromUser)) {
                                 user.UnassignBookFromUser(book);
                                 flowLibrary.getListOfBooks().add(book);
+                                bookborrowed=book;
                             }
                         }
 
@@ -352,7 +364,10 @@ public class UserActionFrame extends JFrame {
                             modifiedModel.addElement(Book.toString());
                         }
                         list.setModel(modifiedModel);
-
+                        if(user.getUserbooks().isEmpty()){
+                            ConfirmChoice.setEnabled(false);
+                        }
+                        JOptionPane.showMessageDialog(null, "Book " + bookborrowed.getTitle()+ " has been returned successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
                     }
                     else{
                         JOptionPane.showMessageDialog(null, "Choose at least one book", "Error", JOptionPane.ERROR_MESSAGE);

@@ -9,12 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="sortowanie malejacy i rosnaca">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="sortowanie combobox">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Author.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Genre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Genre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Library.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,13 +93,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Usuwanie książki po wypożyczeniu">
-      <created>1706613268554</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1706613268554</updated>
     </task>
     <task id="LOCAL-00009" summary="switch case na main">
       <created>1706613897851</created>
@@ -440,7 +430,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707164121699</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="sortowanie combobox">
+      <created>1707169615548</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1707169615549</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -455,7 +452,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="nowe flow" />
     <MESSAGE value="wyjscie do library z użytkownika" />
     <MESSAGE value="y/n user flow" />
     <MESSAGE value="adding library by admin" />
@@ -480,7 +476,8 @@
     <MESSAGE value="mechanizm pożyczania. Mechanizm zwracania do zrobienia" />
     <MESSAGE value="panel usera zrobiony" />
     <MESSAGE value="sortowanie malejacy i rosnaca" />
-    <option name="LAST_COMMIT_MESSAGE" value="sortowanie malejacy i rosnaca" />
+    <MESSAGE value="sortowanie combobox" />
+    <option name="LAST_COMMIT_MESSAGE" value="sortowanie combobox" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
