@@ -7,7 +7,11 @@ import org.example.UserManager.User;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -24,6 +28,8 @@ public class UserActionFrame extends JFrame {
     JList<String> list;
     Library flowLibrary;
     UserChooseIFrame userChooseIFrame;
+    JCheckBox ascendingCheckBox;
+    JCheckBox descendingCheckBox;
 
     private boolean borrowButtonClicked = false;
     private boolean returnButtonClicked = false;
@@ -40,6 +46,68 @@ public class UserActionFrame extends JFrame {
 
 
         //
+        ascendingCheckBox = new JCheckBox("Sort Ascending");
+        ascendingCheckBox.setBounds(250, 120, 150, 30);
+
+        descendingCheckBox = new JCheckBox("Sort Descending");
+        descendingCheckBox.setBounds(400, 120, 150, 30);
+        add(ascendingCheckBox);
+
+        ascendingCheckBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if (ascendingCheckBox.isSelected()) {
+                    DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+                    List<Book> temporaryList = new ArrayList<>();
+                    temporaryList.addAll(flowLibrary.getListOfBooks());
+
+                    Collections.sort(temporaryList);
+
+                    for (Book book : temporaryList) {
+                        modifiedModel.addElement(book.toString());
+                    }
+                    list.setModel(modifiedModel);
+                }
+            }
+        });
+
+        ascendingCheckBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (ascendingCheckBox.isSelected()) {
+                    descendingCheckBox.setSelected(false);
+                }
+            }
+        });
+
+        add(descendingCheckBox);
+        descendingCheckBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+                    if (descendingCheckBox.isSelected()) {
+                    List<Book> temporaryList = new ArrayList<>();
+                    temporaryList.addAll(flowLibrary.getListOfBooks());
+
+                    Collections.sort(temporaryList,Comparator.reverseOrder());
+
+                    for(Book book : temporaryList){
+                        modifiedModel.addElement(book.toString());
+                    }
+                    list.setModel(modifiedModel);
+                }
+            }
+        });
+
+        descendingCheckBox.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (descendingCheckBox.isSelected()) {
+                    ascendingCheckBox.setSelected(false);
+                }
+            }
+        });
 
         ChangeLibrary = new JButton("Change library");
         ChangeLibrary.setBounds(40, 20, 130, 30);
@@ -89,13 +157,14 @@ public class UserActionFrame extends JFrame {
         add(BorrowAbook);
 
         showborrowedBook = new JButton("Show borrowed books");
-        showborrowedBook.setBounds(40, 180, 160, 30);
+        showborrowedBook.setBounds(40, 180, 180, 30);
         add(showborrowedBook);
 
         showborrowedBook.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                ascendingCheckBox.setVisible(false);
+                descendingCheckBox.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 User userFromList = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.ChoosenUserName);
 
@@ -122,14 +191,44 @@ public class UserActionFrame extends JFrame {
 
 
         ConfirmChoice = new JButton("Confirm Choice");
-        ConfirmChoice.setBounds(250, 150, 160, 30);
+        ConfirmChoice.setBounds(500, 200, 160, 30);
         add(ConfirmChoice);
+
+        ShowBookToBorrow= new JButton("Show all Books in Library");
+        ShowBookToBorrow.setBounds(40,220,200,30);
+        add(ShowBookToBorrow);
+
+        ShowBookToBorrow.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ascendingCheckBox.setVisible(true);
+                descendingCheckBox.setVisible(true);
+                DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+
+                if (flowLibrary.getListOfBooks().isEmpty()) {
+                    for (Book books : flowLibrary.getListOfBooks()) {
+                        modifiedModel.addElement(books.toString());
+                    }
+                    list.setModel(modifiedModel);
+                    ConfirmChoice.setEnabled(false);
+                    JOptionPane.showMessageDialog(null, "No books in library", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
+                else{
+                    for (Book books : flowLibrary.getListOfBooks()) {
+                        modifiedModel.addElement(books.toString());
+                    }
+                    list.setModel(modifiedModel);
+                    ConfirmChoice.setEnabled(false);
+                }
+            }
+        });
 
 
         ConfirmChoice.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                ascendingCheckBox.setVisible(false);
+                descendingCheckBox.setVisible(false);
                 ConfirmChoice.setEnabled(true);
                 if (borrowButtonClicked) {
                     if (list.getSelectedIndex() != -1) {
@@ -215,6 +314,8 @@ public class UserActionFrame extends JFrame {
         ChangeUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ascendingCheckBox.setVisible(false);
+                descendingCheckBox.setVisible(false);
                 new UserChooseIFrame(userChooseIFrame.flowLibrary, userChooseIFrame.libraryManagementFrame);
                 setVisible(false);
             }
@@ -224,7 +325,8 @@ public class UserActionFrame extends JFrame {
         ChangeLibrary.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                ascendingCheckBox.setVisible(false);
+                descendingCheckBox.setVisible(false);
                 new LibraryManagementFrame(userChooseIFrame.libraryManagementFrame.libraryDataBase);
                 setVisible(false);
             }
@@ -233,6 +335,8 @@ public class UserActionFrame extends JFrame {
         BorrowAbook.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ascendingCheckBox.setVisible(false);
+                descendingCheckBox.setVisible(false);
                 borrowButtonClicked = true;
                 ConfirmChoice.setEnabled(true);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
@@ -267,19 +371,10 @@ public class UserActionFrame extends JFrame {
         setLayout(null);
         setResizable(false);
         setVisible(true);
+        ascendingCheckBox.setVisible(false);
+        descendingCheckBox.setVisible(false);
 
     }
 
-    public String GetTitleOfBook(String fullDescription) {
 
-        int commaIndex = fullDescription.indexOf(',');
-        if (commaIndex != -1) {
-            String result = fullDescription.substring(0, commaIndex);
-            result = result.replace("Title: ", "");
-
-            return result;
-
-        }
-        return null;
-    }
 }

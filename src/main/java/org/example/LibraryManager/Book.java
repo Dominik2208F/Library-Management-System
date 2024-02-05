@@ -1,6 +1,6 @@
 package org.example.LibraryManager;
 
-public class Book {
+public class Book implements Comparable<Book> {
 
     private String title;
     private Author author;
@@ -65,4 +65,8 @@ public class Book {
         this.amountOfPage = amountOfPage;
     }
 
+    @Override
+    public int compareTo(Book otherBook) {
+        return this.title.compareTo(otherBook.getTitle());
+    }
 }
