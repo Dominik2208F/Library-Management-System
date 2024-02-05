@@ -55,7 +55,7 @@ public class UserChooseIFrame extends JFrame {
         confirmUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (list.getSelectedValue().isEmpty()) {
+                if (list.isSelectionEmpty()) {
                     JOptionPane.showMessageDialog(null,"Choose at least 1 user","Error",JOptionPane.ERROR_MESSAGE);
                 } else {
                     ChoosenUserName = list.getSelectedValue();
