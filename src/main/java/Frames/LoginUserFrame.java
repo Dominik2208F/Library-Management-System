@@ -44,6 +44,7 @@ public class LoginUserFrame extends JFrame {
                 }
                 else{
                     JOptionPane.showMessageDialog(null,"Wrong password try again","Error",JOptionPane.ERROR_MESSAGE);
+                    passwordField.setText("");
                 }
             }
         });

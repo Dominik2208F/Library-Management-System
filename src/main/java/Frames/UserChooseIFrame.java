@@ -45,6 +45,10 @@ public class UserChooseIFrame extends JFrame {
         addUser= new JButton("Add User");
         addUser.setBounds(70,170,100,30);
         add(addUser);
+
+        JScrollPane scrollPane = new JScrollPane(list); // Wrap the JList in a JScrollPane
+        scrollPane.setBounds(70, 50, 100, 60);
+        add(scrollPane);
         confirmUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
