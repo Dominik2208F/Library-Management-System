@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="sortowanie combobox">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="obsluga wiadomosci borrow + return">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
     </list>
@@ -93,13 +93,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00009" summary="switch case na main">
-      <created>1706613897851</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1706613897851</updated>
     </task>
     <task id="LOCAL-00010" summary="switch case na main">
       <created>1706614523092</created>
@@ -437,7 +430,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707169615549</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="obsluga wiadomosci borrow + return">
+      <created>1707171087737</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1707171087737</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -452,7 +452,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="wyjscie do library z użytkownika" />
     <MESSAGE value="y/n user flow" />
     <MESSAGE value="adding library by admin" />
     <MESSAGE value="naprawa indexowania listy" />
@@ -477,7 +476,8 @@
     <MESSAGE value="panel usera zrobiony" />
     <MESSAGE value="sortowanie malejacy i rosnaca" />
     <MESSAGE value="sortowanie combobox" />
-    <option name="LAST_COMMIT_MESSAGE" value="sortowanie combobox" />
+    <MESSAGE value="obsluga wiadomosci borrow + return" />
+    <option name="LAST_COMMIT_MESSAGE" value="obsluga wiadomosci borrow + return" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
