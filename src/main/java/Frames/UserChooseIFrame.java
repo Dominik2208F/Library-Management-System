@@ -1,6 +1,7 @@
 package Frames;
 
 import org.example.LibraryManager.Library;
+import org.example.LibraryManager.LibraryDataBase;
 import org.example.UserManager.User;
 
 import javax.swing.*;
@@ -16,8 +17,10 @@ public class UserChooseIFrame extends JFrame {
     JList<String> list;
     String ChoosenUserName;
     Library flowLibrary;
-    public UserChooseIFrame(Library library){
+    LibraryManagementFrame libraryManagementFrame;
+    public UserChooseIFrame(Library library, LibraryManagementFrame libraryManagementFrame){
     this.flowLibrary=library;
+    this.libraryManagementFrame=libraryManagementFrame;
 
         DefaultListModel<String> listOfUsersFromLibrary = new DefaultListModel<>();
 
@@ -57,7 +60,7 @@ public class UserChooseIFrame extends JFrame {
                 } else {
                     ChoosenUserName = list.getSelectedValue();
 
-                    new LoginUserFrame(UserChooseIFrame.this, library);
+                    new LoginUserFrame(UserChooseIFrame.this, library);  // tutaj tak samo klasa z zainicjowanym obiektem libraryManagementFrame;
 
                 }
             }

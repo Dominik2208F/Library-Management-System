@@ -11,9 +11,13 @@ import java.util.Scanner;
 
 public class Library {
 
+
     private final List<Book> listOfBooks = new ArrayList<>();
     private UsersDataBase libraryUserDataBase;
     private String NameOfLibrary;
+    public List<Book> getListOfBooks() {
+        return listOfBooks;
+    }
 
     public Library(UsersDataBase usersDataBase, String nameOfLibrary) {
         this.libraryUserDataBase = usersDataBase;
@@ -100,7 +104,7 @@ public class Library {
         returnSizeOfLibrary();
     }
 
-    public void addDefaultBooksToLibrary() {
+    public void addDefaultBookswarszawskaToLibrary() {
         listOfBooks.add(new Book("Alicja w Krainie Mugoli",
                 new Author("Leonidas", "Staff", "12-12-1960")
                 , "1998", new Genre("Przygodowa"), 250));
@@ -110,7 +114,7 @@ public class Library {
                 , "1998", new Genre("Przygodowa"), 154));
     }
 
-    public void addDefaultBooksToOsiedlowaLibrary() {
+    public void addDefaultBooksToPruszkowskaLibrary() {
         listOfBooks.add(new Book("Kot w butach",
                 new Author("Wincent", "Staff", "12-12-1960")
                 , "1943", new Genre("Akcji"), 12));

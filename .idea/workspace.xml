@@ -9,12 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="rozdzielone 3 ramki">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" afterDir="false" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="dodany panel do usera bez akcji">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Library.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SetUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SetUp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,20 +97,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00001" summary="admin/user">
-      <created>1706602938810</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1706602938810</updated>
-    </task>
-    <task id="LOCAL-00002" summary="admin/user">
-      <created>1706606468653</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1706606468653</updated>
     </task>
     <task id="LOCAL-00003" summary="admin/user">
       <created>1706606971683</created>
@@ -433,7 +420,28 @@
       <option name="project" value="LOCAL" />
       <updated>1707090059870</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="obsluga bledow i okienko logowania">
+      <created>1707122460181</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1707122460181</updated>
+    </task>
+    <task id="LOCAL-00050" summary="dodawanie scrollowania po liście userów">
+      <created>1707132023269</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1707132023269</updated>
+    </task>
+    <task id="LOCAL-00051" summary="dodany panel do usera bez akcji">
+      <created>1707133998133</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1707133998133</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -448,9 +456,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="dwie biblioteki, zapisywanie stanu między obiektami." />
-    <MESSAGE value="poprawki" />
-    <MESSAGE value="add user to library before workflow" />
     <MESSAGE value="force switch by admin to library" />
     <MESSAGE value="set Up class +" />
     <MESSAGE value="wywalenie 2 różnych metod do generowania defaultowych bibliotek" />
@@ -473,7 +478,10 @@
     <MESSAGE value="usuwanie biblioteki" />
     <MESSAGE value="3 ramki pierwsze" />
     <MESSAGE value="rozdzielone 3 ramki" />
-    <option name="LAST_COMMIT_MESSAGE" value="rozdzielone 3 ramki" />
+    <MESSAGE value="obsluga bledow i okienko logowania" />
+    <MESSAGE value="dodawanie scrollowania po liście userów" />
+    <MESSAGE value="dodany panel do usera bez akcji" />
+    <option name="LAST_COMMIT_MESSAGE" value="dodany panel do usera bez akcji" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

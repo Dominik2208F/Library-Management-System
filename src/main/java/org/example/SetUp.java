@@ -18,11 +18,11 @@ public class SetUp {
         UsersDataBase usersDataBase = new UsersDataBase(); // baza danych to instancji biblioteki
         Library library = new Library(usersDataBase, name); // nowa instancja biblioteki
         libraryDataBase.addLibrary(library); // add each library to DataBaseLibrary
-        if (name.equals("Osiedlowa")) {
-            library.addDefaultBooksToOsiedlowaLibrary();
+        if (name.equals("Pruszkowska")) {
+            library.addDefaultBooksToPruszkowskaLibrary();
             usersDataBase.createDefaultAdminUser();
         } else {
-            library.addDefaultBooksToLibrary();
+            library.addDefaultBookswarszawskaToLibrary();
             usersDataBase.createDefaultAdminUser();
         }
     }

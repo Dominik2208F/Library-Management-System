@@ -64,7 +64,7 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
 
                 }
             }
-            UserChooseIFrame userChooseIFrame = new UserChooseIFrame(flowLibrary);
+            UserChooseIFrame userChooseIFrame = new UserChooseIFrame(flowLibrary,LibraryManagementFrame.this);  // przekazujesz klase IFrame z zainicjowanym obiektem UserDataBase
             dispose();
             userChooseIFrame.setVisible(true);
         }
