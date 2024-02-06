@@ -26,6 +26,7 @@ public class AdminActionFrame extends JFrame {
     JCheckBox ascendingCheckBox;
     JCheckBox descendingCheckBox;
 
+    private JComboBox<String> categoryComboBox,SubCategoryComboBox;
 
     public AdminActionFrame(UserChooseIFrame userChooseIFrame, Library library) {
 
@@ -38,8 +39,6 @@ public class AdminActionFrame extends JFrame {
         add(list);
 
         Map<String, List<String>> subcategoriesMap = new HashMap<>();
-
-
 
         menubar= new JMenuBar();
         Options= new JMenu("Options");
@@ -64,25 +63,6 @@ public class AdminActionFrame extends JFrame {
         ReturnInfoAllBooks = new JButton("Get all Books");
         ReturnInfoAllBooks.setBounds(40, 60, 130, 35);
         add(ReturnInfoAllBooks);
-
-        ReturnInfoAllBooks.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-                if (flowLibrary.getListOfBooks().isEmpty()) {
-                    for (Book books : flowLibrary.getListOfBooks()) {
-                        modifiedModel.addElement(books.toString());
-                    }
-                    list.setModel(modifiedModel);
-                    JOptionPane.showMessageDialog(null, "No books in library", "Warning", JOptionPane.WARNING_MESSAGE);
-                } else {
-                    for (Book books : flowLibrary.getListOfBooks()) {
-                        modifiedModel.addElement(books.toString());
-                    }
-                    list.setModel(modifiedModel);
-                }
-            }
-        });
 
         ReturnInfoOfBook = new JButton("Get book info");
         ReturnInfoOfBook.setBounds(40, 100, 130, 35);
@@ -112,7 +92,89 @@ public class AdminActionFrame extends JFrame {
         BorrowedBooksOfUser.setBounds(40, 340, 200, 35);
         add(BorrowedBooksOfUser);
 
+        categoryComboBox = new JComboBox<>(new String[]{"Author", "Genre","Select"});
+        categoryComboBox.setBounds(500,200,160,30);
+        add(categoryComboBox);
+        categoryComboBox.setSelectedItem("Select");
 
+        SubCategoryComboBox = new JComboBox<>();
+        SubCategoryComboBox.setBounds(500,240,160,30);
+        add(SubCategoryComboBox);
+
+        categoryComboBox.setVisible(false);
+        SubCategoryComboBox.setVisible(false);
+
+        categoryComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                List<String> listOfAuthorSurnames= new ArrayList<>();
+
+                for(Book book : library.getListOfBooks()){
+                    if(!listOfAuthorSurnames.contains(book.getAuthor().getLastName())) {
+                        listOfAuthorSurnames.add(book.getAuthor().getLastName());
+                    }
+                }
+
+                subcategoriesMap.put("Select", Arrays.asList(" "));
+                subcategoriesMap.put("Author", listOfAuthorSurnames);
+                subcategoriesMap.put("Genre", Arrays.asList("Przygodowa", "Akcji", "ScienceFiction","Romans","Historyczne","Akademickie","Finansowe","Dramat"));
+
+                String selectedCategory = (String) categoryComboBox.getSelectedItem();
+
+                List<String> subcategories = subcategoriesMap.get(selectedCategory);
+                String subcategoriesArray[] = subcategories.toArray(new String[subcategories.size()]);
+
+
+                if (subcategories != null && !selectedCategory.equals("Select")) {
+                    SubCategoryComboBox.setEnabled(true);
+                    SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
+                    SubCategoryComboBox.setVisible(true);
+                } else {
+                    SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
+                    SubCategoryComboBox.setEnabled(false);
+                }
+            }
+
+        });
+        SubCategoryComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String selectedCategory = (String) categoryComboBox.getSelectedItem();
+                String selectedGenre =  (String)  SubCategoryComboBox.getSelectedItem();
+                DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+                if(selectedCategory.equals("Genre")){
+                    for(Book book : flowLibrary.getListOfBooks()){
+                        if(book.getGenre().getName().equals(selectedGenre)){
+                            modifiedModel.addElement(book.toString());
+                        }
+                    }
+                    if(modifiedModel.isEmpty()){
+                        JOptionPane.showMessageDialog(null,
+                                "No book meets the criteria Category "+selectedCategory + " and " +selectedGenre, "Message", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    else{
+                        list.setModel(modifiedModel);
+                    }
+                }
+                else if(selectedCategory.equals("Author")){
+
+                    for(Book book : flowLibrary.getListOfBooks()){
+                        if(book.getAuthor().getLastName().equals(selectedGenre)){
+                            modifiedModel.addElement(book.toString());
+                        }
+                    }
+                    if(modifiedModel.isEmpty()){
+                        JOptionPane.showMessageDialog(null,
+                                "No book meets the criteria Category "+selectedCategory + " and " +selectedGenre, "Message", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    else {
+                        list.setModel(modifiedModel);
+                    }
+                }
+            }
+        });
         changeUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -129,6 +191,30 @@ public class AdminActionFrame extends JFrame {
             }
         });
 
+        ReturnInfoAllBooks.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                categoryComboBox.setVisible(true);
+                SubCategoryComboBox.setVisible(true);
+                DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+                if (flowLibrary.getListOfBooks().isEmpty()) {
+                    for (Book books : flowLibrary.getListOfBooks()) {
+                        modifiedModel.addElement(books.toString());
+                    }
+                    list.setModel(modifiedModel);
+                    SubCategoryComboBox.setEnabled(false);
+                    categoryComboBox.setEnabled(false);
+                    JOptionPane.showMessageDialog(null, "No books in library", "Warning", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    for (Book books : flowLibrary.getListOfBooks()) {
+                        modifiedModel.addElement(books.toString());
+                    }
+                    SubCategoryComboBox.setEnabled(true);
+                    categoryComboBox.setEnabled(true);
+                    list.setModel(modifiedModel);
+                }
+            }
+        });
 
 
 
