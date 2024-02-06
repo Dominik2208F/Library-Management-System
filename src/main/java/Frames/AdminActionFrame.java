@@ -19,11 +19,12 @@ public class AdminActionFrame extends JFrame {
     JMenuBar menubar;
     JMenu Options,Program;
     JMenuItem changeUser, changeLibrary,programInfo;
-    JButton AddBook,ReturnInfoAllBooks,ReturnInfoOfBook,DeleteBook,UpdateBook,AddUser,DeleteUser,ReturnBookOfAGivenUser,BorrowedBooksOfUser;
+    JButton AddBook,ReturnInfoAllBooks,ReturnInfoOfBook,DeleteBook,UpdateBook,AddUser,DeleteUser,ReturnBookOfAGivenUser,BorrowedBooksOfUser,ConfirmChoice;
     JList<String> list;
     Library flowLibrary;
     UserChooseIFrame userChooseIFrame;
 
+    boolean deleteBookClicked=false;
     private JComboBox<String> categoryComboBox,SubCategoryComboBox,UserSelectionComboBox;
 
     public AdminActionFrame(UserChooseIFrame userChooseIFrame, Library library) {
@@ -37,6 +38,8 @@ public class AdminActionFrame extends JFrame {
         add(list);
 
         Map<String, List<String>> subcategoriesMap = new HashMap<>();
+
+
 
         menubar= new JMenuBar();
         Options= new JMenu("Options");
@@ -70,6 +73,11 @@ public class AdminActionFrame extends JFrame {
         DeleteBook.setBounds(40, 140, 130, 35);
         add(DeleteBook);
 
+        ConfirmChoice= new JButton("Confirm Choice");
+        ConfirmChoice.setBounds(500, 180, 130, 35);
+        add(ConfirmChoice);
+        ConfirmChoice.setVisible(false);
+
         UpdateBook = new JButton("Update book");
         UpdateBook.setBounds(40, 180, 130, 35);
         add(UpdateBook);
@@ -77,15 +85,6 @@ public class AdminActionFrame extends JFrame {
         AddUser = new JButton("Add user");
         AddUser.setBounds(40, 220, 130, 35);
         add(AddUser);
-
-        AddUser.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                UserSelectionComboBox.setVisible(false);
-                AddUserFrame addUserFrame= new AddUserFrame(userChooseIFrame,library,true);
-                addUserFrame.setVisible(true);
-            }
-        });
 
         DeleteUser = new JButton("Delete user");
         DeleteUser.setBounds(40, 260, 130, 35);
@@ -111,44 +110,8 @@ public class AdminActionFrame extends JFrame {
 
 
         UserSelectionComboBox =new JComboBox<>();
-        UserSelectionComboBox.setBounds(500,280,160,30);
+        UserSelectionComboBox.setBounds(500,180,160,30);
         add(UserSelectionComboBox);
-
-        UserSelectionComboBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                String selectedUserToDelete = (String) UserSelectionComboBox.getSelectedItem();
-                if (!selectedUserToDelete.equals("Select")) {
-
-                    List<User> arrayCopyToIterate =  new ArrayList<>(flowLibrary.getLibraryUserDataBase().getListOfUser());
-
-                    for (User user : arrayCopyToIterate) {
-                        if (user.getName().equals(selectedUserToDelete)) {
-                           int odp=  JOptionPane.showConfirmDialog(null, "Do you want to remove " + user.getName() + " ?" , "Message", JOptionPane.YES_NO_OPTION);
-                            if(odp==JOptionPane.YES_OPTION) {
-                                flowLibrary.getLibraryUserDataBase().getListOfUser().remove(user);
-                            List<String> UpdatedListOfUsers =new ArrayList<>();
-                            for (User user1 : flowLibrary.getLibraryUserDataBase().getListOfUser()) {
-                                if (!user1.getName().equals("Admin")) {
-                                    UpdatedListOfUsers.add(user1.getName());
-                                }
-                            }
-                            if(UpdatedListOfUsers.isEmpty()){
-                                UserSelectionComboBox.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));
-                                UserSelectionComboBox.setEnabled(false);
-                            }
-                            else {
-                                String modifiedUserArray[] = UpdatedListOfUsers.toArray(new String[UpdatedListOfUsers.size()]);
-                                UserSelectionComboBox.setModel(new DefaultComboBoxModel<>(modifiedUserArray));
-                            }
-                        }
-                        }
-                    }
-
-                }
-            }
-        });
 
         categoryComboBox.setVisible(false);
         SubCategoryComboBox.setVisible(false);
@@ -270,6 +233,7 @@ public class AdminActionFrame extends JFrame {
                 categoryComboBox.setVisible(true);
                 SubCategoryComboBox.setVisible(true);
                 UserSelectionComboBox.setVisible(false);
+                ConfirmChoice.setEnabled(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 if (flowLibrary.getListOfBooks().isEmpty()) {
                     for (Book books : flowLibrary.getListOfBooks()) {
@@ -289,7 +253,105 @@ public class AdminActionFrame extends JFrame {
                 }
             }
         });
+        ConfirmChoice.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
+                if (deleteBookClicked) {
+                    if (list.getSelectedIndex() != -1) {
+
+                        List<String> listOfBooksToIterateThrough = new ArrayList<>();
+                        int selectedBookIndexToRemove = list.getSelectedIndex();
+                        //Remove
+                        flowLibrary.getListOfBooks().remove(selectedBookIndexToRemove);
+
+                        for(Book book : flowLibrary.getListOfBooks()){
+                            listOfBooksToIterateThrough.add(book.toString());
+                        }
+
+                        String BooksAfterRemove[] = listOfBooksToIterateThrough.toArray(new String[listOfBooksToIterateThrough.size()]);
+                        list.setModel(new DefaultComboBoxModel<>(BooksAfterRemove));
+                        if(flowLibrary.getListOfBooks().isEmpty()){
+                            ConfirmChoice.setEnabled(false);
+                            JOptionPane.showMessageDialog(null,
+                                    "No book to delete in " + flowLibrary.getNameOfLibrary(), "Message", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Choose at least one book", "Error", JOptionPane.ERROR_MESSAGE);
+
+                }
+            }
+        });
+        DeleteBook.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                categoryComboBox.setVisible(false);
+                SubCategoryComboBox.setVisible(false);
+                UserSelectionComboBox.setVisible(false);
+                ConfirmChoice.setVisible(true);
+                if (flowLibrary.getListOfBooks().isEmpty()) {
+                    ConfirmChoice.setEnabled(false);
+                    JOptionPane.showMessageDialog(null,
+                            "No book to delete in " + flowLibrary.getNameOfLibrary(), "Message", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    ConfirmChoice.setEnabled(true);
+                    deleteBookClicked=true;
+                    DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+                    for (Book books : flowLibrary.getListOfBooks()) {
+                        modifiedModel.addElement(books.toString());
+                    }
+                    SubCategoryComboBox.setEnabled(true);
+                    categoryComboBox.setEnabled(true);
+                    list.setModel(modifiedModel);
+
+                }
+            }
+        });
+        UserSelectionComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String selectedUserToDelete = (String) UserSelectionComboBox.getSelectedItem();
+                if (!selectedUserToDelete.equals("Select")) {
+
+                    List<User> arrayCopyToIterate =  new ArrayList<>(flowLibrary.getLibraryUserDataBase().getListOfUser());
+
+                    for (User user : arrayCopyToIterate) {
+                        if (user.getName().equals(selectedUserToDelete)) {
+                            int odp=  JOptionPane.showConfirmDialog(null, "Do you want to remove " + user.getName() + " ?" , "Message", JOptionPane.YES_NO_OPTION);
+                            if(odp==JOptionPane.YES_OPTION) {
+                                flowLibrary.getLibraryUserDataBase().getListOfUser().remove(user);
+                                List<String> UpdatedListOfUsers =new ArrayList<>();
+                                for (User user1 : flowLibrary.getLibraryUserDataBase().getListOfUser()) {
+                                    if (!user1.getName().equals("Admin")) {
+                                        UpdatedListOfUsers.add(user1.getName());
+                                    }
+                                }
+                                if(UpdatedListOfUsers.isEmpty()){
+                                    UserSelectionComboBox.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));
+                                    UserSelectionComboBox.setEnabled(false);
+                                }
+                                else {
+                                    String modifiedUserArray[] = UpdatedListOfUsers.toArray(new String[UpdatedListOfUsers.size()]);
+                                    UserSelectionComboBox.setModel(new DefaultComboBoxModel<>(modifiedUserArray));
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+        });
+        AddUser.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                UserSelectionComboBox.setVisible(false);
+                ConfirmChoice.setVisible(false);
+                AddUserFrame addUserFrame= new AddUserFrame(userChooseIFrame,library,true);
+                addUserFrame.setVisible(true);
+            }
+        });
 
 
         JScrollPane scrollPane = new JScrollPane(list); // Wrap the JList in a JScrollPane
