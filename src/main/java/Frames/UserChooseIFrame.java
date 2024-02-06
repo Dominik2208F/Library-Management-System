@@ -81,6 +81,12 @@ public class UserChooseIFrame extends JFrame {
         setLayout(null);
         setResizable(false);
         setVisible(true);
+
+        ImageIcon backgroundImage = new ImageIcon("src/background1.jpg");
+        JLabel backgroundLabel = new JLabel(backgroundImage);
+        backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
+        add(backgroundLabel);
+        setLayout(null);
     }
 
     public void updateListOfUsers() {

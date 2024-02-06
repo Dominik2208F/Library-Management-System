@@ -9,9 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="dodanie przycisku zwrotu wszystkich.">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="return all">
+      <change afterPath="$PROJECT_DIR$/src/background.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/background1.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +67,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dominik.jakubaszek\Desktop\BookShop\src" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="Frames" />
     </key>
@@ -93,13 +102,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00015" summary="przeniesienie bazy danych do klasy library">
-      <created>1706705222509</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1706705222509</updated>
     </task>
     <task id="LOCAL-00016" summary="dwie biblioteki, zapisywanie stanu między obiektami.">
       <created>1706710922727</created>
@@ -437,7 +439,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707212658076</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="borrow all">
+      <created>1707214788736</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1707214788736</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -452,8 +461,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="obsługa chyba wszystkich błedów?" />
-    <MESSAGE value="obsluga dwoch tych samych uzytkonikow + usuniecie usera" />
     <MESSAGE value="usuwanie obecnej biblioteki skutkuje wylogowaniem" />
     <MESSAGE value="informacje o pozyczonych ksiazkach" />
     <MESSAGE value="formatowanie" />
@@ -477,7 +484,9 @@
     <MESSAGE value="combo box filtrowanie po autorze i gatunku" />
     <MESSAGE value="filtrowanie + zmiana wielkosci panelu" />
     <MESSAGE value="dodanie przycisku zwrotu wszystkich." />
-    <option name="LAST_COMMIT_MESSAGE" value="dodanie przycisku zwrotu wszystkich." />
+    <MESSAGE value="borrow all" />
+    <MESSAGE value="return all" />
+    <option name="LAST_COMMIT_MESSAGE" value="return all" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -491,11 +500,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Flow.java</url>
           <line>95</line>
           <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>226</line>
-          <option name="timeStamp" value="44" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

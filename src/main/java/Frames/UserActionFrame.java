@@ -51,6 +51,8 @@ public class UserActionFrame extends JFrame {
 
         Map<String, List<String>> subcategoriesMap = new HashMap<>();
 
+
+
         menubar= new JMenuBar();
         Options= new JMenu("Options");
         Program= new JMenu("Info");
@@ -69,6 +71,43 @@ public class UserActionFrame extends JFrame {
         returnAll.setBounds(500,240,160,30);
         add(returnAll);
         returnAll.setVisible(false);
+
+        returnAll.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+
+                //assign User instance
+                User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.ChoosenUserName);
+
+                //Assign book to user;
+
+
+                List<Book> userBooksCopy = new ArrayList<>(user.getUserbooks());
+
+
+                for (Book book : userBooksCopy) {
+                    user.UnassignBookFromUser(book);
+                    flowLibrary.getListOfBooks().add(book);
+                }
+
+
+
+                for (Book Book : user.getUserbooks()) {
+                    modifiedModel.addElement(Book.toString());
+                }
+
+                list.setModel(modifiedModel);
+
+                if(user.getUserbooks().isEmpty()){
+                    ConfirmChoice.setEnabled(false);
+                    returnAll.setEnabled(false);
+                }
+                JOptionPane.showMessageDialog(null, "All Books have been returned successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
+                booksLabel.setText(flowLibrary.getListOfBooks().size() + " books in "  + flowLibrary.getNameOfLibrary() + " library");
+            }
+        });
 
         borrowALL = new JButton("Borrow all");
         borrowALL.setBounds(500,240,160,30);
@@ -231,6 +270,7 @@ public class UserActionFrame extends JFrame {
                 categoryComboBox.setVisible(false);
                 SubCategoryComboBox.setVisible(false);
                 returnAll.setVisible(true);
+                returnAll.setEnabled(true);
                 borrowALL.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 //assign User instance
@@ -369,6 +409,7 @@ public class UserActionFrame extends JFrame {
                         }
                         list.setModel(modifiedModel);
                         if(user.getUserbooks().isEmpty()){
+                            returnAll.setEnabled(false);
                             ConfirmChoice.setEnabled(false);
                         }
                         JOptionPane.showMessageDialog(null, "Book " + bookborrowed.getTitle()+ " has been returned successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
@@ -602,6 +643,13 @@ public class UserActionFrame extends JFrame {
         sortComboBox.setVisible(false);
         categoryComboBox.setVisible(false);
         SubCategoryComboBox.setVisible(false);
+
+        ImageIcon backgroundImage = new ImageIcon("src/background.jpg");
+        JLabel backgroundLabel = new JLabel(backgroundImage);
+        backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
+        add(backgroundLabel);
+        setLayout(null);
+
     }
 
 }

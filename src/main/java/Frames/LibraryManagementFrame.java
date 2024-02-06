@@ -29,25 +29,37 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
 
         list = new JList<>(libraryListPanel);
         list.setBounds(70,50, 100,40);
-        add(list);
         //
         label = new JLabel("Select library");
         label.setBounds(79,10, 125,40);
-        add(label);
+
         //
         selectedLibrary = new JLabel("Selected library");
         selectedLibrary.setBounds(120,220, 150,20);
 
         buttonConfirm= new JButton("Confirm");
         buttonConfirm.setBounds(70,100, 100,40);
-        add(buttonConfirm);
+
         buttonConfirm.addActionListener(this);
+
+        add(list);
+        add(label);
+        add(buttonConfirm);
         //
+
         setSize(250,350);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setResizable(false);
         setVisible(true);
+
+
+        ImageIcon backgroundImage = new ImageIcon("src/background1.jpg");
+        JLabel backgroundLabel = new JLabel(backgroundImage);
+        backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
+        add(backgroundLabel);
+        backgroundLabel.repaint();
+        setLayout(null);
     }
 
     public void IfButtonClicked(){
