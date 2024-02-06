@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="Get all Boooks">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="Get all Boooks + filter">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
     </list>
@@ -97,13 +97,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00019" summary="add user to library before workflow">
-      <created>1706717480195</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1706717480195</updated>
     </task>
     <task id="LOCAL-00020" summary="force switch by admin to library">
       <created>1706718377638</created>
@@ -441,7 +434,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707222837544</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Get all Boooks + filter">
+      <created>1707223280314</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1707223280314</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -456,7 +456,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="enkapsulacja" />
     <MESSAGE value="zabezpieczenie do usuniecia własnej biblioteki" />
     <MESSAGE value="zwracanie ksiazki przez admina za uzytkownika" />
     <MESSAGE value="usuwanie biblioteki" />
@@ -481,7 +480,8 @@
     <MESSAGE value="dodanie tla" />
     <MESSAGE value="przyciski panel admina" />
     <MESSAGE value="Get all Boooks" />
-    <option name="LAST_COMMIT_MESSAGE" value="Get all Boooks" />
+    <MESSAGE value="Get all Boooks + filter" />
+    <option name="LAST_COMMIT_MESSAGE" value="Get all Boooks + filter" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -496,12 +496,36 @@
           <line>95</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java</url>
+          <line>116</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java</url>
+          <line>117</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java</url>
+          <line>120</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java</url>
+          <line>136</line>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java</url>
+          <line>111</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="GetTitleOfBook(FullBookDescription)" />
-        <watch expression="ascendingCheckBox.isSelected()" />
+        <watch expression="flowLibrary.getLibraryUserDataBase().getListOfUser()" />
       </configuration>
     </watches-manager>
   </component>

@@ -23,10 +23,8 @@ public class AdminActionFrame extends JFrame {
     JList<String> list;
     Library flowLibrary;
     UserChooseIFrame userChooseIFrame;
-    JCheckBox ascendingCheckBox;
-    JCheckBox descendingCheckBox;
 
-    private JComboBox<String> categoryComboBox,SubCategoryComboBox;
+    private JComboBox<String> categoryComboBox,SubCategoryComboBox,UserSelectionComboBox;
 
     public AdminActionFrame(UserChooseIFrame userChooseIFrame, Library library) {
 
@@ -84,6 +82,7 @@ public class AdminActionFrame extends JFrame {
         DeleteUser.setBounds(40, 260, 130, 35);
         add(DeleteUser);
 
+
         ReturnBookOfAGivenUser = new JButton("Return book of a given user");
         ReturnBookOfAGivenUser.setBounds(40, 300, 200, 35);
         add(ReturnBookOfAGivenUser);
@@ -101,9 +100,75 @@ public class AdminActionFrame extends JFrame {
         SubCategoryComboBox.setBounds(500,240,160,30);
         add(SubCategoryComboBox);
 
+
+        UserSelectionComboBox =new JComboBox<>();
+        UserSelectionComboBox.setBounds(500,280,160,30);
+        add(UserSelectionComboBox);
+
+        UserSelectionComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String selectedUserToDelete = (String) UserSelectionComboBox.getSelectedItem();
+                if (!selectedUserToDelete.equals("Select")) {
+
+                    List<User> arrayCopyToIterate =  new ArrayList<>(flowLibrary.getLibraryUserDataBase().getListOfUser());
+
+                    for (User user : arrayCopyToIterate) {
+                        if (user.getName().equals(selectedUserToDelete)) {
+                           int odp=  JOptionPane.showConfirmDialog(null, "Do you want to remove " + user.getName() + " ?" , "Message", JOptionPane.YES_NO_OPTION);
+                            if(odp==JOptionPane.YES_OPTION) {
+                                flowLibrary.getLibraryUserDataBase().getListOfUser().remove(user);
+                            List<String> UpdatedListOfUsers =new ArrayList<>();
+                            for (User user1 : flowLibrary.getLibraryUserDataBase().getListOfUser()) {
+                                if (!user1.getName().equals("Admin")) {
+                                    UpdatedListOfUsers.add(user1.getName());
+                                }
+                            }
+                            if(UpdatedListOfUsers.isEmpty()){
+                                UserSelectionComboBox.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));
+                                UserSelectionComboBox.setEnabled(false);
+                            }
+                            else {
+                                String modifiedUserArray[] = UpdatedListOfUsers.toArray(new String[UpdatedListOfUsers.size()]);
+                                UserSelectionComboBox.setModel(new DefaultComboBoxModel<>(modifiedUserArray));
+                            }
+                        }
+                        }
+                    }
+
+                }
+            }
+        });
+
         categoryComboBox.setVisible(false);
         SubCategoryComboBox.setVisible(false);
+        UserSelectionComboBox.setVisible(false);
 
+        DeleteUser.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                categoryComboBox.setVisible(false);
+                SubCategoryComboBox.setVisible(false);
+                UserSelectionComboBox.setVisible(true);
+                if (flowLibrary.getLibraryUserDataBase().getListOfUser().size()==1) {
+                    UserSelectionComboBox.setEnabled(false);
+                    JOptionPane.showMessageDialog(null,
+                            "No additional users assigned to library", "Message", JOptionPane.INFORMATION_MESSAGE);
+                    UserSelectionComboBox.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));
+                } else {
+                    List<String> listOfUserName = new ArrayList<>();
+                    listOfUserName.add("Select");
+                    for (User user : flowLibrary.getLibraryUserDataBase().getListOfUser()) {
+                        if(!user.getName().equals("Admin")) {
+                            listOfUserName.add(user.getName());
+                        }
+                    }
+                    String UserNameArray[] = listOfUserName.toArray(new String[listOfUserName.size()]);
+                    UserSelectionComboBox.setModel(new DefaultComboBoxModel<>(UserNameArray));
+                }
+            }
+        });
         categoryComboBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -190,12 +255,12 @@ public class AdminActionFrame extends JFrame {
                 setVisible(false);
             }
         });
-
         ReturnInfoAllBooks.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 categoryComboBox.setVisible(true);
                 SubCategoryComboBox.setVisible(true);
+                UserSelectionComboBox.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 if (flowLibrary.getListOfBooks().isEmpty()) {
                     for (Book books : flowLibrary.getListOfBooks()) {
