@@ -73,7 +73,7 @@ public class UserChooseIFrame extends JFrame {
                 addUserFrame.setVisible(true);
             }
         });
-        //
+
 
         setSize(250,350);
         setTitle("Choose user");

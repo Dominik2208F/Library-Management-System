@@ -1,8 +1,12 @@
 package org.example.LibraryManager;
 
 public class Genre implements Comparable<Genre> {
+
     private String name;
 
+    public String getName() {
+        return name;
+    }
     public Genre(String name) {
         this.name = name;
     }

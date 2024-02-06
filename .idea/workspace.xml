@@ -9,10 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="przycisk">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="combo box filtrowanie po autorze i gatunku">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Library.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Genre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Genre.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,13 +95,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00012" summary="program exit">
-      <created>1706653929688</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1706653929688</updated>
     </task>
     <task id="LOCAL-00013" summary="returning books">
       <created>1706655939533</created>
@@ -438,7 +432,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707173811276</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="combo box filtrowanie po autorze i gatunku">
+      <created>1707207650665</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1707207650666</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -453,7 +454,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="naprawa indexowania listy" />
     <MESSAGE value="obsługa wyjątków update" />
     <MESSAGE value="1 export od java" />
     <MESSAGE value="obsługa chyba wszystkich błedów?" />
@@ -478,7 +478,8 @@
     <MESSAGE value="obsluga wiadomosci borrow + return" />
     <MESSAGE value="menu i opcje" />
     <MESSAGE value="przycisk" />
-    <option name="LAST_COMMIT_MESSAGE" value="przycisk" />
+    <MESSAGE value="combo box filtrowanie po autorze i gatunku" />
+    <option name="LAST_COMMIT_MESSAGE" value="combo box filtrowanie po autorze i gatunku" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -492,15 +493,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Flow.java</url>
           <line>95</line>
           <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/UserManager/User.java</url>
-          <line>38</line>
-          <properties class="org.example.UserManager.User" method="UnassignBookFromUser">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -43,9 +43,10 @@ public class UserActionFrame extends JFrame {
 
         DefaultListModel<String> listOfAction = new DefaultListModel<>();
         list = new JList<>(listOfAction);
-        list.setBounds(180, 20, 500, 100);
+        list.setBounds(180, 20, 500, 150);
         add(list);
 
+        Map<String, List<String>> subcategoriesMap = new HashMap<>();
 
         menubar= new JMenuBar();
         Options= new JMenu("Options");
@@ -62,104 +63,26 @@ public class UserActionFrame extends JFrame {
         menubar.add(Program);
 
         sortComboBox = new JComboBox<>(new String[]{"Title", "Author", "Genre"});
-        sortComboBox.setBounds(500, 160, 160, 30);
+        sortComboBox.setBounds(500, 240, 160, 30);
         add(sortComboBox);
 
         categoryComboBox = new JComboBox<>(new String[]{"Author", "Genre","Select"});
-        categoryComboBox.setBounds(500,130,160,30);
+        categoryComboBox.setBounds(500,200,160,30);
         add(categoryComboBox);
         categoryComboBox.setSelectedItem("Select");
 
         SubCategoryComboBox = new JComboBox<>();
-        SubCategoryComboBox.setBounds(500,165,160,30);
+        SubCategoryComboBox.setBounds(500,240,160,30);
         add(SubCategoryComboBox);
-        categoryComboBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                Map<String, List<String>> subcategoriesMap = new HashMap<>();
-
-                List<String> listOfAuthorSurnames= new ArrayList<>();
-
-                for(Book book : library.getListOfBooks()){
-                    if(!listOfAuthorSurnames.contains(book.getAuthor().getLastName())) {
-                        listOfAuthorSurnames.add(book.getAuthor().getLastName());
-                    }
-                }
-                subcategoriesMap.put("Select", Arrays.asList(" "));
-                subcategoriesMap.put("Author", listOfAuthorSurnames);
-                subcategoriesMap.put("Genre", Arrays.asList("Przygodowa", "Akcji", "ScienceFiction","Romans","Historyczne"));
-
-                String selectedCategory = (String) categoryComboBox.getSelectedItem();
-
-                List<String> subcategories = subcategoriesMap.get(selectedCategory);
-                String subcategoriesArray[] = subcategories.toArray(new String[subcategories.size()]);
-
-
-                if (subcategories != null && !selectedCategory.equals("Select")) {
-                    SubCategoryComboBox.setEnabled(true);
-                    SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
-                    SubCategoryComboBox.setVisible(true);
-                } else {
-                    SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
-                    SubCategoryComboBox.setEnabled(false);
-                }
-            }
-
-        });
-
-        booksLabel= new JLabel("Books");
-        booksLabel.setBounds(400, -5, 40, 30);
+        booksLabel= new JLabel(flowLibrary.getListOfBooks().size() +" books in "  + flowLibrary.getNameOfLibrary() + " library");
+        booksLabel.setBounds(350, -5, 200, 30);
         add(booksLabel);
-        sortComboBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-                List<Book> temporaryList = new ArrayList<>();
-
-                // Kopiuj listę książek do tymczasowej listy
-                temporaryList.addAll(flowLibrary.getListOfBooks());
-                Comparator<Book> comparator = null;
-                String selectedSortOption = (String) sortComboBox.getSelectedItem();
-
-                // implementacje IComparable w klasach
-                if ("Title".equals(selectedSortOption)) {
-                    comparator = Comparator.comparing(Book::getTitle);
-                } else if ("Author".equals(selectedSortOption)) {
-                    comparator = Comparator.comparing(Book::getAuthor);
-                } else if ("Genre".equals(selectedSortOption)) {
-                    comparator = Comparator.comparing(Book::getGenre);
-                }
-                //
-                if(!ascendingCheckBox.isSelected() && !descendingCheckBox.isSelected()){
-                    JOptionPane.showMessageDialog(null, "Choose ascending or descending type and try again", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                else {
-                    if (comparator != null) {
-                        if (ascendingCheckBox.isSelected()) {
-                            Collections.sort(temporaryList, comparator);
-                        }
-
-
-                        if (descendingCheckBox.isSelected()) {
-                            Collections.sort(temporaryList, comparator.reversed());
-                        }
-
-                    }
-
-                    for (Book book : temporaryList) {
-                        modifiedModel.addElement(book.toString());
-                    }
-                    list.setModel(modifiedModel);
-                }
-            }
-        });
 
         ascendingCheckBox = new JCheckBox("Sort Ascending");
-        ascendingCheckBox.setBounds(250, 120, 150, 30);
+        ascendingCheckBox.setBounds(250, 180, 150, 30);
 
         descendingCheckBox = new JCheckBox("Sort Descending");
-        descendingCheckBox.setBounds(400, 120, 150, 30);
+        descendingCheckBox.setBounds(400, 180, 150, 30);
         add(ascendingCheckBox);
         add(descendingCheckBox);
 
@@ -197,7 +120,8 @@ public class UserActionFrame extends JFrame {
                     JOptionPane.showMessageDialog(null, "No books to filter in library", "Warning", JOptionPane.WARNING_MESSAGE);
                 } else {
                     ConfirmChoice.setEnabled(false);
-                    SubCategoryComboBox.setEnabled(false);
+                    SubCategoryComboBox.setEnabled(true);
+                    categoryComboBox.setEnabled(true);
                     for (Book books : flowLibrary.getListOfBooks()) {
                         modifiedModel.addElement(books.toString());
                     }
@@ -208,16 +132,16 @@ public class UserActionFrame extends JFrame {
         });
 
         showborrowedBook = new JButton("Show borrowed books");
-        showborrowedBook.setBounds(40, 160, 200, 35);
+        showborrowedBook.setBounds(40, 240, 200, 35);
         add(showborrowedBook);
 
 
         ConfirmChoice = new JButton("Confirm Choice");
-        ConfirmChoice.setBounds(500, 200, 160, 40);
+        ConfirmChoice.setBounds(500, 280, 160, 40);
         add(ConfirmChoice);
 
-        ShowBookToBorrow= new JButton("Show all Books in Library");
-        ShowBookToBorrow.setBounds(40,200,200,35);
+        ShowBookToBorrow= new JButton("Sort books in Library");
+        ShowBookToBorrow.setBounds(40,280,200,35);
         add(ShowBookToBorrow);
         showborrowedBook.addActionListener(new ActionListener() {
             @Override
@@ -348,6 +272,7 @@ public class UserActionFrame extends JFrame {
 
                         list.setModel(modifiedModel);
                         JOptionPane.showMessageDialog(null, "Book " + bookborrowed.getTitle()+ " has been borrowed successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
+                        booksLabel.setText(flowLibrary.getListOfBooks().size() + " books in "  + flowLibrary.getNameOfLibrary() + " library");
                         if(flowLibrary.getListOfBooks().isEmpty()){
                             ConfirmChoice.setEnabled(false);
                         }
@@ -391,6 +316,7 @@ public class UserActionFrame extends JFrame {
                             ConfirmChoice.setEnabled(false);
                         }
                         JOptionPane.showMessageDialog(null, "Book " + bookborrowed.getTitle()+ " has been returned successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
+                        booksLabel.setText(flowLibrary.getListOfBooks().size() + " books in "  + flowLibrary.getNameOfLibrary() + " library");
                     }
                     else{
                         JOptionPane.showMessageDialog(null, "Choose at least one book", "Error", JOptionPane.ERROR_MESSAGE);
@@ -485,14 +411,127 @@ public class UserActionFrame extends JFrame {
                 }
             }
         });
+        categoryComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
+                List<String> listOfAuthorSurnames= new ArrayList<>();
+
+                for(Book book : library.getListOfBooks()){
+                    if(!listOfAuthorSurnames.contains(book.getAuthor().getLastName())) {
+                        listOfAuthorSurnames.add(book.getAuthor().getLastName());
+                    }
+                }
+
+                subcategoriesMap.put("Select", Arrays.asList(" "));
+                subcategoriesMap.put("Author", listOfAuthorSurnames);
+                subcategoriesMap.put("Genre", Arrays.asList("Przygodowa", "Akcji", "ScienceFiction","Romans","Historyczne","Akademickie","Finansowe","Dramat"));
+
+                String selectedCategory = (String) categoryComboBox.getSelectedItem();
+
+                List<String> subcategories = subcategoriesMap.get(selectedCategory);
+                String subcategoriesArray[] = subcategories.toArray(new String[subcategories.size()]);
+
+
+                if (subcategories != null && !selectedCategory.equals("Select")) {
+                    SubCategoryComboBox.setEnabled(true);
+                    SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
+                    SubCategoryComboBox.setVisible(true);
+                } else {
+                    SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
+                    SubCategoryComboBox.setEnabled(false);
+                }
+            }
+
+        });
+        SubCategoryComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String selectedCategory = (String) categoryComboBox.getSelectedItem();
+                String selectedGenre =  (String)  SubCategoryComboBox.getSelectedItem();
+                DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+                if(selectedCategory.equals("Genre")){
+                    for(Book book : flowLibrary.getListOfBooks()){
+                        if(book.getGenre().getName().equals(selectedGenre)){
+                            modifiedModel.addElement(book.toString());
+                        }
+                    }
+                    if(modifiedModel.isEmpty()){
+                        JOptionPane.showMessageDialog(null,
+                                "No book meets the criteria Category "+selectedCategory + " and " +selectedGenre, "Message", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    else{
+                        list.setModel(modifiedModel);
+                    }
+                }
+                else if(selectedCategory.equals("Author")){
+
+                    for(Book book : flowLibrary.getListOfBooks()){
+                        if(book.getAuthor().getLastName().equals(selectedGenre)){
+                            modifiedModel.addElement(book.toString());
+                        }
+                    }
+                    if(modifiedModel.isEmpty()){
+                        JOptionPane.showMessageDialog(null,
+                                "No book meets the criteria Category "+selectedCategory + " and " +selectedGenre, "Message", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    else {
+                        list.setModel(modifiedModel);
+                    }
+                }
+            }
+        });
+        sortComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+                List<Book> temporaryList = new ArrayList<>();
+
+                // Kopiuj listę książek do tymczasowej listy
+                temporaryList.addAll(flowLibrary.getListOfBooks());
+                Comparator<Book> comparator = null;
+                String selectedSortOption = (String) sortComboBox.getSelectedItem();
+
+                // implementacje IComparable w klasach
+                if ("Title".equals(selectedSortOption)) {
+                    comparator = Comparator.comparing(Book::getTitle);
+                } else if ("Author".equals(selectedSortOption)) {
+                    comparator = Comparator.comparing(Book::getAuthor);
+                } else if ("Genre".equals(selectedSortOption)) {
+                    comparator = Comparator.comparing(Book::getGenre);
+                }
+                //
+                if(!ascendingCheckBox.isSelected() && !descendingCheckBox.isSelected()){
+                    JOptionPane.showMessageDialog(null, "Choose ascending or descending type and try again", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                else {
+                    if (comparator != null) {
+                        if (ascendingCheckBox.isSelected()) {
+                            Collections.sort(temporaryList, comparator);
+                        }
+
+
+                        if (descendingCheckBox.isSelected()) {
+                            Collections.sort(temporaryList, comparator.reversed());
+                        }
+
+                    }
+
+                    for (Book book : temporaryList) {
+                        modifiedModel.addElement(book.toString());
+                    }
+                    list.setModel(modifiedModel);
+                }
+            }
+        });
 
         JScrollPane scrollPane = new JScrollPane(list); // Wrap the JList in a JScrollPane
-        scrollPane.setBounds(180, 20, 500, 100);
+        scrollPane.setBounds(180, 20, 500, 150);
         add(scrollPane);
 
 
-        setSize(700, 320);
+        setSize(700, 400);
         setTitle("User Action Panel logged as " + userChooseIFrame.ChoosenUserName);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
