@@ -9,12 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="dodanie tla">
-      <change afterPath="$PROJECT_DIR$/src/admin.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="przyciski panel admina">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,13 +97,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00017" summary="poprawki">
-      <created>1706711738650</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1706711738650</updated>
     </task>
     <task id="LOCAL-00018" summary="add user to library before workflow">
       <created>1706717187957</created>
@@ -444,7 +434,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707217416920</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="przyciski panel admina">
+      <created>1707222479765</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1707222479765</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -459,7 +456,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="informacje o pozyczonych ksiazkach" />
     <MESSAGE value="formatowanie" />
     <MESSAGE value="enkapsulacja" />
     <MESSAGE value="zabezpieczenie do usuniecia własnej biblioteki" />
@@ -484,7 +480,8 @@
     <MESSAGE value="borrow all" />
     <MESSAGE value="return all" />
     <MESSAGE value="dodanie tla" />
-    <option name="LAST_COMMIT_MESSAGE" value="dodanie tla" />
+    <MESSAGE value="przyciski panel admina" />
+    <option name="LAST_COMMIT_MESSAGE" value="przyciski panel admina" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

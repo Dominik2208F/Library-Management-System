@@ -65,6 +65,25 @@ public class AdminActionFrame extends JFrame {
         ReturnInfoAllBooks.setBounds(40, 60, 130, 35);
         add(ReturnInfoAllBooks);
 
+        ReturnInfoAllBooks.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+                if (flowLibrary.getListOfBooks().isEmpty()) {
+                    for (Book books : flowLibrary.getListOfBooks()) {
+                        modifiedModel.addElement(books.toString());
+                    }
+                    list.setModel(modifiedModel);
+                    JOptionPane.showMessageDialog(null, "No books in library", "Warning", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    for (Book books : flowLibrary.getListOfBooks()) {
+                        modifiedModel.addElement(books.toString());
+                    }
+                    list.setModel(modifiedModel);
+                }
+            }
+        });
+
         ReturnInfoOfBook = new JButton("Get book info");
         ReturnInfoOfBook.setBounds(40, 100, 130, 35);
         add(ReturnInfoOfBook);
@@ -94,13 +113,28 @@ public class AdminActionFrame extends JFrame {
         add(BorrowedBooksOfUser);
 
 
+        changeUser.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                new UserChooseIFrame(userChooseIFrame.flowLibrary, userChooseIFrame.libraryManagementFrame);
+                setVisible(false);
+            }
+        });
+        changeLibrary.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new LibraryManagementFrame(userChooseIFrame.libraryManagementFrame.libraryDataBase);
+                setVisible(false);
+            }
+        });
+
+
+
 
         JScrollPane scrollPane = new JScrollPane(list); // Wrap the JList in a JScrollPane
         scrollPane.setBounds(180, 20, 500, 130);
         add(scrollPane);
-
-
-
 
         setSize(700, 600);
         setTitle("Admin Panel logged as " + userChooseIFrame.ChoosenUserName);
