@@ -43,6 +43,7 @@ public class LoginUserFrame extends JFrame {
 
                         setVisible(false);
                         userChoose.setVisible(false);
+                         new AdminActionFrame(userChoose,library);
                     }
                     else{
 

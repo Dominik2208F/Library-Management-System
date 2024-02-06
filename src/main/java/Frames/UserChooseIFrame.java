@@ -59,7 +59,6 @@ public class UserChooseIFrame extends JFrame {
                     JOptionPane.showMessageDialog(null,"Choose at least 1 user","Error",JOptionPane.ERROR_MESSAGE);
                 } else {
                     ChoosenUserName = list.getSelectedValue();
-
                     new LoginUserFrame(UserChooseIFrame.this, library);  // tutaj tak samo klasa z zainicjowanym obiektem libraryManagementFrame;
 
                 }

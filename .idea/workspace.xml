@@ -9,14 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="return all">
-      <change afterPath="$PROJECT_DIR$/src/background.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/background1.jpg" afterDir="false" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="dodanie tla">
+      <change afterPath="$PROJECT_DIR$/src/admin.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,6 +66,7 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\dominik.jakubaszek\Desktop\BookShop\src" />
+      <recent name="C:\Users\dominik.jakubaszek\Desktop\BookShop\src\test" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="Frames" />
@@ -102,13 +100,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00016" summary="dwie biblioteki, zapisywanie stanu między obiektami.">
-      <created>1706710922727</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1706710922727</updated>
     </task>
     <task id="LOCAL-00017" summary="poprawki">
       <created>1706711738650</created>
@@ -446,7 +437,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707214788736</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="dodanie tla">
+      <created>1707217416920</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1707217416920</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -461,7 +459,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="usuwanie obecnej biblioteki skutkuje wylogowaniem" />
     <MESSAGE value="informacje o pozyczonych ksiazkach" />
     <MESSAGE value="formatowanie" />
     <MESSAGE value="enkapsulacja" />
@@ -486,7 +483,8 @@
     <MESSAGE value="dodanie przycisku zwrotu wszystkich." />
     <MESSAGE value="borrow all" />
     <MESSAGE value="return all" />
-    <option name="LAST_COMMIT_MESSAGE" value="return all" />
+    <MESSAGE value="dodanie tla" />
+    <option name="LAST_COMMIT_MESSAGE" value="dodanie tla" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
