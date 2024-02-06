@@ -74,6 +74,38 @@ public class UserActionFrame extends JFrame {
         borrowALL.setBounds(500,240,160,30);
         add(borrowALL);
         borrowALL.setVisible(false);
+        borrowALL.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+
+                //assign User instance
+                User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.ChoosenUserName);
+
+                //Assign book to user;
+
+                for (Book book : flowLibrary.getListOfBooks()) {
+                        user.assignBookToUser(book);
+                }
+
+                //Remove all books from library
+                flowLibrary.getListOfBooks().clear();
+
+                //refresh list of JList
+                for (Book books : flowLibrary.getListOfBooks()) {
+                    modifiedModel.addElement(books.toString());
+                }
+
+                list.setModel(modifiedModel);
+                JOptionPane.showMessageDialog(null, "All books have been borowed successfully ", "Message", JOptionPane.INFORMATION_MESSAGE);
+                booksLabel.setText(flowLibrary.getListOfBooks().size() + " books in "  + flowLibrary.getNameOfLibrary() + " library");
+                if(flowLibrary.getListOfBooks().isEmpty()){
+                    borrowALL.setEnabled(false);
+                    ConfirmChoice.setEnabled(false);
+                }
+            }
+        });
 
 
         sortComboBox = new JComboBox<>(new String[]{"Title", "Author", "Genre"});
@@ -110,8 +142,8 @@ public class UserActionFrame extends JFrame {
         ReturnAbook.setBounds(40, 60, 130, 35);
         add(ReturnAbook);
 
-        filter = new JButton("Filter books");
-        filter.setBounds(40, 100, 130, 35);
+        filter = new JButton("Filter books in library");
+        filter.setBounds(40, 200, 200, 35);
         add(filter);
         filter.addActionListener(new ActionListener() {
             @Override
@@ -168,6 +200,7 @@ public class UserActionFrame extends JFrame {
                 categoryComboBox.setVisible(false);
                 SubCategoryComboBox.setVisible(false);
                 returnAll.setVisible(false);
+                borrowALL.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 User userFromList = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.ChoosenUserName);
 
@@ -296,6 +329,7 @@ public class UserActionFrame extends JFrame {
                         JOptionPane.showMessageDialog(null, "Book " + bookborrowed.getTitle()+ " has been borrowed successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
                         booksLabel.setText(flowLibrary.getListOfBooks().size() + " books in "  + flowLibrary.getNameOfLibrary() + " library");
                         if(flowLibrary.getListOfBooks().isEmpty()){
+                            borrowALL.setEnabled(false);
                             ConfirmChoice.setEnabled(false);
                         }
                     } else {
@@ -383,6 +417,7 @@ public class UserActionFrame extends JFrame {
                 borrowButtonClicked = true;
                 ConfirmChoice.setEnabled(true);
                 borrowALL.setVisible(true);
+                borrowALL.setEnabled(true);
                 returnAll.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 if (flowLibrary.getListOfBooks().isEmpty()) {
@@ -391,7 +426,7 @@ public class UserActionFrame extends JFrame {
                     }
                     list.setModel(modifiedModel);
                     ConfirmChoice.setEnabled(false);
-                    borrowALL.setVisible(false);
+                    borrowALL.setEnabled(false);
                     JOptionPane.showMessageDialog(null, "No books to borrow", "Warning", JOptionPane.WARNING_MESSAGE);
                 } else {
                     for (Book books : flowLibrary.getListOfBooks()) {
