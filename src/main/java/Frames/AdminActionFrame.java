@@ -23,6 +23,7 @@ public class AdminActionFrame extends JFrame {
     JList<String> list;
     Library flowLibrary;
     UserChooseIFrame userChooseIFrame;
+    JLabel booksLabel;
 
     boolean deleteBookClicked=false;
     private JComboBox<String> categoryComboBox,SubCategoryComboBox,UserSelectionComboBox;
@@ -55,6 +56,11 @@ public class AdminActionFrame extends JFrame {
         menubar.add(Options);
         menubar.add(Program);
 
+
+        booksLabel= new JLabel(flowLibrary.getListOfBooks().size() +" books in "  + flowLibrary.getNameOfLibrary() + " library");
+        booksLabel.setBounds(350, -5, 200, 30);
+        add(booksLabel);
+        booksLabel.setForeground(Color.WHITE);
 
         AddBook = new JButton("Add a book");
         AddBook.setBounds(40, 20, 130, 35);
@@ -125,9 +131,9 @@ public class AdminActionFrame extends JFrame {
                 UserSelectionComboBox.setVisible(true);
                 if (flowLibrary.getLibraryUserDataBase().getListOfUser().size()==1) {
                     UserSelectionComboBox.setEnabled(false);
+                    UserSelectionComboBox.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));
                     JOptionPane.showMessageDialog(null,
                             "No additional users assigned to library", "Message", JOptionPane.INFORMATION_MESSAGE);
-                    UserSelectionComboBox.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));
                 } else {
                     List<String> listOfUserName = new ArrayList<>();
                     listOfUserName.add("Select");
@@ -271,6 +277,7 @@ public class AdminActionFrame extends JFrame {
 
                         String BooksAfterRemove[] = listOfBooksToIterateThrough.toArray(new String[listOfBooksToIterateThrough.size()]);
                         list.setModel(new DefaultComboBoxModel<>(BooksAfterRemove));
+                        booksLabel.setText(flowLibrary.getListOfBooks().size() + " books in "  + flowLibrary.getNameOfLibrary() + " library");
                         if(flowLibrary.getListOfBooks().isEmpty()){
                             ConfirmChoice.setEnabled(false);
                             JOptionPane.showMessageDialog(null,
