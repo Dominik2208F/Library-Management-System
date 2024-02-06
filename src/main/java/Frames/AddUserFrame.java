@@ -17,7 +17,7 @@ public class AddUserFrame extends JFrame {
     private UserChooseIFrame userChooseIFrame;
     private Library flowLibrary;
 
-    public AddUserFrame(UserChooseIFrame userChooseIFrame, Library library) {
+    public AddUserFrame(UserChooseIFrame userChooseIFrame, Library library, boolean b) {
         this.userChooseIFrame=userChooseIFrame;
         this.flowLibrary=library;
 
@@ -71,12 +71,13 @@ public class AddUserFrame extends JFrame {
         setResizable(false);
         setVisible(true);
 
-
-        ImageIcon backgroundImage = new ImageIcon("src/background1.jpg");
-        JLabel backgroundLabel = new JLabel(backgroundImage);
-        backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
-        add(backgroundLabel);
-        setLayout(null);
+        if(!b) {
+            ImageIcon backgroundImage = new ImageIcon("src/background1.jpg");
+            JLabel backgroundLabel = new JLabel(backgroundImage);
+            backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
+            add(backgroundLabel);
+            setLayout(null);
+        }
     }
 
 }

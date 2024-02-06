@@ -1,7 +1,6 @@
 package Frames;
 
 import org.example.LibraryManager.Library;
-import org.example.LibraryManager.LibraryDataBase;
 import org.example.UserManager.User;
 
 import javax.swing.*;
@@ -68,7 +67,7 @@ public class UserChooseIFrame extends JFrame {
         addUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AddUserFrame addUserFrame= new AddUserFrame(UserChooseIFrame.this,library);
+                AddUserFrame addUserFrame= new AddUserFrame(UserChooseIFrame.this,library, false);
                 addUserFrame.setVisible(true);
             }
         });

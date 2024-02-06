@@ -78,6 +78,15 @@ public class AdminActionFrame extends JFrame {
         AddUser.setBounds(40, 220, 130, 35);
         add(AddUser);
 
+        AddUser.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                UserSelectionComboBox.setVisible(false);
+                AddUserFrame addUserFrame= new AddUserFrame(userChooseIFrame,library,true);
+                addUserFrame.setVisible(true);
+            }
+        });
+
         DeleteUser = new JButton("Delete user");
         DeleteUser.setBounds(40, 260, 130, 35);
         add(DeleteUser);
