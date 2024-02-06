@@ -9,9 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="obsluga wiadomosci borrow + return">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="przycisk">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Library.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,20 +94,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00010" summary="switch case na main">
-      <created>1706614523092</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1706614523092</updated>
-    </task>
-    <task id="LOCAL-00011" summary="obsługa haseł">
-      <created>1706653514518</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1706653514518</updated>
     </task>
     <task id="LOCAL-00012" summary="program exit">
       <created>1706653929688</created>
@@ -437,7 +424,21 @@
       <option name="project" value="LOCAL" />
       <updated>1707171087737</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="menu i opcje">
+      <created>1707172574852</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1707172574852</updated>
+    </task>
+    <task id="LOCAL-00060" summary="przycisk">
+      <created>1707173811276</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1707173811276</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -452,8 +453,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="y/n user flow" />
-    <MESSAGE value="adding library by admin" />
     <MESSAGE value="naprawa indexowania listy" />
     <MESSAGE value="obsługa wyjątków update" />
     <MESSAGE value="1 export od java" />
@@ -477,7 +476,9 @@
     <MESSAGE value="sortowanie malejacy i rosnaca" />
     <MESSAGE value="sortowanie combobox" />
     <MESSAGE value="obsluga wiadomosci borrow + return" />
-    <option name="LAST_COMMIT_MESSAGE" value="obsluga wiadomosci borrow + return" />
+    <MESSAGE value="menu i opcje" />
+    <MESSAGE value="przycisk" />
+    <option name="LAST_COMMIT_MESSAGE" value="przycisk" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -505,8 +506,6 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="book.getTitle()" />
-        <watch expression="book.getTitle().equals(title)" />
         <watch expression="GetTitleOfBook(FullBookDescription)" />
         <watch expression="ascendingCheckBox.isSelected()" />
       </configuration>

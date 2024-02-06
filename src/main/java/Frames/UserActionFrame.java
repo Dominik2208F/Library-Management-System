@@ -9,10 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 
 public class UserActionFrame extends JFrame {
@@ -23,12 +20,10 @@ public class UserActionFrame extends JFrame {
     JButton ShowBookToBorrow;
     JButton BorrowAbook;
     JButton ReturnAbook;
-  //  JButton ChangeUser;
-  //  JButton ChangeLibrary;
     JButton ConfirmChoice;
     JButton showborrowedBook;
 
-    JButton showSpecificInfobook;
+    JButton filter;
     JList<String> list;
     Library flowLibrary;
     UserChooseIFrame userChooseIFrame;
@@ -36,7 +31,7 @@ public class UserActionFrame extends JFrame {
     JCheckBox descendingCheckBox;
     JLabel booksLabel;
 
-    private JComboBox<String> sortComboBox;
+    private JComboBox<String> sortComboBox,categoryComboBox,SubCategoryComboBox;
 
     private boolean borrowButtonClicked = false;
     private boolean returnButtonClicked = false;
@@ -69,6 +64,49 @@ public class UserActionFrame extends JFrame {
         sortComboBox = new JComboBox<>(new String[]{"Title", "Author", "Genre"});
         sortComboBox.setBounds(500, 160, 160, 30);
         add(sortComboBox);
+
+        categoryComboBox = new JComboBox<>(new String[]{"Author", "Genre","Select"});
+        categoryComboBox.setBounds(500,130,160,30);
+        add(categoryComboBox);
+        categoryComboBox.setSelectedItem("Select");
+
+        SubCategoryComboBox = new JComboBox<>();
+        SubCategoryComboBox.setBounds(500,165,160,30);
+        add(SubCategoryComboBox);
+        categoryComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                Map<String, List<String>> subcategoriesMap = new HashMap<>();
+
+                List<String> listOfAuthorSurnames= new ArrayList<>();
+
+                for(Book book : library.getListOfBooks()){
+                    if(!listOfAuthorSurnames.contains(book.getAuthor().getLastName())) {
+                        listOfAuthorSurnames.add(book.getAuthor().getLastName());
+                    }
+                }
+                subcategoriesMap.put("Select", Arrays.asList(" "));
+                subcategoriesMap.put("Author", listOfAuthorSurnames);
+                subcategoriesMap.put("Genre", Arrays.asList("Przygodowa", "Akcji", "ScienceFiction","Romans","Historyczne"));
+
+                String selectedCategory = (String) categoryComboBox.getSelectedItem();
+
+                List<String> subcategories = subcategoriesMap.get(selectedCategory);
+                String subcategoriesArray[] = subcategories.toArray(new String[subcategories.size()]);
+
+
+                if (subcategories != null && !selectedCategory.equals("Select")) {
+                    SubCategoryComboBox.setEnabled(true);
+                    SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
+                    SubCategoryComboBox.setVisible(true);
+                } else {
+                    SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
+                    SubCategoryComboBox.setEnabled(false);
+                }
+            }
+
+        });
 
         booksLabel= new JLabel("Books");
         booksLabel.setBounds(400, -5, 40, 30);
@@ -134,9 +172,40 @@ public class UserActionFrame extends JFrame {
         ReturnAbook.setBounds(40, 60, 130, 35);
         add(ReturnAbook);
 
-        showSpecificInfobook = new JButton("Filter books");
-        showSpecificInfobook.setBounds(40, 100, 130, 35);
-        add(showSpecificInfobook);
+        filter = new JButton("Filter books");
+        filter.setBounds(40, 100, 130, 35);
+        add(filter);
+        filter.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ascendingCheckBox.setVisible(false);
+                descendingCheckBox.setVisible(false);
+                sortComboBox.setVisible(false);
+                categoryComboBox.setVisible(true);
+                SubCategoryComboBox.setVisible(true);
+                DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+
+                if (flowLibrary.getListOfBooks().isEmpty()) {
+                    ConfirmChoice.setEnabled(false);
+                    for (Book books : flowLibrary.getListOfBooks()) {
+                        modifiedModel.addElement(books.toString());
+                    }
+                    list.setModel(modifiedModel);
+                    ConfirmChoice.setEnabled(false);
+                    SubCategoryComboBox.setEnabled(false);
+                    categoryComboBox.setEnabled(false);
+                    JOptionPane.showMessageDialog(null, "No books to filter in library", "Warning", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    ConfirmChoice.setEnabled(false);
+                    SubCategoryComboBox.setEnabled(false);
+                    for (Book books : flowLibrary.getListOfBooks()) {
+                        modifiedModel.addElement(books.toString());
+                    }
+                    list.setModel(modifiedModel);
+                }
+            }
+
+        });
 
         showborrowedBook = new JButton("Show borrowed books");
         showborrowedBook.setBounds(40, 160, 200, 35);
@@ -155,6 +224,8 @@ public class UserActionFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 ascendingCheckBox.setVisible(false);
                 descendingCheckBox.setVisible(false);
+                categoryComboBox.setVisible(false);
+                SubCategoryComboBox.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 User userFromList = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.ChoosenUserName);
 
@@ -182,6 +253,8 @@ public class UserActionFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ConfirmChoice.setEnabled(true);
+                categoryComboBox.setVisible(false);
+                SubCategoryComboBox.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 //assign User instance
 
@@ -210,6 +283,8 @@ public class UserActionFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 ascendingCheckBox.setVisible(true);
                 descendingCheckBox.setVisible(true);
+                categoryComboBox.setVisible(false);
+                SubCategoryComboBox.setVisible(false);
                 sortComboBox.setVisible(true);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
@@ -236,6 +311,8 @@ public class UserActionFrame extends JFrame {
                 ascendingCheckBox.setVisible(false);
                 descendingCheckBox.setVisible(false);
                 sortComboBox.setVisible(false);
+                categoryComboBox.setVisible(false);
+                SubCategoryComboBox.setVisible(false);
                 ConfirmChoice.setEnabled(true);
                 if (borrowButtonClicked) {
                     if (list.getSelectedIndex() != -1) {
@@ -353,6 +430,8 @@ public class UserActionFrame extends JFrame {
                 ascendingCheckBox.setVisible(false);
                 descendingCheckBox.setVisible(false);
                 sortComboBox.setVisible(false);
+                categoryComboBox.setVisible(false);
+                SubCategoryComboBox.setVisible(false);
                 borrowButtonClicked = true;
                 ConfirmChoice.setEnabled(true);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
@@ -383,21 +462,6 @@ public class UserActionFrame extends JFrame {
         descendingCheckBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /*
-                DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-                    if (descendingCheckBox.isSelected()) {
-                    List<Book> temporaryList = new ArrayList<>();
-                    temporaryList.addAll(flowLibrary.getListOfBooks());
-
-                    Collections.sort(temporaryList,Comparator.reverseOrder());
-
-                    for(Book book : temporaryList){
-                        modifiedModel.addElement(book.toString());
-                    }
-                    list.setModel(modifiedModel);
-                }
-                */
-
             }
         });
         descendingCheckBox.addItemListener(new ItemListener() {
@@ -437,8 +501,8 @@ public class UserActionFrame extends JFrame {
         ascendingCheckBox.setVisible(false);
         descendingCheckBox.setVisible(false);
         sortComboBox.setVisible(false);
-
+        categoryComboBox.setVisible(false);
+        SubCategoryComboBox.setVisible(false);
     }
-
 
 }
