@@ -23,6 +23,9 @@ public class UserActionFrame extends JFrame {
     JButton ConfirmChoice;
     JButton showborrowedBook;
 
+    JButton returnAll;
+    JButton borrowALL;
+
     JButton filter;
     JList<String> list;
     Library flowLibrary;
@@ -62,6 +65,17 @@ public class UserActionFrame extends JFrame {
         menubar.add(Options);
         menubar.add(Program);
 
+        returnAll = new JButton("Return all");
+        returnAll.setBounds(500,240,160,30);
+        add(returnAll);
+        returnAll.setVisible(false);
+
+        borrowALL = new JButton("Borrow all");
+        borrowALL.setBounds(500,240,160,30);
+        add(borrowALL);
+        borrowALL.setVisible(false);
+
+
         sortComboBox = new JComboBox<>(new String[]{"Title", "Author", "Genre"});
         sortComboBox.setBounds(500, 240, 160, 30);
         add(sortComboBox);
@@ -74,6 +88,7 @@ public class UserActionFrame extends JFrame {
         SubCategoryComboBox = new JComboBox<>();
         SubCategoryComboBox.setBounds(500,240,160,30);
         add(SubCategoryComboBox);
+
         booksLabel= new JLabel(flowLibrary.getListOfBooks().size() +" books in "  + flowLibrary.getNameOfLibrary() + " library");
         booksLabel.setBounds(350, -5, 200, 30);
         add(booksLabel);
@@ -106,6 +121,8 @@ public class UserActionFrame extends JFrame {
                 sortComboBox.setVisible(false);
                 categoryComboBox.setVisible(true);
                 SubCategoryComboBox.setVisible(true);
+                borrowALL.setVisible(false);
+                returnAll.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
                 if (flowLibrary.getListOfBooks().isEmpty()) {
@@ -150,6 +167,7 @@ public class UserActionFrame extends JFrame {
                 descendingCheckBox.setVisible(false);
                 categoryComboBox.setVisible(false);
                 SubCategoryComboBox.setVisible(false);
+                returnAll.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 User userFromList = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.ChoosenUserName);
 
@@ -179,6 +197,8 @@ public class UserActionFrame extends JFrame {
                 ConfirmChoice.setEnabled(true);
                 categoryComboBox.setVisible(false);
                 SubCategoryComboBox.setVisible(false);
+                returnAll.setVisible(true);
+                borrowALL.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 //assign User instance
 
@@ -188,6 +208,7 @@ public class UserActionFrame extends JFrame {
 
                     list.setModel(modifiedModel);
                     ConfirmChoice.setEnabled(false);
+                    returnAll.setEnabled(false);
                     JOptionPane.showMessageDialog(null, "No books to return", "Warning", JOptionPane.WARNING_MESSAGE);
                     borrowButtonClicked=false;
                 } else {
@@ -199,7 +220,6 @@ public class UserActionFrame extends JFrame {
                     borrowButtonClicked=false;
                     returnButtonClicked=true;
                 }
-
             }
         });
         ShowBookToBorrow.addActionListener(new ActionListener() {
@@ -210,6 +230,8 @@ public class UserActionFrame extends JFrame {
                 categoryComboBox.setVisible(false);
                 SubCategoryComboBox.setVisible(false);
                 sortComboBox.setVisible(true);
+                returnAll.setVisible(false);
+                borrowALL.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
                 if (flowLibrary.getListOfBooks().isEmpty()) {
@@ -360,6 +382,8 @@ public class UserActionFrame extends JFrame {
                 SubCategoryComboBox.setVisible(false);
                 borrowButtonClicked = true;
                 ConfirmChoice.setEnabled(true);
+                borrowALL.setVisible(true);
+                returnAll.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 if (flowLibrary.getListOfBooks().isEmpty()) {
                     for (Book books : flowLibrary.getListOfBooks()) {
@@ -367,6 +391,7 @@ public class UserActionFrame extends JFrame {
                     }
                     list.setModel(modifiedModel);
                     ConfirmChoice.setEnabled(false);
+                    borrowALL.setVisible(false);
                     JOptionPane.showMessageDialog(null, "No books to borrow", "Warning", JOptionPane.WARNING_MESSAGE);
                 } else {
                     for (Book books : flowLibrary.getListOfBooks()) {
