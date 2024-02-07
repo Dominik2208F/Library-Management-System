@@ -84,8 +84,8 @@ public class AddBookJFrame extends JFrame {
                             JOptionPane.showMessageDialog(null, "Invalid pages format. Type a valid number", "Error", JOptionPane.ERROR_MESSAGE);
                         }
 
-                        if(pages!=0 && year!=0) {
-                           // Tworzenie nowego obiektu książki
+                        if(pages!=0 && year!=0){
+                            
                            Author author = new Author(authorFirstName, authorLastName, authorBirthDate);
                            Genre genre = new Genre(description);
                            Book newBook = new Book(title, author, year, genre, pages);

@@ -28,6 +28,7 @@ public class AdminActionFrame extends JFrame {
     JLabel booksLabel;
 
     boolean deleteBookClicked=false;
+    boolean updateBookClicked=false;
     private JComboBox<String> categoryComboBox,SubCategoryComboBox,UserSelectionComboBox;
 
     public AdminActionFrame(UserChooseIFrame userChooseIFrame, Library library) {
@@ -254,7 +255,7 @@ public class AdminActionFrame extends JFrame {
                 categoryComboBox.setVisible(true);
                 SubCategoryComboBox.setVisible(true);
                 UserSelectionComboBox.setVisible(false);
-                ConfirmChoice.setEnabled(false);
+                ConfirmChoice.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 if (flowLibrary.getListOfBooks().isEmpty()) {
                     for (Book books : flowLibrary.getListOfBooks()) {
@@ -283,31 +284,45 @@ public class AdminActionFrame extends JFrame {
 
                         List<String> listOfBooksToIterateThrough = new ArrayList<>();
                         int selectedBookIndexToRemove = list.getSelectedIndex();
+                        int odp = JOptionPane.showConfirmDialog(null,"Do you want to remove a book: " + flowLibrary.getListOfBooks().get(selectedBookIndexToRemove).getTitle()+ " ?");
+
+                        if(odp==JOptionPane.YES_OPTION){
+
                         //Remove
                         flowLibrary.getListOfBooks().remove(selectedBookIndexToRemove);
-
                         for(Book book : flowLibrary.getListOfBooks()){
                             listOfBooksToIterateThrough.add(book.toString());
                         }
 
-                        String BooksAfterRemove[] = listOfBooksToIterateThrough.toArray(new String[listOfBooksToIterateThrough.size()]);
-                        list.setModel(new DefaultComboBoxModel<>(BooksAfterRemove));
-                        booksLabel.setText(flowLibrary.getListOfBooks().size() + " books in "  + flowLibrary.getNameOfLibrary() + " library");
+                            String BooksAfterRemove[] = listOfBooksToIterateThrough.toArray(new String[listOfBooksToIterateThrough.size()]);
+                            list.setModel(new DefaultComboBoxModel<>(BooksAfterRemove));
+                            booksLabel.setText(flowLibrary.getListOfBooks().size() + " books in "  + flowLibrary.getNameOfLibrary() + " library");
+                        }
                         if(flowLibrary.getListOfBooks().isEmpty()){
                             ConfirmChoice.setEnabled(false);
                             JOptionPane.showMessageDialog(null,
                                     "No book to delete in " + flowLibrary.getNameOfLibrary(), "Message", JOptionPane.INFORMATION_MESSAGE);
                         }
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Choose at least one book", "Error", JOptionPane.ERROR_MESSAGE);
 
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Choose at least one book", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                     }
+
+                    if (updateBookClicked) {
+                        if(list.getSelectedIndex()!=-1) {
+                            UpdateBookJFrame updateBookJFrame = new UpdateBookJFrame(library, list);
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(null, "Choose at least one book", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
                 }
             }
         });
         DeleteBook.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                updateBookClicked=false;
                 categoryComboBox.setVisible(false);
                 SubCategoryComboBox.setVisible(false);
                 UserSelectionComboBox.setVisible(false);
@@ -375,6 +390,29 @@ public class AdminActionFrame extends JFrame {
             }
         });
 
+        UpdateBook.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                deleteBookClicked=false;
+                categoryComboBox.setVisible(false);
+                SubCategoryComboBox.setVisible(false);
+                UserSelectionComboBox.setVisible(false);
+                ConfirmChoice.setVisible(true);
+
+                if (flowLibrary.getListOfBooks().isEmpty()) {
+                    ConfirmChoice.setEnabled(false);
+                    JOptionPane.showMessageDialog(null,
+                            "No book to update " + flowLibrary.getNameOfLibrary(), "Message", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    updateBookClicked=true;
+                    DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+                    for (Book books : flowLibrary.getListOfBooks()) {
+                        modifiedModel.addElement(books.toString());
+                        list.setModel(modifiedModel);
+                    }
+                }
+            }
+        });
 
         JScrollPane scrollPane = new JScrollPane(list); // Wrap the JList in a JScrollPane
         scrollPane.setBounds(180, 20, 500, 130);

@@ -66,7 +66,6 @@ public class AddUserFrame extends JFrame {
 
         setSize(300,200);
         setTitle("Add new User");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setResizable(false);
         setVisible(true);

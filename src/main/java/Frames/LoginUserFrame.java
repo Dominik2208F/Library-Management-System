@@ -38,18 +38,20 @@ public class LoginUserFrame extends JFrame {
                 String password = new String(passwordchar);
 
                 if (flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChoose.ChoosenUserName).getPassword().equalsIgnoreCase(password)) {
-                    JOptionPane.showConfirmDialog(null,"Confirm your choice");
-                    if(userChoose.ChoosenUserName.equals("Admin")){
+                    int odp = JOptionPane.showConfirmDialog(null, "Confirm your choice");
 
-                        setVisible(false);
-                        userChoose.setVisible(false);
-                         new AdminActionFrame(userChoose,library);
-                    }
-                    else{
+                    if (odp == JOptionPane.YES_OPTION) {
+                        if (userChoose.ChoosenUserName.equals("Admin")) {
 
-                        setVisible(false);
-                        userChoose.setVisible(false);
-                        new UserActionFrame(userChoose,library);
+                            setVisible(false);
+                            userChoose.setVisible(false);
+                            new AdminActionFrame(userChoose, library);
+                        } else {
+
+                            setVisible(false);
+                            userChoose.setVisible(false);
+                            new UserActionFrame(userChoose, library);
+                        }
                     }
                 }
                 else{
@@ -65,7 +67,7 @@ public class LoginUserFrame extends JFrame {
         add(Userlebel);
         setSize(300,200);
         setTitle("Log in into User");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setLayout(null);
         setResizable(false);
         setVisible(true);
