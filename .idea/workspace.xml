@@ -9,8 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="update book +">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="sprzątanie">
+      <change afterPath="$PROJECT_DIR$/src/programmer_v_02.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,13 +99,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00025" summary="nowe flow">
-      <created>1706782346753</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1706782346753</updated>
     </task>
     <task id="LOCAL-00026" summary="wyjscie do library z użytkownika">
       <created>1706782729236</created>
@@ -440,7 +436,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707300533055</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="sprzątanie">
+      <created>1707300778070</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1707300778070</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -455,7 +458,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="obsluga bledow i okienko logowania" />
     <MESSAGE value="dodawanie scrollowania po liście userów" />
     <MESSAGE value="dodany panel do usera bez akcji" />
     <MESSAGE value="wracanie do biblioteki oraz usera" />
@@ -480,7 +482,8 @@
     <MESSAGE value="delete book +" />
     <MESSAGE value="przesuniecie actionframe returnall i borrowAll, dodanie lebel Admin Action" />
     <MESSAGE value="update book +" />
-    <option name="LAST_COMMIT_MESSAGE" value="update book +" />
+    <MESSAGE value="sprzątanie" />
+    <option name="LAST_COMMIT_MESSAGE" value="sprzątanie" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

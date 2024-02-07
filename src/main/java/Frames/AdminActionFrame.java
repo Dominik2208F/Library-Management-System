@@ -63,7 +63,6 @@ public class AdminActionFrame extends JFrame {
         booksLabel= new JLabel(flowLibrary.getListOfBooks().size() +" books in "  + flowLibrary.getNameOfLibrary() + " library");
         booksLabel.setBounds(350, -5, 200, 30);
         add(booksLabel);
-        booksLabel.setForeground(Color.WHITE);
 
         AddBook = new JButton("Add a book");
         AddBook.setBounds(40, 20, 130, 35);
@@ -120,6 +119,10 @@ public class AdminActionFrame extends JFrame {
         categoryComboBox.setVisible(false);
         SubCategoryComboBox.setVisible(false);
         UserSelectionComboBox.setVisible(false);
+
+        ReturnBookOfAGivenUser.setEnabled(false);
+        BorrowedBooksOfUser.setEnabled(false);
+
 
         DeleteUser.addActionListener(new ActionListener() {
             @Override
@@ -414,14 +417,14 @@ public class AdminActionFrame extends JFrame {
         scrollPane.setBounds(180, 20, 500, 130);
         add(scrollPane);
 
-        setSize(700, 600);
+        setSize(700, 500);
         setTitle("Admin Panel logged as " + userChooseIFrame.ChoosenUserName);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setResizable(false);
         setVisible(true);
 
-        ImageIcon backgroundImage = new ImageIcon("src/admin.jpg");
+        ImageIcon backgroundImage = new ImageIcon("src/programmer_v_02.jpg");
         JLabel backgroundLabel = new JLabel(backgroundImage);
         backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
         add(backgroundLabel);
