@@ -1,6 +1,8 @@
 package Frames;
 
+import org.example.LibraryManager.Author;
 import org.example.LibraryManager.Book;
+import org.example.LibraryManager.Genre;
 import org.example.LibraryManager.Library;
 import org.example.UserManager.User;
 
@@ -66,6 +68,19 @@ public class AdminActionFrame extends JFrame {
         AddBook.setBounds(40, 20, 130, 35);
         add(AddBook);
 
+        AddBook.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultListModel<String> updatedModel = new DefaultListModel<>();
+                for (Book books : flowLibrary.getListOfBooks()) {
+                    updatedModel.addElement(books.toString());
+                }
+                SubCategoryComboBox.setEnabled(true);
+                categoryComboBox.setEnabled(true);
+                list.setModel(updatedModel);
+               AddBookJFrame addBookJFrame = new AddBookJFrame(flowLibrary,list);
+            }
+        });
 
         ReturnInfoAllBooks = new JButton("Get all Books");
         ReturnInfoAllBooks.setBounds(40, 60, 130, 35);

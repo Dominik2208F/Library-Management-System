@@ -4,11 +4,11 @@ public class Book implements Comparable<Book> {
 
     private String title;
     private Author author;
-    private String dateOfProduction;
+    private int dateOfProduction;
     private Genre genre;
     private int amountOfPage;
 
-    public Book(String title, Author author, String yearOfProduction, Genre genre, int amountOfPage) {
+    public Book(String title, Author author, int yearOfProduction, Genre genre, int amountOfPage) {
         this.title = title;
         this.author = author;
         this.dateOfProduction = yearOfProduction;
@@ -24,7 +24,7 @@ public class Book implements Comparable<Book> {
         return author;
     }
 
-    public String getDateOfProduction() {
+    public int getDateOfProduction() {
         return dateOfProduction;
     }
 
@@ -53,7 +53,7 @@ public class Book implements Comparable<Book> {
         this.author = author;
     }
 
-    public void setDateOfProduction(String dateOfProduction) {
+    public void setDateOfProduction(int dateOfProduction) {
         this.dateOfProduction = dateOfProduction;
     }
 

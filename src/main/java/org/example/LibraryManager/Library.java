@@ -80,7 +80,7 @@ public class Library {
         System.out.println("Podaj nazwisko autora:");
         String authorSurname = scanner.nextLine();
         System.out.println("Podaj date urodzenia autora:");
-        String dateOfBirthday = scanner.nextLine();
+        int dateOfBirthday = Integer.parseInt(scanner.nextLine());
         System.out.println("Podaj gatunek książki:");
         String genreName = scanner.next();
         System.out.println("Podaj ilość stron:");
@@ -95,58 +95,58 @@ public class Library {
                 scanner.nextLine();
             }
         }
-        Author author = new Author(authorName, authorSurname, dateOfBirthday);
+     //   Author author = new Author(authorName, authorSurname, dateOfBirthday);
         Genre genre = new Genre(genreName);
-        Book book = new Book(title, author, dateOfBirthday, genre, amountOfPage);
+      //  Book book = new Book(title, author, dateOfBirthday, genre, amountOfPage);
 
-        listOfBooks.add(book);
-        System.out.println("Book with title " + book.getTitle() + " has been added");
+     //   listOfBooks.add(book);
+      //  System.out.println("Book with title " + book.getTitle() + " has been added");
         returnSizeOfLibrary();
     }
 
     public void addDefaultBookswarszawskaToLibrary() {
         listOfBooks.add(new Book("Alicja w Krainie Mugoli",
                 new Author("Leonidas", "Staff", "12-12-1960")
-                , "1998", new Genre("Przygodowa"), 250));
+                , 1998, new Genre("Przygodowa"), 250));
 
         listOfBooks.add(new Book("Misiek koralgol",
                 new Author("Adam", "Wielkopolski", "11-12-1960")
-                , "1998", new Genre("Akcji"), 154));
+                , 1998, new Genre("Akcji"), 154));
 
         listOfBooks.add(new Book("Przygody Van Goka",
                 new Author("Piotr", "Adamczyk", "11-12-1960")
-                , "1998", new Genre("ScienceFiction"), 154));
+                , 1998, new Genre("ScienceFiction"), 154));
 
         listOfBooks.add(new Book("Krolewna z zamku",
                 new Author("Beata", "Bodnar", "11-12-1960")
-                , "1998", new Genre("Romans"), 154));
+                , 1998, new Genre("Romans"), 154));
 
     }
 
     public void addDefaultBooksToPruszkowskaLibrary() {
         listOfBooks.add(new Book("Kot w butach",
                 new Author("Wincent", "Staff", "12-12-1960")
-                , "1943", new Genre("Akcji"), 12));
+                , 1943, new Genre("Akcji"), 12));
 
         listOfBooks.add(new Book("Przygody Kundla",
                 new Author("Angel", "Hrabio", "11-12-1960")
-                , "1965", new Genre("Dramat"), 122));
+                , 1965, new Genre("Dramat"), 122));
 
         listOfBooks.add(new Book("Historia Sfinksa",
                 new Author("Angel", "Hrabio", "11-12-1960")
-                , "1965", new Genre("Historyczne"), 122));
+                , 1965, new Genre("Historyczne"), 122));
 
         listOfBooks.add(new Book("Finansowy spokoj",
                 new Author("Anna", "Danienko", "11-12-1960")
-                , "1998", new Genre("Finansowe"), 154));
+                , 1998, new Genre("Finansowe"), 154));
         listOfBooks.add(new Book("Duchowy spokoj",
 
                 new Author("Anna", "Danienko", "11-12-1960")
-                , "1998", new Genre("Akcji"), 154));
+                , 1998, new Genre("Akcji"), 154));
 
         listOfBooks.add(new Book("Relaks Akademicki",
                 new Author("Ewa", "Cylian", "11-12-1960")
-                , "1998", new Genre("Akademickie"), 154));
+                , 1998, new Genre("Akademickie"), 154));
 
     }
 
@@ -320,7 +320,7 @@ public class Library {
                         break;
                     case "Production date":
                         System.out.println("Set date of production");
-                        String datOfProduction = scanner.nextLine();
+                        int datOfProduction = Integer.parseInt(scanner.nextLine());
                         listOfBooks.get(index).setDateOfProduction(datOfProduction);
                         break;
                     case "Genre":
