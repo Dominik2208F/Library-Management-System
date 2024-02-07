@@ -69,30 +69,12 @@ public class AdminActionFrame extends JFrame {
         AddBook.setBounds(40, 20, 130, 35);
         add(AddBook);
 
-        AddBook.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                DefaultListModel<String> updatedModel = new DefaultListModel<>();
-                for (Book books : flowLibrary.getListOfBooks()) {
-                    updatedModel.addElement(books.toString());
-                }
-                SubCategoryComboBox.setEnabled(true);
-                categoryComboBox.setEnabled(true);
-                list.setModel(updatedModel);
-               AddBookJFrame addBookJFrame = new AddBookJFrame(flowLibrary,list);
-            }
-        });
-
         ReturnInfoAllBooks = new JButton("Get all Books");
         ReturnInfoAllBooks.setBounds(40, 60, 130, 35);
         add(ReturnInfoAllBooks);
 
-        ReturnInfoOfBook = new JButton("Get book info");
-        ReturnInfoOfBook.setBounds(40, 100, 130, 35);
-        add(ReturnInfoOfBook);
-
         DeleteBook = new JButton("Delete book");
-        DeleteBook.setBounds(40, 140, 130, 35);
+        DeleteBook.setBounds(40, 100, 130, 35);
         add(DeleteBook);
 
         ConfirmChoice= new JButton("Confirm Choice");
@@ -101,24 +83,24 @@ public class AdminActionFrame extends JFrame {
         ConfirmChoice.setVisible(false);
 
         UpdateBook = new JButton("Update book");
-        UpdateBook.setBounds(40, 180, 130, 35);
+        UpdateBook.setBounds(40, 140, 130, 35);
         add(UpdateBook);
 
         AddUser = new JButton("Add user");
-        AddUser.setBounds(40, 220, 130, 35);
+        AddUser.setBounds(40, 180, 130, 35);
         add(AddUser);
 
         DeleteUser = new JButton("Delete user");
-        DeleteUser.setBounds(40, 260, 130, 35);
+        DeleteUser.setBounds(40, 220, 130, 35);
         add(DeleteUser);
 
 
         ReturnBookOfAGivenUser = new JButton("Return book of a given user");
-        ReturnBookOfAGivenUser.setBounds(40, 300, 200, 35);
+        ReturnBookOfAGivenUser.setBounds(40, 260, 200, 35);
         add(ReturnBookOfAGivenUser);
 
         BorrowedBooksOfUser = new JButton("User borrowed books");
-        BorrowedBooksOfUser.setBounds(40, 340, 200, 35);
+        BorrowedBooksOfUser.setBounds(40, 300, 200, 35);
         add(BorrowedBooksOfUser);
 
         categoryComboBox = new JComboBox<>(new String[]{"Author", "Genre","Select"});
@@ -411,6 +393,20 @@ public class AdminActionFrame extends JFrame {
                         list.setModel(modifiedModel);
                     }
                 }
+            }
+        });
+
+        AddBook.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultListModel<String> updatedModel = new DefaultListModel<>();
+                for (Book books : flowLibrary.getListOfBooks()) {
+                    updatedModel.addElement(books.toString());
+                }
+                SubCategoryComboBox.setEnabled(true);
+                categoryComboBox.setEnabled(true);
+                list.setModel(updatedModel);
+                AddBookJFrame addBookJFrame = new AddBookJFrame(flowLibrary,list);
             }
         });
 

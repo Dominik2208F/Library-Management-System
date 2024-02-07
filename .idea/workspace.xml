@@ -9,13 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="przesuniecie actionframe returnall i borrowAll, dodanie lebel Admin Action">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Frames/UpdateBookJFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" afterDir="false" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="update book +">
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,13 +96,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00024" summary="nowe flow">
-      <created>1706743544373</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1706743544373</updated>
     </task>
     <task id="LOCAL-00025" summary="nowe flow">
       <created>1706782346753</created>
@@ -445,7 +433,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707258729957</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="update book +">
+      <created>1707300533054</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1707300533055</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -460,7 +455,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="rozdzielone 3 ramki" />
     <MESSAGE value="obsluga bledow i okienko logowania" />
     <MESSAGE value="dodawanie scrollowania po liście userów" />
     <MESSAGE value="dodany panel do usera bez akcji" />
@@ -485,7 +479,8 @@
     <MESSAGE value="add user functionallity" />
     <MESSAGE value="delete book +" />
     <MESSAGE value="przesuniecie actionframe returnall i borrowAll, dodanie lebel Admin Action" />
-    <option name="LAST_COMMIT_MESSAGE" value="przesuniecie actionframe returnall i borrowAll, dodanie lebel Admin Action" />
+    <MESSAGE value="update book +" />
+    <option name="LAST_COMMIT_MESSAGE" value="update book +" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
