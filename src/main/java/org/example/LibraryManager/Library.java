@@ -121,6 +121,22 @@ public class Library {
                 new Author("Beata", "Bodnar", "11-12-1960")
                 , 1998, new Genre("Romans"), 154));
 
+        listOfBooks.add(new Book("Władca pierścieni: Drużyna Pierścienia",
+                new Author("J.R.R.", "Tolkien", "03-01-1892")
+                , 1954, new Genre("Akcji"), 455));
+
+        listOfBooks.add(new Book("Harry Potter i Kamień Filozoficzny",
+                new Author("J.K.", "Rowling", "31-07-1965")
+                , 1997, new Genre("Akcji"), 320));
+
+        listOfBooks.add(new Book("Zbrodnia i Kara",
+                new Author("Fiodor", "Dostojewski", "11-11-1821")
+                , 1866, new Genre("Klasyczna Literatura Rosyjska"), 672));
+
+        listOfBooks.add(new Book("W pustyni i w puszczy",
+                new Author("Henryk", "Sienkiewicz", "05-05-1846")
+                , 1911, new Genre("Przygodowa"), 420));
+
     }
 
     public void addDefaultBooksToPruszkowskaLibrary() {
