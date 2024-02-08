@@ -80,6 +80,7 @@ public class AdminActionFrame extends JFrame {
         ConfirmChoice.setBounds(500, 180, 130, 35);
         add(ConfirmChoice);
         ConfirmChoice.setVisible(false);
+        ConfirmChoice.setBackground(Color.ORANGE);
 
         UpdateBook = new JButton("Update book");
         UpdateBook.setBounds(40, 140, 130, 35);

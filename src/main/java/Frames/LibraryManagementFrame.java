@@ -52,7 +52,7 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
         setLayout(null);
         setResizable(false);
         setVisible(true);
-
+        setTitle("Select library");
 
         ImageIcon backgroundImage = new ImageIcon("src/background1.jpg");
         JLabel backgroundLabel = new JLabel(backgroundImage);
