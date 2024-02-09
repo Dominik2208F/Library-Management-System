@@ -29,6 +29,9 @@ public class AdminActionFrame extends JFrame {
 
     boolean deleteBookClicked=false;
     boolean updateBookClicked=false;
+
+    private boolean informationUpdate= true;
+    private boolean informationDelete=true;
     private JComboBox<String> categoryComboBox,SubCategoryComboBox,UserSelectionComboBox;
 
     public AdminActionFrame(UserChooseIFrame userChooseIFrame, Library library) {
@@ -320,8 +323,11 @@ public class AdminActionFrame extends JFrame {
                     JOptionPane.showMessageDialog(null,
                             "No book to delete in " + flowLibrary.getNameOfLibrary(), "Message", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(null,
-                            "Choose at least one book from list and click confirm", "Message", JOptionPane.INFORMATION_MESSAGE);
+                    if(informationDelete) {
+                        JOptionPane.showMessageDialog(null,
+                                "Choose at least one book from list and click confirm", "Message", JOptionPane.INFORMATION_MESSAGE);
+                        informationDelete = false;
+                    }
                     ConfirmChoice.setEnabled(true);
                     deleteBookClicked=true;
                     DefaultListModel<String> modifiedModel = new DefaultListModel<>();
@@ -396,8 +402,11 @@ public class AdminActionFrame extends JFrame {
                             "No book to update " + flowLibrary.getNameOfLibrary(), "Message", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     updateBookClicked=true;
-                    JOptionPane.showMessageDialog(null,
-                            "Choose at least one book from list and click confirm", "Message", JOptionPane.INFORMATION_MESSAGE);
+                  if(informationUpdate) {
+                      JOptionPane.showMessageDialog(null,
+                              "Choose at least one book from list and click confirm", "Message", JOptionPane.INFORMATION_MESSAGE);
+                      informationUpdate = false;
+                  }
                     DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                     for (Book books : flowLibrary.getListOfBooks()) {
                         modifiedModel.addElement(books.toString());
