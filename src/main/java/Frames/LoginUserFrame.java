@@ -27,7 +27,7 @@ public class LoginUserFrame extends JFrame {
         passwordField = new JPasswordField();
         LoginButton = new JButton("Log in");
         passwordLabel = new JLabel("Password:");
-        Userlebel = new JLabel("Your account is " + userChooseIFrame.ChoosenUserName);
+        Userlebel = new JLabel("Your account is " + userChooseIFrame.getChoosenUserName());
         passwordLabel.setBounds(30, 40, 100, 30);
         passwordField.setBounds(100, 50, 150, 20);
         LoginButton.setBounds(130, 90, 80, 30);
@@ -90,11 +90,11 @@ public class LoginUserFrame extends JFrame {
         char[] passwordchar = passwordField.getPassword();
         String password = new String(passwordchar);
 
-        if (flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChoose.ChoosenUserName).getPassword().equalsIgnoreCase(password)) {
+        if (flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChoose.getChoosenUserName()).getPassword().equalsIgnoreCase(password)) {
             int odp = JOptionPane.showConfirmDialog(null, "Confirm your choice");
 
             if (odp == JOptionPane.YES_OPTION) {
-                if (userChoose.ChoosenUserName.equals("Admin")) {
+                if (userChoose.getChoosenUserName().equals("Admin")) {
 
                     setVisible(false);
                     userChoose.setVisible(false);

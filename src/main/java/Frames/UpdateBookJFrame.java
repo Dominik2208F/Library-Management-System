@@ -1,6 +1,5 @@
 package Frames;
 
-import org.example.LibraryManager.Author;
 import org.example.LibraryManager.Book;
 import org.example.LibraryManager.Genre;
 import org.example.LibraryManager.Library;
@@ -13,16 +12,16 @@ import java.awt.event.KeyListener;
 import java.util.regex.Pattern;
 
 public class UpdateBookJFrame extends JFrame {
-    Library library;
-    JList list;
-    CalendarIFrame calendar;
+    private Library library;
+    private JList list;
+    private CalendarIFrame calendar;
     public JTextField authorBirthDateField = new JTextField();
-    JTextField titleField = new JTextField();
-    JTextField authorFirstNameField = new JTextField();
-    JTextField authorLastNameField = new JTextField();
-    JTextField yearField = new JTextField();
-    JComboBox<String> genreComboBox = new JComboBox<>(new String[]{"Przygodowa", "Akcji", "ScienceFiction", "Romans", "Historyczne", "Akademickie", "Finansowe", "Dramat"});
-    JTextField pagesField = new JTextField();
+    private JTextField titleField = new JTextField();
+    private JTextField authorFirstNameField = new JTextField();
+    private JTextField authorLastNameField = new JTextField();
+    private JTextField yearField = new JTextField();
+    private JComboBox<String> genreComboBox = new JComboBox<>(new String[]{"Przygodowa", "Akcji", "ScienceFiction", "Romans", "Historyczne", "Akademickie", "Finansowe", "Dramat"});
+    private JTextField pagesField = new JTextField();
 
     public UpdateBookJFrame(Library library, JList list) {
 

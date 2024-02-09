@@ -12,10 +12,10 @@ import java.util.Date;
 public class CalendarIFrame extends JFrame {
 
 
-    AddBookJFrame addBookJFrameF;
-    UpdateBookJFrame updateBookJFrame;
-    JDialog dialog = new JDialog((Frame) null, "Select Date", true);
-    JButton selectButton = new JButton("Select");
+    private AddBookJFrame addBookJFrameF;
+    private UpdateBookJFrame updateBookJFrame;
+    private JDialog dialog = new JDialog((Frame) null, "Select Date", true);
+    private JButton selectButton = new JButton("Select");
 
     CalendarIFrame(JButton button, AddBookJFrame addBookJFrame) {
         this.addBookJFrameF = addBookJFrame;

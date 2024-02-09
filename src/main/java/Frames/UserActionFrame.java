@@ -161,7 +161,7 @@ public class UserActionFrame extends JFrame {
                 ConfirmChoice.setVisible(false);
                 list.setEnabled(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-                User userFromList = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.ChoosenUserName);
+                User userFromList = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.getChoosenUserName());
 
                 if (!userFromList.getUserbooks().isEmpty()) {
 
@@ -194,9 +194,9 @@ public class UserActionFrame extends JFrame {
                 borrowALL.setVisible(false);
                 ConfirmChoice.setVisible(true);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-                //assign User instance
 
-                User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.ChoosenUserName);
+
+                User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.getChoosenUserName());
 
                 if (user.getUserbooks().isEmpty()) {
 
@@ -264,16 +264,12 @@ public class UserActionFrame extends JFrame {
 
                         DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                         int selectedBookIndex = list.getSelectedIndex();
-                        int odp = JOptionPane.showConfirmDialog(null, "Do you want borrow a book: " + flowLibrary.getListOfBooks().get(selectedBookIndex).getTitle() + " ?");
-                        //assign User instance
-                        User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.ChoosenUserName);
 
-                        //Assign book to user;
-
+                        User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.getChoosenUserName());
 
                         String titleOfBookToAssignToUser = flowLibrary.getListOfBooks().get(selectedBookIndex).getTitle();
 
-                        //Assign book to user;
+
                         Book bookborrowed = null;
                         for (Book book : flowLibrary.getListOfBooks()) {
                             if (book.getTitle().equals(titleOfBookToAssignToUser)) {
@@ -282,11 +278,11 @@ public class UserActionFrame extends JFrame {
                             }
                         }
 
-                        //Remove book from list
-                        flowLibrary.getListOfBooks().remove(selectedBookIndex);
-                        //
 
-                        //refresh list of JList
+                        flowLibrary.getListOfBooks().remove(selectedBookIndex);
+
+
+
                         for (Book books : flowLibrary.getListOfBooks()) {
                             modifiedModel.addElement(books.toString());
                         }
@@ -309,10 +305,10 @@ public class UserActionFrame extends JFrame {
                         DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                         int selectedBookIndexUserList = list.getSelectedIndex();
 
-                        //assign User instance
-                        User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.ChoosenUserName);
 
-                        //Assign book to user;
+                        User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.getChoosenUserName());
+
+
 
 
                         String titleOfBookToUnassingFromUser = user.getUserbooks().get(selectedBookIndexUserList).getTitle();
@@ -357,7 +353,7 @@ public class UserActionFrame extends JFrame {
                 ascendingCheckBox.setVisible(false);
                 descendingCheckBox.setVisible(false);
                 sortComboBox.setVisible(false);
-                new UserChooseIFrame(userChooseIFrame.flowLibrary, userChooseIFrame.libraryManagementFrame);
+                new UserChooseIFrame(userChooseIFrame.getFlowLibrary(), userChooseIFrame.getLibraryManagementFrame());
                 setVisible(false);
             }
         });
@@ -367,7 +363,7 @@ public class UserActionFrame extends JFrame {
                 ascendingCheckBox.setVisible(false);
                 descendingCheckBox.setVisible(false);
                 sortComboBox.setVisible(false);
-                new LibraryManagementFrame(userChooseIFrame.libraryManagementFrame.libraryDataBase);
+                new LibraryManagementFrame(userChooseIFrame.getLibraryManagementFrame().getLibraryDataBase());
                 setVisible(false);
             }
         });
@@ -515,12 +511,12 @@ public class UserActionFrame extends JFrame {
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 List<Book> temporaryList = new ArrayList<>();
 
-                // Kopiuj listę książek do tymczasowej listy
+
                 temporaryList.addAll(flowLibrary.getListOfBooks());
                 Comparator<Book> comparator = null;
                 String selectedSortOption = (String) sortComboBox.getSelectedItem();
 
-                // implementacje IComparable w klasach
+
                 if ("Title".equals(selectedSortOption)) {
                     comparator = Comparator.comparing(Book::getTitle);
                 } else if ("Author".equals(selectedSortOption)) {
@@ -592,19 +588,19 @@ public class UserActionFrame extends JFrame {
 
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
-                //assign User instance
-                User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.ChoosenUserName);
 
-                //Assign book to user;
+                User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.getChoosenUserName());
+
+
 
                 for (Book book : flowLibrary.getListOfBooks()) {
                     user.assignBookToUser(book);
                 }
 
-                //Remove all books from library
+
                 flowLibrary.getListOfBooks().clear();
 
-                //refresh list of JList
+
                 for (Book books : flowLibrary.getListOfBooks()) {
                     modifiedModel.addElement(books.toString());
                 }
@@ -624,10 +620,10 @@ public class UserActionFrame extends JFrame {
 
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
-                //assign User instance
-                User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.ChoosenUserName);
 
-                //Assign book to user;
+                User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.getChoosenUserName());
+
+
 
 
                 List<Book> userBooksCopy = new ArrayList<>(user.getUserbooks());
@@ -654,13 +650,13 @@ public class UserActionFrame extends JFrame {
             }
         });
 
-        JScrollPane scrollPane = new JScrollPane(list); // Wrap the JList in a JScrollPane
+        JScrollPane scrollPane = new JScrollPane(list);
         scrollPane.setBounds(180, 20, 500, 150);
         add(scrollPane);
 
 
         setSize(700, 400);
-        setTitle("User Action Panel logged as " + userChooseIFrame.ChoosenUserName);
+        setTitle("User Action Panel logged as " + userChooseIFrame.getChoosenUserName());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setResizable(false);

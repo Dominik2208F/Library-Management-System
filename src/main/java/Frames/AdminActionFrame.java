@@ -18,14 +18,14 @@ import java.util.List;
 
 public class AdminActionFrame extends JFrame {
 
-    JMenuBar menubar;
-    JMenu Options,Program;
-    JMenuItem changeUser, changeLibrary,programInfo;
-    JButton AddBook,ReturnInfoAllBooks,ReturnInfoOfBook,DeleteBook,UpdateBook,AddUser,DeleteUser,ReturnBookOfAGivenUser,BorrowedBooksOfUser,ConfirmChoice;
-    JList<String> list;
-    Library flowLibrary;
-    UserChooseIFrame userChooseIFrame;
-    JLabel booksLabel;
+    private JMenuBar menubar;
+    private JMenu Options,Program;
+    private JMenuItem changeUser, changeLibrary,programInfo;
+    private JButton AddBook,ReturnInfoAllBooks,ReturnInfoOfBook,DeleteBook,UpdateBook,AddUser,DeleteUser,ReturnBookOfAGivenUser,BorrowedBooksOfUser,ConfirmChoice;
+    private JList<String> list;
+    private Library flowLibrary;
+    private UserChooseIFrame userChooseIFrame;
+    private JLabel booksLabel;
 
     boolean deleteBookClicked=false;
     boolean updateBookClicked=false;
@@ -148,6 +148,7 @@ public class AdminActionFrame extends JFrame {
                 categoryComboBox.setVisible(false);
                 SubCategoryComboBox.setVisible(false);
                 UserSelectionComboBox.setVisible(true);
+                UserSelectionComboBox.setEnabled(true);
                 ConfirmChoice.setVisible(false);
                 if (flowLibrary.getLibraryUserDataBase().getListOfUser().size()==1) {
                     UserSelectionComboBox.setEnabled(false);
@@ -242,14 +243,14 @@ public class AdminActionFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                new UserChooseIFrame(userChooseIFrame.flowLibrary, userChooseIFrame.libraryManagementFrame);
+                new UserChooseIFrame(userChooseIFrame.getFlowLibrary(), userChooseIFrame.getLibraryManagementFrame());
                 setVisible(false);
             }
         });
         changeLibrary.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new LibraryManagementFrame(userChooseIFrame.libraryManagementFrame.libraryDataBase);
+                new LibraryManagementFrame(userChooseIFrame.getLibraryManagementFrame().getLibraryDataBase());
                 setVisible(false);
             }
         });
@@ -452,12 +453,12 @@ public class AdminActionFrame extends JFrame {
             }
         });
 
-        JScrollPane scrollPane = new JScrollPane(list); // Wrap the JList in a JScrollPane
+        JScrollPane scrollPane = new JScrollPane(list);
         scrollPane.setBounds(180, 20, 500, 130);
         add(scrollPane);
 
         setSize(700, 500);
-        setTitle("Admin Panel logged as " + userChooseIFrame.ChoosenUserName);
+        setTitle("Admin Panel logged as " + userChooseIFrame.getChoosenUserName());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setResizable(false);

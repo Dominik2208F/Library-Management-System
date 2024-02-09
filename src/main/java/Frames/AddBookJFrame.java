@@ -15,16 +15,16 @@ import java.util.regex.Pattern;
 
 public class AddBookJFrame extends JFrame {
 
-    Library flowLibrary;
+    private Library flowLibrary;
     public JList fromPanelAbove;
-    CalendarIFrame calendar;
-    JTextField titleField = new JTextField();
-    JTextField authorFirstNameField = new JTextField();
-    JTextField authorLastNameField = new JTextField();
+    private CalendarIFrame calendar;
+    private JTextField titleField = new JTextField();
+    private JTextField authorFirstNameField = new JTextField();
+    private JTextField authorLastNameField = new JTextField();
     public JTextField authorBirthDateField = new JTextField();
-    JTextField yearField = new JTextField();
-    JTextField pagesField = new JTextField();
-    JComboBox<String> genreComboBox = new JComboBox<>(new String[]{"Przygodowa", "Akcji", "ScienceFiction", "Romans", "Historyczne", "Akademickie", "Finansowe", "Dramat"});
+    private JTextField yearField = new JTextField();
+    private JTextField pagesField = new JTextField();
+    private JComboBox<String> genreComboBox = new JComboBox<>(new String[]{"Przygodowa", "Akcji", "ScienceFiction", "Romans", "Historyczne", "Akademickie", "Finansowe", "Dramat"});
 
     public AddBookJFrame(Library flowLibrary, JList<String> list) {
 

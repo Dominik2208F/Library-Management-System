@@ -10,14 +10,27 @@ import java.awt.event.ActionListener;
 
 public class UserChooseIFrame extends JFrame {
 
-    JLabel availableUser;
-    JLabel selectedUser;
-    JButton confirmUser;
-    JButton addUser;
-    JList<String> list;
-    String ChoosenUserName;
-    Library flowLibrary;
-    LibraryManagementFrame libraryManagementFrame;
+    private JLabel availableUser;
+    private JLabel selectedUser;
+    private JButton confirmUser;
+    private JButton addUser;
+    private JList<String> list;
+
+    public String getChoosenUserName() {
+        return ChoosenUserName;
+    }
+
+    public Library getFlowLibrary() {
+        return flowLibrary;
+    }
+
+    public LibraryManagementFrame getLibraryManagementFrame() {
+        return libraryManagementFrame;
+    }
+
+    private String ChoosenUserName;
+    private Library flowLibrary;
+    private LibraryManagementFrame libraryManagementFrame;
 
     public UserChooseIFrame(Library library, LibraryManagementFrame libraryManagementFrame) {
         this.flowLibrary = library;
