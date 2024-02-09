@@ -14,21 +14,23 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
     JLabel label;
     JLabel selectedLibrary;
     JButton buttonConfirm;
-    JList<String> list;
+    JComboBox<String> comboBox; // Zmiana na JComboBox
     LibraryDataBase libraryDataBase;
     Library flowLibrary;
     public LibraryManagementFrame(LibraryDataBase libraryDataBase){
 
         this.libraryDataBase=libraryDataBase;
 
-        DefaultListModel<String> libraryListPanel = new DefaultListModel<>();
+       // DefaultListModel<String> libraryListPanel = new DefaultListModel<>();
+        DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>(); // Model dla JComboBox
 
         for(Library Singlelibrary : libraryDataBase.getListOfLibrary()){
-            libraryListPanel.addElement(Singlelibrary.getNameOfLibrary());
+            comboBoxModel.addElement(Singlelibrary.getNameOfLibrary());
         }
 
-        list = new JList<>(libraryListPanel);
-        list.setBounds(70,50, 100,40);
+        comboBox = new JComboBox<>(comboBoxModel); // Tworzenie JComboBox z modelem
+
+        comboBox.setBounds(70,50, 100,40);
         //
         label = new JLabel("Select library");
         label.setBounds(79,10, 125,40);
@@ -42,7 +44,7 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
 
         buttonConfirm.addActionListener(this);
 
-        add(list);
+        add(comboBox);
         add(label);
         add(buttonConfirm);
         //
@@ -54,6 +56,8 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
         setVisible(true);
         setTitle("Select library");
 
+
+
         ImageIcon backgroundImage = new ImageIcon("src/background1.jpg");
         JLabel backgroundLabel = new JLabel(backgroundImage);
         backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
@@ -63,17 +67,16 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
     }
 
     public void IfButtonClicked(){
-        if(list.isSelectionEmpty()){
+        String selectedLibraryText = (String) comboBox.getSelectedItem();
+        if(selectedLibraryText == null || selectedLibraryText.isEmpty()){
         JOptionPane.showMessageDialog(LibraryManagementFrame.this,"You have to choose at least 1 library","Error",JOptionPane.ERROR_MESSAGE);
         }
         else {
-            String selectedLibraryText = list.getSelectedValue();
             selectedLibrary.setText("Selected library is " + selectedLibraryText);
 
             for (Library librarySpec : libraryDataBase.getListOfLibrary()) {
                 if (librarySpec.getNameOfLibrary().equalsIgnoreCase(selectedLibraryText)) {
                     flowLibrary = librarySpec;
-
                 }
             }
             UserChooseIFrame userChooseIFrame = new UserChooseIFrame(flowLibrary,LibraryManagementFrame.this);  // przekazujesz klase IFrame z zainicjowanym obiektem UserDataBase
