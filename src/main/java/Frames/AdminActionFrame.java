@@ -130,13 +130,7 @@ public class AdminActionFrame extends JFrame {
         UserSelectionComboBox.setBounds(500,180,160,30);
         add(UserSelectionComboBox);
 
-        categoryComboBox.setVisible(false);
-        SubCategoryComboBox.setVisible(false);
-        UserSelectionComboBox.setVisible(false);
-
-        ReturnBookOfAGivenUser.setEnabled(false);
-        BorrowedBooksOfUser.setEnabled(false);
-
+        setDefaultVariableSetUP();
 
         DeleteUser.addActionListener(new ActionListener() {
             @Override
@@ -258,21 +252,17 @@ public class AdminActionFrame extends JFrame {
                 ConfirmChoice.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 if (flowLibrary.getListOfBooks().isEmpty()) {
-                    for (Book books : flowLibrary.getListOfBooks()) {
-                        modifiedModel.addElement(books.toString());
-                    }
+                    fillListWithObject(modifiedModel);
                     list.setModel(modifiedModel);
                     SubCategoryComboBox.setEnabled(false);
                     categoryComboBox.setEnabled(false);
                     JOptionPane.showMessageDialog(null, "No books in library", "Warning", JOptionPane.WARNING_MESSAGE);
                 } else {
-                    for (Book books : flowLibrary.getListOfBooks()) {
-                        modifiedModel.addElement(books.toString());
-                    }
-                    SubCategoryComboBox.setEnabled(true);
-                    categoryComboBox.setEnabled(true);
+                    fillListWithObject(modifiedModel);
                     list.setModel(modifiedModel);
                     list.setEnabled(false);
+                    SubCategoryComboBox.setEnabled(true);
+                    categoryComboBox.setEnabled(true);
                 }
             }
         });
@@ -289,7 +279,6 @@ public class AdminActionFrame extends JFrame {
 
                         if(odp==JOptionPane.YES_OPTION){
 
-                        //Remove
                         flowLibrary.getListOfBooks().remove(selectedBookIndexToRemove);
                         for(Book book : flowLibrary.getListOfBooks()){
                             listOfBooksToIterateThrough.add(book.toString());
@@ -324,11 +313,7 @@ public class AdminActionFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 updateBookClicked=false;
-                categoryComboBox.setVisible(false);
-                SubCategoryComboBox.setVisible(false);
-                UserSelectionComboBox.setVisible(false);
-                ConfirmChoice.setVisible(true);
-                list.setEnabled(true);
+                setVariables();
 
                 if (flowLibrary.getListOfBooks().isEmpty()) {
                     ConfirmChoice.setEnabled(false);
@@ -343,12 +328,9 @@ public class AdminActionFrame extends JFrame {
                     ConfirmChoice.setEnabled(true);
                     deleteBookClicked=true;
                     DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-                    for (Book books : flowLibrary.getListOfBooks()) {
-                        modifiedModel.addElement(books.toString());
-                    }
+                    fillListWithObject(modifiedModel);
                     SubCategoryComboBox.setEnabled(true);
                     categoryComboBox.setEnabled(true);
-                    list.setModel(modifiedModel);
 
                 }
             }
@@ -394,19 +376,14 @@ public class AdminActionFrame extends JFrame {
                 list.setEnabled(false);
                 UserSelectionComboBox.setVisible(false);
                 ConfirmChoice.setVisible(false);
-                AddUserFrame addUserFrame= new AddUserFrame(userChooseIFrame,library,true);
-                addUserFrame.setVisible(true);
+                new AddUserFrame(userChooseIFrame,library,true);
             }
         });
         UpdateBook.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 deleteBookClicked=false;
-                list.setEnabled(true);
-                categoryComboBox.setVisible(false);
-                SubCategoryComboBox.setVisible(false);
-                UserSelectionComboBox.setVisible(false);
-                ConfirmChoice.setVisible(true);
+                setVariables();
 
                 if (flowLibrary.getListOfBooks().isEmpty()) {
                     ConfirmChoice.setEnabled(false);
@@ -420,25 +397,19 @@ public class AdminActionFrame extends JFrame {
                       informationUpdate = false;
                   }
                     DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-                    for (Book books : flowLibrary.getListOfBooks()) {
-                        modifiedModel.addElement(books.toString());
-                        list.setModel(modifiedModel);
+                    fillListWithObject(modifiedModel);
                     }
                 }
-            }
         });
         AddBook.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 list.setEnabled(false);
                 DefaultListModel<String> updatedModel = new DefaultListModel<>();
-                for (Book books : flowLibrary.getListOfBooks()) {
-                    updatedModel.addElement(books.toString());
-                }
+                fillListWithObject(updatedModel);
                 SubCategoryComboBox.setEnabled(true);
                 categoryComboBox.setEnabled(true);
-                list.setModel(updatedModel);
-                AddBookJFrame addBookJFrame = new AddBookJFrame(flowLibrary,list);
+                new AddBookJFrame(flowLibrary,list);
             }
         });
         programInfo.addActionListener(new ActionListener() {
@@ -460,5 +431,28 @@ public class AdminActionFrame extends JFrame {
         setVisible(true);
 
     }
+
+    public void fillListWithObject(DefaultListModel<String> modifiedModel ){
+        for (Book books : flowLibrary.getListOfBooks()) {
+            modifiedModel.addElement(books.toString());
+            list.setModel(modifiedModel);
+        }
+    }
+
+    public void setVariables(){
+        list.setEnabled(true);
+        categoryComboBox.setVisible(false);
+        SubCategoryComboBox.setVisible(false);
+        UserSelectionComboBox.setVisible(false);
+        ConfirmChoice.setVisible(true);
+    }
+    public void setDefaultVariableSetUP() {
+    categoryComboBox.setVisible(false);
+    SubCategoryComboBox.setVisible(false);
+    UserSelectionComboBox.setVisible(false);
+
+    ReturnBookOfAGivenUser.setEnabled(false);
+    BorrowedBooksOfUser.setEnabled(false);
+}
 
 }
