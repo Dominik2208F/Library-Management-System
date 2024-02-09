@@ -4,6 +4,7 @@ import org.example.LibraryManager.Library;
 import org.example.UserManager.User;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -23,19 +24,33 @@ public class AddUserFrame extends JFrame {
         this.userChooseIFrame=userChooseIFrame;
         this.flowLibrary=library;
 
+
+        setContentPane(new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+
+
+                int width = getWidth();
+                int height = getHeight();
+
+
+                GradientPaint gradient = new GradientPaint(0, 0, new Color(240,248,255), width, height, new Color(0,191, 255));
+
+                ((Graphics2D) g).setPaint(gradient);
+                g.fillRect(0, 0, width, height);
+
+            }
+        });
         usernameField = new JTextField();
         passwordField = new JPasswordField();
         saveButton = new JButton("Save");
         usernameLabel = new JLabel("Username:");
         passwordLabel = new JLabel("Password:");
-
         usernameLabel.setBounds(30,10, 100,30);
         passwordLabel.setBounds(30,40,100,30);
-
         usernameField.setBounds(100,20,150,20);
         passwordField.setBounds(100,50,150,20);
-
-        ;
         saveButton.setBounds(130,90,80,30);
 
         saveButton.addActionListener(new ActionListener() {
@@ -44,7 +59,7 @@ public class AddUserFrame extends JFrame {
                 saveUser();
             }
         });
-        // Obsługa naciśnięcia klawisza Enter w polach tekstowych
+
         KeyListener keyListener = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -74,13 +89,6 @@ public class AddUserFrame extends JFrame {
         setResizable(false);
         setVisible(true);
 
-        if(!b) {
-            ImageIcon backgroundImage = new ImageIcon("src/background1.jpg");
-            JLabel backgroundLabel = new JLabel(backgroundImage);
-            backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
-            add(backgroundLabel);
-            setLayout(null);
-        }
     }
 
     public void saveUser(){

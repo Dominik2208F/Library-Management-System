@@ -55,7 +55,23 @@ public class UserActionFrame extends JFrame {
 
         Map<String, List<String>> subcategoriesMap = new HashMap<>();
 
+        setContentPane(new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
 
+
+                int width = getWidth();
+                int height = getHeight();
+
+
+                GradientPaint gradient = new GradientPaint(100, 300, new Color(250, 235, 215), width, height, new Color(127 ,255, 212));
+
+                ((Graphics2D) g).setPaint(gradient);
+                g.fillRect(0, 0, width, height);
+
+            }
+        });
 
         menubar= new JMenuBar();
         Options= new JMenu("Options");
@@ -662,12 +678,6 @@ public class UserActionFrame extends JFrame {
         sortComboBox.setVisible(false);
         categoryComboBox.setVisible(false);
         SubCategoryComboBox.setVisible(false);
-
-        ImageIcon backgroundImage = new ImageIcon("src/background.jpg");
-        JLabel backgroundLabel = new JLabel(backgroundImage);
-        backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
-        add(backgroundLabel);
-        setLayout(null);
 
     }
 

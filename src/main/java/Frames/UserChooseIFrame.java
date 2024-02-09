@@ -4,6 +4,7 @@ import org.example.LibraryManager.Library;
 import org.example.UserManager.User;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -27,24 +28,42 @@ public class UserChooseIFrame extends JFrame {
         for(User user : flowLibrary.getLibraryUserDataBase().getListOfUser()){
             listOfUsersFromLibrary.addElement(user.getName());
         }
+        setContentPane(new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+
+                // Pobranie wymiarów panelu
+                int width = getWidth();
+                int height = getHeight();
+
+                // Tworzenie gradientu od górnego lewego do dolnego prawego kąta
+                GradientPaint gradient = new GradientPaint(0, 0, new Color(240,248,255), width, height, new Color(0,191, 255));
+
+                ((Graphics2D) g).setPaint(gradient);
+                g.fillRect(0, 0, width, height);
+
+            }
+        });
 
         list = new JList<>(listOfUsersFromLibrary);
 
         list.setBounds(70,50, 100,60);
         add(list);
         //
-        availableUser = new JLabel("Available Users");
-        availableUser.setBounds(70,10, 150,20);
+        availableUser = new JLabel("Available users");
+        availableUser.setBounds(50,13, 150,20);
+        availableUser.setFont(new Font("Forte",Font.ITALIC,20));
         add(availableUser);
         //
-        selectedUser = new JLabel("Selected User");
+        selectedUser = new JLabel("Selected user");
         selectedUser.setBounds(50,120, 150,20);
 
         confirmUser= new JButton("Confirm");
         confirmUser.setBounds(70,120, 100,40);
         add(confirmUser);
         //
-        addUser= new JButton("Add User");
+        addUser= new JButton("Add user");
         addUser.setBounds(70,170,100,30);
         add(addUser);
 
@@ -80,11 +99,6 @@ public class UserChooseIFrame extends JFrame {
         setResizable(false);
         setVisible(true);
 
-        ImageIcon backgroundImage = new ImageIcon("src/background1.jpg");
-        JLabel backgroundLabel = new JLabel(backgroundImage);
-        backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
-        add(backgroundLabel);
-        setLayout(null);
     }
 
     public void updateListOfUsers() {

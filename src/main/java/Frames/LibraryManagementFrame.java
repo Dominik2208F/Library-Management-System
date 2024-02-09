@@ -6,12 +6,14 @@ import org.example.LibraryManager.LibraryDataBase;
 
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.Point2D;
 
 public class LibraryManagementFrame extends JFrame implements ActionListener {
 
-    JLabel label;
+    JLabel label,welcome;
     JLabel selectedLibrary;
     JButton buttonConfirm;
     JComboBox<String> comboBox; // Zmiana na JComboBox
@@ -21,49 +23,60 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
 
         this.libraryDataBase=libraryDataBase;
 
-       // DefaultListModel<String> libraryListPanel = new DefaultListModel<>();
-        DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>(); // Model dla JComboBox
-
+        DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
         for(Library Singlelibrary : libraryDataBase.getListOfLibrary()){
             comboBoxModel.addElement(Singlelibrary.getNameOfLibrary());
         }
 
-        comboBox = new JComboBox<>(comboBoxModel); // Tworzenie JComboBox z modelem
+        setContentPane(new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
 
-        comboBox.setBounds(70,50, 100,40);
+                // Pobranie wymiarów panelu
+                int width = getWidth();
+                int height = getHeight();
+
+                // Tworzenie gradientu od górnego lewego do dolnego prawego kąta
+                GradientPaint gradient = new GradientPaint(0, 0, new Color(240,248,255), width, height, new Color(0,191, 255));
+
+                ((Graphics2D) g).setPaint(gradient);
+                g.fillRect(0, 0, width, height);
+
+            }
+        });
+
+        comboBox = new JComboBox<>(comboBoxModel);
+        comboBox.setBounds(70,150, 120,40);
         //
         label = new JLabel("Select library");
-        label.setBounds(79,10, 125,40);
+        label.setBounds(82,120, 125,40);
 
-        //
+        welcome= new JLabel("Welcome!");
+        welcome.setBounds(82,30, 125,40);
+        welcome.setFont(new Font("Forte",Font.ITALIC,20));
+
+
         selectedLibrary = new JLabel("Selected library");
         selectedLibrary.setBounds(120,220, 150,20);
 
         buttonConfirm= new JButton("Confirm");
-        buttonConfirm.setBounds(70,100, 100,40);
+        buttonConfirm.setBounds(70,200, 120,40);
 
         buttonConfirm.addActionListener(this);
 
         add(comboBox);
         add(label);
         add(buttonConfirm);
-        //
+        add(welcome);
 
-        setSize(250,350);
+        setSize(270,350);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setResizable(false);
         setVisible(true);
         setTitle("Select library");
 
-
-
-        ImageIcon backgroundImage = new ImageIcon("src/background1.jpg");
-        JLabel backgroundLabel = new JLabel(backgroundImage);
-        backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
-        add(backgroundLabel);
-        backgroundLabel.repaint();
-        setLayout(null);
     }
 
     public void IfButtonClicked(){
