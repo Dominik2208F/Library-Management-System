@@ -43,8 +43,6 @@ public class AdminActionFrame extends JFrame {
 
         Map<String, List<String>> subcategoriesMap = new HashMap<>();
 
-
-
         menubar= new JMenuBar();
         Options= new JMenu("Options");
         Program= new JMenu("Info");
@@ -80,7 +78,7 @@ public class AdminActionFrame extends JFrame {
         ConfirmChoice.setBounds(500, 180, 130, 35);
         add(ConfirmChoice);
         ConfirmChoice.setVisible(false);
-        ConfirmChoice.setBackground(Color.red);
+        ConfirmChoice.setBackground(Color.PINK);
 
         UpdateBook = new JButton("Update book");
         UpdateBook.setBounds(40, 140, 130, 35);
@@ -382,7 +380,6 @@ public class AdminActionFrame extends JFrame {
                 addUserFrame.setVisible(true);
             }
         });
-
         UpdateBook.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -409,7 +406,6 @@ public class AdminActionFrame extends JFrame {
                 }
             }
         });
-
         AddBook.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -422,6 +418,12 @@ public class AdminActionFrame extends JFrame {
                 categoryComboBox.setEnabled(true);
                 list.setModel(updatedModel);
                 AddBookJFrame addBookJFrame = new AddBookJFrame(flowLibrary,list);
+            }
+        });
+        programInfo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Program written by Dominik Jakubaszek. \n Version 1.0.1", "Message", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 

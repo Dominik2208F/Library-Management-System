@@ -6,6 +6,8 @@ import org.example.UserManager.User;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class LoginUserFrame extends JFrame {
 
@@ -33,33 +35,27 @@ public class LoginUserFrame extends JFrame {
         LoginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                char[] passwordchar = passwordField.getPassword();
-                String password = new String(passwordchar);
-
-                if (flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChoose.ChoosenUserName).getPassword().equalsIgnoreCase(password)) {
-                    int odp = JOptionPane.showConfirmDialog(null, "Confirm your choice");
-
-                    if (odp == JOptionPane.YES_OPTION) {
-                        if (userChoose.ChoosenUserName.equals("Admin")) {
-
-                            setVisible(false);
-                            userChoose.setVisible(false);
-                            new AdminActionFrame(userChoose, library);
-                        } else {
-
-                            setVisible(false);
-                            userChoose.setVisible(false);
-                            new UserActionFrame(userChoose, library);
-                        }
-                    }
-                }
-                else{
-                    JOptionPane.showMessageDialog(null,"Wrong password try again","Error",JOptionPane.ERROR_MESSAGE);
-                    passwordField.setText("");
-                }
+                logInto(library);
             }
         });
+
+        KeyListener keyListener = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    logInto(library);
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        };
+
+        passwordField.addKeyListener(keyListener);
+
+
 
         add(passwordLabel);
         add(passwordField);
@@ -79,4 +75,30 @@ public class LoginUserFrame extends JFrame {
         setLayout(null);
     }
 
+    public void logInto(Library library){
+        char[] passwordchar = passwordField.getPassword();
+        String password = new String(passwordchar);
+
+        if (flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChoose.ChoosenUserName).getPassword().equalsIgnoreCase(password)) {
+            int odp = JOptionPane.showConfirmDialog(null, "Confirm your choice");
+
+            if (odp == JOptionPane.YES_OPTION) {
+                if (userChoose.ChoosenUserName.equals("Admin")) {
+
+                    setVisible(false);
+                    userChoose.setVisible(false);
+                    new AdminActionFrame(userChoose, library);
+                } else {
+
+                    setVisible(false);
+                    userChoose.setVisible(false);
+                    new UserActionFrame(userChoose, library);
+                }
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Wrong password try again","Error",JOptionPane.ERROR_MESSAGE);
+            passwordField.setText("");
+        }
+    }
 }

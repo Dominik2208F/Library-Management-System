@@ -8,6 +8,8 @@ import org.example.LibraryManager.Library;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.regex.Pattern;
 
 public class UpdateBookJFrame extends JFrame {
@@ -15,17 +17,17 @@ public class UpdateBookJFrame extends JFrame {
     JList list;
     CalendarIFrame calendar;
     public JTextField authorBirthDateField = new JTextField();
+    JTextField titleField = new JTextField();
+    JTextField authorFirstNameField = new JTextField();
+    JTextField authorLastNameField = new JTextField();
+    JTextField yearField = new JTextField();
+    JComboBox<String> genreComboBox = new JComboBox<>(new String[]{"Przygodowa", "Akcji", "ScienceFiction", "Romans", "Historyczne", "Akademickie", "Finansowe", "Dramat"});
+    JTextField pagesField = new JTextField();
     public UpdateBookJFrame(Library library,JList list) {
 
         this.library = library;
         this.list=list;
 
-        JTextField titleField = new JTextField();
-        JTextField authorFirstNameField = new JTextField();
-        JTextField authorLastNameField = new JTextField();
-        JTextField yearField = new JTextField();
-        JComboBox<String> genreComboBox = new JComboBox<>(new String[]{"Przygodowa", "Akcji", "ScienceFiction", "Romans", "Historyczne", "Akademickie", "Finansowe", "Dramat"});
-        JTextField pagesField = new JTextField();
         JButton updateBook = new JButton("Update book");
 
 
@@ -88,80 +90,40 @@ public class UpdateBookJFrame extends JFrame {
         updateBook.setBounds(90, 300, 150, 35);
         add(updateBook);
 
+
+        KeyListener keyListener = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    updateBook(list);
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        };
+
+        titleField.addKeyListener(keyListener);
+        authorFirstNameField.addKeyListener(keyListener);
+        authorLastNameField.addKeyListener(keyListener);
+        authorBirthDateField.addKeyListener(keyListener);
+        yearField.addKeyListener(keyListener);
+        genreComboBox.addKeyListener(keyListener);
+        pagesField.addKeyListener(keyListener);
+
+        updateBook.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateBook(list);
+            }
+        });
+
         updateBook.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String title = titleField.getText();
-                String authorFirstName = authorFirstNameField.getText();
-                String authorLastName = authorLastNameField.getText();
-                String authorBirthDate = authorBirthDateField.getText();
-
-                String yearText = yearField.getText();
-                String description = (String) genreComboBox.getSelectedItem();
-
-                String pagesText = pagesField.getText();
-
-                if (title.isEmpty() || authorFirstName.isEmpty() || authorLastName.isEmpty() ||
-                        authorBirthDate.isEmpty() || yearText.isEmpty() || description.isEmpty() || pagesText.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "All fields are required!", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                else{
-                    String regex="^[a-zA-Z]+$";
-                    if(!Pattern.matches(regex,authorFirstName)){
-                        JOptionPane.showMessageDialog(null, "Invalid format. Name cannot have such value", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                    else if(!Pattern.matches(regex,authorLastName)){
-                        JOptionPane.showMessageDialog(null, "Invalid format. Surname cannot have such value", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-
-                    int year =0;
-                    int pages=0;
-                    try {
-                        year = Integer.parseInt(yearField.getText());
-                        if(year<=0){
-                            JOptionPane.showMessageDialog(null, "Invalid year format. Year cannot have such value", "Error", JOptionPane.ERROR_MESSAGE);
-                        }
-                    }catch(NumberFormatException ex){
-                        JOptionPane.showMessageDialog(null, "Invalid year format. Type a valid number", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-
-                    try {
-                        pages = Integer.parseInt(pagesField.getText());
-                        if(pages<=0){
-                            JOptionPane.showMessageDialog(null, "Invalid pages format. Pages cannot have such value", "Error", JOptionPane.ERROR_MESSAGE);
-                        }
-                    }catch(NumberFormatException ex){
-                        JOptionPane.showMessageDialog(null, "Invalid pages format. Type a valid number", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-
-
-                    if(pages!=0 && year!=0 && Pattern.matches(regex,authorFirstName) && Pattern.matches(regex,authorLastName)){
-
-                        int indexToUpdate= list.getSelectedIndex();
-                        int counter=0;
-                        for(Book book : library.getListOfBooks()){
-                            if(counter==indexToUpdate) {
-                                book.setTitle(title);
-                                book.getAuthor().setFirstName(authorFirstName);
-                                book.getAuthor().setLastName(authorLastName);
-                                book.getAuthor().setDateOfBirth(authorBirthDate);
-                                book.setDateOfProduction(year);
-                                book.setGenre(new Genre(description));
-                                book.setAmountOfPage(pages);
-                               break;
-                            }
-                            counter++;
-                        }
-
-                        DefaultListModel<String> updatedModel = new DefaultListModel<>();
-                        for (Book book : library.getListOfBooks()) {
-                            updatedModel.addElement(book.toString());
-                        }
-                        list.setModel(updatedModel);
-                        dispose();
-                    }
-                }
             }
         });
 
@@ -170,5 +132,78 @@ public class UpdateBookJFrame extends JFrame {
         setLayout(null);
         setResizable(false);
         setVisible(true);
+    }
+
+    public void updateBook(JList list){
+        String title = titleField.getText();
+        String authorFirstName = authorFirstNameField.getText();
+        String authorLastName = authorLastNameField.getText();
+        String authorBirthDate = authorBirthDateField.getText();
+
+        String yearText = yearField.getText();
+        String description = (String) genreComboBox.getSelectedItem();
+
+        String pagesText = pagesField.getText();
+
+        if (title.isEmpty() || authorFirstName.isEmpty() || authorLastName.isEmpty() ||
+                authorBirthDate.isEmpty() || yearText.isEmpty() || description.isEmpty() || pagesText.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "All fields are required!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            String regex="^[a-zA-Z]+$";
+            if(!Pattern.matches(regex,authorFirstName)){
+                JOptionPane.showMessageDialog(null, "Invalid format. Name cannot have such value", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            else if(!Pattern.matches(regex,authorLastName)){
+                JOptionPane.showMessageDialog(null, "Invalid format. Surname cannot have such value", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+            int year =0;
+            int pages=0;
+            try {
+                year = Integer.parseInt(yearField.getText());
+                if(year<=0){
+                    JOptionPane.showMessageDialog(null, "Invalid year format. Year cannot have such value", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }catch(NumberFormatException ex){
+                JOptionPane.showMessageDialog(null, "Invalid year format. Type a valid number", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+            try {
+                pages = Integer.parseInt(pagesField.getText());
+                if(pages<=0){
+                    JOptionPane.showMessageDialog(null, "Invalid pages format. Pages cannot have such value", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }catch(NumberFormatException ex){
+                JOptionPane.showMessageDialog(null, "Invalid pages format. Type a valid number", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+
+            if(pages!=0 && year!=0 && Pattern.matches(regex,authorFirstName) && Pattern.matches(regex,authorLastName)){
+
+                int indexToUpdate= list.getSelectedIndex();
+                int counter=0;
+                for(Book book : library.getListOfBooks()){
+                    if(counter==indexToUpdate) {
+                        book.setTitle(title);
+                        book.getAuthor().setFirstName(authorFirstName);
+                        book.getAuthor().setLastName(authorLastName);
+                        book.getAuthor().setDateOfBirth(authorBirthDate);
+                        book.setDateOfProduction(year);
+                        book.setGenre(new Genre(description));
+                        book.setAmountOfPage(pages);
+                        break;
+                    }
+                    counter++;
+                }
+
+                DefaultListModel<String> updatedModel = new DefaultListModel<>();
+                for (Book book : library.getListOfBooks()) {
+                    updatedModel.addElement(book.toString());
+                }
+                list.setModel(updatedModel);
+                dispose();
+            }
+        }
     }
 }

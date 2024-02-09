@@ -6,6 +6,8 @@ import org.example.UserManager.User;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class AddUserFrame extends JFrame {
 
@@ -39,24 +41,26 @@ public class AddUserFrame extends JFrame {
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String username = usernameField.getText();
-                char[] passwordchar= passwordField.getPassword();
-
-                if(username.isEmpty()){
-                    JOptionPane.showMessageDialog(null,"Username cannot be empty","Error",JOptionPane.ERROR_MESSAGE);
-                }
-                else if(passwordchar.length==0){
-                    JOptionPane.showMessageDialog(null,"Password cannot be empty","Error",JOptionPane.ERROR_MESSAGE);
-                }
-                else{
-                    String password= new String(passwordchar);
-                    flowLibrary.getLibraryUserDataBase().getListOfUser().add(new User(username,password));
-
-                    userChooseIFrame.updateListOfUsers();
-                    setVisible(false);
-                }
+                saveUser();
             }
         });
+        // Obsługa naciśnięcia klawisza Enter w polach tekstowych
+        KeyListener keyListener = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    saveUser();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        };
+
+        usernameField.addKeyListener(keyListener);
+        passwordField.addKeyListener(keyListener);
 
         add(usernameLabel);
         add(usernameField);
@@ -76,6 +80,25 @@ public class AddUserFrame extends JFrame {
             backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
             add(backgroundLabel);
             setLayout(null);
+        }
+    }
+
+    public void saveUser(){
+        String username = usernameField.getText();
+        char[] passwordchar= passwordField.getPassword();
+
+        if(username.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Username cannot be empty","Error",JOptionPane.ERROR_MESSAGE);
+        }
+        else if(passwordchar.length==0){
+            JOptionPane.showMessageDialog(null,"Password cannot be empty","Error",JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            String password= new String(passwordchar);
+            flowLibrary.getLibraryUserDataBase().getListOfUser().add(new User(username,password));
+
+            userChooseIFrame.updateListOfUsers();
+            setVisible(false);
         }
     }
 
