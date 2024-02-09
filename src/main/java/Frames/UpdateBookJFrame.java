@@ -43,7 +43,7 @@ public class UpdateBookJFrame extends JFrame {
                 titleField.setText(book.getTitle());
                 authorFirstNameField.setText(book.getAuthor().getFirstName());
                 authorLastNameField.setText(book.getAuthor().getLastName());
-                authorBirthDateField.setText(book.getAuthor().getDateOfBirth());
+            //    authorBirthDateField.setText(book.getAuthor().getDateOfBirth());
                 yearField.setText(String.valueOf(book.getDateOfProduction()));
                 genreComboBox.setSelectedItem(book.getGenre().getName());
                 pagesField.setText(String.valueOf(book.getAmountOfPage()));
@@ -111,7 +111,7 @@ public class UpdateBookJFrame extends JFrame {
                                 book.setTitle(title);
                                 book.getAuthor().setFirstName(authorFirstName);
                                 book.getAuthor().setLastName(authorLastName);
-                                book.getAuthor().setDateOfBirth(authorBirthDate);
+                      //          book.getAuthor().setDateOfBirth(authorBirthDate);
                                 book.setDateOfProduction(year);
                                 book.setGenre(new Genre(description));
                                 book.setAmountOfPage(pages);
