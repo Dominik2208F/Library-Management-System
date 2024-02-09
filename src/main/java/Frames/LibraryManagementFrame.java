@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 
 public class LibraryManagementFrame extends JFrame implements ActionListener {
 
-    JLabel label, welcome;
+    JLabel label, welcome,assign;
     JLabel selectedLibrary;
     JButton buttonConfirm;
     JComboBox<String> comboBox;
@@ -49,11 +49,15 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
         comboBox.setBounds(70, 150, 120, 40);
 
         label = new JLabel("Select library");
-        label.setBounds(82, 120, 125, 40);
+        label.setBounds(85, 120, 125, 40);
 
         welcome = new JLabel("Welcome!");
         welcome.setBounds(82, 30, 125, 40);
         welcome.setFont(new Font("Forte", Font.ITALIC, 20));
+
+        assign = new JLabel("© Dominik Jakubaszek");
+        assign.setBounds(82, 40, 125, 40);
+        assign.setFont(new Font("Forte", Font.ITALIC, 12));
 
 
         selectedLibrary = new JLabel("Selected library");
@@ -67,6 +71,7 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
         add(label);
         add(buttonConfirm);
         add(welcome);
+        add(assign);
 
         setSize(270, 350);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
