@@ -11,7 +11,6 @@ import java.util.Date;
 
 public class CalendarIFrame extends JFrame {
 
-    Date returnDateOfBirth;
 
     AddBookJFrame addBookJFrameF;
     UpdateBookJFrame updateBookJFrame;

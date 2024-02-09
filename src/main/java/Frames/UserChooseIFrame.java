@@ -33,11 +33,9 @@ public class UserChooseIFrame extends JFrame {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
 
-                // Pobranie wymiarów panelu
                 int width = getWidth();
                 int height = getHeight();
 
-                // Tworzenie gradientu od górnego lewego do dolnego prawego kąta
                 GradientPaint gradient = new GradientPaint(0, 0, new Color(240,248,255), width, height, new Color(0,191, 255));
 
                 ((Graphics2D) g).setPaint(gradient);
@@ -55,19 +53,19 @@ public class UserChooseIFrame extends JFrame {
         availableUser.setBounds(50,13, 150,20);
         availableUser.setFont(new Font("Forte",Font.ITALIC,20));
         add(availableUser);
-        //
+
         selectedUser = new JLabel("Selected user");
         selectedUser.setBounds(50,120, 150,20);
 
         confirmUser= new JButton("Confirm");
         confirmUser.setBounds(70,120, 100,40);
         add(confirmUser);
-        //
+
         addUser= new JButton("Add user");
         addUser.setBounds(70,170,100,30);
         add(addUser);
 
-        JScrollPane scrollPane = new JScrollPane(list); // Wrap the JList in a JScrollPane
+        JScrollPane scrollPane = new JScrollPane(list);
         scrollPane.setBounds(70, 50, 100, 60);
         add(scrollPane);
         confirmUser.addActionListener(new ActionListener() {
@@ -77,7 +75,7 @@ public class UserChooseIFrame extends JFrame {
                     JOptionPane.showMessageDialog(null,"Choose at least 1 user","Error",JOptionPane.ERROR_MESSAGE);
                 } else {
                     ChoosenUserName = list.getSelectedValue();
-                    new LoginUserFrame(UserChooseIFrame.this, library);  // tutaj tak samo klasa z zainicjowanym obiektem libraryManagementFrame;
+                    new LoginUserFrame(UserChooseIFrame.this, library);
 
                 }
             }

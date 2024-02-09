@@ -45,7 +45,23 @@ public class AdminActionFrame extends JFrame {
         add(list);
 
         Map<String, List<String>> subcategoriesMap = new HashMap<>();
+        setContentPane(new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
 
+
+                int width = getWidth();
+                int height = getHeight();
+
+
+                GradientPaint gradient = new GradientPaint(0, 300, new Color(221,160,221), width, height, new Color(255, 99 ,71));
+
+                ((Graphics2D) g).setPaint(gradient);
+                g.fillRect(0, 0, width, height);
+
+            }
+        });
         menubar= new JMenuBar();
         Options= new JMenu("Options");
         Program= new JMenu("Info");
@@ -446,12 +462,6 @@ public class AdminActionFrame extends JFrame {
         setLayout(null);
         setResizable(false);
         setVisible(true);
-
-        ImageIcon backgroundImage = new ImageIcon("src/programmer_v_02.jpg");
-        JLabel backgroundLabel = new JLabel(backgroundImage);
-        backgroundLabel.setBounds(0, 0, getWidth(), getHeight());
-        add(backgroundLabel);
-        setLayout(null);
 
     }
 

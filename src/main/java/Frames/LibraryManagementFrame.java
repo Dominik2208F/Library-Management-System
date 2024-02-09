@@ -1,6 +1,5 @@
 package Frames;
 
-import Frames.UserChooseIFrame;
 import org.example.LibraryManager.Library;
 import org.example.LibraryManager.LibraryDataBase;
 
@@ -9,14 +8,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.Point2D;
+
 
 public class LibraryManagementFrame extends JFrame implements ActionListener {
 
     JLabel label,welcome;
     JLabel selectedLibrary;
     JButton buttonConfirm;
-    JComboBox<String> comboBox; // Zmiana na JComboBox
+    JComboBox<String> comboBox;
     LibraryDataBase libraryDataBase;
     Library flowLibrary;
     public LibraryManagementFrame(LibraryDataBase libraryDataBase){
@@ -33,11 +32,9 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
 
-                // Pobranie wymiarów panelu
                 int width = getWidth();
                 int height = getHeight();
 
-                // Tworzenie gradientu od górnego lewego do dolnego prawego kąta
                 GradientPaint gradient = new GradientPaint(0, 0, new Color(240,248,255), width, height, new Color(0,191, 255));
 
                 ((Graphics2D) g).setPaint(gradient);
@@ -48,7 +45,7 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
 
         comboBox = new JComboBox<>(comboBoxModel);
         comboBox.setBounds(70,150, 120,40);
-        //
+
         label = new JLabel("Select library");
         label.setBounds(82,120, 125,40);
 
