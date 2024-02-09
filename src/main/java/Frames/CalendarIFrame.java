@@ -16,8 +16,9 @@ public class CalendarIFrame extends JFrame {
     UpdateBookJFrame updateBookJFrame;
     JDialog dialog = new JDialog((Frame) null, "Select Date", true);
     JButton selectButton = new JButton("Select");
+
     CalendarIFrame(JButton button, AddBookJFrame addBookJFrame) {
-        this.addBookJFrameF=addBookJFrame;
+        this.addBookJFrameF = addBookJFrame;
 
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         dialog.setLayout(new BorderLayout());
@@ -48,9 +49,10 @@ public class CalendarIFrame extends JFrame {
         dialog.setLocationRelativeTo(button);
         dialog.setVisible(true);
     }
+
     public CalendarIFrame(JButton button, UpdateBookJFrame updateBookJFrame) {
 
-        this.updateBookJFrame= updateBookJFrame;
+        this.updateBookJFrame = updateBookJFrame;
 
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         dialog.setLayout(new BorderLayout());

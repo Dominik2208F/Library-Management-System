@@ -21,17 +21,17 @@ public class LoginUserFrame extends JFrame {
     private Library flowLibrary;
 
     public LoginUserFrame(UserChooseIFrame userChooseIFrame, Library library) {
-        this.userChoose=userChooseIFrame;
-        this.flowLibrary=library;
+        this.userChoose = userChooseIFrame;
+        this.flowLibrary = library;
 
         passwordField = new JPasswordField();
         LoginButton = new JButton("Log in");
         passwordLabel = new JLabel("Password:");
         Userlebel = new JLabel("Your account is " + userChooseIFrame.ChoosenUserName);
-        passwordLabel.setBounds(30,40,100,30);
-        passwordField.setBounds(100,50,150,20);
-        LoginButton.setBounds(130,90,80,30);
-        Userlebel.setBounds(30,10,200,30);
+        passwordLabel.setBounds(30, 40, 100, 30);
+        passwordField.setBounds(100, 50, 150, 20);
+        LoginButton.setBounds(130, 90, 80, 30);
+        Userlebel.setBounds(30, 10, 200, 30);
 
         LoginButton.addActionListener(new ActionListener() {
             @Override
@@ -49,7 +49,7 @@ public class LoginUserFrame extends JFrame {
                 int height = getHeight();
 
 
-                GradientPaint gradient = new GradientPaint(0, 0, new Color(240,248,255), width, height, new Color(0,191, 255));
+                GradientPaint gradient = new GradientPaint(0, 0, new Color(240, 248, 255), width, height, new Color(0, 191, 255));
 
                 ((Graphics2D) g).setPaint(gradient);
                 g.fillRect(0, 0, width, height);
@@ -58,7 +58,8 @@ public class LoginUserFrame extends JFrame {
         });
         KeyListener keyListener = new KeyListener() {
             @Override
-            public void keyTyped(KeyEvent e) {}
+            public void keyTyped(KeyEvent e) {
+            }
 
             @Override
             public void keyPressed(KeyEvent e) {
@@ -66,15 +67,17 @@ public class LoginUserFrame extends JFrame {
                     logInto(library);
                 }
             }
+
             @Override
-            public void keyReleased(KeyEvent e) {}
+            public void keyReleased(KeyEvent e) {
+            }
         };
         passwordField.addKeyListener(keyListener);
         add(passwordLabel);
         add(passwordField);
         add(LoginButton);
         add(Userlebel);
-        setSize(300,200);
+        setSize(300, 200);
         setTitle("Log in into User");
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setLayout(null);
@@ -83,7 +86,7 @@ public class LoginUserFrame extends JFrame {
 
     }
 
-    public void logInto(Library library){
+    public void logInto(Library library) {
         char[] passwordchar = passwordField.getPassword();
         String password = new String(passwordchar);
 
@@ -103,9 +106,8 @@ public class LoginUserFrame extends JFrame {
                     new UserActionFrame(userChoose, library);
                 }
             }
-        }
-        else{
-            JOptionPane.showMessageDialog(null,"Wrong password try again","Error",JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Wrong password try again", "Error", JOptionPane.ERROR_MESSAGE);
             passwordField.setText("");
         }
     }

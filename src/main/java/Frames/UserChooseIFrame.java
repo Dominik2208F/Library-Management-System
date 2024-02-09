@@ -18,14 +18,15 @@ public class UserChooseIFrame extends JFrame {
     String ChoosenUserName;
     Library flowLibrary;
     LibraryManagementFrame libraryManagementFrame;
-    public UserChooseIFrame(Library library, LibraryManagementFrame libraryManagementFrame){
-    this.flowLibrary=library;
-    this.libraryManagementFrame=libraryManagementFrame;
+
+    public UserChooseIFrame(Library library, LibraryManagementFrame libraryManagementFrame) {
+        this.flowLibrary = library;
+        this.libraryManagementFrame = libraryManagementFrame;
 
         DefaultListModel<String> listOfUsersFromLibrary = new DefaultListModel<>();
 
 
-        for(User user : flowLibrary.getLibraryUserDataBase().getListOfUser()){
+        for (User user : flowLibrary.getLibraryUserDataBase().getListOfUser()) {
             listOfUsersFromLibrary.addElement(user.getName());
         }
         setContentPane(new JPanel() {
@@ -36,7 +37,7 @@ public class UserChooseIFrame extends JFrame {
                 int width = getWidth();
                 int height = getHeight();
 
-                GradientPaint gradient = new GradientPaint(0, 0, new Color(240,248,255), width, height, new Color(0,191, 255));
+                GradientPaint gradient = new GradientPaint(0, 0, new Color(240, 248, 255), width, height, new Color(0, 191, 255));
 
                 ((Graphics2D) g).setPaint(gradient);
                 g.fillRect(0, 0, width, height);
@@ -46,23 +47,23 @@ public class UserChooseIFrame extends JFrame {
 
         list = new JList<>(listOfUsersFromLibrary);
 
-        list.setBounds(70,50, 100,60);
+        list.setBounds(70, 50, 100, 60);
         add(list);
         //
         availableUser = new JLabel("Available users");
-        availableUser.setBounds(50,13, 150,20);
-        availableUser.setFont(new Font("Forte",Font.ITALIC,20));
+        availableUser.setBounds(50, 13, 150, 20);
+        availableUser.setFont(new Font("Forte", Font.ITALIC, 20));
         add(availableUser);
 
         selectedUser = new JLabel("Selected user");
-        selectedUser.setBounds(50,120, 150,20);
+        selectedUser.setBounds(50, 120, 150, 20);
 
-        confirmUser= new JButton("Confirm");
-        confirmUser.setBounds(70,120, 100,40);
+        confirmUser = new JButton("Confirm");
+        confirmUser.setBounds(70, 120, 100, 40);
         add(confirmUser);
 
-        addUser= new JButton("Add user");
-        addUser.setBounds(70,170,100,30);
+        addUser = new JButton("Add user");
+        addUser.setBounds(70, 170, 100, 30);
         add(addUser);
 
         JScrollPane scrollPane = new JScrollPane(list);
@@ -72,7 +73,7 @@ public class UserChooseIFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (list.isSelectionEmpty()) {
-                    JOptionPane.showMessageDialog(null,"Choose at least 1 user","Error",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Choose at least 1 user", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
                     ChoosenUserName = list.getSelectedValue();
                     new LoginUserFrame(UserChooseIFrame.this, library);
@@ -84,13 +85,13 @@ public class UserChooseIFrame extends JFrame {
         addUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AddUserFrame addUserFrame= new AddUserFrame(UserChooseIFrame.this,library, false);
+                AddUserFrame addUserFrame = new AddUserFrame(UserChooseIFrame.this, library, false);
                 addUserFrame.setVisible(true);
             }
         });
 
 
-        setSize(250,350);
+        setSize(250, 350);
         setTitle("Choose user");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);

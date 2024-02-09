@@ -21,8 +21,8 @@ public class AddUserFrame extends JFrame {
     private Library flowLibrary;
 
     public AddUserFrame(UserChooseIFrame userChooseIFrame, Library library, boolean b) {
-        this.userChooseIFrame=userChooseIFrame;
-        this.flowLibrary=library;
+        this.userChooseIFrame = userChooseIFrame;
+        this.flowLibrary = library;
 
 
         setContentPane(new JPanel() {
@@ -35,7 +35,7 @@ public class AddUserFrame extends JFrame {
                 int height = getHeight();
 
 
-                GradientPaint gradient = new GradientPaint(0, 0, new Color(240,248,255), width, height, new Color(0,191, 255));
+                GradientPaint gradient = new GradientPaint(0, 0, new Color(240, 248, 255), width, height, new Color(0, 191, 255));
 
                 ((Graphics2D) g).setPaint(gradient);
                 g.fillRect(0, 0, width, height);
@@ -47,11 +47,11 @@ public class AddUserFrame extends JFrame {
         saveButton = new JButton("Save");
         usernameLabel = new JLabel("Username:");
         passwordLabel = new JLabel("Password:");
-        usernameLabel.setBounds(30,10, 100,30);
-        passwordLabel.setBounds(30,40,100,30);
-        usernameField.setBounds(100,20,150,20);
-        passwordField.setBounds(100,50,150,20);
-        saveButton.setBounds(130,90,80,30);
+        usernameLabel.setBounds(30, 10, 100, 30);
+        passwordLabel.setBounds(30, 40, 100, 30);
+        usernameField.setBounds(100, 20, 150, 20);
+        passwordField.setBounds(100, 50, 150, 20);
+        saveButton.setBounds(130, 90, 80, 30);
 
         saveButton.addActionListener(new ActionListener() {
             @Override
@@ -62,7 +62,8 @@ public class AddUserFrame extends JFrame {
 
         KeyListener keyListener = new KeyListener() {
             @Override
-            public void keyTyped(KeyEvent e) {}
+            public void keyTyped(KeyEvent e) {
+            }
 
             @Override
             public void keyPressed(KeyEvent e) {
@@ -70,8 +71,10 @@ public class AddUserFrame extends JFrame {
                     saveUser();
                 }
             }
+
             @Override
-            public void keyReleased(KeyEvent e) {}
+            public void keyReleased(KeyEvent e) {
+            }
         };
 
         usernameField.addKeyListener(keyListener);
@@ -83,7 +86,7 @@ public class AddUserFrame extends JFrame {
         add(passwordField);
         add(saveButton);
 
-        setSize(300,200);
+        setSize(300, 200);
         setTitle("Add new User");
         setLayout(null);
         setResizable(false);
@@ -91,19 +94,17 @@ public class AddUserFrame extends JFrame {
 
     }
 
-    public void saveUser(){
+    public void saveUser() {
         String username = usernameField.getText();
-        char[] passwordchar= passwordField.getPassword();
+        char[] passwordchar = passwordField.getPassword();
 
-        if(username.isEmpty()){
-            JOptionPane.showMessageDialog(null,"Username cannot be empty","Error",JOptionPane.ERROR_MESSAGE);
-        }
-        else if(passwordchar.length==0){
-            JOptionPane.showMessageDialog(null,"Password cannot be empty","Error",JOptionPane.ERROR_MESSAGE);
-        }
-        else{
-            String password= new String(passwordchar);
-            flowLibrary.getLibraryUserDataBase().getListOfUser().add(new User(username,password));
+        if (username.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Username cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (passwordchar.length == 0) {
+            JOptionPane.showMessageDialog(null, "Password cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            String password = new String(passwordchar);
+            flowLibrary.getLibraryUserDataBase().getListOfUser().add(new User(username, password));
 
             userChooseIFrame.updateListOfUsers();
             setVisible(false);
