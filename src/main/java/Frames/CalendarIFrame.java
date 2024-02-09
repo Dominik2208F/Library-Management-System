@@ -33,7 +33,7 @@ public class CalendarIFrame extends JFrame {
                 Date selectedDate = calendar.getDate();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-                addBookJFrameF.authorBirthDateField.setText(dateFormat.format(selectedDate));
+                addBookJFrameF.getAuthorBirthDateField().setText(dateFormat.format(selectedDate));
 
                 JOptionPane.showMessageDialog(null, "Selected Date: " + dateFormat.format(selectedDate));
                 dialog.dispose();
@@ -67,7 +67,7 @@ public class CalendarIFrame extends JFrame {
                 Date selectedDate = calendar.getDate();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-                updateBookJFrame.authorBirthDateField.setText(dateFormat.format(selectedDate));
+                updateBookJFrame.getAuthorBirthDateField().setText(dateFormat.format(selectedDate));
 
                 JOptionPane.showMessageDialog(null, "Selected Date: " + dateFormat.format(selectedDate));
                 dialog.dispose();
