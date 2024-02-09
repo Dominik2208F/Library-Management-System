@@ -16,26 +16,15 @@ import java.util.List;
 
 public class UserActionFrame extends JFrame {
 
-    JMenuBar menubar;
-    JMenu Options, Program;
-    JMenuItem changeUser, changeLibrary, programInfo;
-    JButton Sort;
-    JButton BorrowAbook;
-    JButton ReturnAbook;
-    JButton ConfirmChoice;
-    JButton showborrowedBook;
-
-    JButton returnAll;
-    JButton borrowALL;
-
-    JButton filter;
-    JList<String> list;
-    Library flowLibrary;
-    UserChooseIFrame userChooseIFrame;
-    JCheckBox ascendingCheckBox;
-    JCheckBox descendingCheckBox;
-    JLabel booksLabel;
-
+    private JMenuBar menubar;
+    private JMenu Options, Program;
+    private JMenuItem changeUser, changeLibrary, programInfo;
+    private JButton BorrowAbook,Sort,ReturnAbook,ConfirmChoice,showborrowedBook,returnAll,borrowALL,filter;
+    private JList<String> list;
+    private Library flowLibrary;
+    private UserChooseIFrame userChooseIFrame;
+    private JCheckBox ascendingCheckBox,descendingCheckBox;
+    private JLabel booksLabel;
     private JComboBox<String> sortComboBox, categoryComboBox, SubCategoryComboBox;
 
     private boolean borrowButtonClicked = false;
@@ -161,7 +150,7 @@ public class UserActionFrame extends JFrame {
                 ConfirmChoice.setVisible(false);
                 list.setEnabled(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-                User userFromList = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.ChoosenUserName);
+                User userFromList = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.getChoosenUserName());
 
                 if (!userFromList.getUserbooks().isEmpty()) {
 
@@ -196,7 +185,7 @@ public class UserActionFrame extends JFrame {
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 //assign User instance
 
-                User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.ChoosenUserName);
+                User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.getChoosenUserName());
 
                 if (user.getUserbooks().isEmpty()) {
 
@@ -266,7 +255,7 @@ public class UserActionFrame extends JFrame {
                         int selectedBookIndex = list.getSelectedIndex();
                         int odp = JOptionPane.showConfirmDialog(null, "Do you want borrow a book: " + flowLibrary.getListOfBooks().get(selectedBookIndex).getTitle() + " ?");
                         //assign User instance
-                        User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.ChoosenUserName);
+                        User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.getChoosenUserName());
 
                         //Assign book to user;
 
@@ -310,7 +299,7 @@ public class UserActionFrame extends JFrame {
                         int selectedBookIndexUserList = list.getSelectedIndex();
 
                         //assign User instance
-                        User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.ChoosenUserName);
+                        User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.getChoosenUserName());
 
                         //Assign book to user;
 
@@ -357,7 +346,7 @@ public class UserActionFrame extends JFrame {
                 ascendingCheckBox.setVisible(false);
                 descendingCheckBox.setVisible(false);
                 sortComboBox.setVisible(false);
-                new UserChooseIFrame(userChooseIFrame.flowLibrary, userChooseIFrame.libraryManagementFrame);
+                new UserChooseIFrame(userChooseIFrame.getFlowLibrary(), userChooseIFrame.getLibraryManagementFrame());
                 setVisible(false);
             }
         });
@@ -367,7 +356,7 @@ public class UserActionFrame extends JFrame {
                 ascendingCheckBox.setVisible(false);
                 descendingCheckBox.setVisible(false);
                 sortComboBox.setVisible(false);
-                new LibraryManagementFrame(userChooseIFrame.libraryManagementFrame.libraryDataBase);
+                new LibraryManagementFrame(userChooseIFrame.getLibraryManagementFrame().getLibraryDataBase());
                 setVisible(false);
             }
         });
@@ -593,7 +582,7 @@ public class UserActionFrame extends JFrame {
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
                 //assign User instance
-                User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.ChoosenUserName);
+                User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.getChoosenUserName());
 
                 //Assign book to user;
 
@@ -624,11 +613,7 @@ public class UserActionFrame extends JFrame {
 
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
-                //assign User instance
-                User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.ChoosenUserName);
-
-                //Assign book to user;
-
+                User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.getChoosenUserName());
 
                 List<Book> userBooksCopy = new ArrayList<>(user.getUserbooks());
 
@@ -654,13 +639,13 @@ public class UserActionFrame extends JFrame {
             }
         });
 
-        JScrollPane scrollPane = new JScrollPane(list); // Wrap the JList in a JScrollPane
+        JScrollPane scrollPane = new JScrollPane(list);
         scrollPane.setBounds(180, 20, 500, 150);
         add(scrollPane);
 
 
         setSize(700, 400);
-        setTitle("User Action Panel logged as " + userChooseIFrame.ChoosenUserName);
+        setTitle("User Action Panel logged as " + userChooseIFrame.getChoosenUserName());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setResizable(false);

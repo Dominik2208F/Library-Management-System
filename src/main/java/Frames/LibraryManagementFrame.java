@@ -11,12 +11,15 @@ import java.awt.event.ActionListener;
 
 public class LibraryManagementFrame extends JFrame implements ActionListener {
 
-    JLabel label, welcome,assign;
-    JLabel selectedLibrary;
-    JButton buttonConfirm;
-    JComboBox<String> comboBox;
-    LibraryDataBase libraryDataBase;
-    Library flowLibrary;
+    private JLabel label, welcome,assign,selectedLibrary;
+    private JButton buttonConfirm;
+    private JComboBox<String> comboBox;
+    private LibraryDataBase libraryDataBase;
+    private Library flowLibrary;
+
+    public LibraryDataBase getLibraryDataBase() {
+        return libraryDataBase;
+    }
 
 
     public LibraryManagementFrame(LibraryDataBase libraryDataBase) {
