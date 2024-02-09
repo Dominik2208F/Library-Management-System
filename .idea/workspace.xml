@@ -9,10 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="naprawa błędów addBook">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="update Book naprawa błędów">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/CalendarIFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/CalendarIFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UpdateBookJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UpdateBookJFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,13 +97,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00029" summary="naprawa indexowania listy">
-      <created>1706800077737</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1706800077737</updated>
     </task>
     <task id="LOCAL-00030" summary="obsługa wyjątków update">
       <created>1706821136349</created>
@@ -442,7 +434,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707475348562</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="update Book naprawa błędów">
+      <created>1707476447223</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1707476447223</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -457,7 +456,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="dodany panel do usera bez akcji" />
     <MESSAGE value="wracanie do biblioteki oraz usera" />
     <MESSAGE value="mechanizm pożyczania. Mechanizm zwracania do zrobienia" />
     <MESSAGE value="panel usera zrobiony" />
@@ -482,7 +480,8 @@
     <MESSAGE value="update book +" />
     <MESSAGE value="sprzątanie" />
     <MESSAGE value="naprawa błędów addBook" />
-    <option name="LAST_COMMIT_MESSAGE" value="naprawa błędów addBook" />
+    <MESSAGE value="update Book naprawa błędów" />
+    <option name="LAST_COMMIT_MESSAGE" value="update Book naprawa błędów" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

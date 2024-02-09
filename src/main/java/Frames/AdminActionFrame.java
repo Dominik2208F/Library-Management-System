@@ -68,7 +68,7 @@ public class AdminActionFrame extends JFrame {
         AddBook.setBounds(40, 20, 130, 35);
         add(AddBook);
 
-        ReturnInfoAllBooks = new JButton("Get all Books");
+        ReturnInfoAllBooks = new JButton("Show all books");
         ReturnInfoAllBooks.setBounds(40, 60, 130, 35);
         add(ReturnInfoAllBooks);
 
@@ -80,7 +80,7 @@ public class AdminActionFrame extends JFrame {
         ConfirmChoice.setBounds(500, 180, 130, 35);
         add(ConfirmChoice);
         ConfirmChoice.setVisible(false);
-        ConfirmChoice.setBackground(Color.ORANGE);
+        ConfirmChoice.setBackground(Color.red);
 
         UpdateBook = new JButton("Update book");
         UpdateBook.setBounds(40, 140, 130, 35);
@@ -131,6 +131,7 @@ public class AdminActionFrame extends JFrame {
                 categoryComboBox.setVisible(false);
                 SubCategoryComboBox.setVisible(false);
                 UserSelectionComboBox.setVisible(true);
+                ConfirmChoice.setVisible(false);
                 if (flowLibrary.getLibraryUserDataBase().getListOfUser().size()==1) {
                     UserSelectionComboBox.setEnabled(false);
                     UserSelectionComboBox.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));
@@ -258,6 +259,7 @@ public class AdminActionFrame extends JFrame {
                     SubCategoryComboBox.setEnabled(true);
                     categoryComboBox.setEnabled(true);
                     list.setModel(modifiedModel);
+                    list.setEnabled(false);
                 }
             }
         });
@@ -313,11 +315,15 @@ public class AdminActionFrame extends JFrame {
                 SubCategoryComboBox.setVisible(false);
                 UserSelectionComboBox.setVisible(false);
                 ConfirmChoice.setVisible(true);
+                list.setEnabled(true);
+
                 if (flowLibrary.getListOfBooks().isEmpty()) {
                     ConfirmChoice.setEnabled(false);
                     JOptionPane.showMessageDialog(null,
                             "No book to delete in " + flowLibrary.getNameOfLibrary(), "Message", JOptionPane.INFORMATION_MESSAGE);
                 } else {
+                    JOptionPane.showMessageDialog(null,
+                            "Choose at least one book from list and click confirm", "Message", JOptionPane.INFORMATION_MESSAGE);
                     ConfirmChoice.setEnabled(true);
                     deleteBookClicked=true;
                     DefaultListModel<String> modifiedModel = new DefaultListModel<>();
@@ -369,6 +375,7 @@ public class AdminActionFrame extends JFrame {
         AddUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                list.setEnabled(false);
                 UserSelectionComboBox.setVisible(false);
                 ConfirmChoice.setVisible(false);
                 AddUserFrame addUserFrame= new AddUserFrame(userChooseIFrame,library,true);
@@ -380,6 +387,7 @@ public class AdminActionFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 deleteBookClicked=false;
+                list.setEnabled(true);
                 categoryComboBox.setVisible(false);
                 SubCategoryComboBox.setVisible(false);
                 UserSelectionComboBox.setVisible(false);
@@ -391,6 +399,8 @@ public class AdminActionFrame extends JFrame {
                             "No book to update " + flowLibrary.getNameOfLibrary(), "Message", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     updateBookClicked=true;
+                    JOptionPane.showMessageDialog(null,
+                            "Choose at least one book from list and click confirm", "Message", JOptionPane.INFORMATION_MESSAGE);
                     DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                     for (Book books : flowLibrary.getListOfBooks()) {
                         modifiedModel.addElement(books.toString());
@@ -403,6 +413,7 @@ public class AdminActionFrame extends JFrame {
         AddBook.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                list.setEnabled(false);
                 DefaultListModel<String> updatedModel = new DefaultListModel<>();
                 for (Book books : flowLibrary.getListOfBooks()) {
                     updatedModel.addElement(books.toString());
