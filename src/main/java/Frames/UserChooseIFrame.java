@@ -12,8 +12,10 @@ public class UserChooseIFrame extends JFrame {
 
     private JLabel availableUser;
     private JLabel selectedUser;
-    private JButton confirmUser;
+    private JButton confirmUser,showPassword;
     private JButton addUser;
+
+
     private JList<String> list;
 
     public String getChoosenUserName() {
@@ -28,6 +30,9 @@ public class UserChooseIFrame extends JFrame {
         return libraryManagementFrame;
     }
 
+    public JList<String> getList() {
+        return list;
+    }
     private String ChoosenUserName;
     private Library flowLibrary;
     private LibraryManagementFrame libraryManagementFrame;
@@ -63,6 +68,24 @@ public class UserChooseIFrame extends JFrame {
         list.setBounds(70, 50, 100, 60);
         add(list);
         //
+
+        showPassword= new JButton(" Don't remember password?");
+        showPassword.setBounds(20,240,200,20);
+        add(showPassword);
+        showPassword.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (list.isSelectionEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Choose at least 1 user", "Error", JOptionPane.ERROR_MESSAGE);
+                }else if(list.getSelectedValue().equals("Admin")){
+                    JOptionPane.showMessageDialog(null, "You cannot not choose admin", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                else {
+                    new PasswordPopUpJFrame(UserChooseIFrame.this).setHint();
+                }
+            }
+        });
+
         availableUser = new JLabel("Available users");
         availableUser.setBounds(50, 13, 150, 20);
         availableUser.setFont(new Font("Forte", Font.ITALIC, 20));

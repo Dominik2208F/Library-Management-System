@@ -45,6 +45,7 @@ public class AddUserFrame extends JFrame {
         });
         usernameField = new JTextField();
         passwordField = new JPasswordField();
+        JToggleButton showHideButton = new JToggleButton("Show/hide");
         saveButton = new JButton("Save");
         usernameLabel = new JLabel("Username:");
         passwordLabel = new JLabel("Password:");
@@ -52,7 +53,8 @@ public class AddUserFrame extends JFrame {
         passwordLabel.setBounds(30, 40, 100, 30);
         usernameField.setBounds(100, 20, 150, 20);
         passwordField.setBounds(100, 50, 150, 20);
-        saveButton.setBounds(130, 90, 80, 30);
+        saveButton.setBounds(180, 90, 80, 30);
+        showHideButton.setBounds(70, 90, 100, 30);
 
         saveButton.addActionListener(new ActionListener() {
             @Override
@@ -86,6 +88,19 @@ public class AddUserFrame extends JFrame {
         add(passwordLabel);
         add(passwordField);
         add(saveButton);
+        add(showHideButton);
+
+        showHideButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                if (showHideButton.isSelected()) {
+                    passwordField.setEchoChar((char)0);
+                } else {
+
+                    passwordField.setEchoChar('\u2022');
+                }
+            }
+        });
 
         setSize(300, 200);
         setTitle("Add new User");
@@ -98,7 +113,7 @@ public class AddUserFrame extends JFrame {
     public void saveUser() {
         String username = usernameField.getText();
         char[] passwordchar = passwordField.getPassword();
-        String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+        String regex = "(?=.*[a-ząćęłńóśźż])(?=.*[A-ZĄĆĘŁŃÓŚŹŻ])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-ząćęłńóśźżĄĆĘŁŃÓŚŹŻ\\d@$!%*?&]{8,}$";
 
 
         if (username.isEmpty()) {
@@ -109,12 +124,12 @@ public class AddUserFrame extends JFrame {
             String password = new String(passwordchar);
             if(!Pattern.matches(regex,password)){
                 JOptionPane.showMessageDialog(null, "Password is not enough strong.The password must have:\n" +
-                        "* one capital letter.\n" +
-                        "* one lowercase letter.\n" +
-                        "* one digit.\n" +
-                        "* one special character.\n" +
-                        "* does not contain personal data.\n" +
-                        "* uses eight characters.\n"
+                        "* One capital letter.\n" +
+                        "* One lowercase letter.\n" +
+                        "* One digit.\n" +
+                        "* One special character.\n" +
+                        "* Does not contain personal data.\n" +
+                        "* Uses eight characters.\n"
                         , "Error", JOptionPane.ERROR_MESSAGE);
             }else{
                 User newUser =new User(username, password);
