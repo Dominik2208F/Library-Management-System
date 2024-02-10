@@ -15,7 +15,12 @@ public class UpdateBookJFrame extends JFrame {
     private Library library;
     private JList list;
     private CalendarIFrame calendar;
-    public JTextField authorBirthDateField = new JTextField();
+
+    public JTextField getAuthorBirthDateField() {
+        return authorBirthDateField;
+    }
+
+    private JTextField authorBirthDateField = new JTextField();
     private JTextField titleField = new JTextField();
     private JTextField authorFirstNameField = new JTextField();
     private JTextField authorLastNameField = new JTextField();

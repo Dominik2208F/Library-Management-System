@@ -21,7 +21,12 @@ public class AddBookJFrame extends JFrame {
     private JTextField titleField = new JTextField();
     private JTextField authorFirstNameField = new JTextField();
     private JTextField authorLastNameField = new JTextField();
-    public JTextField authorBirthDateField = new JTextField();
+
+    public JTextField getAuthorBirthDateField() {
+        return authorBirthDateField;
+    }
+
+    private JTextField authorBirthDateField = new JTextField();
     private JTextField yearField = new JTextField();
     private JTextField pagesField = new JTextField();
     private JComboBox<String> genreComboBox = new JComboBox<>(new String[]{"Przygodowa", "Akcji", "ScienceFiction", "Romans", "Historyczne", "Akademickie", "Finansowe", "Dramat"});

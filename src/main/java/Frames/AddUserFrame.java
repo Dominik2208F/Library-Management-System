@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.regex.Pattern;
 
 public class AddUserFrame extends JFrame {
 
@@ -97,6 +98,8 @@ public class AddUserFrame extends JFrame {
     public void saveUser() {
         String username = usernameField.getText();
         char[] passwordchar = passwordField.getPassword();
+        String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+
 
         if (username.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Username cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
@@ -104,10 +107,25 @@ public class AddUserFrame extends JFrame {
             JOptionPane.showMessageDialog(null, "Password cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             String password = new String(passwordchar);
-            flowLibrary.getLibraryUserDataBase().getListOfUser().add(new User(username, password));
-
-            userChooseIFrame.updateListOfUsers();
-            setVisible(false);
+            if(!Pattern.matches(regex,password)){
+                JOptionPane.showMessageDialog(null, "Password is not enough strong.The password must have:\n" +
+                        "* one capital letter.\n" +
+                        "* one lowercase letter.\n" +
+                        "* one digit.\n" +
+                        "* one special character.\n" +
+                        "* does not contain personal data.\n" +
+                        "* uses eight characters.\n"
+                        , "Error", JOptionPane.ERROR_MESSAGE);
+            }else{
+                User newUser =new User(username, password);
+                if( flowLibrary.getLibraryUserDataBase().getListOfUser().contains(newUser)){
+                    JOptionPane.showMessageDialog(null, "User with identical data exist in database. You cannot create the user", "Error", JOptionPane.ERROR_MESSAGE);
+                }else {
+                    flowLibrary.getLibraryUserDataBase().getListOfUser().add(new User(username, password));
+                    userChooseIFrame.updateListOfUsers();
+                    setVisible(false);
+                }
+            }
         }
     }
 
