@@ -9,12 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="password hint i ukrywanie hasła">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Frames/Status.java" afterDir="false" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="status +">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Library.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,13 +114,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00042" summary="formatowanie">
-      <created>1706919027304</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1706919027304</updated>
     </task>
     <task id="LOCAL-00043" summary="enkapsulacja">
       <created>1706919339522</created>
@@ -459,7 +451,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707566424918</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="status +">
+      <created>1707566789487</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1707566789487</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -474,7 +473,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="borrow all" />
     <MESSAGE value="return all" />
     <MESSAGE value="dodanie tla" />
     <MESSAGE value="przyciski panel admina" />
@@ -499,7 +497,8 @@
     <MESSAGE value="konfiguracja main" />
     <MESSAGE value="zmiana ułożenia w admin panel" />
     <MESSAGE value="password hint i ukrywanie hasła" />
-    <option name="LAST_COMMIT_MESSAGE" value="password hint i ukrywanie hasła" />
+    <MESSAGE value="status +" />
+    <option name="LAST_COMMIT_MESSAGE" value="status +" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -528,15 +527,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/Frames/PasswordPopUpJFrame.java</url>
           <line>64</line>
           <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/Main.java</url>
-          <line>8</line>
-          <properties class="org.example.Main" method="main">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

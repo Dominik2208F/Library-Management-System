@@ -19,16 +19,7 @@ public class UserActionFrame extends JFrame {
     JMenuBar menubar;
     JMenu Options, Program;
     JMenuItem changeUser, changeLibrary, programInfo;
-    JButton Sort;
-    JButton BorrowAbook;
-    JButton ReturnAbook;
-    JButton ConfirmChoice;
-    JButton showborrowedBook;
-
-    JButton returnAll;
-    JButton borrowALL;
-
-    JButton filter;
+    JButton Sort,BorrowAbook,ReturnAbook,ConfirmChoice,showborrowedBook,returnAll,borrowALL, filter;
     JList<String> list;
     Library flowLibrary;
     UserChooseIFrame userChooseIFrame;
@@ -384,7 +375,8 @@ public class UserActionFrame extends JFrame {
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 if (flowLibrary.getListOfBooks().isEmpty()) {
                     for (Book books : flowLibrary.getListOfBooks()) {
-                        modifiedModel.addElement(books.toString());
+                        modifiedModel.addElement(books.toString(
+                        ));
                     }
                     list.setModel(modifiedModel);
                     ConfirmChoice.setEnabled(false);

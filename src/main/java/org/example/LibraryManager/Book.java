@@ -1,6 +1,7 @@
 package org.example.LibraryManager;
 
 import Frames.Status;
+import org.example.UserManager.User;
 
 public class Book implements Comparable<Book> {
 
@@ -9,7 +10,7 @@ public class Book implements Comparable<Book> {
     private int dateOfProduction;
     private Genre genre;
     private int amountOfPage;
-
+    private User AssignedUserToBook =new User("None","none"); //default user to book
     private Status status;
 
     public Book(String title, Author author, int yearOfProduction, Genre genre, int amountOfPage, Status status) {
@@ -41,6 +42,7 @@ public class Book implements Comparable<Book> {
         return amountOfPage;
     }
 
+    //user view
     @Override
     public String toString() {
         return  "Status:" +status +
@@ -50,6 +52,19 @@ public class Book implements Comparable<Book> {
                 ", Genre: " + genre +
                 ", Amount of Pages: " + amountOfPage;
     }
+// admin view
+    public String toString(boolean flag) {
+        if(flag) {
+            return "Status: " + status + "Assigned: " + AssignedUserToBook.getName() +
+                    ", Title: " + title +
+                    ", Author: " + author +
+                    ", Date of Production: " + dateOfProduction +
+                    ", Genre: " + genre +
+                    ", Amount of Pages: " + amountOfPage;
+        }
+        return null;
+    }
+
 
     public void setTitle(String title) {
         this.title = title;

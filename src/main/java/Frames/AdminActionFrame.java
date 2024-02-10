@@ -302,7 +302,7 @@ public class AdminActionFrame extends JFrame {
 
                             String BooksAfterRemove[] = listOfBooksToIterateThrough.toArray(new String[listOfBooksToIterateThrough.size()]);
                             list.setModel(new DefaultComboBoxModel<>(BooksAfterRemove));
-                            booksLabel.setText(flowLibrary.getListOfBooks().size() + " books in "  + flowLibrary.getNameOfLibrary() + " library");
+                            booksLabel.setText(flowLibrary.getListOfBooks().size() + " books in library");
                         }
                         if(flowLibrary.getListOfBooks().isEmpty()){
                             ConfirmChoice.setEnabled(false);
