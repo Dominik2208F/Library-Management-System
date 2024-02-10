@@ -1,6 +1,7 @@
 package org.example;
 
 
+import Frames.LibraryManagementFrame;
 import org.example.LibraryManager.LibraryDataBase;
 
 public class Main {
@@ -13,10 +14,8 @@ public class Main {
         SetUp.createDefaultLibrariesSetUp("Pruszkowska");
         SetUp.createDefaultLibrariesSetUp("Warszawska");
 
-        Flow flow = new Flow(libraryDataBase);
+        new Flow(libraryDataBase);
+        new LibraryManagementFrame(libraryDataBase);
 
-        while (true) {
-            flow.mainFlow();
-        }
     }
 }

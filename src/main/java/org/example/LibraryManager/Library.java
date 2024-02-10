@@ -95,10 +95,10 @@ public class Library {
         }
      //   Author author = new Author(authorName, authorSurname, dateOfBirthday);
         Genre genre = new Genre(genreName);
-      //  Book book = new Book(title, author, dateOfBirthday, genre, amountOfPage);
+     //   Book book = new Book(title, author, dateOfBirthday, genre, amountOfPage);
 
-     //   listOfBooks.add(book);
-      //  System.out.println("Book with title " + book.getTitle() + " has been added");
+    //    listOfBooks.add(book);
+   //   System.out.println("Book with title " + book.getTitle() + " has been added");
         returnSizeOfLibrary();
     }
 
