@@ -41,7 +41,7 @@ public class AdminActionFrame extends JFrame {
 
         DefaultListModel<String> listOfAction = new DefaultListModel<>();
         list = new JList<>(listOfAction);
-        list.setBounds(180, 20, 500, 130);
+        list.setBounds(10, 45, 665, 130);
         add(list);
 
         Map<String, List<String>> subcategoriesMap = new HashMap<>();
@@ -77,20 +77,20 @@ public class AdminActionFrame extends JFrame {
         menubar.add(Program);
 
 
-        booksLabel= new JLabel(flowLibrary.getListOfBooks().size() +" books in "  + flowLibrary.getNameOfLibrary() + " library");
-        booksLabel.setBounds(350, -5, 200, 30);
+        booksLabel= new JLabel(flowLibrary.getListOfBooks().size() +" books in library");
+        booksLabel.setBounds(570, 15, 180, 30);
         add(booksLabel);
 
         AddBook = new JButton("Add a book");
-        AddBook.setBounds(40, 20, 130, 35);
+        AddBook.setBounds(10, 5, 130, 35);
         add(AddBook);
 
         ReturnInfoAllBooks = new JButton("Show all books");
-        ReturnInfoAllBooks.setBounds(40, 60, 130, 35);
+        ReturnInfoAllBooks.setBounds(140, 5, 130, 35);
         add(ReturnInfoAllBooks);
 
         DeleteBook = new JButton("Delete book");
-        DeleteBook.setBounds(40, 100, 130, 35);
+        DeleteBook.setBounds(270, 5, 130, 35);
         add(DeleteBook);
 
         ConfirmChoice= new JButton("Confirm Choice");
@@ -100,24 +100,24 @@ public class AdminActionFrame extends JFrame {
         ConfirmChoice.setBackground(Color.ORANGE);
 
         UpdateBook = new JButton("Update book");
-        UpdateBook.setBounds(40, 140, 130, 35);
+        UpdateBook.setBounds(400, 5, 130, 35);
         add(UpdateBook);
 
         AddUser = new JButton("Add user");
-        AddUser.setBounds(40, 180, 130, 35);
+        AddUser.setBounds(10, 180, 130, 35);
         add(AddUser);
 
         DeleteUser = new JButton("Delete user");
-        DeleteUser.setBounds(40, 220, 130, 35);
+        DeleteUser.setBounds(10, 220, 130, 35);
         add(DeleteUser);
 
 
         ReturnBookOfAGivenUser = new JButton("Return book of a given user");
-        ReturnBookOfAGivenUser.setBounds(40, 260, 200, 35);
+        ReturnBookOfAGivenUser.setBounds(10, 260, 200, 35);
         add(ReturnBookOfAGivenUser);
 
         BorrowedBooksOfUser = new JButton("User borrowed books");
-        BorrowedBooksOfUser.setBounds(40, 300, 200, 35);
+        BorrowedBooksOfUser.setBounds(10, 300, 200, 35);
         add(BorrowedBooksOfUser);
 
         categoryComboBox = new JComboBox<>(new String[]{"Author", "Genre","Select"});
@@ -454,7 +454,7 @@ public class AdminActionFrame extends JFrame {
         });
 
         JScrollPane scrollPane = new JScrollPane(list);
-        scrollPane.setBounds(180, 20, 500, 130);
+        scrollPane.setBounds(10, 45, 665, 130);
         add(scrollPane);
 
         setSize(700, 500);
