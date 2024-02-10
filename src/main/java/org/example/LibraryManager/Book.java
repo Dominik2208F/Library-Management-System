@@ -1,5 +1,7 @@
 package org.example.LibraryManager;
 
+import Frames.Status;
+
 public class Book implements Comparable<Book> {
 
     private String title;
@@ -8,12 +10,15 @@ public class Book implements Comparable<Book> {
     private Genre genre;
     private int amountOfPage;
 
-    public Book(String title, Author author, int yearOfProduction, Genre genre, int amountOfPage) {
+    private Status status;
+
+    public Book(String title, Author author, int yearOfProduction, Genre genre, int amountOfPage, Status status) {
         this.title = title;
         this.author = author;
         this.dateOfProduction = yearOfProduction;
         this.genre = genre;
         this.amountOfPage = amountOfPage;
+        this.status= status;
     }
 
     public String getTitle() {
@@ -38,7 +43,8 @@ public class Book implements Comparable<Book> {
 
     @Override
     public String toString() {
-        return "Title: " + title +
+        return  "Status:" +status +
+                 ", Title: " + title +
                 ", Author: " + author +
                 ", Date of Production: " + dateOfProduction +
                 ", Genre: " + genre +
@@ -63,6 +69,15 @@ public class Book implements Comparable<Book> {
 
     public void setAmountOfPage(int amountOfPage) {
         this.amountOfPage = amountOfPage;
+    }
+
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Status getStatus() {
+        return status;
     }
 
     @Override

@@ -162,7 +162,7 @@ public class AddBookJFrame extends JFrame {
 
                 Author author = new Author(authorFirstName, authorLastName, authorBirthDate);
                 Genre genre = new Genre(description);
-                Book newBook = new Book(title, author, year, genre, pages);
+                Book newBook = new Book(title, author, year, genre, pages,Status.AVAILABLE);
                 flowLibrary.getListOfBooks().add(newBook);
 
                 DefaultListModel<String> updatedModel = new DefaultListModel<>();
