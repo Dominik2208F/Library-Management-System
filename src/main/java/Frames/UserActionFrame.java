@@ -19,7 +19,7 @@ public class UserActionFrame extends JFrame {
     JMenuBar menubar;
     JMenu Options, Program;
     JMenuItem changeUser, changeLibrary, programInfo;
-    JButton Sort,BorrowAbook,ReturnAbook,ConfirmChoice,showborrowedBook,returnAll,borrowALL, filter;
+    JButton Sort,BorrowAbook,ReturnAbook,ConfirmChoice,showborrowedBook,returnAll,borrowALL, filter,ShowAllBook;
     JList<String> list;
     Library flowLibrary;
     UserChooseIFrame userChooseIFrame;
@@ -117,6 +117,21 @@ public class UserActionFrame extends JFrame {
         BorrowAbook.setBounds(40, 20, 130, 35);
         add(BorrowAbook);
 
+
+        ShowAllBook =new JButton("Show all books");
+        ShowAllBook.setBounds(40,100,130,35);
+        add(ShowAllBook);
+
+        ShowAllBook.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+                for (Book Book : flowLibrary.getListOfBooks()) {
+                        modifiedModel.addElement(Book.toString());
+                }
+                list.setModel(modifiedModel);
+            }
+        });
 
         ReturnAbook = new JButton("Return a book");
         ReturnAbook.setBounds(40, 60, 130, 35);
@@ -380,30 +395,30 @@ public class UserActionFrame extends JFrame {
                 borrowALL.setVisible(true);
                 borrowALL.setEnabled(true);
                 returnAll.setVisible(false);
+
+
+                User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.getChoosenUserName());
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-                if (flowLibrary.getListOfBooks().isEmpty()) {
-                    for (Book books : flowLibrary.getListOfBooks()) {
-                        modifiedModel.addElement(books.toString(
-                        ));
+                for (Book Book : flowLibrary.getListOfBooks()) {
+                    if (Book.getStatus() == Status.AVAILABLE && user.getName().equals(userChooseIFrame.getChoosenUserName())) {
+                        modifiedModel.addElement(Book.toString());
                     }
-                    list.setModel(modifiedModel);
-                    ConfirmChoice.setEnabled(false);
-                    borrowALL.setEnabled(false);
-                    JOptionPane.showMessageDialog(null, "No books to borrow", "Warning", JOptionPane.WARNING_MESSAGE);
-                } else {
-                    for (Book books : flowLibrary.getListOfBooks()) {
-                        modifiedModel.addElement(books.toString());
-                    }
-                    list.setModel(modifiedModel);
+                }
+                list.setModel(modifiedModel);
+                if (!checkIfAllBooksBorrowed(flowLibrary.getListOfBooks())) {
                     if (informationBorrow) {
                         JOptionPane.showMessageDialog(null, "Choose at least one book to borrow and confirm", "Warning", JOptionPane.INFORMATION_MESSAGE);
                     }
                     informationBorrow = false;
                     ConfirmChoice.setEnabled(true);
                     borrowButtonClicked = true;
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "No books to borrow", "Warning", JOptionPane.INFORMATION_MESSAGE);
+                    borrowALL.setEnabled(false);
+                    ConfirmChoice.setEnabled(false);
                 }
             }
-
         });
         programInfo.addActionListener(new ActionListener() {
             @Override
