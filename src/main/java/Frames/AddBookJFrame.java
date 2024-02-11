@@ -167,7 +167,7 @@ public class AddBookJFrame extends JFrame {
 
                 DefaultListModel<String> updatedModel = new DefaultListModel<>();
                 for (Book book : flowLibrary.getListOfBooks()) {
-                    updatedModel.addElement(book.toString());
+                    updatedModel.addElement(book.toString(true));
                 }
                 list.setModel(updatedModel);
                 dispose();

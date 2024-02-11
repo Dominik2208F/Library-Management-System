@@ -203,7 +203,7 @@ public class UpdateBookJFrame extends JFrame {
 
                 DefaultListModel<String> updatedModel = new DefaultListModel<>();
                 for (Book book : library.getListOfBooks()) {
-                    updatedModel.addElement(book.toString());
+                    updatedModel.addElement(book.toString(true));
                 }
                 list.setModel(updatedModel);
                 dispose();

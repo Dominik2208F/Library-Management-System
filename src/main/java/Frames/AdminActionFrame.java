@@ -418,13 +418,14 @@ public class AdminActionFrame extends JFrame {
             for (Book book : flowLibrary.getListOfBooks()) {
                 if (book.getGenre().getName().equals(selectedOption)) {
                     modifiedModel.addElement(book.toString(true));
+                    list.setModel(modifiedModel);
                 }
             }
             if (modifiedModel.isEmpty()) {
+                list.setModel(modifiedModel);
                 JOptionPane.showMessageDialog(null,
                         "No book meets the criteria Category " + selectedCategory + " and " + selectedOption, "Message", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                list.setModel(modifiedModel);
+
             }
         } else if (selectedCategory.equals("Author")) {
 
@@ -432,25 +433,25 @@ public class AdminActionFrame extends JFrame {
                 if (book.getAuthor().getLastName().equals(selectedOption)) {
                     modifiedModel.addElement(book.toString(true));
                 }
+                list.setModel(modifiedModel);
             }
             if (modifiedModel.isEmpty()) {
+                list.setModel(modifiedModel);
                 JOptionPane.showMessageDialog(null,
                         "No book meets the criteria Category " + selectedCategory + " and " + selectedOption, "Message", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                list.setModel(modifiedModel);
             }
         } else if (selectedCategory.equals("Status")) {
 
             for (Book book : flowLibrary.getListOfBooks()) {
                 if (book.getStatus().toString().equals(selectedOption)) {
                     modifiedModel.addElement(book.toString(true));
+                    list.setModel(modifiedModel);
                 }
             }
             if (modifiedModel.isEmpty()) {
+                list.setModel(modifiedModel);
                 JOptionPane.showMessageDialog(null,
                         "No book meets the criteria Category " + selectedCategory + " and " + selectedOption, "Message", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                list.setModel(modifiedModel);
             }
 
         } else if (selectedCategory.equals("Assigned to")) {
@@ -458,13 +459,13 @@ public class AdminActionFrame extends JFrame {
             for (Book book : flowLibrary.getListOfBooks()) {
                 if (book.getAssignedUserToBook().getName().equals(selectedOption)) {
                     modifiedModel.addElement(book.toString(true));
+                    list.setModel(modifiedModel);
                 }
             }
             if (modifiedModel.isEmpty()) {
+                list.setModel(modifiedModel);
                 JOptionPane.showMessageDialog(null,
                         "No book meets the criteria Category " + selectedCategory + " and " + selectedOption, "Message", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                list.setModel(modifiedModel);
             }
         }
     }

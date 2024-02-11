@@ -177,11 +177,12 @@ public class UserActionFrame extends JFrame {
                 borrowALL.setVisible(false);
                 ConfirmChoice.setVisible(true);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+
                 User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.getChoosenUserName());
 
 
                 for (Book Book : flowLibrary.getListOfBooks()) {
-                    if(Book.getStatus()==Status.BORROWED && user.getName().equals(userChooseIFrame.getChoosenUserName())) {
+                    if(Book.getStatus()==Status.BORROWED && Book.getAssignedUserToBook().getName().equals(userChooseIFrame.getChoosenUserName())) {
                         modifiedModel.addElement(Book.toString());
                     }
                 }
@@ -270,7 +271,7 @@ public class UserActionFrame extends JFrame {
 
                                 DefaultListModel<String> modifiedModel1 = new DefaultListModel<>();
                                 for (Book Book : flowLibrary.getListOfBooks()) {
-                                    if (Book.getStatus() == Status.AVAILABLE && user.getName().equals(userChooseIFrame.getChoosenUserName())) {
+                                    if (Book.getStatus() == Status.AVAILABLE) {
                                         modifiedModel1.addElement(Book.toString());
                                     }
                                 }
@@ -316,7 +317,7 @@ public class UserActionFrame extends JFrame {
 
 
                             for (Book Book : flowLibrary.getListOfBooks()) {
-                                if(Book.getStatus()==Status.BORROWED && user.getName().equals(userChooseIFrame.getChoosenUserName())) {
+                                if(Book.getStatus()==Status.BORROWED && Book.getAssignedUserToBook().getName().equals(userChooseIFrame.getChoosenUserName())) {
                                     modifiedModel.addElement(Book.toString());
                                 }
                             }
@@ -374,10 +375,9 @@ public class UserActionFrame extends JFrame {
                 returnAll.setVisible(false);
                 list.setEnabled(true);
 
-                User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.getChoosenUserName());
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 for (Book Book : flowLibrary.getListOfBooks()) {
-                    if (Book.getStatus() == Status.AVAILABLE && user.getName().equals(userChooseIFrame.getChoosenUserName())) {
+                    if (Book.getStatus() == Status.AVAILABLE && Book.getAssignedUserToBook().getName().equals("None")) {
                         modifiedModel.addElement(Book.toString());
                     }
                 }
@@ -530,7 +530,7 @@ public class UserActionFrame extends JFrame {
                 int odp = JOptionPane.showConfirmDialog(null, "Do you want to return all books?");
                 if (odp == JOptionPane.YES_OPTION) {
                     for (Book book : flowLibrary.getListOfBooks()) {
-                        if (book.getStatus() != Status.AVAILABLE && book.getAssignedUserToBook().getName().equals(userChooseIFrame.getChoosenUserName())) {
+                        if (book.getStatus()==Status.BORROWED && book.getAssignedUserToBook().getName().equals(userChooseIFrame.getChoosenUserName())) {
                             book.setStatus(Status.AVAILABLE);
                             book.setAssignedUserToBook(new User("None", "none"));
                         }
@@ -541,7 +541,7 @@ public class UserActionFrame extends JFrame {
 
                     DefaultListModel<String> modifiedModel1 = new DefaultListModel<>();
                     for (Book Book : flowLibrary.getListOfBooks()) {
-                        if (Book.getStatus() == Status.BORROWED && user.getName().equals(userChooseIFrame.getChoosenUserName())) {
+                        if (Book.getStatus() == Status.BORROWED && Book.getAssignedUserToBook().getName().equals(userChooseIFrame.getChoosenUserName())) {
                             modifiedModel1.addElement(Book.toString());
                         }
                     }
