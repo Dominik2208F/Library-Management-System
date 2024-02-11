@@ -33,6 +33,7 @@ public class UserActionFrame extends JFrame {
     private boolean returnButtonClicked = false;
     private boolean informationBorrow = true;
     private boolean informationReturn = true;
+    private Map<String, List<String>> subcategoriesMap = new HashMap<>();
 
     public UserActionFrame(UserChooseIFrame userChooseIFrame, Library library) {
 
@@ -43,8 +44,6 @@ public class UserActionFrame extends JFrame {
         list = new JList<>(listOfAction);
         list.setBounds(150, 20, 600, 150);
         add(list);
-
-        Map<String, List<String>> subcategoriesMap = new HashMap<>();
 
         setContentPane(new JPanel() {
             @Override
@@ -431,37 +430,8 @@ public class UserActionFrame extends JFrame {
         categoryComboBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                List<String> listOfAuthorSurnames = new ArrayList<>();
-
-                for (Book book : library.getListOfBooks()) {
-                    if (!listOfAuthorSurnames.contains(book.getAuthor().getLastName())) {
-                        listOfAuthorSurnames.add(book.getAuthor().getLastName());
-                    }
-                }
-
-                subcategoriesMap.put("Select", Arrays.asList(" "));
-                subcategoriesMap.put("Status", Arrays.asList(Status.AVAILABLE.toString(),Status.BORROWED.toString()));
-                subcategoriesMap.put("Author", listOfAuthorSurnames);
-                subcategoriesMap.put("Genre", Arrays.asList("Przygodowa", "Akcji", "ScienceFiction", "Romans", "Historyczne", "Akademickie", "Finansowe", "Dramat"));
-
-                String selectedCategory = (String) categoryComboBox.getSelectedItem();
-
-                List<String> subcategories = subcategoriesMap.get(selectedCategory);
-                String subcategoriesArray[] = subcategories.toArray(new String[subcategories.size()]);
-
-
-                if (subcategories != null && !selectedCategory.equals("Select")) {
-                    SubCategoryComboBox.setEnabled(true);
-                    SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
-                    SubCategoryComboBox.setVisible(true);
-                    subCategoryFiltering();
-                } else {
-                    SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
-                    SubCategoryComboBox.setEnabled(false);
-                }
+                categoryFiltering();
             }
-
         });
         SubCategoryComboBox.addActionListener(new ActionListener() {
             @Override
@@ -633,7 +603,7 @@ public class UserActionFrame extends JFrame {
         }
         return null;
     }
-    public void subCategoryFiltering(){
+    public  void subCategoryFiltering(){
 
         String selectedCategory = (String) categoryComboBox.getSelectedItem();
         String selectedGenre = (String) SubCategoryComboBox.getSelectedItem();
@@ -679,7 +649,7 @@ public class UserActionFrame extends JFrame {
             }
         }
     }
-    public void SortingComboBox(){
+    public  void SortingComboBox(){
         DefaultListModel<String> modifiedModel = new DefaultListModel<>();
         List<Book> temporaryList = new ArrayList<>();
 
@@ -718,4 +688,36 @@ public class UserActionFrame extends JFrame {
             list.setModel(modifiedModel);
         }
     }
+    public void categoryFiltering(){
+
+        List<String> listOfAuthorSurnames = new ArrayList<>();
+
+        for (Book book : flowLibrary.getListOfBooks()) {
+            if (!listOfAuthorSurnames.contains(book.getAuthor().getLastName())) {
+                listOfAuthorSurnames.add(book.getAuthor().getLastName());
+            }
+        }
+
+        subcategoriesMap.put("Select", Arrays.asList(" "));
+        subcategoriesMap.put("Status", Arrays.asList(Status.AVAILABLE.toString(),Status.BORROWED.toString()));
+        subcategoriesMap.put("Author", listOfAuthorSurnames);
+        subcategoriesMap.put("Genre", Arrays.asList("Przygodowa", "Akcji", "ScienceFiction", "Romans", "Historyczne", "Akademickie", "Finansowe", "Dramat"));
+
+        String selectedCategory = (String) categoryComboBox.getSelectedItem();
+
+        List<String> subcategories = subcategoriesMap.get(selectedCategory);
+        String subcategoriesArray[] = subcategories.toArray(new String[subcategories.size()]);
+
+
+        if (subcategories != null && !selectedCategory.equals("Select")) {
+            SubCategoryComboBox.setEnabled(true);
+            SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
+            SubCategoryComboBox.setVisible(true);
+            subCategoryFiltering();
+        } else {
+            SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
+            SubCategoryComboBox.setEnabled(false);
+        }
+    }
+
 }

@@ -127,6 +127,7 @@ public class UsersDataBase {
         listOfUser.add(user);
     }
 
+
     public User returnObjectOfUserByName(String name) {
         for (User user : listOfUser) {
             if (user.getName().equalsIgnoreCase(name)) {
@@ -154,7 +155,7 @@ public class UsersDataBase {
         }
     }
 
-    public void createDefaultAdminUser() {
+    public void createDefaultUsers() {
         addAdminDatabase();
     }
 

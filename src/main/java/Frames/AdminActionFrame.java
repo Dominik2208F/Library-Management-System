@@ -33,6 +33,7 @@ public class AdminActionFrame extends JFrame {
     private boolean informationUpdate= true;
     private boolean informationDelete=true;
     private JComboBox<String> categoryComboBox,SubCategoryComboBox,UserSelectionComboBox;
+    private Map<String, List<String>> subcategoriesMap = new HashMap<>();
 
     public AdminActionFrame(UserChooseIFrame userChooseIFrame, Library library) {
 
@@ -41,10 +42,9 @@ public class AdminActionFrame extends JFrame {
 
         DefaultListModel<String> listOfAction = new DefaultListModel<>();
         list = new JList<>(listOfAction);
-        list.setBounds(10, 45, 665, 130);
+        list.setBounds(150, 20, 600, 150);
         add(list);
 
-        Map<String, List<String>> subcategoriesMap = new HashMap<>();
         setContentPane(new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -78,29 +78,29 @@ public class AdminActionFrame extends JFrame {
 
 
         booksLabel= new JLabel(flowLibrary.getListOfBooks().size() +" books in library");
-        booksLabel.setBounds(570, 15, 180, 30);
+        booksLabel.setBounds(570, -5, 180, 30);
         add(booksLabel);
 
         AddBook = new JButton("Add a book");
-        AddBook.setBounds(10, 5, 130, 35);
+        AddBook.setBounds(10, 20, 130, 35);
         add(AddBook);
 
         ReturnInfoAllBooks = new JButton("Show all books");
-        ReturnInfoAllBooks.setBounds(140, 5, 130, 35);
+        ReturnInfoAllBooks.setBounds(10, 60, 130, 35);
         add(ReturnInfoAllBooks);
 
         DeleteBook = new JButton("Delete book");
-        DeleteBook.setBounds(270, 5, 130, 35);
+        DeleteBook.setBounds(10, 100, 130, 35);
         add(DeleteBook);
 
         ConfirmChoice= new JButton("Confirm Choice");
-        ConfirmChoice.setBounds(500, 180, 130, 35);
+        ConfirmChoice.setBounds(590, 180, 160, 35);
         add(ConfirmChoice);
         ConfirmChoice.setVisible(false);
         ConfirmChoice.setBackground(Color.ORANGE);
 
         UpdateBook = new JButton("Update book");
-        UpdateBook.setBounds(400, 5, 130, 35);
+        UpdateBook.setBounds(10, 140, 130, 35);
         add(UpdateBook);
 
         AddUser = new JButton("Add user");
@@ -120,13 +120,13 @@ public class AdminActionFrame extends JFrame {
         BorrowedBooksOfUser.setBounds(10, 300, 200, 35);
         add(BorrowedBooksOfUser);
 
-        categoryComboBox = new JComboBox<>(new String[]{"Author", "Genre","Select"});
-        categoryComboBox.setBounds(500,200,160,30);
+        categoryComboBox = new JComboBox<>(new String[]{"Author", "Genre","Select","Status","Assigned to"});
+        categoryComboBox.setBounds(590,200,160,30);
         add(categoryComboBox);
         categoryComboBox.setSelectedItem("Select");
 
         SubCategoryComboBox = new JComboBox<>();
-        SubCategoryComboBox.setBounds(500,240,160,30);
+        SubCategoryComboBox.setBounds(590,240,160,30);
         add(SubCategoryComboBox);
 
 
@@ -172,32 +172,7 @@ public class AdminActionFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                List<String> listOfAuthorSurnames= new ArrayList<>();
-
-                for(Book book : library.getListOfBooks()){
-                    if(!listOfAuthorSurnames.contains(book.getAuthor().getLastName())) {
-                        listOfAuthorSurnames.add(book.getAuthor().getLastName());
-                    }
-                }
-
-                subcategoriesMap.put("Select", Arrays.asList(" "));
-                subcategoriesMap.put("Author", listOfAuthorSurnames);
-                subcategoriesMap.put("Genre", Arrays.asList("Przygodowa", "Akcji", "ScienceFiction","Romans","Historyczne","Akademickie","Finansowe","Dramat"));
-
-                String selectedCategory = (String) categoryComboBox.getSelectedItem();
-
-                List<String> subcategories = subcategoriesMap.get(selectedCategory);
-                String subcategoriesArray[] = subcategories.toArray(new String[subcategories.size()]);
-
-
-                if (subcategories != null && !selectedCategory.equals("Select")) {
-                    SubCategoryComboBox.setEnabled(true);
-                    SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
-                    SubCategoryComboBox.setVisible(true);
-                } else {
-                    SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
-                    SubCategoryComboBox.setEnabled(false);
-                }
+                categoryFiltering();
             }
 
         });
@@ -205,38 +180,7 @@ public class AdminActionFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String selectedCategory = (String) categoryComboBox.getSelectedItem();
-                String selectedGenre =  (String)  SubCategoryComboBox.getSelectedItem();
-                DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-                if(selectedCategory.equals("Genre")){
-                    for(Book book : flowLibrary.getListOfBooks()){
-                        if(book.getGenre().getName().equals(selectedGenre)){
-                            modifiedModel.addElement(book.toString());
-                        }
-                    }
-                    if(modifiedModel.isEmpty()){
-                        JOptionPane.showMessageDialog(null,
-                                "No book meets the criteria Category "+selectedCategory + " and " +selectedGenre, "Message", JOptionPane.INFORMATION_MESSAGE);
-                    }
-                    else{
-                        list.setModel(modifiedModel);
-                    }
-                }
-                else if(selectedCategory.equals("Author")){
-
-                    for(Book book : flowLibrary.getListOfBooks()){
-                        if(book.getAuthor().getLastName().equals(selectedGenre)){
-                            modifiedModel.addElement(book.toString());
-                        }
-                    }
-                    if(modifiedModel.isEmpty()){
-                        JOptionPane.showMessageDialog(null,
-                                "No book meets the criteria Category "+selectedCategory + " and " +selectedGenre, "Message", JOptionPane.INFORMATION_MESSAGE);
-                    }
-                    else {
-                        list.setModel(modifiedModel);
-                    }
-                }
+                subCategoryFiltering();
             }
         });
         changeUser.addActionListener(new ActionListener() {
@@ -264,7 +208,7 @@ public class AdminActionFrame extends JFrame {
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 if (flowLibrary.getListOfBooks().isEmpty()) {
                     for (Book books : flowLibrary.getListOfBooks()) {
-                        modifiedModel.addElement(books.toString());
+                        modifiedModel.addElement(books.toString(true));
                     }
                     list.setModel(modifiedModel);
                     SubCategoryComboBox.setEnabled(false);
@@ -272,12 +216,12 @@ public class AdminActionFrame extends JFrame {
                     JOptionPane.showMessageDialog(null, "No books in library", "Warning", JOptionPane.WARNING_MESSAGE);
                 } else {
                     for (Book books : flowLibrary.getListOfBooks()) {
-                        modifiedModel.addElement(books.toString());
+                        modifiedModel.addElement(books.toString(true));
                     }
                     SubCategoryComboBox.setEnabled(true);
                     categoryComboBox.setEnabled(true);
                     list.setModel(modifiedModel);
-                    list.setEnabled(false);
+                    list.setEnabled(true);
                 }
             }
         });
@@ -297,7 +241,7 @@ public class AdminActionFrame extends JFrame {
                         //Remove
                         flowLibrary.getListOfBooks().remove(selectedBookIndexToRemove);
                         for(Book book : flowLibrary.getListOfBooks()){
-                            listOfBooksToIterateThrough.add(book.toString());
+                            listOfBooksToIterateThrough.add(book.toString(true));
                         }
 
                             String BooksAfterRemove[] = listOfBooksToIterateThrough.toArray(new String[listOfBooksToIterateThrough.size()]);
@@ -349,7 +293,7 @@ public class AdminActionFrame extends JFrame {
                     deleteBookClicked=true;
                     DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                     for (Book books : flowLibrary.getListOfBooks()) {
-                        modifiedModel.addElement(books.toString());
+                        modifiedModel.addElement(books.toString(true));
                     }
                     SubCategoryComboBox.setEnabled(true);
                     categoryComboBox.setEnabled(true);
@@ -426,7 +370,7 @@ public class AdminActionFrame extends JFrame {
                   }
                     DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                     for (Book books : flowLibrary.getListOfBooks()) {
-                        modifiedModel.addElement(books.toString());
+                        modifiedModel.addElement(books.toString(true));
                         list.setModel(modifiedModel);
                     }
                 }
@@ -438,7 +382,7 @@ public class AdminActionFrame extends JFrame {
                 list.setEnabled(false);
                 DefaultListModel<String> updatedModel = new DefaultListModel<>();
                 for (Book books : flowLibrary.getListOfBooks()) {
-                    updatedModel.addElement(books.toString());
+                    updatedModel.addElement(books.toString(true));
                 }
                 SubCategoryComboBox.setEnabled(true);
                 categoryComboBox.setEnabled(true);
@@ -454,10 +398,10 @@ public class AdminActionFrame extends JFrame {
         });
 
         JScrollPane scrollPane = new JScrollPane(list);
-        scrollPane.setBounds(10, 45, 665, 130);
+        scrollPane.setBounds(150, 20, 600, 150);
         add(scrollPane);
 
-        setSize(700, 500);
+        setSize(900, 500);
         setTitle("Admin Panel logged as " + userChooseIFrame.getChoosenUserName());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
@@ -465,5 +409,103 @@ public class AdminActionFrame extends JFrame {
         setVisible(true);
 
     }
+    public  void subCategoryFiltering() {
 
+        String selectedCategory = (String) categoryComboBox.getSelectedItem();
+        String selectedOption = (String) SubCategoryComboBox.getSelectedItem();
+        DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+        if (selectedCategory.equals("Genre")) {
+            for (Book book : flowLibrary.getListOfBooks()) {
+                if (book.getGenre().getName().equals(selectedOption)) {
+                    modifiedModel.addElement(book.toString(true));
+                }
+            }
+            if (modifiedModel.isEmpty()) {
+                JOptionPane.showMessageDialog(null,
+                        "No book meets the criteria Category " + selectedCategory + " and " + selectedOption, "Message", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                list.setModel(modifiedModel);
+            }
+        } else if (selectedCategory.equals("Author")) {
+
+            for (Book book : flowLibrary.getListOfBooks()) {
+                if (book.getAuthor().getLastName().equals(selectedOption)) {
+                    modifiedModel.addElement(book.toString(true));
+                }
+            }
+            if (modifiedModel.isEmpty()) {
+                JOptionPane.showMessageDialog(null,
+                        "No book meets the criteria Category " + selectedCategory + " and " + selectedOption, "Message", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                list.setModel(modifiedModel);
+            }
+        } else if (selectedCategory.equals("Status")) {
+
+            for (Book book : flowLibrary.getListOfBooks()) {
+                if (book.getStatus().toString().equals(selectedOption)) {
+                    modifiedModel.addElement(book.toString(true));
+                }
+            }
+            if (modifiedModel.isEmpty()) {
+                JOptionPane.showMessageDialog(null,
+                        "No book meets the criteria Category " + selectedCategory + " and " + selectedOption, "Message", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                list.setModel(modifiedModel);
+            }
+
+        } else if (selectedCategory.equals("Assigned to")) {
+
+            for (Book book : flowLibrary.getListOfBooks()) {
+                if (book.getAssignedUserToBook().getName().equals(selectedOption)) {
+                    modifiedModel.addElement(book.toString(true));
+                }
+            }
+            if (modifiedModel.isEmpty()) {
+                JOptionPane.showMessageDialog(null,
+                        "No book meets the criteria Category " + selectedCategory + " and " + selectedOption, "Message", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                list.setModel(modifiedModel);
+            }
+        }
+    }
+    public void categoryFiltering(){
+
+        List<String> listOfAuthorSurnames = new ArrayList<>();
+        List<String> listOfUsers = new ArrayList<>();
+
+        for (Book book : flowLibrary.getListOfBooks()) {
+            if (!listOfAuthorSurnames.contains(book.getAuthor().getLastName())) {
+                listOfAuthorSurnames.add(book.getAuthor().getLastName());
+            }
+        }
+
+        for (User user : flowLibrary.getLibraryUserDataBase().getListOfUser()) {
+            if(!user.getName().equals("Admin")) {
+                listOfUsers.add(user.getName());
+            }
+        }
+        listOfUsers.add(new User("None","none").getName());
+
+        subcategoriesMap.put("Select", Arrays.asList(" "));
+        subcategoriesMap.put("Status", Arrays.asList(Status.AVAILABLE.toString(),Status.BORROWED.toString()));
+        subcategoriesMap.put("Author", listOfAuthorSurnames);
+        subcategoriesMap.put("Genre", Arrays.asList("Przygodowa", "Akcji", "ScienceFiction", "Romans", "Historyczne", "Akademickie", "Finansowe", "Dramat"));
+        subcategoriesMap.put("Assigned to",listOfUsers);
+
+        String selectedCategory = (String) categoryComboBox.getSelectedItem();
+
+        List<String> subcategories = subcategoriesMap.get(selectedCategory);
+        String subcategoriesArray[] = subcategories.toArray(new String[subcategories.size()]);
+
+
+        if (subcategories != null && !selectedCategory.equals("Select")) {
+            SubCategoryComboBox.setEnabled(true);
+            SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
+            SubCategoryComboBox.setVisible(true);
+            subCategoryFiltering();
+        } else {
+            SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
+            SubCategoryComboBox.setEnabled(false);
+        }
+    }
 }

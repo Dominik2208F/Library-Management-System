@@ -65,7 +65,7 @@ public class Book implements Comparable<Book> {
 // admin view
     public String toString(boolean flag) {
         if(flag) {
-            return "Status: " + status + "Assigned to: " + AssignedUserToBook.getName() +
+            return "Status: " + status + " Assigned to: " + AssignedUserToBook.getName() +
                     ", Title: " + title +
                     ", Author: " + author +
                     ", Production date: " + dateOfProduction +

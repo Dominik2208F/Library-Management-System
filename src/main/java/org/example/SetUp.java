@@ -20,10 +20,10 @@ public class SetUp {
         libraryDataBase.addLibrary(library); // add each library to DataBaseLibrary
         if (name.equals("Pruszkowska")) {
             library.addDefaultBooksToPruszkowskaLibrary();
-            usersDataBase.createDefaultAdminUser();
+            usersDataBase.createDefaultUsers();
         } else {
             library.addDefaultBookswarszawskaToLibrary();
-            usersDataBase.createDefaultAdminUser();
+            usersDataBase.createDefaultUsers();
         }
     }
 }
