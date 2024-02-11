@@ -9,8 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="poprawa mechanizmu + 3 przycisk">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="filtrowanie">
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,13 +111,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00046" summary="usuwanie biblioteki">
-      <created>1707051901252</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1707051901252</updated>
     </task>
     <task id="LOCAL-00047" summary="3 ramki pierwsze">
       <created>1707089127345</created>
@@ -456,7 +448,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707613849136</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="filtrowanie">
+      <created>1707652465490</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1707652465490</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -471,7 +470,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Get all Boooks" />
     <MESSAGE value="Get all Boooks + filter" />
     <MESSAGE value="delete users" />
     <MESSAGE value="add user functionallity" />
@@ -496,7 +494,8 @@
     <MESSAGE value="toString admin view" />
     <MESSAGE value="borrow + return book proper mechanism with status" />
     <MESSAGE value="poprawa mechanizmu + 3 przycisk" />
-    <option name="LAST_COMMIT_MESSAGE" value="poprawa mechanizmu + 3 przycisk" />
+    <MESSAGE value="filtrowanie" />
+    <option name="LAST_COMMIT_MESSAGE" value="filtrowanie" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -525,6 +524,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/Frames/PasswordPopUpJFrame.java</url>
           <line>64</line>
           <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
+          <line>497</line>
+          <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

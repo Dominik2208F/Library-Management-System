@@ -480,6 +480,7 @@ public class UserActionFrame extends JFrame {
                     SubCategoryComboBox.setEnabled(true);
                     SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
                     SubCategoryComboBox.setVisible(true);
+                    subCategoryFiltering();
                 } else {
                     SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
                     SubCategoryComboBox.setEnabled(false);
@@ -491,49 +492,7 @@ public class UserActionFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String selectedCategory = (String) categoryComboBox.getSelectedItem();
-                String selectedGenre = (String) SubCategoryComboBox.getSelectedItem();
-                DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-                if (selectedCategory.equals("Genre")) {
-                    for (Book book : flowLibrary.getListOfBooks()) {
-                        if (book.getGenre().getName().equals(selectedGenre)) {
-                            modifiedModel.addElement(book.toString());
-                        }
-                    }
-                    if (modifiedModel.isEmpty()) {
-                        JOptionPane.showMessageDialog(null,
-                                "No book meets the criteria Category " + selectedCategory + " and " + selectedGenre, "Message", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        list.setModel(modifiedModel);
-                    }
-                } else if (selectedCategory.equals("Author")) {
-
-                    for (Book book : flowLibrary.getListOfBooks()) {
-                        if (book.getAuthor().getLastName().equals(selectedGenre)) {
-                            modifiedModel.addElement(book.toString());
-                        }
-                    }
-                    if (modifiedModel.isEmpty()) {
-                        JOptionPane.showMessageDialog(null,
-                                "No book meets the criteria Category " + selectedCategory + " and " + selectedGenre, "Message", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        list.setModel(modifiedModel);
-                    }
-                }
-                else if(selectedCategory.equals("Status")){
-
-                    for (Book book : flowLibrary.getListOfBooks()) {
-                        if (book.getStatus().toString().equals(selectedGenre)) {
-                            modifiedModel.addElement(book.toString());
-                        }
-                    }
-                    if (modifiedModel.isEmpty()) {
-                        JOptionPane.showMessageDialog(null,
-                                "No book meets the criteria Category " + selectedCategory + " and " + selectedGenre, "Message", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        list.setModel(modifiedModel);
-                    }
-                }
+                subCategoryFiltering();
             }
         });
         sortComboBox.addActionListener(new ActionListener() {
@@ -736,4 +695,51 @@ public class UserActionFrame extends JFrame {
         }
         return null;
     }
+    public void subCategoryFiltering(){
+
+        String selectedCategory = (String) categoryComboBox.getSelectedItem();
+        String selectedGenre = (String) SubCategoryComboBox.getSelectedItem();
+        DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+        if (selectedCategory.equals("Genre")) {
+            for (Book book : flowLibrary.getListOfBooks()) {
+                if (book.getGenre().getName().equals(selectedGenre)) {
+                    modifiedModel.addElement(book.toString());
+                }
+            }
+            if (modifiedModel.isEmpty()) {
+                JOptionPane.showMessageDialog(null,
+                        "No book meets the criteria Category " + selectedCategory + " and " + selectedGenre, "Message", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                list.setModel(modifiedModel);
+            }
+        } else if (selectedCategory.equals("Author")) {
+
+            for (Book book : flowLibrary.getListOfBooks()) {
+                if (book.getAuthor().getLastName().equals(selectedGenre)) {
+                    modifiedModel.addElement(book.toString());
+                }
+            }
+            if (modifiedModel.isEmpty()) {
+                JOptionPane.showMessageDialog(null,
+                        "No book meets the criteria Category " + selectedCategory + " and " + selectedGenre, "Message", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                list.setModel(modifiedModel);
+            }
+        }
+        else if(selectedCategory.equals("Status")){
+
+            for (Book book : flowLibrary.getListOfBooks()) {
+                if (book.getStatus().toString().equals(selectedGenre)) {
+                    modifiedModel.addElement(book.toString());
+                }
+            }
+            if (modifiedModel.isEmpty()) {
+                JOptionPane.showMessageDialog(null,
+                        "No book meets the criteria Category " + selectedCategory + " and " + selectedGenre, "Message", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                list.setModel(modifiedModel);
+            }
+        }
+    }
+
 }
