@@ -10,7 +10,17 @@ public class Book implements Comparable<Book> {
     private int dateOfProduction;
     private Genre genre;
     private int amountOfPage;
+
+    public void setAssignedUserToBook(User assignedUserToBook) {
+        AssignedUserToBook = assignedUserToBook;
+    }
+
     private User AssignedUserToBook =new User("None","none"); //default user to book
+
+    public User getAssignedUserToBook() {
+        return AssignedUserToBook;
+    }
+
     private Status status;
 
     public Book(String title, Author author, int yearOfProduction, Genre genre, int amountOfPage, Status status) {
