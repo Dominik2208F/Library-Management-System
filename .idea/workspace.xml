@@ -9,8 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="filtrowanie">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="naprawa filtrowania aby było widoczne od razu, bez koniecznosci przekliwania się">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Frames/OverViewBookJFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/CalendarIFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/CalendarIFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Book.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,13 +115,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00047" summary="3 ramki pierwsze">
-      <created>1707089127345</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1707089127345</updated>
     </task>
     <task id="LOCAL-00048" summary="rozdzielone 3 ramki">
       <created>1707090059870</created>
@@ -455,7 +452,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707652465490</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="naprawa filtrowania aby było widoczne od razu, bez koniecznosci przekliwania się">
+      <created>1707652643639</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1707652643639</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -470,7 +474,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Get all Boooks + filter" />
     <MESSAGE value="delete users" />
     <MESSAGE value="add user functionallity" />
     <MESSAGE value="delete book +" />
@@ -495,7 +498,8 @@
     <MESSAGE value="borrow + return book proper mechanism with status" />
     <MESSAGE value="poprawa mechanizmu + 3 przycisk" />
     <MESSAGE value="filtrowanie" />
-    <option name="LAST_COMMIT_MESSAGE" value="filtrowanie" />
+    <MESSAGE value="naprawa filtrowania aby było widoczne od razu, bez koniecznosci przekliwania się" />
+    <option name="LAST_COMMIT_MESSAGE" value="naprawa filtrowania aby było widoczne od razu, bez koniecznosci przekliwania się" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -527,7 +531,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>497</line>
+          <line>472</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>

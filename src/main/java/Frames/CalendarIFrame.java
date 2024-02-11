@@ -14,6 +14,7 @@ public class CalendarIFrame extends JFrame {
 
     private AddBookJFrame addBookJFrameF;
     private UpdateBookJFrame updateBookJFrame;
+    private OverViewBookJFrame overViewBookJFrame;
     private JDialog dialog = new JDialog((Frame) null, "Select Date", true);
     private JButton selectButton = new JButton("Select");
 
@@ -83,5 +84,9 @@ public class CalendarIFrame extends JFrame {
         dialog.setLocationRelativeTo(button);
         dialog.setVisible(true);
 
+    }
+
+    public CalendarIFrame(JButton button, OverViewBookJFrame overViewBookJFrame) {
+        this.overViewBookJFrame=overViewBookJFrame;
     }
 }

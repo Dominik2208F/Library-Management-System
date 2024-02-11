@@ -58,19 +58,19 @@ public class Book implements Comparable<Book> {
         return  "Status:" +status +
                  ", Title: " + title +
                 ", Author: " + author +
-                ", Date of Production: " + dateOfProduction +
+                ", Production date: " + dateOfProduction +
                 ", Genre: " + genre +
-                ", Amount of Pages: " + amountOfPage;
+                ", Pages: " + amountOfPage;
     }
 // admin view
     public String toString(boolean flag) {
         if(flag) {
-            return "Status: " + status + "Assigned: " + AssignedUserToBook.getName() +
+            return "Status: " + status + "Assigned to: " + AssignedUserToBook.getName() +
                     ", Title: " + title +
                     ", Author: " + author +
-                    ", Date of Production: " + dateOfProduction +
+                    ", Production date: " + dateOfProduction +
                     ", Genre: " + genre +
-                    ", Amount of Pages: " + amountOfPage;
+                    ", Pages: " + amountOfPage;
         }
         return null;
     }
