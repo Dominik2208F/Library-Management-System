@@ -21,7 +21,7 @@ public class AdminActionFrame extends JFrame {
     private JMenuBar menubar;
     private JMenu Options,Program;
     private JMenuItem changeUser, changeLibrary,programInfo;
-    private JButton AddBook,ReturnInfoAllBooks,ReturnInfoOfBook,DeleteBook,UpdateBook,AddUser,DeleteUser,ReturnBookOfAGivenUser,BorrowedBooksOfUser,ConfirmChoice,QuickView;
+    private JButton AddBook,ReturnInfoAllBooks,ReturnInfoOfBook,DeleteBook,UpdateBook,AddUser,DeleteUser,ReturnBookOfAGivenUser,BorrowedBooksOfUser,ConfirmChoice,QuickView,ConfirmChoiceOfGivenUser, returnAll;
     private JList<String> list;
     private Library flowLibrary;
     private UserChooseIFrame userChooseIFrame;
@@ -32,7 +32,8 @@ public class AdminActionFrame extends JFrame {
 
     private boolean informationUpdate= true;
     private boolean informationDelete=true;
-    private JComboBox<String> categoryComboBox,SubCategoryComboBox,UserSelectionComboBox;
+    private boolean returnBookOfAGivenUser=false;
+    private JComboBox<String> categoryComboBox,SubCategoryComboBox,UserSelectionComboBox,UserSelectionComboBoxToReturnABook;
     private Map<String, List<String>> subcategoriesMap = new HashMap<>();
 
     public AdminActionFrame(UserChooseIFrame userChooseIFrame, Library library) {
@@ -139,8 +140,71 @@ public class AdminActionFrame extends JFrame {
         DeleteUser.setIcon(deleteUser);
 
         ReturnBookOfAGivenUser = new JButton("Return book of a given user");
-        ReturnBookOfAGivenUser.setBounds(10, 320, 200, 40);
+        ReturnBookOfAGivenUser.setBounds(10, 320, 240, 40);
         add(ReturnBookOfAGivenUser);
+
+        ImageIcon returnBook = new ImageIcon("src/return.png");
+        ReturnBookOfAGivenUser.setIcon(returnBook);
+
+        returnAll = new JButton("Return all by user");
+        returnAll.setBounds(680, 280, 200, 40);
+        add(returnAll);
+        returnAll.setVisible(false);
+
+        ImageIcon returnAllIcon = new ImageIcon("src/all.png");
+        returnAll.setIcon(returnAllIcon);
+
+        ReturnBookOfAGivenUser.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                categoryComboBox.setVisible(true);
+                SubCategoryComboBox.setVisible(true);
+                UserSelectionComboBox.setVisible(false);
+                SubCategoryComboBox.setVisible(false);
+                categoryComboBox.setVisible(false);
+                ConfirmChoice.setVisible(false);
+
+                DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+
+                if (ListOfBorrowedBook().isEmpty()) {
+                    list.setModel(modifiedModel);
+                    ConfirmChoiceOfGivenUser.setEnabled(false);
+                    ReturnInfoAllBooks.setEnabled(false);
+                    UserSelectionComboBoxToReturnABook.setEnabled(false);
+                    JOptionPane.showMessageDialog(null, "No borrowed books in library", "Warning", JOptionPane.WARNING_MESSAGE);
+                } else {
+
+
+                    for (Book books : ListOfBorrowedBook()) {
+                        modifiedModel.addElement(books.toString(true));
+                    }
+                    list.setModel(modifiedModel);
+                    list.setEnabled(false);
+                    QuickView.setEnabled(false);
+                    UserSelectionComboBoxToReturnABook.setVisible(true);
+
+                    List<String> listOfAllUserName = new ArrayList<>();
+                    for (User user : flowLibrary.getLibraryUserDataBase().getListOfUser()) {
+                        if (!user.getName().equals("Admin")) {
+                            listOfAllUserName.add(user.getName());
+                        }
+                    }
+                    List<String> listOfBorrowedUserName = new ArrayList<>();
+                    listOfBorrowedUserName.add("Select");
+                    for(String userName : listOfAllUserName){
+                        for(Book book : ListOfBorrowedBook()){
+                            if(book.getAssignedUserToBook().getName().equals(userName)){
+                                listOfBorrowedUserName.add(userName);
+                                break;
+                            }
+                        }
+                    }
+
+                    String UserNameArray[] = listOfBorrowedUserName.toArray(new String[listOfBorrowedUserName.size()]);
+                    UserSelectionComboBoxToReturnABook.setModel(new DefaultComboBoxModel<>(UserNameArray));
+                }
+            }
+        });
 
         BorrowedBooksOfUser = new JButton("User borrowed books");
         BorrowedBooksOfUser.setBounds(10, 370, 200, 40);
@@ -160,11 +224,132 @@ public class AdminActionFrame extends JFrame {
         UserSelectionComboBox.setBounds(680,180,160,40);
         add(UserSelectionComboBox);
 
+        UserSelectionComboBoxToReturnABook =new JComboBox<>();
+        UserSelectionComboBoxToReturnABook.setBounds(680,180,160,40);
+        add(UserSelectionComboBoxToReturnABook);
+        UserSelectionComboBoxToReturnABook.setVisible(false);
+
+
+        ConfirmChoiceOfGivenUser= new JButton("Confirm choice by user");
+        ConfirmChoiceOfGivenUser.setBounds(680, 230, 200, 40);
+        add(ConfirmChoiceOfGivenUser);
+        ConfirmChoiceOfGivenUser.setVisible(false);
+        ConfirmChoiceOfGivenUser.setBackground(Color.PINK);
+
+        ConfirmChoiceOfGivenUser.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if (returnBookOfAGivenUser) {
+                        if (list.getSelectedIndex() != -1) {
+                            DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+
+
+
+                            String titleOfBookToUnassingFromUser = extractTitle(list.getSelectedValue());
+                            String UserWithBorrowedBook = (String) UserSelectionComboBoxToReturnABook.getSelectedItem();
+                            Book bookInstance = null;
+
+                            for (Book book : ListOfBorrowedBook()) {
+                                if (book.getTitle().equals(titleOfBookToUnassingFromUser)) {
+                                    bookInstance = book;
+                                    break;
+                                }
+                            }
+
+
+                            int odp = JOptionPane.showConfirmDialog(null, "Do you want return a book: " + bookInstance.getTitle() + " ?");
+
+                            if (odp == JOptionPane.YES_OPTION) {
+
+
+                                bookInstance.setStatus(Status.AVAILABLE);
+                                bookInstance.setAssignedUserToBook(new User("None", "none"));
+
+
+                                for (Book Book : ListOfBorrowedBook()) {
+                                    if (Book.getStatus() == Status.BORROWED && Book.getAssignedUserToBook().getName().equals(UserWithBorrowedBook)) {
+                                        modifiedModel.addElement(Book.toString(true));
+                                    }
+                                }
+
+
+                                list.setModel(modifiedModel);
+                                if(modifiedModel.isEmpty()){
+                                    JOptionPane.showMessageDialog(null, UserWithBorrowedBook + " does not have any book to borrow", "Message", JOptionPane.INFORMATION_MESSAGE);
+                                    ConfirmChoiceOfGivenUser.setEnabled(false);
+                                    returnAll.setEnabled(false);
+                                }
+
+                                if (checkIfAllBooksReturned(library.getListOfBooks())) {
+                                    ConfirmChoiceOfGivenUser.setEnabled(false);
+                                    returnAll.setEnabled(false);
+                                    UserSelectionComboBoxToReturnABook.setEnabled(false);
+                                    UserSelectionComboBoxToReturnABook.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));
+
+                                }
+
+                                JOptionPane.showMessageDialog(null, "Book " + bookInstance.getTitle() + " has been returned successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Choose one book", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+            }
+        });
+
+        ImageIcon confirmChoiceByUser = new ImageIcon("src/approved.png");
+        ConfirmChoiceOfGivenUser.setIcon(confirmChoiceByUser);
+
+        UserSelectionComboBoxToReturnABook.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+                String UserWithBorrowedBook = (String) UserSelectionComboBoxToReturnABook.getSelectedItem();
+
+                if(!UserWithBorrowedBook.equals("Select")) {
+
+                    ConfirmChoiceOfGivenUser.setVisible(true);
+                    returnAll.setVisible(true);
+                    returnAll.setEnabled(true);
+                    for (Book Book : ListOfBorrowedBook()) {
+                        if(Book.getAssignedUserToBook().getName().equals(UserWithBorrowedBook)) {
+                            modifiedModel.addElement(Book.toString(true));
+                        }
+                    }
+                    list.setModel(modifiedModel);
+                    list.setEnabled(true);
+                    QuickView.setEnabled(true);
+                    returnBookOfAGivenUser=true;
+                }
+
+                if (checkIfAllBooksReturned(library.getListOfBooks())) {
+
+                    ConfirmChoiceOfGivenUser.setEnabled(false);
+                    returnAll.setEnabled(false);
+
+                    list.setModel(modifiedModel);
+                    JOptionPane.showMessageDialog(null, "No books to return", "Warning", JOptionPane.WARNING_MESSAGE);
+                  //  borrowButtonClicked = false;
+                } else {
+                    ConfirmChoiceOfGivenUser.setEnabled(true);
+                    list.setModel(modifiedModel);
+               // /    if (informationReturn) {
+                //        JOptionPane.showMessageDialog(null, "Choose one book to return and confirm", "Warning", JOptionPane.INFORMATION_MESSAGE);
+                //    }
+                  //  informationReturn = false;
+                  //  borrowButtonClicked = false;
+                   // returnButtonClicked = true;
+                }
+
+
+            }
+        });
+
         categoryComboBox.setVisible(false);
         SubCategoryComboBox.setVisible(false);
         UserSelectionComboBox.setVisible(false);
-
-        ReturnBookOfAGivenUser.setEnabled(false);
+        UserSelectionComboBoxToReturnABook.setVisible(false);
         BorrowedBooksOfUser.setEnabled(false);
 
         QuickView.addActionListener(new ActionListener() {
@@ -186,6 +371,9 @@ public class AdminActionFrame extends JFrame {
                 SubCategoryComboBox.setVisible(false);
                 UserSelectionComboBox.setVisible(true);
                 UserSelectionComboBox.setEnabled(true);
+                ConfirmChoiceOfGivenUser.setVisible(false);
+                returnAll.setVisible(false);
+                UserSelectionComboBoxToReturnABook.setVisible(false);
                 ConfirmChoice.setVisible(false);
                 if (flowLibrary.getLibraryUserDataBase().getListOfUser().size()==1) {
                     UserSelectionComboBox.setEnabled(false);
@@ -242,6 +430,9 @@ public class AdminActionFrame extends JFrame {
                 SubCategoryComboBox.setVisible(true);
                 UserSelectionComboBox.setVisible(false);
                 ConfirmChoice.setVisible(false);
+                ConfirmChoiceOfGivenUser.setVisible(false);
+                returnAll.setVisible(false);
+                UserSelectionComboBoxToReturnABook.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 if (flowLibrary.getListOfBooks().isEmpty()) {
                     for (Book books : flowLibrary.getListOfBooks()) {
@@ -290,7 +481,7 @@ public class AdminActionFrame extends JFrame {
                             JOptionPane.showMessageDialog(null,
                                     "No book to delete in " + flowLibrary.getNameOfLibrary(), "Message", JOptionPane.INFORMATION_MESSAGE);
                         }
-
+                        deleteBookClicked=false;
                     }else{
                         JOptionPane.showMessageDialog(null, "Choose one book", "Error", JOptionPane.ERROR_MESSAGE);
                     }
@@ -299,6 +490,7 @@ public class AdminActionFrame extends JFrame {
                     if (updateBookClicked) {
                         if(list.getSelectedIndex()!=-1) {
                             UpdateBookJFrame updateBookJFrame = new UpdateBookJFrame(library, list);
+                            updateBookClicked=false;
                         }
                         else {
                             JOptionPane.showMessageDialog(null, "Choose one book", "Error", JOptionPane.ERROR_MESSAGE);
@@ -315,7 +507,9 @@ public class AdminActionFrame extends JFrame {
                 UserSelectionComboBox.setVisible(false);
                 ConfirmChoice.setVisible(true);
                 list.setEnabled(true);
-
+                ConfirmChoiceOfGivenUser.setVisible(false);
+                returnAll.setVisible(false);
+                UserSelectionComboBoxToReturnABook.setVisible(false);
                 if (flowLibrary.getListOfBooks().isEmpty()) {
                     ConfirmChoice.setEnabled(false);
                     JOptionPane.showMessageDialog(null,
@@ -413,7 +607,9 @@ public class AdminActionFrame extends JFrame {
                 SubCategoryComboBox.setVisible(false);
                 UserSelectionComboBox.setVisible(false);
                 ConfirmChoice.setVisible(true);
-
+                ConfirmChoiceOfGivenUser.setVisible(false);
+                returnAll.setVisible(false);
+                UserSelectionComboBoxToReturnABook.setVisible(false);
                 if (flowLibrary.getListOfBooks().isEmpty()) {
                     ConfirmChoice.setEnabled(false);
                     JOptionPane.showMessageDialog(null,
@@ -436,12 +632,15 @@ public class AdminActionFrame extends JFrame {
         AddBook.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ConfirmChoiceOfGivenUser.setVisible(false);
+                returnAll.setVisible(false);
+                UserSelectionComboBoxToReturnABook.setVisible(false);
+                SubCategoryComboBox.setVisible(false);
+                categoryComboBox.setVisible(false);
                 DefaultListModel<String> updatedModel = new DefaultListModel<>();
                 for (Book books : flowLibrary.getListOfBooks()) {
                     updatedModel.addElement(books.toString(true));
                 }
-                SubCategoryComboBox.setEnabled(true);
-                categoryComboBox.setEnabled(true);
                 list.setModel(updatedModel);
                 AddBookJFrame addBookJFrame = new AddBookJFrame(flowLibrary,list,booksLabel);
 
@@ -565,5 +764,49 @@ public class AdminActionFrame extends JFrame {
             SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
             SubCategoryComboBox.setEnabled(false);
         }
+    }
+
+    public List<Book> ListOfBorrowedBook(){
+
+        List<Book> booksAvailable = new ArrayList<>();
+
+        for(Book book : flowLibrary.getListOfBooks()){
+            if(book.getStatus()==Status.BORROWED){
+                booksAvailable.add(book);
+            }
+        }
+        return booksAvailable;
+    }
+    public boolean checkIfAllBooksReturned( List<Book> books){
+
+        for(Book book : books){
+            if(book.getStatus()==Status.BORROWED){
+                return false;
+            }
+        }
+        return true;
+    }
+    public  String extractTitle(String inputString) {
+
+        String[] parts = inputString.split(", ");
+        for (String part : parts) {
+            if (part.startsWith("Title:")) {
+                String[] titleParts = part.split(": ");
+                return titleParts[1];
+            }
+        }
+        return null;
+    }
+
+    public int RefreshListOfAvailableBook(){
+
+        List<Book> booksAvailable = new ArrayList<>();
+
+        for(Book book : flowLibrary.getListOfBooks()){
+            if(book.getStatus()==Status.AVAILABLE){
+                booksAvailable.add(book);
+            }
+        }
+        return booksAvailable.size();
     }
 }
