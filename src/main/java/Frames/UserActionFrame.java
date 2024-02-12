@@ -78,7 +78,7 @@ public class UserActionFrame extends JFrame {
         menubar.add(Program);
 
         returnAll = new JButton("Return all");
-        returnAll.setBounds(590, 200, 160, 30);
+        returnAll.setBounds(590, 190, 160, 40);
         add(returnAll);
         returnAll.setVisible(false);
 
@@ -86,7 +86,7 @@ public class UserActionFrame extends JFrame {
         returnAll.setIcon(returnAllIcon);
 
         borrowALL = new JButton("Borrow all");
-        borrowALL.setBounds(590, 200, 160, 30);
+        borrowALL.setBounds(590, 190, 160, 40);
         add(borrowALL);
         borrowALL.setVisible(false);
 
@@ -94,16 +94,16 @@ public class UserActionFrame extends JFrame {
         borrowALL.setIcon(borrowAllIcon);
 
         sortComboBox = new JComboBox<>(new String[]{"Title", "Author", "Genre"});
-        sortComboBox.setBounds(590, 180, 160, 30);
+        sortComboBox.setBounds(590, 190, 160, 40);
         add(sortComboBox);
 
         categoryComboBox = new JComboBox<>(new String[]{"Author", "Genre", "Select","Status"});
-        categoryComboBox.setBounds(590, 200, 160, 30);
+        categoryComboBox.setBounds(590, 190, 160, 40);
         add(categoryComboBox);
         categoryComboBox.setSelectedItem("Select");
 
         SubCategoryComboBox = new JComboBox<>();
-        SubCategoryComboBox.setBounds(590, 240, 160, 30);
+        SubCategoryComboBox.setBounds(590, 240, 160, 40);
         add(SubCategoryComboBox);
 
         booksLabel = new JLabel(flowLibrary.getListOfBooks().size() + " books in " + flowLibrary.getNameOfLibrary() + " library");
@@ -112,16 +112,16 @@ public class UserActionFrame extends JFrame {
 
 
         ascendingCheckBox = new JCheckBox("Sort Ascending");
-        ascendingCheckBox.setBounds(250, 180, 150, 30);
+        ascendingCheckBox.setBounds(250, 190, 150, 30);
 
         descendingCheckBox = new JCheckBox("Sort Descending");
-        descendingCheckBox.setBounds(400, 180, 150, 30);
+        descendingCheckBox.setBounds(400, 190, 150, 30);
         add(ascendingCheckBox);
         add(descendingCheckBox);
 
 
         BorrowAbook = new JButton("Borrow");
-        BorrowAbook.setBounds(10, 20, 130, 35);
+        BorrowAbook.setBounds(10, 20, 130, 40);
         add(BorrowAbook);
 
         ImageIcon borrow = new ImageIcon("src/borrow.png");
@@ -129,28 +129,28 @@ public class UserActionFrame extends JFrame {
 
 
         ShowAllBook =new JButton("Show all");
-        ShowAllBook.setBounds(10,100,130,35);
+        ShowAllBook.setBounds(10,120,130,40);
         add(ShowAllBook);
 
         ImageIcon showboook = new ImageIcon("src/all_5334695.png");
         ShowAllBook.setIcon(showboook);
 
         ReturnAbook = new JButton("Return");
-        ReturnAbook.setBounds(10, 60, 130, 35);
+        ReturnAbook.setBounds(10, 70, 130, 40);
         add(ReturnAbook);
 
         ImageIcon returnBook = new ImageIcon("src/return.png");
         ReturnAbook.setIcon(returnBook);
 
         QuickView = new JButton("Quick view");
-        QuickView.setBounds(755, 20, 120, 35);
+        QuickView.setBounds(755, 20, 120, 40);
         add(QuickView);
 
         ImageIcon qucikView = new ImageIcon("src/view.png");
         QuickView.setIcon(qucikView);
 
         filter = new JButton("Filter books in library");
-        filter.setBounds(10, 240, 200, 35);
+        filter.setBounds(10, 250, 200, 40);
         add(filter);
 
         ImageIcon filterIcon = new ImageIcon("src/filter.png");
@@ -166,7 +166,7 @@ public class UserActionFrame extends JFrame {
         ConfirmChoice.setIcon(confirm);
 
         Sort = new JButton("Sort books in library");
-        Sort.setBounds(10, 280, 200, 35);
+        Sort.setBounds(10, 300, 200, 40);
         add(Sort);
 
         ImageIcon sortIcon = new ImageIcon("src/from-a-to-z.png");
