@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="naprawienie licznika na adminie">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="return confirm choice">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
     </list>
@@ -114,13 +114,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00069" summary="delete users">
-      <created>1707230581181</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1707230581181</updated>
     </task>
     <task id="LOCAL-00070" summary="add user functionallity">
       <created>1707255860220</created>
@@ -458,7 +451,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707766906037</updated>
     </task>
-    <option name="localTasksCounter" value="118" />
+    <task id="LOCAL-00118" summary="return confirm choice">
+      <created>1707776225639</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1707776225639</updated>
+    </task>
+    <option name="localTasksCounter" value="119" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -473,7 +473,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="borrow + return book proper mechanism with status" />
     <MESSAGE value="poprawa mechanizmu + 3 przycisk" />
     <MESSAGE value="filtrowanie" />
     <MESSAGE value="naprawa filtrowania aby było widoczne od razu, bez koniecznosci przekliwania się" />
@@ -498,7 +497,8 @@
     <MESSAGE value="zakaz robienia admina account" />
     <MESSAGE value="naprawienie licznika userAccount +status filtrowania" />
     <MESSAGE value="naprawienie licznika na adminie" />
-    <option name="LAST_COMMIT_MESSAGE" value="naprawienie licznika na adminie" />
+    <MESSAGE value="return confirm choice" />
+    <option name="LAST_COMMIT_MESSAGE" value="return confirm choice" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -542,11 +542,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
           <line>221</line>
           <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java</url>
-          <line>244</line>
-          <option name="timeStamp" value="92" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
