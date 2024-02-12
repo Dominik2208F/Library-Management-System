@@ -65,12 +65,12 @@ public class UserChooseIFrame extends JFrame {
 
         list = new JList<>(listOfUsersFromLibrary);
 
-        list.setBounds(70, 50, 100, 60);
+        list.setBounds(70, 110, 100, 60);
         add(list);
         //
 
         showPassword= new JButton(" Don't remember password?");
-        showPassword.setBounds(20,240,200,20);
+        showPassword.setBounds(20,280,200,20);
         add(showPassword);
         showPassword.addActionListener(new ActionListener() {
             @Override
@@ -86,24 +86,20 @@ public class UserChooseIFrame extends JFrame {
             }
         });
 
-        availableUser = new JLabel("Available users");
-        availableUser.setBounds(50, 13, 150, 20);
-        availableUser.setFont(new Font("Forte", Font.PLAIN, 20));
-        add(availableUser);
 
         selectedUser = new JLabel("Selected user");
         selectedUser.setBounds(50, 120, 150, 20);
 
         confirmUser = new JButton("Confirm");
-        confirmUser.setBounds(70, 120, 100, 40);
+        confirmUser.setBounds(55, 190, 130, 40);
         add(confirmUser);
 
         addUser = new JButton("Add user");
-        addUser.setBounds(70, 170, 100, 30);
+        addUser.setBounds(55, 240, 130, 30);
         add(addUser);
 
         JScrollPane scrollPane = new JScrollPane(list);
-        scrollPane.setBounds(70, 50, 100, 60);
+        scrollPane.setBounds(70, 110, 100, 60);
         add(scrollPane);
         confirmUser.addActionListener(new ActionListener() {
             @Override
@@ -125,6 +121,35 @@ public class UserChooseIFrame extends JFrame {
                 addUserFrame.setVisible(true);
             }
         });
+
+
+        ImageIcon icon = new ImageIcon("src/profile_3135715.png");
+        Image originalImage = icon.getImage();
+        int newWidth = 80;
+        int newHeight = 80;
+        Image scaledImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_DEFAULT);
+        ImageIcon scaledIcon = new ImageIcon(scaledImage);
+        JLabel label = new JLabel(scaledIcon);
+        label.setBounds(80, 20, newWidth, newHeight);
+
+        ImageIcon icon1 = new ImageIcon("src/add-user_747554.png");
+        Image originalImage1 = icon1.getImage();
+        int newWidth1 = 20;
+        int newHeight1 = 20;
+        Image scaledImage1 = originalImage1.getScaledInstance(newWidth1, newHeight1, Image.SCALE_DEFAULT);
+        ImageIcon scaledIcon1 = new ImageIcon(scaledImage1);
+        JLabel label1 = new JLabel(scaledIcon1);
+
+
+
+
+        ImageIcon icon2 = new ImageIcon("src/checklist_11707966 (2).png");
+
+        getContentPane().setLayout(null);
+        getContentPane().add(label);
+        getContentPane().add(label1);
+        addUser.setIcon(scaledIcon1);
+        confirmUser.setIcon(icon2);
 
 
         setSize(250, 350);

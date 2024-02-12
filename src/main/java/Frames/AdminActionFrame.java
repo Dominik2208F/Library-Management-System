@@ -55,7 +55,7 @@ public class AdminActionFrame extends JFrame {
                 int height = getHeight();
 
 
-                GradientPaint gradient = new GradientPaint(0, 150, new Color(250, 235, 215), 0, height, new Color(127, 255, 212));
+                GradientPaint gradient = new GradientPaint(0, 0, new Color(240, 248, 255), width, height, new Color(0, 191, 255));
 
                 ((Graphics2D) g).setPaint(gradient);
                 g.fillRect(0, 0, width, height);
@@ -88,13 +88,22 @@ public class AdminActionFrame extends JFrame {
         AddBook.setBounds(10, 20, 130, 35);
         add(AddBook);
 
-        ReturnInfoAllBooks = new JButton("Show all books");
+        ImageIcon add = new ImageIcon("src/add.png");
+        AddBook.setIcon(add);
+
+        ReturnInfoAllBooks = new JButton("Show all ");
         ReturnInfoAllBooks.setBounds(10, 60, 130, 35);
         add(ReturnInfoAllBooks);
+
+        ImageIcon showboook = new ImageIcon("src/all_5334695.png");
+        ReturnInfoAllBooks.setIcon(showboook);
 
         DeleteBook = new JButton("Delete book");
         DeleteBook.setBounds(10, 100, 130, 35);
         add(DeleteBook);
+
+        ImageIcon deleteBook = new ImageIcon("src/dislike_9250694.png");
+        DeleteBook.setIcon(deleteBook);
 
         ConfirmChoice= new JButton("Confirm Choice");
         ConfirmChoice.setBounds(590, 180, 160, 35);
@@ -105,6 +114,9 @@ public class AdminActionFrame extends JFrame {
         UpdateBook = new JButton("Update book");
         UpdateBook.setBounds(10, 140, 130, 35);
         add(UpdateBook);
+
+        ImageIcon updateBook = new ImageIcon("src/recycle_9250683.png");
+        UpdateBook.setIcon(updateBook);
 
         AddUser = new JButton("Add user");
         AddUser.setBounds(10, 180, 130, 35);

@@ -7,11 +7,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 
 public class LibraryManagementFrame extends JFrame implements ActionListener {
 
-    private JLabel label, welcome,assign,selectedLibrary;
+    private JLabel welcome,assign,selectedLibrary;
     private JButton buttonConfirm;
     private JComboBox<String> comboBox;
 
@@ -50,10 +51,7 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
 
 
         comboBox = new JComboBox<>(comboBoxModel);
-        comboBox.setBounds(70, 150, 120, 40);
-
-        label = new JLabel("Select library");
-        label.setBounds(85, 120, 125, 40);
+        comboBox.setBounds(70, 200, 120, 40);
 
         welcome = new JLabel("Welcome!");
         welcome.setBounds(82, 30, 125, 40);
@@ -68,11 +66,26 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
         selectedLibrary.setBounds(120, 220, 150, 20);
 
         buttonConfirm = new JButton("Confirm");
-        buttonConfirm.setBounds(70, 200, 120, 40);
+        buttonConfirm.setBounds(70, 250, 120, 40);
         buttonConfirm.addActionListener(this);
 
+
+        ImageIcon icon = new ImageIcon("src/pngwing.com (2).png");
+        Image originalImage = icon.getImage();
+        int newWidth = 100;
+        int newHeight = 100;
+        Image scaledImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_DEFAULT);
+        ImageIcon scaledIcon = new ImageIcon(scaledImage);
+        JLabel label = new JLabel(scaledIcon);
+        label.setBounds(82, 80, newWidth, newHeight);
+
+        getContentPane().setLayout(null);
+        getContentPane().add(label);
+
+
+
+
         add(comboBox);
-        add(label);
         add(buttonConfirm);
         add(welcome);
         add(assign);
@@ -82,7 +95,7 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
         setLayout(null);
         setResizable(false);
         setVisible(true);
-        setTitle("Select library");
+        setTitle("Library Menagement System v2");
 
     }
 

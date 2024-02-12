@@ -9,15 +9,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="naprawa usuniecia usera z ksiązkami">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="dodanie kolorów do innych Framów">
+      <change afterPath="$PROJECT_DIR$/src/add-user_747554.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/add.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/all_5334695.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/arrow_11029135.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/book_13922347.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/checklist_11707966 (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dislike_9250694.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pngwing.com (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/profile_3135715.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/recycle_9250683.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/background1.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/OverViewBookJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/OverViewBookJFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UpdateBookJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UpdateBookJFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/programmer_v_02.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +93,7 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\dominik.jakubaszek\Desktop\BookShop\src" />
+      <recent name="C:\Users\dominik.jakubaszek\Desktop\BookShop\out" />
       <recent name="C:\Users\dominik.jakubaszek\Desktop\BookShop\src\test" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -118,13 +130,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00054" summary="mechanizm pożyczania. Mechanizm zwracania do zrobienia">
-      <created>1707147196791</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1707147196791</updated>
     </task>
     <task id="LOCAL-00055" summary="panel usera zrobiony">
       <created>1707148571478</created>
@@ -462,7 +467,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707698872483</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="dodanie kolorów do innych Framów">
+      <created>1707701603811</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1707701603811</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -477,7 +489,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="naprawa błędów addBook" />
     <MESSAGE value="update Book naprawa błędów" />
     <MESSAGE value="naprawa kolejnych błędów" />
     <MESSAGE value="kolejna naprawa błedów w userPanel" />
@@ -502,7 +513,8 @@
     <MESSAGE value="filtrowanie user panel" />
     <MESSAGE value="nowy UI" />
     <MESSAGE value="naprawa usuniecia usera z ksiązkami" />
-    <option name="LAST_COMMIT_MESSAGE" value="naprawa usuniecia usera z ksiązkami" />
+    <MESSAGE value="dodanie kolorów do innych Framów" />
+    <option name="LAST_COMMIT_MESSAGE" value="dodanie kolorów do innych Framów" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -539,12 +551,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java</url>
-          <line>113</line>
+          <line>109</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java</url>
-          <line>114</line>
+          <line>110</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

@@ -38,11 +38,16 @@ public class UpdateBookJFrame extends JFrame {
 
 
         JButton button = new JButton("Select");
-
-
-        button.setBounds(180, 130, 90, 25);
+        button.setBounds(140, 130, 90, 25);
         add(button);
 
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calendar = new CalendarIFrame(button, UpdateBookJFrame.this);
+
+            }
+        });
 
         setContentPane(new JPanel() {
             @Override
@@ -59,14 +64,6 @@ public class UpdateBookJFrame extends JFrame {
 
             }
         });
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                calendar = new CalendarIFrame(button, UpdateBookJFrame.this);
-
-            }
-        });
-
 
         titleField.setBounds(80, 15, 200, 25);
         authorFirstNameField.setBounds(80, 55, 200, 25);
