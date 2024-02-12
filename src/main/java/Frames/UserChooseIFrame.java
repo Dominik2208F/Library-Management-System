@@ -78,7 +78,7 @@ public class UserChooseIFrame extends JFrame {
                 if (list.isSelectionEmpty()) {
                     JOptionPane.showMessageDialog(null, "Choose at least 1 user", "Error", JOptionPane.ERROR_MESSAGE);
                 }else if(list.getSelectedValue().equals("Admin")){
-                    JOptionPane.showMessageDialog(null, "You cannot not choose admin", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "You cannot choose admin", "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 else {
                     new PasswordPopUpJFrame(UserChooseIFrame.this).setHint();
@@ -88,7 +88,7 @@ public class UserChooseIFrame extends JFrame {
 
         availableUser = new JLabel("Available users");
         availableUser.setBounds(50, 13, 150, 20);
-        availableUser.setFont(new Font("Forte", Font.ITALIC, 20));
+        availableUser.setFont(new Font("Forte", Font.PLAIN, 20));
         add(availableUser);
 
         selectedUser = new JLabel("Selected user");

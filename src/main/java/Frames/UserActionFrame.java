@@ -55,7 +55,7 @@ public class UserActionFrame extends JFrame {
                 int height = getHeight();
 
 
-                GradientPaint gradient = new GradientPaint(100, 300, new Color(250, 235, 215), width, height, new Color(127, 255, 212));
+                GradientPaint gradient = new GradientPaint(0, 150, new Color(250, 235, 215), 0, height, new Color(127, 255, 212));
 
                 ((Graphics2D) g).setPaint(gradient);
                 g.fillRect(0, 0, width, height);
@@ -151,7 +151,7 @@ public class UserActionFrame extends JFrame {
                     new OverViewBookJFrame(library, list);
                 }
                 else {
-                    JOptionPane.showMessageDialog(null, "Choose at least one book from list", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Choose one book from list", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -199,7 +199,7 @@ public class UserActionFrame extends JFrame {
                     ConfirmChoice.setEnabled(true);
                     list.setModel(modifiedModel);
                     if (informationReturn) {
-                        JOptionPane.showMessageDialog(null, "Choose at least one book to return and confirm", "Warning", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Choose one book to return and confirm", "Warning", JOptionPane.INFORMATION_MESSAGE);
                     }
                     informationReturn = false;
                     borrowButtonClicked = false;
@@ -286,7 +286,7 @@ public class UserActionFrame extends JFrame {
                                 }
                              }
                     else {
-                        JOptionPane.showMessageDialog(null, "Choose at least one book", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Choose one book", "Error", JOptionPane.ERROR_MESSAGE);
                     }
 
                 } else if (returnButtonClicked) {
@@ -332,7 +332,7 @@ public class UserActionFrame extends JFrame {
                             booksLabel.setText(flowLibrary.getListOfBooks().size() + " books in " + flowLibrary.getNameOfLibrary() + " library");
                         }
                     } else {
-                        JOptionPane.showMessageDialog(null, "Choose at least one book", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Choose one book", "Error", JOptionPane.ERROR_MESSAGE);
                     }
 
                 }
@@ -384,7 +384,7 @@ public class UserActionFrame extends JFrame {
                 list.setModel(modifiedModel);
                 if (!checkIfAllBooksBorrowed(flowLibrary.getListOfBooks())) {
                     if (informationBorrow) {
-                        JOptionPane.showMessageDialog(null, "Choose at least one book to borrow and confirm", "Warning", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Choose one book to borrow and confirm", "Warning", JOptionPane.INFORMATION_MESSAGE);
                     }
                     informationBorrow = false;
                     ConfirmChoice.setEnabled(true);

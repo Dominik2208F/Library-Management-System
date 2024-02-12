@@ -5,6 +5,7 @@ import org.example.LibraryManager.Genre;
 import org.example.LibraryManager.Library;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -33,9 +34,23 @@ public class OverViewBookJFrame extends JFrame {
         this.library = library;
         this.list = list;
 
+        setContentPane(new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+
+                int width = getWidth();
+                int height = getHeight();
+
+                GradientPaint gradient = new GradientPaint(0, 0, new Color(240, 248, 255), width, height, new Color(0, 191, 255));
+
+                ((Graphics2D) g).setPaint(gradient);
+                g.fillRect(0, 0, width, height);
+
+            }
+        });
 
         JButton button = new JButton("Select");
-
         button.setBounds(180, 130, 90, 25);
         add(button);
         button.setEnabled(false);

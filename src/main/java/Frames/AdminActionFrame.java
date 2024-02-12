@@ -55,7 +55,7 @@ public class AdminActionFrame extends JFrame {
                 int height = getHeight();
 
 
-                GradientPaint gradient = new GradientPaint(0, 300, new Color(221,160,221), width, height, new Color(255, 99 ,71));
+                GradientPaint gradient = new GradientPaint(0, 150, new Color(250, 235, 215), 0, height, new Color(127, 255, 212));
 
                 ((Graphics2D) g).setPaint(gradient);
                 g.fillRect(0, 0, width, height);
@@ -152,7 +152,7 @@ public class AdminActionFrame extends JFrame {
                     new OverViewBookJFrame(library, list);
                 }
                 else {
-                    JOptionPane.showMessageDialog(null, "Choose at least one book from list", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Choose one book from list", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -269,7 +269,7 @@ public class AdminActionFrame extends JFrame {
                         }
 
                     }else{
-                        JOptionPane.showMessageDialog(null, "Choose at least one book", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Choose one book", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                      }
 
@@ -278,7 +278,7 @@ public class AdminActionFrame extends JFrame {
                             UpdateBookJFrame updateBookJFrame = new UpdateBookJFrame(library, list);
                         }
                         else {
-                            JOptionPane.showMessageDialog(null, "Choose at least one book", "Error", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Choose one book", "Error", JOptionPane.ERROR_MESSAGE);
                         }
                 }
             }
@@ -300,7 +300,7 @@ public class AdminActionFrame extends JFrame {
                 } else {
                     if(informationDelete) {
                         JOptionPane.showMessageDialog(null,
-                                "Choose at least one book from list and click confirm", "Message", JOptionPane.INFORMATION_MESSAGE);
+                                "Choose one book from list and click confirm", "Message", JOptionPane.INFORMATION_MESSAGE);
                         informationDelete = false;
                     }
                     ConfirmChoice.setEnabled(true);
@@ -399,7 +399,7 @@ public class AdminActionFrame extends JFrame {
                     updateBookClicked=true;
                   if(informationUpdate) {
                       JOptionPane.showMessageDialog(null,
-                              "Choose at least one book from list and click confirm", "Message", JOptionPane.INFORMATION_MESSAGE);
+                              "Choose one book from list and click confirm", "Message", JOptionPane.INFORMATION_MESSAGE);
                       informationUpdate = false;
                   }
                     DefaultListModel<String> modifiedModel = new DefaultListModel<>();
@@ -434,7 +434,7 @@ public class AdminActionFrame extends JFrame {
         scrollPane.setBounds(150, 20, 600, 150);
         add(scrollPane);
 
-        setSize(900, 500);
+        setSize(900, 400);
         setTitle("Admin Panel logged as " + userChooseIFrame.getChoosenUserName());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
