@@ -9,8 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="kolejne ikony">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="combobox na userchoose">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/PasswordPopUpJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/PasswordPopUpJFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -114,13 +115,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00057" summary="sortowanie combobox">
-      <created>1707169615548</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1707169615549</updated>
     </task>
     <task id="LOCAL-00058" summary="obsluga wiadomosci borrow + return">
       <created>1707171087737</created>
@@ -458,7 +452,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707737051582</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="combobox na userchoose">
+      <created>1707740579818</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1707740579818</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -473,7 +474,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="kolejna naprawa błedów w userPanel" />
     <MESSAGE value="dodanie obsługi pojedynczej komunikatu" />
     <MESSAGE value="combobox na library managment" />
     <MESSAGE value="background gradient" />
@@ -498,7 +498,8 @@
     <MESSAGE value="dodanie kolorów do innych Framów" />
     <MESSAGE value="naprawa quickview" />
     <MESSAGE value="kolejne ikony" />
-    <option name="LAST_COMMIT_MESSAGE" value="kolejne ikony" />
+    <MESSAGE value="combobox na userchoose" />
+    <option name="LAST_COMMIT_MESSAGE" value="combobox na userchoose" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -535,12 +536,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java</url>
-          <line>115</line>
+          <line>120</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java</url>
-          <line>116</line>
+          <line>121</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

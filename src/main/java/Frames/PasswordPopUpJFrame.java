@@ -46,7 +46,7 @@ public class PasswordPopUpJFrame extends JFrame {
 
     public void setHint(){
 
-        String name= userChooseIFrame.getList().getSelectedValue();
+        String name= userChooseIFrame.getSelectedUserValue();
 
             User user = userChooseIFrame.getFlowLibrary().getLibraryUserDataBase().returnObjectOfUserByName(name);
             char[] letters =user.getPassword().toCharArray();

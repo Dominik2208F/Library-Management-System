@@ -36,9 +36,15 @@ public class UserChooseIFrame extends JFrame {
         return list;
     }
     private String ChoosenUserName;
+
+    private String selectedUserValue;
     private Library flowLibrary;
     private LibraryManagementFrame libraryManagementFrame;
     JComboBox comboBoxUser= new JComboBox<>();
+
+    public String getSelectedUserValue() {
+        return selectedUserValue;
+    }
 
     public UserChooseIFrame(Library library, LibraryManagementFrame libraryManagementFrame) {
         this.flowLibrary = library;
@@ -82,10 +88,9 @@ public class UserChooseIFrame extends JFrame {
         showPassword.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (list.isSelectionEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Choose at least 1 user", "Error", JOptionPane.ERROR_MESSAGE);
-                }else if(list.getSelectedValue().equals("Admin")){
-                    JOptionPane.showMessageDialog(null, "You cannot choose admin", "Error", JOptionPane.ERROR_MESSAGE);
+                selectedUserValue = (String) comboBoxUser.getSelectedItem();
+                if(selectedUserValue.equals("Admin")){
+                    JOptionPane.showMessageDialog(null, "You cannot remind password to  admin", "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 else {
                     new PasswordPopUpJFrame(UserChooseIFrame.this).setHint();
@@ -109,11 +114,11 @@ public class UserChooseIFrame extends JFrame {
         confirmUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String selectedLibraryText = (String) comboBoxUser.getSelectedItem();
-                if (comboBoxUser==null || selectedLibraryText.isEmpty()) {
+                selectedUserValue = (String) comboBoxUser.getSelectedItem();
+                if (comboBoxUser==null || selectedUserValue.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Choose at least 1 user", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    ChoosenUserName = selectedLibraryText;
+                    ChoosenUserName = selectedUserValue;
                     new LoginUserFrame(UserChooseIFrame.this, library);
 
                 }
