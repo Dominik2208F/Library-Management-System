@@ -52,17 +52,20 @@ public class AddBookJFrame extends JFrame {
         });
 
 
+        JLabel imageAddBookLabel= new JLabel(new ImageIcon("src/notebook (1).png"));
+        imageAddBookLabel.setBounds(100, 10, 200, 65);
+        add(imageAddBookLabel);
         JButton addBook = new JButton("Add book");
-        JButton button = new JButton("Select");
+        JButton select = new JButton("Select");
 
 
-        button.setBounds(180, 130, 90, 25);
-        add(button);
+        select.setBounds(190, 240, 100, 40);
+        add(select);
 
-        button.addActionListener(new ActionListener() {
+        select.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                calendar = new CalendarIFrame(button, AddBookJFrame.this);
+                calendar = new CalendarIFrame(select, AddBookJFrame.this);
 
             }
         });
@@ -70,30 +73,30 @@ public class AddBookJFrame extends JFrame {
         this.flowLibrary = flowLibrary;
         this.fromPanelAbove = list;
 
-        titleField.setBounds(80, 15, 200, 25);
-        authorFirstNameField.setBounds(80, 55, 200, 25);
-        authorLastNameField.setBounds(80, 90, 200, 25);
-        authorBirthDateField.setBounds(80, 130, 90, 25);
+        titleField.setBounds(100, 90, 200, 40);
+        authorFirstNameField.setBounds(100, 140, 200, 40);
+        authorLastNameField.setBounds(100, 190, 200, 40);
+        authorBirthDateField.setBounds(100, 240,  90, 40);
         authorBirthDateField.setEditable(false);
-        yearField.setBounds(80, 170, 200, 25);
-        genreComboBox.setBounds(80, 210, 200, 25);
-        pagesField.setBounds(80, 250, 200, 25);
+        yearField.setBounds(100, 290, 200, 40);
+        genreComboBox.setBounds(100, 340, 200, 40);
+        pagesField.setBounds(100, 390, 200, 40);
 
-        add(new JLabel("Title:")).setBounds(0, 5, 100, 35);
+        add(new JLabel("Title:")).setBounds(15, 85, 100, 35);
         add(titleField);
-        add(new JLabel("First Name:")).setBounds(0, 45, 100, 35);
+        add(new JLabel("First Name:")).setBounds(15, 135, 100, 35);
         add(authorFirstNameField);
-        add(new JLabel("Last Name:")).setBounds(0, 80, 100, 35);
+        add(new JLabel("Last Name:")).setBounds(15, 185, 100, 35);
         add(authorLastNameField);
-        add(new JLabel("Birth Date:")).setBounds(0, 120, 100, 35);
+        add(new JLabel("Birth Date:")).setBounds(15, 235, 100, 35);
         add(authorBirthDateField);
-        add(new JLabel("Year:")).setBounds(0, 160, 100, 35);
+        add(new JLabel("Year:")).setBounds(15, 285, 100, 35);
         add(yearField);
-        add(new JLabel("Genre:")).setBounds(0, 200, 100, 35);
+        add(new JLabel("Genre:")).setBounds(15, 335, 100, 35);
         add(genreComboBox);
-        add(new JLabel("Pages:")).setBounds(0, 240, 100, 35);
+        add(new JLabel("Pages:")).setBounds(15, 385, 100, 35);
         add(pagesField);
-        addBook.setBounds(90, 300, 100, 35);
+        addBook.setBounds(115, 440, 150, 40);
         add(addBook);
         KeyListener keyListener = new KeyListener() {
             @Override
@@ -127,7 +130,7 @@ public class AddBookJFrame extends JFrame {
             }
         });
 
-        setSize(300, 400);
+        setSize(400, 550);
         setTitle("Add book");
         setLayout(null);
         setResizable(false);
