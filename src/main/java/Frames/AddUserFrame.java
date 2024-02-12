@@ -145,8 +145,12 @@ public class AddUserFrame extends JFrame {
                         , "Error", JOptionPane.ERROR_MESSAGE);
             }else{
                 User newUser =new User(username, password);
-                if( flowLibrary.getLibraryUserDataBase().getListOfUser().contains(newUser)){
+                if(newUser.getName().equals("Admin") || newUser.getName().equals("admin")){
+                    JOptionPane.showMessageDialog(null, "You cannot create second admin account", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                else if( flowLibrary.getLibraryUserDataBase().getListOfUser().contains(newUser)) {
                     JOptionPane.showMessageDialog(null, "User with identical data exist in database. You cannot create the user", "Error", JOptionPane.ERROR_MESSAGE);
+
                 }else {
                     flowLibrary.getLibraryUserDataBase().getListOfUser().add(new User(username, password));
                     userChooseIFrame.updateListOfUsers();
