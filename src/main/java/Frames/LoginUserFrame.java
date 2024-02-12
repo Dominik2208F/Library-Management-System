@@ -16,7 +16,7 @@ public class LoginUserFrame extends JFrame {
     private JPasswordField passwordField;
     private JButton LoginButton;
     private JLabel passwordLabel;
-    private JLabel Userlebel;
+    private JLabel UserImageLebel;
     private UserChooseIFrame userChoose;
     private Library flowLibrary;
 
@@ -27,11 +27,21 @@ public class LoginUserFrame extends JFrame {
         passwordField = new JPasswordField();
         LoginButton = new JButton("Log in");
         passwordLabel = new JLabel("Password:");
-        Userlebel = new JLabel("Your account is " + userChooseIFrame.getChoosenUserName());
-        passwordLabel.setBounds(30, 40, 100, 30);
-        passwordField.setBounds(100, 50, 150, 20);
-        LoginButton.setBounds(130, 90, 100, 30);
-        Userlebel.setBounds(30, 10, 200, 30);
+        passwordLabel.setBounds(30, 75, 100, 30);
+        passwordField.setBounds(100, 80, 150, 30);
+        LoginButton.setBounds(100, 120, 150, 30);
+
+
+
+        if(userChooseIFrame.getChoosenUserName().equals("Admin")) {
+            ImageIcon iconAdmin = new ImageIcon("src/user (4).png");
+            UserImageLebel = new JLabel(iconAdmin);
+        }
+        else{
+            ImageIcon iconUser = new ImageIcon("src/user (5).png");
+            UserImageLebel =new JLabel(iconUser);
+        }
+        UserImageLebel.setBounds(70,10,200,70);
 
         LoginButton.setIcon(new ImageIcon("src/log-in (1).png"));
 
@@ -78,8 +88,8 @@ public class LoginUserFrame extends JFrame {
         add(passwordLabel);
         add(passwordField);
         add(LoginButton);
-        add(Userlebel);
-        setSize(300, 200);
+        add(UserImageLebel);
+        setSize(350, 250);
         setTitle("Log in into User");
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setLayout(null);

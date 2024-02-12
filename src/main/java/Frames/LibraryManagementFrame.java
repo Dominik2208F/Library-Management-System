@@ -51,33 +51,33 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
 
 
         comboBox = new JComboBox<>(comboBoxModel);
-        comboBox.setBounds(70, 200, 120, 40);
+        comboBox.setBounds(100, 280, 200, 40);
 
         welcome = new JLabel("Welcome!");
-        welcome.setBounds(82, 30, 125, 40);
-        welcome.setFont(new Font("Forte", Font.ITALIC, 20));
+        welcome.setBounds(120, 40, 200, 60);
+        welcome.setFont(new Font("Forte", Font.ITALIC, 35));
+        welcome.setForeground(Color.WHITE);
 
         assign = new JLabel("© Dominik Jakubaszek");
-        assign.setBounds(82, 40, 125, 40);
+        assign.setBounds(220, 420, 200, 40);
         assign.setFont(new Font("Forte", Font.ITALIC, 12));
-
-
-        selectedLibrary = new JLabel("Selected library");
-        selectedLibrary.setBounds(120, 220, 150, 20);
+        assign.setForeground(Color.white);
 
         buttonConfirm = new JButton("Confirm");
-        buttonConfirm.setBounds(70, 250, 120, 40);
+        buttonConfirm.setBounds(100, 330, 200, 40);
         buttonConfirm.addActionListener(this);
 
+        ImageIcon confirm = new ImageIcon("src/approved.png");
+        buttonConfirm.setIcon(confirm);
 
         ImageIcon icon = new ImageIcon("src/pngwing.com (2).png");
         Image originalImage = icon.getImage();
-        int newWidth = 100;
-        int newHeight = 100;
+        int newWidth = 150;
+        int newHeight = 150;
         Image scaledImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_DEFAULT);
         ImageIcon scaledIcon = new ImageIcon(scaledImage);
         JLabel label = new JLabel(scaledIcon);
-        label.setBounds(82, 80, newWidth, newHeight);
+        label.setBounds(120, 120, newWidth, newHeight);
 
         getContentPane().setLayout(null);
         getContentPane().add(label);
@@ -90,7 +90,7 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
         add(welcome);
         add(assign);
 
-        setSize(270, 350);
+        setSize(400, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setResizable(false);
@@ -104,8 +104,6 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
         if (selectedLibraryText == null || selectedLibraryText.isEmpty()) {
             JOptionPane.showMessageDialog(LibraryManagementFrame.this, "You have to choose at least 1 library", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            selectedLibrary.setText("Selected library is " + selectedLibraryText);
-
             for (Library librarySpec : libraryDataBase.getListOfLibrary()) {
                 if (librarySpec.getNameOfLibrary().equalsIgnoreCase(selectedLibraryText)) {
                     flowLibrary = librarySpec;

@@ -79,12 +79,22 @@ public class UserChooseIFrame extends JFrame {
 
 
 
-        comboBoxUser.setBounds(55, 150, 130, 30);
+        comboBoxUser.setBounds(100, 240, 200, 40);
         add(comboBoxUser);
 
+
+        confirmUser = new JButton("Confirm");
+        confirmUser.setBounds(100, 290, 200, 40);
+        add(confirmUser);
+
+        addUser = new JButton("Add user");
+        addUser.setBounds(100, 340, 200, 40);
+        add(addUser);
+
         showPassword= new JButton(" Don't remember password?");
-        showPassword.setBounds(20,280,200,20);
+        showPassword.setBounds(100,420,200,40);
         add(showPassword);
+
         showPassword.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -97,20 +107,6 @@ public class UserChooseIFrame extends JFrame {
                 }
             }
         });
-
-
-        selectedUser = new JLabel("Selected user");
-        selectedUser.setBounds(50, 120, 150, 20);
-
-        confirmUser = new JButton("Confirm");
-        confirmUser.setBounds(55, 190, 130, 40);
-        add(confirmUser);
-
-        addUser = new JButton("Add user");
-        addUser.setBounds(55, 240, 130, 30);
-        add(addUser);
-
-
         confirmUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -136,12 +132,12 @@ public class UserChooseIFrame extends JFrame {
 
         ImageIcon icon = new ImageIcon("src/profile_3135715.png");
         Image originalImage = icon.getImage();
-        int newWidth = 80;
-        int newHeight = 80;
+        int newWidth = 180;
+        int newHeight = 180;
         Image scaledImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_DEFAULT);
         ImageIcon scaledIcon = new ImageIcon(scaledImage);
         JLabel label = new JLabel(scaledIcon);
-        label.setBounds(80, 20, newWidth, newHeight);
+        label.setBounds(110, 20, newWidth, newHeight);
 
         ImageIcon addUserIcon = new ImageIcon("src/add-user_8924229 (1).png");
 
@@ -156,7 +152,7 @@ public class UserChooseIFrame extends JFrame {
         confirmUser.setIcon(icon2);
 
 
-        setSize(250, 350);
+        setSize(400, 500);
         setTitle("Choose user");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
