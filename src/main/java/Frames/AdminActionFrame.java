@@ -443,7 +443,8 @@ public class AdminActionFrame extends JFrame {
                 SubCategoryComboBox.setEnabled(true);
                 categoryComboBox.setEnabled(true);
                 list.setModel(updatedModel);
-                AddBookJFrame addBookJFrame = new AddBookJFrame(flowLibrary,list);
+                AddBookJFrame addBookJFrame = new AddBookJFrame(flowLibrary,list,booksLabel);
+
             }
         });
         programInfo.addActionListener(new ActionListener() {

@@ -31,10 +31,11 @@ public class AddBookJFrame extends JFrame {
     private JTextField yearField = new JTextField();
     private JTextField pagesField = new JTextField();
     private JComboBox<String> genreComboBox = new JComboBox<>(new String[]{"Przygodowa", "Akcji", "ScienceFiction", "Romans", "Historyczne", "Akademickie", "Finansowe", "Dramat"});
+    private  JLabel BooksLebel;
 
-    public AddBookJFrame(Library flowLibrary, JList<String> list) {
+    public AddBookJFrame(Library flowLibrary, JList<String> list,JLabel book) {
 
-
+    this.BooksLebel=book;
         setContentPane(new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -192,6 +193,7 @@ public class AddBookJFrame extends JFrame {
                     updatedModel.addElement(book.toString(true));
                 }
                 list.setModel(updatedModel);
+                BooksLebel.setText(flowLibrary.getListOfBooks().size() + " books in library");
                 dispose();
             }
         }
