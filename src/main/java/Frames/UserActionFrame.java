@@ -93,7 +93,7 @@ public class UserActionFrame extends JFrame {
         ImageIcon borrowAllIcon = new ImageIcon("src/all.png");
         borrowALL.setIcon(borrowAllIcon);
 
-        sortComboBox = new JComboBox<>(new String[]{"Title", "Author", "Genre"});
+        sortComboBox = new JComboBox<>(new String[]{"Title", "Author", "Genre","Status"});
         sortComboBox.setBounds(590, 190, 160, 40);
         add(sortComboBox);
 
@@ -106,7 +106,7 @@ public class UserActionFrame extends JFrame {
         SubCategoryComboBox.setBounds(590, 240, 160, 40);
         add(SubCategoryComboBox);
 
-        booksLabel = new JLabel(flowLibrary.getListOfBooks().size() + " books in " + flowLibrary.getNameOfLibrary() + " library");
+        booksLabel = new JLabel(RefreshListOfAvailableBook() + " books available in library");
         booksLabel.setBounds(350, -5, 200, 30);
         add(booksLabel);
 
@@ -325,7 +325,7 @@ public class UserActionFrame extends JFrame {
                                     borrowALL.setEnabled(false);
                                     ConfirmChoice.setEnabled(false);
                                 }
-
+                                booksLabel.setText(RefreshListOfAvailableBook() + " books available in library");
                                 }
                              }
                     else {
@@ -372,7 +372,7 @@ public class UserActionFrame extends JFrame {
                                 ConfirmChoice.setEnabled(false);
                             }
                             JOptionPane.showMessageDialog(null, "Book " + bookInstance.getTitle() + " has been returned successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
-                            booksLabel.setText(flowLibrary.getListOfBooks().size() + " books in " + flowLibrary.getNameOfLibrary() + " library");
+                            booksLabel.setText(RefreshListOfAvailableBook() + " books available in library");
                         }
                     } else {
                         JOptionPane.showMessageDialog(null, "Choose one book", "Error", JOptionPane.ERROR_MESSAGE);
@@ -553,7 +553,7 @@ public class UserActionFrame extends JFrame {
                             }
                         }
                         list.setModel(modifiedModel1);
-
+                        booksLabel.setText(RefreshListOfAvailableBook() + " books available in library");
                         if (checkIfAllBooksBorrowed(flowLibrary.getListOfBooks())) {
                             borrowALL.setEnabled(false);
                             ConfirmChoice.setEnabled(false);
@@ -589,7 +589,7 @@ public class UserActionFrame extends JFrame {
                         }
                     }
                     list.setModel(modifiedModel1);
-
+                    booksLabel.setText(RefreshListOfAvailableBook() + " books available in library");
                     if (checkIfAllBooksReturned(flowLibrary.getListOfBooks())) {
                         ConfirmChoice.setEnabled(false);
                         returnAll.setEnabled(false);
@@ -709,6 +709,9 @@ public class UserActionFrame extends JFrame {
         } else if ("Genre".equals(selectedSortOption)) {
             comparator = Comparator.comparing(Book::getGenre);
         }
+        else if("Status".equals(selectedSortOption)){
+            comparator = Comparator.comparing(Book::getStatus);
+        }
         //
         if (!ascendingCheckBox.isSelected() && !descendingCheckBox.isSelected()) {
             JOptionPane.showMessageDialog(null, "Choose ascending or descending type and try again", "Error", JOptionPane.ERROR_MESSAGE);
@@ -763,4 +766,16 @@ public class UserActionFrame extends JFrame {
         }
     }
 
+
+    public int RefreshListOfAvailableBook(){
+
+        List<Book> booksAvailable = new ArrayList<>();
+
+        for(Book book : flowLibrary.getListOfBooks()){
+            if(book.getStatus()==Status.AVAILABLE){
+                booksAvailable.add(book);
+            }
+        }
+        return booksAvailable.size();
+    }
 }

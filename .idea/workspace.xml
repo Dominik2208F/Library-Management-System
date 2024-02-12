@@ -9,8 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="nowy UI user">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" afterDir="false" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="zakaz robienia admina account">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,13 +114,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00066" summary="przyciski panel admina">
-      <created>1707222479765</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1707222479765</updated>
     </task>
     <task id="LOCAL-00067" summary="Get all Boooks">
       <created>1707222837544</created>
@@ -457,7 +451,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707765293691</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <task id="LOCAL-00115" summary="zakaz robienia admina account">
+      <created>1707765672422</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1707765672422</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -472,7 +473,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="password hint i ukrywanie hasła" />
     <MESSAGE value="status +" />
     <MESSAGE value="toString admin view" />
     <MESSAGE value="borrow + return book proper mechanism with status" />
@@ -497,7 +497,8 @@
     <MESSAGE value="update book ui nowy" />
     <MESSAGE value="update book new UI" />
     <MESSAGE value="nowy UI user" />
-    <option name="LAST_COMMIT_MESSAGE" value="nowy UI user" />
+    <MESSAGE value="zakaz robienia admina account" />
+    <option name="LAST_COMMIT_MESSAGE" value="zakaz robienia admina account" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
