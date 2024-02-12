@@ -17,7 +17,7 @@ public class AddUserFrame extends JFrame {
     private JPasswordField passwordField;
     private JButton saveButton;
     private JLabel usernameLabel;
-    private JLabel passwordLabel;
+    private JLabel passwordLabel,addUser;
     private UserChooseIFrame userChooseIFrame;
     private Library flowLibrary;
 
@@ -49,12 +49,18 @@ public class AddUserFrame extends JFrame {
         saveButton = new JButton("Save");
         usernameLabel = new JLabel("Username:");
         passwordLabel = new JLabel("Password:");
-        usernameLabel.setBounds(30, 10, 100, 30);
-        passwordLabel.setBounds(30, 40, 100, 30);
-        usernameField.setBounds(100, 20, 150, 20);
-        passwordField.setBounds(100, 50, 150, 20);
-        saveButton.setBounds(160, 90, 100, 30);
-        showHideButton.setBounds(30, 90, 120, 30);
+        usernameLabel.setBounds(30, 80, 150, 30);
+        passwordLabel.setBounds(30,115 , 100, 30);
+        usernameField.setBounds(100, 85, 150, 30);
+        passwordField.setBounds(100, 120, 150, 30);
+        saveButton.setBounds(180, 170, 100, 30);
+        showHideButton.setBounds(50, 170, 120, 30);
+
+        ImageIcon iconAddUser = new ImageIcon("src/following.png");
+        addUser = new JLabel(iconAddUser);
+        addUser.setBounds(70,10,200,70);
+
+
 
         ImageIcon save =new ImageIcon("src/save-file.png");
         saveButton.setIcon(save);
@@ -93,6 +99,7 @@ public class AddUserFrame extends JFrame {
         add(passwordLabel);
         add(passwordField);
         add(saveButton);
+        add(addUser);
         add(showHideButton);
 
         showHideButton.addActionListener(new ActionListener() {
@@ -107,7 +114,7 @@ public class AddUserFrame extends JFrame {
             }
         });
 
-        setSize(300, 200);
+        setSize(350, 300);
         setTitle("Library menagement system v2");
         setLayout(null);
         setResizable(false);

@@ -92,7 +92,7 @@ public class UserChooseIFrame extends JFrame {
         add(addUser);
 
         showPassword= new JButton(" Don't remember password?");
-        showPassword.setBounds(100,420,200,40);
+        showPassword.setBounds(100,410,200,40);
         add(showPassword);
 
         showPassword.addActionListener(new ActionListener() {
