@@ -34,20 +34,6 @@ public class UpdateBookJFrame extends JFrame {
         this.library = library;
         this.list = list;
 
-        JButton updateBook = new JButton("Update book");
-
-
-        JButton button = new JButton("Select");
-        button.setBounds(140, 130, 90, 25);
-        add(button);
-
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                calendar = new CalendarIFrame(button, UpdateBookJFrame.this);
-
-            }
-        });
 
         setContentPane(new JPanel() {
             @Override
@@ -64,6 +50,25 @@ public class UpdateBookJFrame extends JFrame {
 
             }
         });
+
+        JButton updateBook = new JButton("Update book");
+
+
+        JButton button = new JButton("Select");
+
+
+        button.setBounds(180, 130, 90, 25);
+        add(button);
+
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calendar = new CalendarIFrame(button, UpdateBookJFrame.this);
+
+            }
+        });
+
 
         titleField.setBounds(80, 15, 200, 25);
         authorFirstNameField.setBounds(80, 55, 200, 25);
@@ -147,6 +152,7 @@ public class UpdateBookJFrame extends JFrame {
             }
         });
 
+
         setSize(300, 400);
         setTitle("Update a book");
         setLayout(null);
@@ -217,7 +223,7 @@ public class UpdateBookJFrame extends JFrame {
 
                 DefaultListModel<String> updatedModel = new DefaultListModel<>();
                 for (Book book : library.getListOfBooks()) {
-                    updatedModel.addElement(book.toString(true));
+                    updatedModel.addElement(book.toString());
                 }
                 list.setModel(updatedModel);
                 dispose();

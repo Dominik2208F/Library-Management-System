@@ -80,6 +80,9 @@ public class AdminActionFrame extends JFrame {
         QuickView.setBounds(755, 20, 120, 35);
         add(QuickView);
 
+        ImageIcon qucikView = new ImageIcon("src/view.png");
+        QuickView.setIcon(qucikView);
+
         booksLabel= new JLabel(flowLibrary.getListOfBooks().size() +" books in library");
         booksLabel.setBounds(400, -5, 180, 30);
         add(booksLabel);
@@ -109,7 +112,10 @@ public class AdminActionFrame extends JFrame {
         ConfirmChoice.setBounds(590, 180, 160, 35);
         add(ConfirmChoice);
         ConfirmChoice.setVisible(false);
-        ConfirmChoice.setBackground(Color.ORANGE);
+        ConfirmChoice.setBackground(Color.PINK);
+
+        ImageIcon confirm = new ImageIcon("src/approved.png");
+        ConfirmChoice.setIcon(confirm);
 
         UpdateBook = new JButton("Update book");
         UpdateBook.setBounds(10, 140, 130, 35);
@@ -122,10 +128,15 @@ public class AdminActionFrame extends JFrame {
         AddUser.setBounds(10, 180, 130, 35);
         add(AddUser);
 
+        ImageIcon addUserIcon = new ImageIcon("src/add-user_8924229 (1).png");
+        AddUser.setIcon(addUserIcon);
+
         DeleteUser = new JButton("Delete user");
         DeleteUser.setBounds(10, 220, 130, 35);
         add(DeleteUser);
 
+        ImageIcon deleteUser = new ImageIcon("src/delete-user.png");
+        DeleteUser.setIcon(deleteUser);
 
         ReturnBookOfAGivenUser = new JButton("Return book of a given user");
         ReturnBookOfAGivenUser.setBounds(10, 260, 200, 35);

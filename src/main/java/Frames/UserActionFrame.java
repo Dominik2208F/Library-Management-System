@@ -55,7 +55,7 @@ public class UserActionFrame extends JFrame {
                 int height = getHeight();
 
 
-                GradientPaint gradient = new GradientPaint(0, 150, new Color(250, 235, 215), 0, height, new Color(127, 255, 212));
+                GradientPaint gradient = new GradientPaint(0, 0, new Color(240, 248, 255), width, height, new Color(0, 191, 255));
 
                 ((Graphics2D) g).setPaint(gradient);
                 g.fillRect(0, 0, width, height);
@@ -112,26 +112,41 @@ public class UserActionFrame extends JFrame {
         add(ascendingCheckBox);
         add(descendingCheckBox);
 
-        BorrowAbook = new JButton("Borrow a book");
+        BorrowAbook = new JButton("Borrow");
         BorrowAbook.setBounds(10, 20, 130, 35);
         add(BorrowAbook);
 
+        ImageIcon borrow = new ImageIcon("src/borrow.png");
+        BorrowAbook.setIcon(borrow);
 
-        ShowAllBook =new JButton("Show all books");
+
+        ShowAllBook =new JButton("Show all");
         ShowAllBook.setBounds(10,100,130,35);
         add(ShowAllBook);
 
-        ReturnAbook = new JButton("Return a book");
+        ImageIcon showboook = new ImageIcon("src/all_5334695.png");
+        ShowAllBook.setIcon(showboook);
+
+        ReturnAbook = new JButton("Return");
         ReturnAbook.setBounds(10, 60, 130, 35);
         add(ReturnAbook);
+
+        ImageIcon returnBook = new ImageIcon("src/return.png");
+        ReturnAbook.setIcon(returnBook);
 
         QuickView = new JButton("Quick view");
         QuickView.setBounds(755, 20, 120, 35);
         add(QuickView);
 
+        ImageIcon qucikView = new ImageIcon("src/view.png");
+        QuickView.setIcon(qucikView);
+
         filter = new JButton("Filter books in library");
         filter.setBounds(10, 240, 200, 35);
         add(filter);
+
+        ImageIcon filterIcon = new ImageIcon("src/filter.png");
+        filter.setIcon(filterIcon);
 
         ConfirmChoice = new JButton("Confirm Choice");
         ConfirmChoice.setBounds(590, 240, 160, 40);
@@ -142,6 +157,10 @@ public class UserActionFrame extends JFrame {
         Sort = new JButton("Sort books in library");
         Sort.setBounds(10, 280, 200, 35);
         add(Sort);
+
+        ImageIcon sortIcon = new ImageIcon("src/from-a-to-z.png");
+        Sort.setIcon(sortIcon);
+
 
         QuickView.addActionListener(new ActionListener() {
             @Override

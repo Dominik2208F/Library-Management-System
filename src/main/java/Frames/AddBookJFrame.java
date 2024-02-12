@@ -34,12 +34,6 @@ public class AddBookJFrame extends JFrame {
 
     public AddBookJFrame(Library flowLibrary, JList<String> list) {
 
-        JButton addBook = new JButton("Add book");
-        JButton button = new JButton("Select");
-
-
-        button.setBounds(180, 130, 90, 25);
-        add(button);
 
         setContentPane(new JPanel() {
             @Override
@@ -56,6 +50,14 @@ public class AddBookJFrame extends JFrame {
 
             }
         });
+
+
+        JButton addBook = new JButton("Add book");
+        JButton button = new JButton("Select");
+
+
+        button.setBounds(180, 130, 90, 25);
+        add(button);
 
         button.addActionListener(new ActionListener() {
             @Override

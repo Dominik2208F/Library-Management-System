@@ -132,13 +132,7 @@ public class UserChooseIFrame extends JFrame {
         JLabel label = new JLabel(scaledIcon);
         label.setBounds(80, 20, newWidth, newHeight);
 
-        ImageIcon icon1 = new ImageIcon("src/add-user_747554.png");
-        Image originalImage1 = icon1.getImage();
-        int newWidth1 = 20;
-        int newHeight1 = 20;
-        Image scaledImage1 = originalImage1.getScaledInstance(newWidth1, newHeight1, Image.SCALE_DEFAULT);
-        ImageIcon scaledIcon1 = new ImageIcon(scaledImage1);
-        JLabel label1 = new JLabel(scaledIcon1);
+        ImageIcon addUserIcon = new ImageIcon("src/add-user_8924229 (1).png");
 
 
 
@@ -147,8 +141,7 @@ public class UserChooseIFrame extends JFrame {
 
         getContentPane().setLayout(null);
         getContentPane().add(label);
-        getContentPane().add(label1);
-        addUser.setIcon(scaledIcon1);
+        addUser.setIcon(addUserIcon);
         confirmUser.setIcon(icon2);
 
 

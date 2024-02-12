@@ -10,25 +10,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="dodanie kolorów do innych Framów">
-      <change afterPath="$PROJECT_DIR$/src/add-user_747554.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/add.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/all_5334695.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/arrow_11029135.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/book_13922347.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/checklist_11707966 (2).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dislike_9250694.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pngwing.com (2).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/profile_3135715.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/recycle_9250683.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/add-user_8924229 (1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/approved.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/borrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/delete-user.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/filter.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/from-a-to-z.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/return.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/save-file.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/background.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/background1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/add-user_747554.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UpdateBookJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UpdateBookJFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/programmer_v_02.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +51,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="e947f981c0467808ed7f93e7e94ff0cdef3828bf" />
+        <entry key="$PROJECT_DIR$" value="7577ba69fbf8de74419de71618b5d0674fa92875" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -116,6 +114,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
@@ -546,7 +545,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>171</line>
+          <line>190</line>
           <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -561,12 +560,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>180</line>
+          <line>199</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>178</line>
+          <line>197</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
       </breakpoints>

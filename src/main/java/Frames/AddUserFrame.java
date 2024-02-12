@@ -53,8 +53,13 @@ public class AddUserFrame extends JFrame {
         passwordLabel.setBounds(30, 40, 100, 30);
         usernameField.setBounds(100, 20, 150, 20);
         passwordField.setBounds(100, 50, 150, 20);
-        saveButton.setBounds(180, 90, 80, 30);
-        showHideButton.setBounds(70, 90, 100, 30);
+        saveButton.setBounds(160, 90, 100, 30);
+        showHideButton.setBounds(30, 90, 120, 30);
+
+        ImageIcon save =new ImageIcon("src/save-file.png");
+        saveButton.setIcon(save);
+        ImageIcon qucikView = new ImageIcon("src/view.png");
+        showHideButton.setIcon(qucikView);
 
         saveButton.addActionListener(new ActionListener() {
             @Override
