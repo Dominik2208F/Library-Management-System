@@ -7,10 +7,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserChooseIFrame extends JFrame {
 
-    private JLabel availableUser;
+
     private JLabel selectedUser;
     private JButton confirmUser,showPassword;
     private JButton addUser;
@@ -36,17 +38,22 @@ public class UserChooseIFrame extends JFrame {
     private String ChoosenUserName;
     private Library flowLibrary;
     private LibraryManagementFrame libraryManagementFrame;
+    JComboBox comboBoxUser= new JComboBox<>();
 
     public UserChooseIFrame(Library library, LibraryManagementFrame libraryManagementFrame) {
         this.flowLibrary = library;
         this.libraryManagementFrame = libraryManagementFrame;
 
-        DefaultListModel<String> listOfUsersFromLibrary = new DefaultListModel<>();
+
+        List<String> listOfCurrentUsers = new ArrayList<String>();
 
 
         for (User user : flowLibrary.getLibraryUserDataBase().getListOfUser()) {
-            listOfUsersFromLibrary.addElement(user.getName());
+            listOfCurrentUsers.add(user.getName());
+            String[] usersArray = listOfCurrentUsers.toArray(new String[listOfCurrentUsers.size()]);
+             comboBoxUser.setModel(new DefaultComboBoxModel<>(usersArray));
         }
+
         setContentPane(new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -63,11 +70,11 @@ public class UserChooseIFrame extends JFrame {
             }
         });
 
-        list = new JList<>(listOfUsersFromLibrary);
 
-        list.setBounds(70, 110, 100, 60);
-        add(list);
-        //
+
+
+        comboBoxUser.setBounds(55, 150, 130, 30);
+        add(comboBoxUser);
 
         showPassword= new JButton(" Don't remember password?");
         showPassword.setBounds(20,280,200,20);
@@ -98,16 +105,15 @@ public class UserChooseIFrame extends JFrame {
         addUser.setBounds(55, 240, 130, 30);
         add(addUser);
 
-        JScrollPane scrollPane = new JScrollPane(list);
-        scrollPane.setBounds(70, 110, 100, 60);
-        add(scrollPane);
+
         confirmUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (list.isSelectionEmpty()) {
+                String selectedLibraryText = (String) comboBoxUser.getSelectedItem();
+                if (comboBoxUser==null || selectedLibraryText.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Choose at least 1 user", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    ChoosenUserName = list.getSelectedValue();
+                    ChoosenUserName = selectedLibraryText;
                     new LoginUserFrame(UserChooseIFrame.this, library);
 
                 }
@@ -155,13 +161,12 @@ public class UserChooseIFrame extends JFrame {
     }
 
     public void updateListOfUsers() {
-        DefaultListModel<String> listOfUsersFromLibrary = new DefaultListModel<>();
-
+        List<String> listOfCurrentUsers = new ArrayList<String>();
         for (User user : flowLibrary.getLibraryUserDataBase().getListOfUser()) {
-            listOfUsersFromLibrary.addElement(user.getName());
+            listOfCurrentUsers.add(user.getName());
+            String[] usersArray = listOfCurrentUsers.toArray(new String[listOfCurrentUsers.size()]);
+            comboBoxUser.setModel(new DefaultComboBoxModel<>(usersArray));
         }
-
-        list.setModel(listOfUsersFromLibrary);
     }
 }
 
