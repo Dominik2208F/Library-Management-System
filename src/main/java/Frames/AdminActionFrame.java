@@ -21,7 +21,7 @@ public class AdminActionFrame extends JFrame {
     private JMenuBar menubar;
     private JMenu Options,Program;
     private JMenuItem changeUser, changeLibrary,programInfo;
-    private JButton AddBook,ReturnInfoAllBooks,ReturnInfoOfBook,DeleteBook,UpdateBook,AddUser,DeleteUser,ReturnBookOfAGivenUser,BorrowedBooksOfUser,ConfirmChoice;
+    private JButton AddBook,ReturnInfoAllBooks,ReturnInfoOfBook,DeleteBook,UpdateBook,AddUser,DeleteUser,ReturnBookOfAGivenUser,BorrowedBooksOfUser,ConfirmChoice,QuickView;
     private JList<String> list;
     private Library flowLibrary;
     private UserChooseIFrame userChooseIFrame;
@@ -76,9 +76,12 @@ public class AdminActionFrame extends JFrame {
         menubar.add(Options);
         menubar.add(Program);
 
+        QuickView = new JButton("Quick view");
+        QuickView.setBounds(755, 20, 120, 35);
+        add(QuickView);
 
         booksLabel= new JLabel(flowLibrary.getListOfBooks().size() +" books in library");
-        booksLabel.setBounds(570, -5, 180, 30);
+        booksLabel.setBounds(400, -5, 180, 30);
         add(booksLabel);
 
         AddBook = new JButton("Add a book");
@@ -131,7 +134,7 @@ public class AdminActionFrame extends JFrame {
 
 
         UserSelectionComboBox =new JComboBox<>();
-        UserSelectionComboBox.setBounds(500,180,160,30);
+        UserSelectionComboBox.setBounds(590,180,160,30);
         add(UserSelectionComboBox);
 
         categoryComboBox.setVisible(false);
@@ -141,7 +144,18 @@ public class AdminActionFrame extends JFrame {
         ReturnBookOfAGivenUser.setEnabled(false);
         BorrowedBooksOfUser.setEnabled(false);
 
+        QuickView.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
+                if(list.getSelectedIndex()!=-1) {
+                    new OverViewBookJFrame(library, list);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Choose at least one book from list", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
         DeleteUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -315,13 +329,33 @@ public class AdminActionFrame extends JFrame {
                         if (user.getName().equals(selectedUserToDelete)) {
                             int odp=  JOptionPane.showConfirmDialog(null, "Do you want to remove " + user.getName() + " ?" , "Message", JOptionPane.YES_NO_OPTION);
                             if(odp==JOptionPane.YES_OPTION) {
+
+
+
                                 flowLibrary.getLibraryUserDataBase().getListOfUser().remove(user);
+
+                                for(Book book : flowLibrary.getListOfBooks()){
+                                    if(book.getAssignedUserToBook().getName().equals(selectedUserToDelete)){
+                                        book.setStatus(Status.AVAILABLE);
+                                        book.setAssignedUserToBook(new User("None","none"));
+                                    }
+                                }
+
+
                                 List<String> UpdatedListOfUsers =new ArrayList<>();
                                 for (User user1 : flowLibrary.getLibraryUserDataBase().getListOfUser()) {
                                     if (!user1.getName().equals("Admin")) {
                                         UpdatedListOfUsers.add(user1.getName());
                                     }
                                 }
+
+                                DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+                                for (Book books : flowLibrary.getListOfBooks()) {
+                                    modifiedModel.addElement(books.toString(true));
+                                }
+                                list.setModel(modifiedModel);
+
+
                                 if(UpdatedListOfUsers.isEmpty()){
                                     UserSelectionComboBox.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));
                                     UserSelectionComboBox.setEnabled(false);
@@ -379,7 +413,6 @@ public class AdminActionFrame extends JFrame {
         AddBook.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                list.setEnabled(false);
                 DefaultListModel<String> updatedModel = new DefaultListModel<>();
                 for (Book books : flowLibrary.getListOfBooks()) {
                     updatedModel.addElement(books.toString(true));
