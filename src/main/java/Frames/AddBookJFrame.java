@@ -128,7 +128,7 @@ public class AddBookJFrame extends JFrame {
         });
 
         setSize(300, 400);
-        setTitle("Add new book");
+        setTitle("Library menagement system v2");
         setLayout(null);
         setResizable(false);
         setVisible(true);

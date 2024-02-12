@@ -458,7 +458,7 @@ public class AdminActionFrame extends JFrame {
         add(scrollPane);
 
         setSize(900, 400);
-        setTitle("Admin Panel logged as " + userChooseIFrame.getChoosenUserName());
+        setTitle("Admin Panel");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setResizable(false);

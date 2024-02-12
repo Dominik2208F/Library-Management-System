@@ -601,7 +601,7 @@ public class UserActionFrame extends JFrame {
         scrollPane.setBounds(150, 20, 600, 150);
         add(scrollPane);
         setSize(900, 400);
-        setTitle("User Action Panel logged as " + userChooseIFrame.getChoosenUserName());
+        setTitle("User logged as " + userChooseIFrame.getChoosenUserName());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setResizable(false);

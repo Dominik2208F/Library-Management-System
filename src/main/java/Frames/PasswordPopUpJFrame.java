@@ -38,7 +38,7 @@ public class PasswordPopUpJFrame extends JFrame {
         add(passwordHint2);
 
         setSize(300, 200);
-        setTitle("Password hint");
+        setTitle("Library menagement system v2");
         setLayout(null);
         setResizable(false);
         setVisible(true);
