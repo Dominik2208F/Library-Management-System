@@ -115,7 +115,7 @@ public class AddUserFrame extends JFrame {
         });
 
         setSize(350, 300);
-        setTitle("Library menagement system v2");
+        setTitle("Add user");
         setLayout(null);
         setResizable(false);
         setVisible(true);

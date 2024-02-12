@@ -90,7 +90,7 @@ public class LoginUserFrame extends JFrame {
         add(LoginButton);
         add(UserImageLebel);
         setSize(350, 250);
-        setTitle("Library menagement system v2");
+        setTitle("Login");
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setLayout(null);
         setResizable(false);

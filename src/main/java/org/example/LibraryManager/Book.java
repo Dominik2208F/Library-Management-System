@@ -52,25 +52,22 @@ public class Book implements Comparable<Book> {
         return amountOfPage;
     }
 
-    //user view
     @Override
     public String toString() {
         return  "Status:" +status +
                  ", Title: " + title +
                 ", Author: " + author +
                 ", Production date: " + dateOfProduction +
-                ", Genre: " + genre +
-                ", Pages: " + amountOfPage;
+                ", Genre: " + genre ;
     }
-// admin view
+
     public String toString(boolean flag) {
         if(flag) {
             return "Status: " + status + " Assigned to: " + AssignedUserToBook.getName() +
                     ", Title: " + title +
                     ", Author: " + author +
                     ", Production date: " + dateOfProduction +
-                    ", Genre: " + genre +
-                    ", Pages: " + amountOfPage;
+                    ", Genre: " + genre;
         }
         return null;
     }

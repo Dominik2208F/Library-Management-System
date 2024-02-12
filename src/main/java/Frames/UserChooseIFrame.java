@@ -153,7 +153,7 @@ public class UserChooseIFrame extends JFrame {
 
 
         setSize(400, 500);
-        setTitle("Library menagement system v2");
+        setTitle("Choose user");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setResizable(false);

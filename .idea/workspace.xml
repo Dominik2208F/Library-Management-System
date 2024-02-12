@@ -9,11 +9,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="zdjęcia i tytuły">
-      <change afterPath="$PROJECT_DIR$/src/following.png" afterDir="false" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="add user image">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/PasswordPopUpJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/PasswordPopUpJFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UpdateBookJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UpdateBookJFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Author.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Book.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,13 +123,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00061" summary="combo box filtrowanie po autorze i gatunku">
-      <created>1707207650665</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1707207650666</updated>
     </task>
     <task id="LOCAL-00062" summary="filtrowanie + zmiana wielkosci panelu">
       <created>1707211990168</created>
@@ -460,7 +460,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707746226037</updated>
     </task>
-    <option name="localTasksCounter" value="110" />
+    <task id="LOCAL-00110" summary="add user image">
+      <created>1707761749201</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1707761749201</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -475,7 +482,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="sprzatanie" />
     <MESSAGE value="modyfikatory dostępu po resecie" />
     <MESSAGE value="obsługa hasła regex" />
     <MESSAGE value="konfiguracja main" />
@@ -500,7 +506,8 @@
     <MESSAGE value="naprawa password Hint do combobox" />
     <MESSAGE value="zdjęcia dla logowania" />
     <MESSAGE value="zdjęcia i tytuły" />
-    <option name="LAST_COMMIT_MESSAGE" value="zdjęcia i tytuły" />
+    <MESSAGE value="add user image" />
+    <option name="LAST_COMMIT_MESSAGE" value="add user image" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

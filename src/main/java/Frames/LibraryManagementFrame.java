@@ -95,7 +95,7 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
         setLayout(null);
         setResizable(false);
         setVisible(true);
-        setTitle("Library Menagement System v2");
+        setTitle("Library Menagement System");
 
     }
 

@@ -42,7 +42,7 @@ public class AdminActionFrame extends JFrame {
 
         DefaultListModel<String> listOfAction = new DefaultListModel<>();
         list = new JList<>(listOfAction);
-        list.setBounds(150, 20, 600, 150);
+        list.setBounds(150, 20, 700, 150);
         add(list);
 
         setContentPane(new JPanel() {
@@ -77,7 +77,7 @@ public class AdminActionFrame extends JFrame {
         menubar.add(Program);
 
         QuickView = new JButton("Quick view");
-        QuickView.setBounds(755, 20, 120, 35);
+        QuickView.setBounds(855, 20, 120, 40);
         add(QuickView);
 
         ImageIcon qucikView = new ImageIcon("src/view.png");
@@ -88,28 +88,28 @@ public class AdminActionFrame extends JFrame {
         add(booksLabel);
 
         AddBook = new JButton("Add a book");
-        AddBook.setBounds(10, 20, 130, 35);
+        AddBook.setBounds(10, 20, 130, 40);
         add(AddBook);
 
         ImageIcon add = new ImageIcon("src/add.png");
         AddBook.setIcon(add);
 
         ReturnInfoAllBooks = new JButton("Show all ");
-        ReturnInfoAllBooks.setBounds(10, 60, 130, 35);
+        ReturnInfoAllBooks.setBounds(10, 70, 130, 40);
         add(ReturnInfoAllBooks);
 
         ImageIcon showboook = new ImageIcon("src/all_5334695.png");
         ReturnInfoAllBooks.setIcon(showboook);
 
         DeleteBook = new JButton("Delete book");
-        DeleteBook.setBounds(10, 100, 130, 35);
+        DeleteBook.setBounds(10, 120, 130, 40);
         add(DeleteBook);
 
         ImageIcon deleteBook = new ImageIcon("src/dislike_9250694.png");
         DeleteBook.setIcon(deleteBook);
 
         ConfirmChoice= new JButton("Confirm Choice");
-        ConfirmChoice.setBounds(590, 180, 160, 35);
+        ConfirmChoice.setBounds(680, 180, 160, 40);
         add(ConfirmChoice);
         ConfirmChoice.setVisible(false);
         ConfirmChoice.setBackground(Color.PINK);
@@ -118,46 +118,46 @@ public class AdminActionFrame extends JFrame {
         ConfirmChoice.setIcon(confirm);
 
         UpdateBook = new JButton("Update book");
-        UpdateBook.setBounds(10, 140, 130, 35);
+        UpdateBook.setBounds(10, 170, 130, 40);
         add(UpdateBook);
 
         ImageIcon updateBook = new ImageIcon("src/recycle_9250683.png");
         UpdateBook.setIcon(updateBook);
 
         AddUser = new JButton("Add user");
-        AddUser.setBounds(10, 180, 130, 35);
+        AddUser.setBounds(10, 220, 130, 40);
         add(AddUser);
 
         ImageIcon addUserIcon = new ImageIcon("src/add-user_8924229 (1).png");
         AddUser.setIcon(addUserIcon);
 
         DeleteUser = new JButton("Delete user");
-        DeleteUser.setBounds(10, 220, 130, 35);
+        DeleteUser.setBounds(10, 270, 130, 40);
         add(DeleteUser);
 
         ImageIcon deleteUser = new ImageIcon("src/delete-user.png");
         DeleteUser.setIcon(deleteUser);
 
         ReturnBookOfAGivenUser = new JButton("Return book of a given user");
-        ReturnBookOfAGivenUser.setBounds(10, 260, 200, 35);
+        ReturnBookOfAGivenUser.setBounds(10, 320, 200, 40);
         add(ReturnBookOfAGivenUser);
 
         BorrowedBooksOfUser = new JButton("User borrowed books");
-        BorrowedBooksOfUser.setBounds(10, 300, 200, 35);
+        BorrowedBooksOfUser.setBounds(10, 370, 200, 40);
         add(BorrowedBooksOfUser);
 
         categoryComboBox = new JComboBox<>(new String[]{"Author", "Genre","Select","Status","Assigned to"});
-        categoryComboBox.setBounds(590,200,160,30);
+        categoryComboBox.setBounds(680,200,160,40);
         add(categoryComboBox);
         categoryComboBox.setSelectedItem("Select");
 
         SubCategoryComboBox = new JComboBox<>();
-        SubCategoryComboBox.setBounds(590,240,160,30);
+        SubCategoryComboBox.setBounds(680,250,160,40);
         add(SubCategoryComboBox);
 
 
         UserSelectionComboBox =new JComboBox<>();
-        UserSelectionComboBox.setBounds(590,180,160,30);
+        UserSelectionComboBox.setBounds(680,180,160,40);
         add(UserSelectionComboBox);
 
         categoryComboBox.setVisible(false);
@@ -454,10 +454,10 @@ public class AdminActionFrame extends JFrame {
         });
 
         JScrollPane scrollPane = new JScrollPane(list);
-        scrollPane.setBounds(150, 20, 600, 150);
+        scrollPane.setBounds(150, 20, 700, 150);
         add(scrollPane);
 
-        setSize(900, 400);
+        setSize(1000, 460);
         setTitle("Admin Panel");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);

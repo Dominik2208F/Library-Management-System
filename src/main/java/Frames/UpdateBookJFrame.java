@@ -154,7 +154,7 @@ public class UpdateBookJFrame extends JFrame {
 
 
         setSize(300, 400);
-        setTitle("Library menagement system v2");
+        setTitle("Update book");
         setLayout(null);
         setResizable(false);
         setVisible(true);
