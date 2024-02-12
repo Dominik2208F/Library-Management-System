@@ -72,10 +72,12 @@ public class OverViewBookJFrame extends JFrame {
         genreComboBox.setBounds(80, 210, 200, 25);
         pagesField.setBounds(80, 250, 200, 25);
 
-        int indexToUpdate = list.getSelectedIndex();
-        int counter = 0;
+       String TitleToUpdate = extractTitle((String) list.getSelectedValue());
+
+
+
         for (Book book : library.getListOfBooks()) {
-            if (counter == indexToUpdate) {
+            if (book.getTitle().equals(TitleToUpdate)) {
                 titleField.setText(book.getTitle());
                 authorFirstNameField.setText(book.getAuthor().getFirstName());
                 authorLastNameField.setText(book.getAuthor().getLastName());
@@ -84,7 +86,7 @@ public class OverViewBookJFrame extends JFrame {
                 genreComboBox.setSelectedItem(book.getGenre().getName());
                 pagesField.setText(String.valueOf(book.getAmountOfPage()));
             }
-            counter++;
+
         }
 
         add(new JLabel("Title:")).setBounds(0, 5, 100, 35);
@@ -118,5 +120,14 @@ public class OverViewBookJFrame extends JFrame {
         setResizable(false);
         setVisible(true);
     }
-
+    public String extractTitle(String inputString) {
+        String[] parts = inputString.split(", ");
+        for (String part : parts) {
+            if (part.startsWith("Title:")) {
+                String[] titleParts = part.split(": ");
+                return titleParts[1];
+            }
+        }
+        return null;
+    }
 }
