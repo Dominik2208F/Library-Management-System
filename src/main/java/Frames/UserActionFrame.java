@@ -82,13 +82,19 @@ public class UserActionFrame extends JFrame {
         add(returnAll);
         returnAll.setVisible(false);
 
+        ImageIcon returnAllIcon = new ImageIcon("src/all.png");
+        returnAll.setIcon(returnAllIcon);
+
         borrowALL = new JButton("Borrow all");
         borrowALL.setBounds(590, 200, 160, 30);
         add(borrowALL);
         borrowALL.setVisible(false);
 
+        ImageIcon borrowAllIcon = new ImageIcon("src/all.png");
+        borrowALL.setIcon(borrowAllIcon);
+
         sortComboBox = new JComboBox<>(new String[]{"Title", "Author", "Genre"});
-        sortComboBox.setBounds(590, 240, 160, 30);
+        sortComboBox.setBounds(590, 180, 160, 30);
         add(sortComboBox);
 
         categoryComboBox = new JComboBox<>(new String[]{"Author", "Genre", "Select","Status"});
@@ -104,6 +110,7 @@ public class UserActionFrame extends JFrame {
         booksLabel.setBounds(350, -5, 200, 30);
         add(booksLabel);
 
+
         ascendingCheckBox = new JCheckBox("Sort Ascending");
         ascendingCheckBox.setBounds(250, 180, 150, 30);
 
@@ -111,6 +118,7 @@ public class UserActionFrame extends JFrame {
         descendingCheckBox.setBounds(400, 180, 150, 30);
         add(ascendingCheckBox);
         add(descendingCheckBox);
+
 
         BorrowAbook = new JButton("Borrow");
         BorrowAbook.setBounds(10, 20, 130, 35);
@@ -154,6 +162,9 @@ public class UserActionFrame extends JFrame {
         ConfirmChoice.setBackground(Color.PINK);
         ConfirmChoice.setVisible(false);
 
+        ImageIcon confirm = new ImageIcon("src/approved.png");
+        ConfirmChoice.setIcon(confirm);
+
         Sort = new JButton("Sort books in library");
         Sort.setBounds(10, 280, 200, 35);
         add(Sort);
@@ -178,6 +189,14 @@ public class UserActionFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 list.setEnabled(true);
+                returnAll.setVisible(false);
+                ConfirmChoice.setVisible(false);
+                ascendingCheckBox.setVisible(false);
+                descendingCheckBox.setVisible(false);
+                sortComboBox.setVisible(false);
+                categoryComboBox.setVisible(false);
+                SubCategoryComboBox.setVisible(false);
+                ConfirmChoice.setEnabled(true);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 for (Book Book : flowLibrary.getListOfBooks()) {
                     modifiedModel.addElement(Book.toString());
@@ -188,6 +207,11 @@ public class UserActionFrame extends JFrame {
         ReturnAbook.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ascendingCheckBox.setVisible(false);
+                descendingCheckBox.setVisible(false);
+                sortComboBox.setVisible(false);
+                categoryComboBox.setVisible(false);
+                SubCategoryComboBox.setVisible(false);
                 ConfirmChoice.setEnabled(true);
                 categoryComboBox.setVisible(false);
                 SubCategoryComboBox.setVisible(false);

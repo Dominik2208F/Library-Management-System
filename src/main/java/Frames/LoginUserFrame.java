@@ -30,8 +30,10 @@ public class LoginUserFrame extends JFrame {
         Userlebel = new JLabel("Your account is " + userChooseIFrame.getChoosenUserName());
         passwordLabel.setBounds(30, 40, 100, 30);
         passwordField.setBounds(100, 50, 150, 20);
-        LoginButton.setBounds(130, 90, 80, 30);
+        LoginButton.setBounds(130, 90, 100, 30);
         Userlebel.setBounds(30, 10, 200, 30);
+
+        LoginButton.setIcon(new ImageIcon("src/log-in (1).png"));
 
         LoginButton.addActionListener(new ActionListener() {
             @Override

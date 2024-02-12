@@ -9,8 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="dodanie kolorów do innych Framów">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/OverViewBookJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/OverViewBookJFrame.java" afterDir="false" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="naprawa quickview">
+      <change afterPath="$PROJECT_DIR$/src/all.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/log-in (1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sort-ascending.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sort-down (2).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,13 +119,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00055" summary="panel usera zrobiony">
-      <created>1707148571478</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1707148571478</updated>
     </task>
     <task id="LOCAL-00056" summary="sortowanie malejacy i rosnaca">
       <created>1707164121699</created>
@@ -457,7 +456,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707701603811</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="naprawa quickview">
+      <created>1707735282962</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1707735282962</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -472,7 +478,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="update Book naprawa błędów" />
     <MESSAGE value="naprawa kolejnych błędów" />
     <MESSAGE value="kolejna naprawa błedów w userPanel" />
     <MESSAGE value="dodanie obsługi pojedynczej komunikatu" />
@@ -497,7 +502,8 @@
     <MESSAGE value="nowy UI" />
     <MESSAGE value="naprawa usuniecia usera z ksiązkami" />
     <MESSAGE value="dodanie kolorów do innych Framów" />
-    <option name="LAST_COMMIT_MESSAGE" value="dodanie kolorów do innych Framów" />
+    <MESSAGE value="naprawa quickview" />
+    <option name="LAST_COMMIT_MESSAGE" value="naprawa quickview" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -529,7 +535,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>190</line>
+          <line>214</line>
           <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -544,12 +550,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>199</line>
+          <line>223</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>197</line>
+          <line>221</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
       </breakpoints>
