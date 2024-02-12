@@ -59,7 +59,7 @@ public class AddBookJFrame extends JFrame {
         JButton select = new JButton("Select");
 
 
-        select.setBounds(190, 240, 100, 40);
+        select.setBounds(200, 240, 100, 40);
         add(select);
 
         select.addActionListener(new ActionListener() {

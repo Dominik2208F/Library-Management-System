@@ -57,10 +57,12 @@ public class UpdateBookJFrame extends JFrame {
         JButton button = new JButton("Select");
 
 
-        button.setBounds(180, 130, 90, 25);
+        button.setBounds(200, 240, 100, 40);
         add(button);
 
-
+        JLabel imageAddBookLabel= new JLabel(new ImageIcon("src/phonebook.png"));
+        imageAddBookLabel.setBounds(100, 10, 200, 65);
+        add(imageAddBookLabel);
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -70,14 +72,14 @@ public class UpdateBookJFrame extends JFrame {
         });
 
 
-        titleField.setBounds(80, 15, 200, 25);
-        authorFirstNameField.setBounds(80, 55, 200, 25);
-        authorLastNameField.setBounds(80, 90, 200, 25);
-        authorBirthDateField.setBounds(80, 130, 90, 25);
+        titleField.setBounds(100, 90, 200, 40);
+        authorFirstNameField.setBounds(100, 140, 200, 40);
+        authorLastNameField.setBounds(100, 190, 200, 40);
+        authorBirthDateField.setBounds(100, 240,  90, 40);
         authorBirthDateField.setEditable(false);
-        yearField.setBounds(80, 170, 200, 25);
-        genreComboBox.setBounds(80, 210, 200, 25);
-        pagesField.setBounds(80, 250, 200, 25);
+        yearField.setBounds(100, 290, 200, 40);
+        genreComboBox.setBounds(100, 340, 200, 40);
+        pagesField.setBounds(100, 390, 200, 40);;
 
         int indexToUpdate = list.getSelectedIndex();
         int counter = 0;
@@ -95,21 +97,21 @@ public class UpdateBookJFrame extends JFrame {
         }
 
 
-        add(new JLabel("Title:")).setBounds(0, 5, 100, 35);
+        add(new JLabel("Title:")).setBounds(15, 85, 100, 35);
         add(titleField);
-        add(new JLabel("First Name:")).setBounds(0, 45, 100, 35);
+        add(new JLabel("First Name:")).setBounds(15, 135, 100, 35);
         add(authorFirstNameField);
-        add(new JLabel("Last Name:")).setBounds(0, 80, 100, 35);
+        add(new JLabel("Last Name:")).setBounds(15, 185, 100, 35);
         add(authorLastNameField);
-        add(new JLabel("Birth Date:")).setBounds(0, 120, 100, 35);
+        add(new JLabel("Birth Date:")).setBounds(15, 235, 100, 35);
         add(authorBirthDateField);
-        add(new JLabel("Year:")).setBounds(0, 160, 100, 35);
+        add(new JLabel("Year:")).setBounds(15, 285, 100, 35);
         add(yearField);
-        add(new JLabel("Genre:")).setBounds(0, 200, 100, 35);
+        add(new JLabel("Genre:")).setBounds(15, 335, 100, 35);
         add(genreComboBox);
-        add(new JLabel("Pages:")).setBounds(0, 240, 100, 35);
+        add(new JLabel("Pages:")).setBounds(15, 385, 100, 35);
         add(pagesField);
-        updateBook.setBounds(90, 300, 150, 35);
+        updateBook.setBounds(115, 440, 150, 40);
         add(updateBook);
 
 
@@ -153,7 +155,7 @@ public class UpdateBookJFrame extends JFrame {
         });
 
 
-        setSize(300, 400);
+        setSize(400, 550);
         setTitle("Update book");
         setLayout(null);
         setResizable(false);
@@ -223,7 +225,7 @@ public class UpdateBookJFrame extends JFrame {
 
                 DefaultListModel<String> updatedModel = new DefaultListModel<>();
                 for (Book book : library.getListOfBooks()) {
-                    updatedModel.addElement(book.toString());
+                    updatedModel.addElement(book.toString(true));
                 }
                 list.setModel(updatedModel);
                 dispose();
