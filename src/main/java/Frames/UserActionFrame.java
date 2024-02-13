@@ -4,12 +4,16 @@ import org.example.LibraryManager.Book;
 import org.example.LibraryManager.Library;
 import org.example.UserManager.User;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.*;
 import java.util.List;
 
@@ -82,7 +86,7 @@ public class UserActionFrame extends JFrame {
         add(returnAll);
         returnAll.setVisible(false);
 
-        ImageIcon returnAllIcon = new ImageIcon("src/all.png");
+        ImageIcon returnAllIcon = setIcon("/all.png");
         returnAll.setIcon(returnAllIcon);
 
         borrowALL = new JButton("Borrow all");
@@ -90,7 +94,7 @@ public class UserActionFrame extends JFrame {
         add(borrowALL);
         borrowALL.setVisible(false);
 
-        ImageIcon borrowAllIcon = new ImageIcon("src/all.png");
+        ImageIcon borrowAllIcon = setIcon("/all.png");
         borrowALL.setIcon(borrowAllIcon);
 
         sortComboBox = new JComboBox<>(new String[]{"Title", "Author", "Genre","Status"});
@@ -124,7 +128,7 @@ public class UserActionFrame extends JFrame {
         BorrowAbook.setBounds(10, 20, 130, 40);
         add(BorrowAbook);
 
-        ImageIcon borrow = new ImageIcon("src/borrow.png");
+        ImageIcon borrow = setIcon("/borrow.png");
         BorrowAbook.setIcon(borrow);
 
 
@@ -132,28 +136,28 @@ public class UserActionFrame extends JFrame {
         ShowAllBook.setBounds(10,120,130,40);
         add(ShowAllBook);
 
-        ImageIcon showboook = new ImageIcon("src/all_5334695.png");
+        ImageIcon showboook = setIcon("/all_5334695.png");
         ShowAllBook.setIcon(showboook);
 
         ReturnAbook = new JButton("Return");
         ReturnAbook.setBounds(10, 70, 130, 40);
         add(ReturnAbook);
 
-        ImageIcon returnBook = new ImageIcon("src/return.png");
+        ImageIcon returnBook = setIcon("/return.png");
         ReturnAbook.setIcon(returnBook);
 
         QuickView = new JButton("Quick view");
         QuickView.setBounds(755, 20, 120, 40);
         add(QuickView);
 
-        ImageIcon qucikView = new ImageIcon("src/view.png");
+        ImageIcon qucikView = setIcon("/view.png");
         QuickView.setIcon(qucikView);
 
         filter = new JButton("Filter books in library");
         filter.setBounds(10, 250, 200, 40);
         add(filter);
 
-        ImageIcon filterIcon = new ImageIcon("src/filter.png");
+        ImageIcon filterIcon = setIcon("/filter.png");
         filter.setIcon(filterIcon);
 
         ConfirmChoice = new JButton("Confirm Choice");
@@ -162,14 +166,14 @@ public class UserActionFrame extends JFrame {
         ConfirmChoice.setBackground(Color.PINK);
         ConfirmChoice.setVisible(false);
 
-        ImageIcon confirm = new ImageIcon("src/approved.png");
+        ImageIcon confirm = setIcon("/approved.png");
         ConfirmChoice.setIcon(confirm);
 
         Sort = new JButton("Sort books in library");
         Sort.setBounds(10, 300, 200, 40);
         add(Sort);
 
-        ImageIcon sortIcon = new ImageIcon("src/from-a-to-z.png");
+        ImageIcon sortIcon = setIcon("/from-a-to-z.png");
         Sort.setIcon(sortIcon);
 
 
@@ -777,5 +781,24 @@ public class UserActionFrame extends JFrame {
             }
         }
         return booksAvailable.size();
+    }
+    public ImageIcon setIcon(String source){
+        URL imageUrl = getClass().getResource(source);
+
+        ImageIcon icon=null;
+        if (imageUrl != null) {
+            try (InputStream inputStream = imageUrl.openStream()) {
+
+                Image originalImage = ImageIO.read(inputStream);
+
+                icon = new ImageIcon(originalImage);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.err.println("Nie udało się znaleźć zasobu.");
+        }
+        return icon;
     }
 }

@@ -3,10 +3,14 @@ package Frames;
 import org.example.LibraryManager.Library;
 import org.example.UserManager.User;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -130,21 +134,31 @@ public class UserChooseIFrame extends JFrame {
         });
 
 
-        ImageIcon icon = new ImageIcon("src/profile_3135715.png");
-        Image originalImage = icon.getImage();
-        int newWidth = 180;
-        int newHeight = 180;
-        Image scaledImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_DEFAULT);
-        ImageIcon scaledIcon = new ImageIcon(scaledImage);
-        JLabel label = new JLabel(scaledIcon);
-        label.setBounds(110, 20, newWidth, newHeight);
+        URL imageUrl = getClass().getResource("/profile_3135715.png");
 
-        ImageIcon addUserIcon = new ImageIcon("src/add-user_8924229 (1).png");
+        JLabel label = null;
+        if (imageUrl != null) {
+          
+            try (InputStream inputStream = imageUrl.openStream()) {
+                Image originalImage = ImageIO.read(inputStream);
+                int newWidth = 180;
+                int newHeight = 180;
+                Image scaledImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_DEFAULT);
+                ImageIcon scaledIcon = new ImageIcon(scaledImage);
+                label = new JLabel(scaledIcon);
+                label.setBounds(110, 20, newWidth, newHeight);
+                
+            } catch (IOException e) {
+                e.printStackTrace(); 
+            }
+        } else {
+            System.err.println("Nie udało się znaleźć zasobu."); // 
+        }
 
 
 
-
-        ImageIcon icon2 = new ImageIcon("src/checklist_11707966 (2).png");
+        ImageIcon addUserIcon = setIcon("/add-user_8924229 (1).png");
+        ImageIcon icon2 = setIcon("/checklist_11707966 (2).png");
 
         getContentPane().setLayout(null);
         getContentPane().add(label);
@@ -168,6 +182,26 @@ public class UserChooseIFrame extends JFrame {
             String[] usersArray = listOfCurrentUsers.toArray(new String[listOfCurrentUsers.size()]);
             comboBoxUser.setModel(new DefaultComboBoxModel<>(usersArray));
         }
+    }
+
+    public ImageIcon setIcon(String source){
+        URL imageUrl = getClass().getResource(source);
+
+        ImageIcon icon=null;
+        if (imageUrl != null) {
+            try (InputStream inputStream = imageUrl.openStream()) {
+
+                Image originalImage = ImageIO.read(inputStream);
+
+                icon = new ImageIcon(originalImage);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.err.println("Nie udało się znaleźć zasobu.");
+        }
+        return icon;
     }
 }
 

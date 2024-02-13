@@ -6,12 +6,16 @@ import org.example.LibraryManager.Genre;
 import org.example.LibraryManager.Library;
 import org.example.UserManager.User;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.*;
 import java.util.List;
 
@@ -81,7 +85,7 @@ public class AdminActionFrame extends JFrame {
         QuickView.setBounds(855, 20, 120, 40);
         add(QuickView);
 
-        ImageIcon qucikView = new ImageIcon("src/view.png");
+        ImageIcon qucikView = setIcon("/view.png");
         QuickView.setIcon(qucikView);
 
         booksLabel = new JLabel(flowLibrary.getListOfBooks().size() + " books in library");
@@ -92,21 +96,21 @@ public class AdminActionFrame extends JFrame {
         AddBook.setBounds(10, 20, 130, 40);
         add(AddBook);
 
-        ImageIcon add = new ImageIcon("src/add.png");
+        ImageIcon add = setIcon("/add.png");
         AddBook.setIcon(add);
 
         ReturnInfoAllBooks = new JButton("Show all ");
         ReturnInfoAllBooks.setBounds(10, 70, 130, 40);
         add(ReturnInfoAllBooks);
 
-        ImageIcon showboook = new ImageIcon("src/all_5334695.png");
+        ImageIcon showboook = setIcon("/all_5334695.png");
         ReturnInfoAllBooks.setIcon(showboook);
 
         DeleteBook = new JButton("Delete book");
         DeleteBook.setBounds(10, 120, 130, 40);
         add(DeleteBook);
 
-        ImageIcon deleteBook = new ImageIcon("src/dislike_9250694.png");
+        ImageIcon deleteBook = setIcon("/dislike_9250694.png");
         DeleteBook.setIcon(deleteBook);
 
         ConfirmChoice = new JButton("Confirm Choice");
@@ -115,35 +119,35 @@ public class AdminActionFrame extends JFrame {
         ConfirmChoice.setVisible(false);
         ConfirmChoice.setBackground(Color.PINK);
 
-        ImageIcon confirm = new ImageIcon("src/approved.png");
+        ImageIcon confirm = setIcon("/approved.png");
         ConfirmChoice.setIcon(confirm);
 
         UpdateBook = new JButton("Update book");
         UpdateBook.setBounds(10, 170, 130, 40);
         add(UpdateBook);
 
-        ImageIcon updateBook = new ImageIcon("src/recycle_9250683.png");
+        ImageIcon updateBook = setIcon("/recycle_9250683.png");
         UpdateBook.setIcon(updateBook);
 
         AddUser = new JButton("Add user");
         AddUser.setBounds(10, 220, 130, 40);
         add(AddUser);
 
-        ImageIcon addUserIcon = new ImageIcon("src/add-user_8924229 (1).png");
+        ImageIcon addUserIcon = setIcon("/add-user_8924229 (1).png");
         AddUser.setIcon(addUserIcon);
 
         DeleteUser = new JButton("Delete user");
         DeleteUser.setBounds(10, 270, 130, 40);
         add(DeleteUser);
 
-        ImageIcon deleteUser = new ImageIcon("src/delete-user.png");
+        ImageIcon deleteUser = setIcon("/delete-user.png");
         DeleteUser.setIcon(deleteUser);
 
         ReturnBookOfAGivenUser = new JButton("Return book of a given user");
         ReturnBookOfAGivenUser.setBounds(10, 320, 240, 40);
         add(ReturnBookOfAGivenUser);
 
-        ImageIcon returnBook = new ImageIcon("src/return.png");
+        ImageIcon returnBook = setIcon("/return.png");
         ReturnBookOfAGivenUser.setIcon(returnBook);
 
         returnAll = new JButton("Return all by user");
@@ -151,7 +155,7 @@ public class AdminActionFrame extends JFrame {
         add(returnAll);
         returnAll.setVisible(false);
 
-        ImageIcon returnAllIcon = new ImageIcon("src/all.png");
+        ImageIcon returnAllIcon = setIcon("/all.png");
         returnAll.setIcon(returnAllIcon);
 
         BorrowedBooksOfUser = new JButton("User borrowed books");
@@ -184,7 +188,7 @@ public class AdminActionFrame extends JFrame {
         ConfirmChoiceOfGivenUser.setVisible(false);
         ConfirmChoiceOfGivenUser.setBackground(Color.PINK);
 
-        ImageIcon confirmChoiceByUser = new ImageIcon("src/approved.png");
+        ImageIcon confirmChoiceByUser = setIcon("/approved.png");
         ConfirmChoiceOfGivenUser.setIcon(confirmChoiceByUser);
 
         categoryComboBox.setVisible(false);
@@ -841,5 +845,25 @@ public class AdminActionFrame extends JFrame {
             }
         }
         return booksAvailable.size();
+    }
+
+    public ImageIcon setIcon(String source){
+        URL imageUrl = getClass().getResource(source);
+
+        ImageIcon icon=null;
+        if (imageUrl != null) {
+            try (InputStream inputStream = imageUrl.openStream()) {
+
+                Image originalImage = ImageIO.read(inputStream);
+
+                icon = new ImageIcon(originalImage);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.err.println("Nie udało się znaleźć zasobu.");
+        }
+        return icon;
     }
 }

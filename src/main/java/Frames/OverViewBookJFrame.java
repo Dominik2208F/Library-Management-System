@@ -4,12 +4,16 @@ import org.example.LibraryManager.Book;
 import org.example.LibraryManager.Genre;
 import org.example.LibraryManager.Library;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.regex.Pattern;
 
 public class OverViewBookJFrame extends JFrame {
@@ -54,7 +58,7 @@ public class OverViewBookJFrame extends JFrame {
         button.setBounds(200, 240, 100, 40);
         add(button);
         button.setEnabled(false);
-        JLabel imageAddBookLabel= new JLabel(new ImageIcon("src/research.png"));
+        JLabel imageAddBookLabel= new JLabel(setIcon("/research.png"));
         imageAddBookLabel.setBounds(100, 10, 200, 65);
         add(imageAddBookLabel);
 
@@ -134,5 +138,24 @@ public class OverViewBookJFrame extends JFrame {
             }
         }
         return null;
+    }
+    public ImageIcon setIcon(String source){
+        URL imageUrl = getClass().getResource(source);
+
+        ImageIcon icon=null;
+        if (imageUrl != null) {
+            try (InputStream inputStream = imageUrl.openStream()) {
+
+                Image originalImage = ImageIO.read(inputStream);
+
+                icon = new ImageIcon(originalImage);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.err.println("Nie udało się znaleźć zasobu.");
+        }
+        return icon;
     }
 }

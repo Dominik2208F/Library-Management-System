@@ -3,12 +3,16 @@ package Frames;
 import org.example.LibraryManager.Library;
 import org.example.UserManager.User;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
 public class LoginUserFrame extends JFrame {
 
@@ -34,16 +38,16 @@ public class LoginUserFrame extends JFrame {
 
 
         if(userChooseIFrame.getChoosenUserName().equals("Admin")) {
-            ImageIcon iconAdmin = new ImageIcon("src/user (4).png");
+            ImageIcon iconAdmin = setIcon("/user (4).png");
             UserImageLebel = new JLabel(iconAdmin);
         }
         else{
-            ImageIcon iconUser = new ImageIcon("src/user (5).png");
+            ImageIcon iconUser = setIcon("/user (5).png");
             UserImageLebel =new JLabel(iconUser);
         }
         UserImageLebel.setBounds(70,10,200,70);
 
-        LoginButton.setIcon(new ImageIcon("src/log-in (1).png"));
+        LoginButton.setIcon(setIcon("/log-in (1).png"));
 
         LoginButton.addActionListener(new ActionListener() {
             @Override
@@ -122,5 +126,24 @@ public class LoginUserFrame extends JFrame {
             JOptionPane.showMessageDialog(null, "Wrong password try again", "Error", JOptionPane.ERROR_MESSAGE);
             passwordField.setText("");
         }
+    }
+    public ImageIcon setIcon(String source){
+        URL imageUrl = getClass().getResource(source);
+
+        ImageIcon icon=null;
+        if (imageUrl != null) {
+            try (InputStream inputStream = imageUrl.openStream()) {
+
+                Image originalImage = ImageIO.read(inputStream);
+
+                icon = new ImageIcon(originalImage);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.err.println("Nie udało się znaleźć zasobu.");
+        }
+        return icon;
     }
 }

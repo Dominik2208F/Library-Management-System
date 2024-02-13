@@ -9,11 +9,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="return confirm choice">
-      <change beforePath="$PROJECT_DIR$/src/approved.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/approved.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SetUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SetUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pngwing.com (2).png" beforeDir="false" afterPath="$PROJECT_DIR$/res/pngwing.com (2).png" afterDir="false" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="sposob na image">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/add-user_8924229 (1).png" beforeDir="false" afterPath="$PROJECT_DIR$/res/add-user_8924229 (1).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/add.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/add.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/all.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/all.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/all_5334695.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/all_5334695.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/checklist_11707966 (2).png" beforeDir="false" afterPath="$PROJECT_DIR$/res/checklist_11707966 (2).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/delete-user.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/delete-user.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dislike_9250694.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/dislike_9250694.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/following.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/following.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/log-in (1).png" beforeDir="false" afterPath="$PROJECT_DIR$/res/log-in (1).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/OverViewBookJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/OverViewBookJFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UpdateBookJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UpdateBookJFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/notebook (1).png" beforeDir="false" afterPath="$PROJECT_DIR$/res/notebook (1).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/phonebook.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/phonebook.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/profile_3135715.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/profile_3135715.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/recycle_9250683.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/recycle_9250683.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/return.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/return.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/save-file.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/save-file.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user (4).png" beforeDir="false" afterPath="$PROJECT_DIR$/res/user (4).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user (5).png" beforeDir="false" afterPath="$PROJECT_DIR$/res/user (5).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/view.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +60,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="7577ba69fbf8de74419de71618b5d0674fa92875" />
+        <entry key="$PROJECT_DIR$" value="4a5412b2c60ab6ff657dd741ddaa479430c59ee0" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -77,6 +99,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dominik.jakubaszek\Desktop\Library Menagemenet System\res" />
       <recent name="C:\Users\dominik.jakubaszek\Desktop\BookShop\src" />
       <recent name="C:\Users\dominik.jakubaszek\Desktop\BookShop\out" />
       <recent name="C:\Users\dominik.jakubaszek\Desktop\BookShop\src\test" />
@@ -116,13 +139,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00070" summary="add user functionallity">
-      <created>1707255860220</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1707255860220</updated>
     </task>
     <task id="LOCAL-00071" summary="delete book +">
       <created>1707258014695</created>
@@ -460,7 +476,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707776225639</updated>
     </task>
-    <option name="localTasksCounter" value="119" />
+    <task id="LOCAL-00119" summary="sposob na image">
+      <created>1707814113437</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1707814113438</updated>
+    </task>
+    <option name="localTasksCounter" value="120" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -475,7 +498,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="poprawa mechanizmu + 3 przycisk" />
     <MESSAGE value="filtrowanie" />
     <MESSAGE value="naprawa filtrowania aby było widoczne od razu, bez koniecznosci przekliwania się" />
     <MESSAGE value="quick view" />
@@ -500,7 +522,8 @@
     <MESSAGE value="naprawienie licznika userAccount +status filtrowania" />
     <MESSAGE value="naprawienie licznika na adminie" />
     <MESSAGE value="return confirm choice" />
-    <option name="LAST_COMMIT_MESSAGE" value="return confirm choice" />
+    <MESSAGE value="sposob na image" />
+    <option name="LAST_COMMIT_MESSAGE" value="sposob na image" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

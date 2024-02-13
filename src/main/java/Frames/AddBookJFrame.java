@@ -5,12 +5,16 @@ import org.example.LibraryManager.Book;
 import org.example.LibraryManager.Genre;
 import org.example.LibraryManager.Library;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.regex.Pattern;
 
 
@@ -53,7 +57,7 @@ public class AddBookJFrame extends JFrame {
         });
 
 
-        JLabel imageAddBookLabel= new JLabel(new ImageIcon("src/notebook (1).png"));
+        JLabel imageAddBookLabel= new JLabel(setIcon("/notebook (1).png"));
         imageAddBookLabel.setBounds(100, 10, 200, 65);
         add(imageAddBookLabel);
         JButton addBook = new JButton("Add book");
@@ -197,5 +201,24 @@ public class AddBookJFrame extends JFrame {
                 dispose();
             }
         }
+    }
+    public ImageIcon setIcon(String source){
+        URL imageUrl = getClass().getResource(source);
+
+        ImageIcon icon=null;
+        if (imageUrl != null) {
+            try (InputStream inputStream = imageUrl.openStream()) {
+
+                Image originalImage = ImageIO.read(inputStream);
+
+                icon = new ImageIcon(originalImage);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.err.println("Nie udało się znaleźć zasobu.");
+        }
+        return icon;
     }
 }
