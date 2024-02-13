@@ -18,25 +18,13 @@ public class User {
         Userbooks = new ArrayList<>();
     }
 
-    public List<Book> getUserbooks() {
-        return Userbooks;
-    }
+
     public String getPassword() {
         return password;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getName() {
         return name;
     }
-
-    public void assignBookToUser(Book book) {
-        Userbooks.add(book);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -44,24 +32,9 @@ public class User {
         User user = (User) o;
         return Objects.equals(name, user.name) && Objects.equals(password, user.password);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(name, password);
-    }
-
-    public void UnassignBookFromUser(Book book) {
-        Userbooks.remove(book);
-    }
-
-    public void showBooks() {
-        if (!Userbooks.isEmpty()) {
-            for (Book book : Userbooks) {
-                System.out.println(book.toString());
-            }
-        } else {
-            System.out.println("User does not havy any books borrowed");
-        }
     }
 
 }
