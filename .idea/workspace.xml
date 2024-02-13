@@ -9,10 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="sprzątanie powtarzającego się kodu">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="sprzątanie powtarzającego się kodu cz2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/CommonFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/CommonFunctions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00076" summary="sprzątanie">
-      <created>1707399796612</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1707399796612</updated>
     </task>
     <task id="LOCAL-00077" summary="naprawa błędów addBook">
       <created>1707475348561</created>
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707830272696</updated>
     </task>
-    <option name="localTasksCounter" value="125" />
+    <task id="LOCAL-00125" summary="sprzątanie powtarzającego się kodu cz2">
+      <created>1707830762444</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1707830762444</updated>
+    </task>
+    <option name="localTasksCounter" value="126" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -490,7 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="filtrowanie user panel" />
     <MESSAGE value="nowy UI" />
     <MESSAGE value="naprawa usuniecia usera z ksiązkami" />
     <MESSAGE value="dodanie kolorów do innych Framów" />
@@ -515,7 +514,8 @@
     <MESSAGE value="wywalenie starego kodu" />
     <MESSAGE value="ograniczenie ilości znaków dla add book i update book" />
     <MESSAGE value="sprzątanie powtarzającego się kodu" />
-    <option name="LAST_COMMIT_MESSAGE" value="sprzątanie powtarzającego się kodu" />
+    <MESSAGE value="sprzątanie powtarzającego się kodu cz2" />
+    <option name="LAST_COMMIT_MESSAGE" value="sprzątanie powtarzającego się kodu cz2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

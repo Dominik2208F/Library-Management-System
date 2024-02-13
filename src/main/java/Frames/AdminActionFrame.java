@@ -63,7 +63,7 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
         menubar = new JMenuBar();
         Options = new JMenu("Options");
         Program = new JMenu("Info");
-        changeUser = new JMenuItem("Change user");
+        changeUser = new JMenuItem("Log out");
         changeLibrary = new JMenuItem("Change library");
         programInfo = new JMenuItem("About");
         Options.add(changeUser);
