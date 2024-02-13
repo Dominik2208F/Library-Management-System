@@ -7,6 +7,9 @@ import org.example.LibraryManager.Library;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -78,6 +81,16 @@ public class AddBookJFrame extends JFrame {
         yearField.setBounds(100, 290, 200, 40);
         genreComboBox.setBounds(100, 340, 200, 40);
         pagesField.setBounds(100, 390, 200, 40);
+
+        titleField.setDocument(new LengthRestrictedDocument(40));
+        authorFirstNameField.setDocument(new LengthRestrictedDocument(40));
+        authorLastNameField.setDocument(new LengthRestrictedDocument(40));
+        authorBirthDateField.setDocument(new LengthRestrictedDocument(40));
+        yearField.setDocument(new LengthRestrictedDocument(4));
+        pagesField.setDocument(new LengthRestrictedDocument(6));
+
+
+
 
         add(new JLabel("Title:")).setBounds(15, 85, 100, 35);
         add(titleField);
@@ -219,5 +232,25 @@ public class AddBookJFrame extends JFrame {
             System.err.println("Nie udało się znaleźć zasobu.");
         }
         return icon;
+    }
+
+    public final class LengthRestrictedDocument extends PlainDocument {
+
+        private final int limit;
+
+        public LengthRestrictedDocument(int limit) {
+            this.limit = limit;
+        }
+
+        @Override
+        public void insertString(int offs, String str, AttributeSet a)
+                throws BadLocationException {
+            if (str == null)
+                return;
+
+            if ((getLength() + str.length()) <= limit) {
+                super.insertString(offs, str, a);
+            }
+        }
     }
 }
