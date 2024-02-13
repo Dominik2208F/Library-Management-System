@@ -1,11 +1,17 @@
 package Manager;
 
+import Frames.Status;
+import org.example.LibraryManager.Book;
+import org.example.LibraryManager.Library;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public interface CommonFunctions {
     default ImageIcon setIcon(String source){
@@ -39,4 +45,26 @@ public interface CommonFunctions {
         }
         return null;
     }
+
+    default List<Book> ListOfBorrowedBook(Library flowLibrary) {
+        List<Book> booksAvailable = new ArrayList<>();
+
+        for (Book book : flowLibrary.getListOfBooks()) {
+            if (book.getStatus() == Status.BORROWED) {
+                booksAvailable.add(book);
+            }
+        }
+        return booksAvailable;
+    }
+
+    default  boolean checkIfAllBooksReturned(List<Book> books) {
+
+        for (Book book : books) {
+            if (book.getStatus() == Status.BORROWED) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

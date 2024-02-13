@@ -9,18 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="ograniczenie ilości znaków dla add book i update book">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Frames/CommonFunctions.java" afterDir="false" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="sprzątanie powtarzającego się kodu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/OverViewBookJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/OverViewBookJFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UpdateBookJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UpdateBookJFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/CommonFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/CommonFunctions.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,8 +27,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -66,7 +58,7 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/org/example/Main.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Manager/Main.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -139,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00075" summary="sprzątanie">
-      <created>1707311240416</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1707311240416</updated>
     </task>
     <task id="LOCAL-00076" summary="sprzątanie">
       <created>1707399796612</created>
@@ -483,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707825183413</updated>
     </task>
-    <option name="localTasksCounter" value="124" />
+    <task id="LOCAL-00124" summary="sprzątanie powtarzającego się kodu">
+      <created>1707830272696</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1707830272696</updated>
+    </task>
+    <option name="localTasksCounter" value="125" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -498,7 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="naprawa zarządzenai returnALl i borrowALl" />
     <MESSAGE value="filtrowanie user panel" />
     <MESSAGE value="nowy UI" />
     <MESSAGE value="naprawa usuniecia usera z ksiązkami" />
@@ -523,7 +514,8 @@
     <MESSAGE value="wywalenie starego kodu + walidacja na hasło" />
     <MESSAGE value="wywalenie starego kodu" />
     <MESSAGE value="ograniczenie ilości znaków dla add book i update book" />
-    <option name="LAST_COMMIT_MESSAGE" value="ograniczenie ilości znaków dla add book i update book" />
+    <MESSAGE value="sprzątanie powtarzającego się kodu" />
+    <option name="LAST_COMMIT_MESSAGE" value="sprzątanie powtarzającego się kodu" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -550,7 +542,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java</url>
-          <line>32</line>
+          <line>29</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>

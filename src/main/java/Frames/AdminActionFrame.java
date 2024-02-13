@@ -202,7 +202,7 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                         String UserWithBorrowedBook = (String) UserSelectionComboBoxToReturnABook.getSelectedItem();
                         Book bookInstance = null;
 
-                        for (Book book : ListOfBorrowedBook()) {
+                        for (Book book : ListOfBorrowedBook(library)) {
                             if (book.getTitle().equals(titleOfBookToUnassingFromUser)) {
                                 bookInstance = book;
                                 break;
@@ -219,7 +219,7 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                             bookInstance.setAssignedUserToBook(new User("None", "none"));
 
 
-                            for (Book Book : ListOfBorrowedBook()) {
+                            for (Book Book : ListOfBorrowedBook(library)) {
                                 if (Book.getStatus() == Status.BORROWED && Book.getAssignedUserToBook().getName().equals(UserWithBorrowedBook)) {
                                     modifiedModel.addElement(Book.toString(true));
                                 }
@@ -260,7 +260,7 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                     ConfirmChoiceOfGivenUser.setVisible(true);
                     returnAll.setVisible(true);
                     returnAll.setEnabled(true);
-                    for (Book Book : ListOfBorrowedBook()) {
+                    for (Book Book : ListOfBorrowedBook(library)) {
                         if (Book.getAssignedUserToBook().getName().equals(UserWithBorrowedBook)) {
                             modifiedModel.addElement(Book.toString(true));
                         }
@@ -342,7 +342,7 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
 
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
-                if (ListOfBorrowedBook().isEmpty()) {
+                if (ListOfBorrowedBook(library).isEmpty()) {
                     list.setModel(modifiedModel);
                     ConfirmChoiceOfGivenUser.setEnabled(false);
                     returnAll.setEnabled(false);
@@ -351,7 +351,7 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 } else {
 
 
-                    for (Book books : ListOfBorrowedBook()) {
+                    for (Book books : ListOfBorrowedBook(library)) {
                         modifiedModel.addElement(books.toString(true));
                     }
                     list.setModel(modifiedModel);
@@ -368,7 +368,7 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                     List<String> listOfBorrowedUserName = new ArrayList<>();
                     listOfBorrowedUserName.add("Select");
                     for (String userName : listOfAllUserName) {
-                        for (Book book : ListOfBorrowedBook()) {
+                        for (Book book : ListOfBorrowedBook(library)) {
                             if (book.getAssignedUserToBook().getName().equals(userName)) {
                                 listOfBorrowedUserName.add(userName);
                                 break;
@@ -792,28 +792,6 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
             SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
             SubCategoryComboBox.setEnabled(false);
         }
-    }
-
-    public List<Book> ListOfBorrowedBook() {
-
-        List<Book> booksAvailable = new ArrayList<>();
-
-        for (Book book : flowLibrary.getListOfBooks()) {
-            if (book.getStatus() == Status.BORROWED) {
-                booksAvailable.add(book);
-            }
-        }
-        return booksAvailable;
-    }
-
-    public boolean checkIfAllBooksReturned(List<Book> books) {
-
-        for (Book book : books) {
-            if (book.getStatus() == Status.BORROWED) {
-                return false;
-            }
-        }
-        return true;
     }
 
 }
