@@ -46,6 +46,10 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
     private LibraryManagementFrame libraryManagementFrame;
     JComboBox comboBoxUser= new JComboBox<>();
 
+    private JMenuBar menubar;
+    private JMenu Options;
+    private JMenuItem changeLibrary;
+
     public String getSelectedUserValue() {
         return selectedUserValue;
     }
@@ -98,6 +102,25 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
         showPassword= new JButton(" Don't remember password?");
         showPassword.setBounds(100,410,200,40);
         add(showPassword);
+
+
+        menubar = new JMenuBar();
+        Options = new JMenu("Options");
+
+        changeLibrary = new JMenuItem("Change library");
+        Options.add(changeLibrary);
+
+
+        setJMenuBar(menubar);
+        menubar.add(Options);
+
+        changeLibrary.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new LibraryManagementFrame(getLibraryManagementFrame().getLibraryDataBase());
+                setVisible(false);
+            }
+        });
 
         showPassword.addActionListener(new ActionListener() {
             @Override

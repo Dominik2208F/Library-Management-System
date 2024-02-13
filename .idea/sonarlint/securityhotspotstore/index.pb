@@ -1,15 +1,9 @@
 
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-S
-#src/main/java/org/example/Main.java,0\b\0ba1b9c7a4878802f938e331cc2d8a042087ec6b
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-T
-$src/main/java/org/example/SetUp.java,5\2\521a128a679e68f7cb1bbe7f675d039dac387fab
-S
-#src/main/java/org/example/Flow.java,e\7\e7f8d6880eb91987618663d87bd858b029f456c5
 c
 3src/main/java/org/example/LibraryManager/Genre.java,8\b\8bcf415b94064ea4141a24f0f5718550b216607e
 b
@@ -48,3 +42,5 @@ P
  src/main/java/Frames/Status.java,4\2\427b6550597c7ae75126d6d2ff75fc65e3ce62cf
 \
 ,src/main/java/Frames/OverViewBookJFrame.java,d\3\d3b360b3cbf860f75ab994bcb733faf67bdd5af9
+O
+src/main/java/Manager/Main.java,8\6\865db9ba086696152b412f976df2d117b108c678

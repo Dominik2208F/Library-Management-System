@@ -156,6 +156,7 @@ public class AddUserFrame extends JFrame implements CommonFunctions {
                 }else {
                     flowLibrary.getLibraryUserDataBase().getListOfUser().add(new User(username, password));
                     userChooseIFrame.updateListOfUsers();
+                    JOptionPane.showMessageDialog(null, "User " + username +" has been added successfully", "Message",JOptionPane.INFORMATION_MESSAGE);
                     setVisible(false);
                 }
             }
