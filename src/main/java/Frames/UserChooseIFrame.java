@@ -87,7 +87,7 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
         add(comboBoxUser);
 
 
-        confirmUser = new JButton("Confirm");
+        confirmUser = new JButton("Log in");
         confirmUser.setBounds(100, 290, 200, 40);
         add(confirmUser);
 
