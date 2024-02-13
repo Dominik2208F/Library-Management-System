@@ -1,0 +1,17 @@
+
+E
+java:S16044"(Make this anonymous inner class a lambda(ô¯òÜ8¡ìÙ1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(úÃ†ş8£ìÙ1
+q	java:S116"VRename this field "LoginButton" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ú–€N8ªìÙ1
+t	java:S116"YRename this field "UserImageLebel" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Óø‡08ªìÙ1
+J
+java:S1948"-Make "flowLibrary" transient or serializable.(ş¸é±8«ìÙ1
+
+java:S1186M"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(÷—8±ìÙ1
+£
+java:S1186X"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(˜Â½€øÿÿÿÿ8±ìÙ1
+k
+java:S3252b"IUse static access with "javax.swing.WindowConstants" for "HIDE_ON_CLOSE".(¸†¨—øÿÿÿÿ8²ìÙ1
+H	java:S106‘"+Replace this use of System.err by a logger.(ÿâƒÙ8ÙÚÁÚ1
+[
+java:S1128"9Remove this unused import 'org.example.UserManager.User'.(‹©»Œùÿÿÿÿ8µìÙ1

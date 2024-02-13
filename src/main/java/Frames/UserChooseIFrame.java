@@ -17,7 +17,6 @@ import java.util.List;
 public class UserChooseIFrame extends JFrame {
 
 
-    private JLabel selectedUser;
     private JButton confirmUser,showPassword;
     private JButton addUser;
 

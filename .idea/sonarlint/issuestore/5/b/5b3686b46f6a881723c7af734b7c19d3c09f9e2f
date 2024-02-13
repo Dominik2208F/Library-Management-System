@@ -1,0 +1,16 @@
+
+E
+java:S1604"(Make this anonymous inner class a lambda(Àê¸•8±†¬ôÙ1
+E
+java:S1604A"(Make this anonymous inner class a lambda(Àê¸•8³†¬ôÙ1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(úÃ†ş8ß‹İÿØ1
+i
+java:S3252"LUse static access with "javax.swing.WindowConstants" for "DISPOSE_ON_CLOSE".(Ì—İ8Á†¬ôÙ1
+i
+java:S3252:"LUse static access with "javax.swing.WindowConstants" for "DISPOSE_ON_CLOSE".(Ì—İ8È†¬ôÙ1
+J
+java:S1172Y"-Remove this unused method parameter "button".(İ‰°á8Ë†¬ôÙ1
+V
+java:S1068"4Remove this unused "updateBookJFrame" private field.(­§ûÿÿÿÿ8Ë†¬ôÙ1
+S
+java:S1068"6Remove this unused "overViewBookJFrame" private field.(ÎûÖ8Ë†¬ôÙ1

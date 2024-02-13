@@ -71,12 +71,6 @@ public class AddUserFrame extends JFrame {
         ImageIcon qucikView = setIcon("/view.png");
         showHideButton.setIcon(qucikView);
 
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                saveUser();
-            }
-        });
 
         KeyListener keyListener = new KeyListener() {
             @Override
@@ -105,6 +99,13 @@ public class AddUserFrame extends JFrame {
         add(saveButton);
         add(addUser);
         add(showHideButton);
+
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                saveUser();
+            }
+        });
 
         showHideButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -138,13 +139,13 @@ public class AddUserFrame extends JFrame {
             JOptionPane.showMessageDialog(null, "Password cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             String password = new String(passwordchar);
-            if(!Pattern.matches(regex,password)){
-                JOptionPane.showMessageDialog(null, "Password is not enough strong.The password must have:\n" +
+            if(!Pattern.matches(regex,password) || password.toLowerCase().contains(username.toLowerCase())){
+                JOptionPane.showMessageDialog(null, "Password is not strong enough.The password must meet the conditions :\n" +
                         "* One capital letter.\n" +
                         "* One lowercase letter.\n" +
                         "* One digit.\n" +
                         "* One special character.\n" +
-                        "* Does not contain personal data.\n" +
+                        "* Does not contain personal data from user name.\n" +
                         "* Uses eight characters.\n"
                         , "Error", JOptionPane.ERROR_MESSAGE);
             }else{

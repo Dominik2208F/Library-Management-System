@@ -67,14 +67,6 @@ public class AddBookJFrame extends JFrame {
         select.setBounds(200, 240, 100, 40);
         add(select);
 
-        select.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                calendar = new CalendarIFrame(select, AddBookJFrame.this);
-
-            }
-        });
-
         this.flowLibrary = flowLibrary;
         this.fromPanelAbove = list;
 
@@ -128,6 +120,13 @@ public class AddBookJFrame extends JFrame {
         genreComboBox.addKeyListener(keyListener);
         pagesField.addKeyListener(keyListener);
 
+        select.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calendar = new CalendarIFrame(select, AddBookJFrame.this);
+
+            }
+        });
         addBook.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -1,0 +1,79 @@
+
+ƒ
+java:S1192‰"`Define a constant instead of duplicating this literal "Go back to main menu. Type Y/N" 14 times.(τ®ϋ“ϋÿÿÿÿ8€©¥±Χ1
+
+java:S1192‘"^Define a constant instead of duplicating this literal "Wrong answer.Type 'Y' or 'N'" 14 times.(χεξωÿÿÿÿ8€©¥±Χ1
+z	java:S135!"YReduce the total number of break and continue statements in this loop to use at most one.(οÿÿÿÿÿ8€©¥±Χ1
+{	java:S135"YReduce the total number of break and continue statements in this loop to use at most one.(οÿÿÿÿÿ8€©¥±Χ1
+{	java:S135"YReduce the total number of break and continue statements in this loop to use at most one.(οÿÿÿÿÿ8€©¥±Χ1
+{	java:S135²"YReduce the total number of break and continue statements in this loop to use at most one.(οÿÿÿÿÿ8€©¥±Χ1
+{	java:S135Θ"YReduce the total number of break and continue statements in this loop to use at most one.(οÿÿÿÿÿ8€©¥±Χ1
+{	java:S135ή"YReduce the total number of break and continue statements in this loop to use at most one.(οÿÿÿÿÿ8€©¥±Χ1
+{	java:S135τ"YReduce the total number of break and continue statements in this loop to use at most one.(οÿÿÿÿÿ8€©¥±Χ1
+{	java:S135‘"YReduce the total number of break and continue statements in this loop to use at most one.(οÿÿÿÿÿ8€©¥±Χ1
+{	java:S135§"YReduce the total number of break and continue statements in this loop to use at most one.(οÿÿÿÿÿ8©¥±Χ1
+{	java:S135½"YReduce the total number of break and continue statements in this loop to use at most one.(οÿÿÿÿÿ8©¥±Χ1
+{	java:S135Σ"YReduce the total number of break and continue statements in this loop to use at most one.(οÿÿÿÿÿ8©¥±Χ1
+{	java:S135σ"YReduce the total number of break and continue statements in this loop to use at most one.(οÿÿÿÿÿ8©¥±Χ1
+{	java:S135‰"YReduce the total number of break and continue statements in this loop to use at most one.(οÿÿÿÿÿ8©¥±Χ1
+{	java:S135"YReduce the total number of break and continue statements in this loop to use at most one.(οÿÿÿÿÿ8©¥±Χ1
+{	java:S135΄"YReduce the total number of break and continue statements in this loop to use at most one.(οÿÿÿÿÿ8©¥±Χ1
+n	java:S117‰"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ΞΔφ“8©¥±Χ1
+h
+java:S1301+"KReplace this "switch" statement by "if" statements to increase readability.(ίΙ΅8©¥±Χ1
+n
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(ΡΧΣ*8–©¥±Χ1
+G	java:S1060"+Replace this use of System.out by a logger.(Χϊª•8©¥±Χ1
+G	java:S1067"+Replace this use of System.out by a logger.(ΗÒΜ8©¥±Χ1
+L	java:S106<"+Replace this use of System.out by a logger.(σΕ”ϊÿÿÿÿ8©¥±Χ1
+G	java:S106C"+Replace this use of System.out by a logger.(ΆΘ½Έ8›©¥±Χ1
+F
+java:S1940Q")Use the opposite operator ("<=") instead.(Η®¤Θ8›©¥±Χ1
+F	java:S106S"+Replace this use of System.out by a logger.(•Ί8›©¥±Χ1
+L	java:S106W"+Replace this use of System.out by a logger.(Ι­»δϊÿÿÿÿ8©¥±Χ1
+G	java:S106]"+Replace this use of System.out by a logger.(•”ίύ8©¥±Χ1
+G	java:S106e"+Replace this use of System.out by a logger.(ΆΘ½Έ8©¥±Χ1
+F
+java:S1940o")Use the opposite operator ("<=") instead.(„Τ•8©¥±Χ1
+G	java:S106r"+Replace this use of System.out by a logger.(ΖΔΉ‰8©¥±Χ1
+L	java:S106v"+Replace this use of System.out by a logger.(Ι­»δϊÿÿÿÿ8©¥±Χ1
+G	java:S106{"+Replace this use of System.out by a logger.(•”ίύ8©¥±Χ1
+v
+java:S3776€"SRefactor this method to reduce its Cognitive Complexity from 144 to the 15 allowed.(½ΪΘςϊÿÿÿÿ8©¥±Χ1
+i	java:S128Ί"LEnd this switch case with an unconditional break, return or throw statement.(ΒΣΆκ8£©¥±Χ1
+?	java:S131„""Add a default case to this switch.(¶ΜΜΕ8£©¥±Χ1
+M	java:S106‰"+Replace this use of System.out by a logger.(τ®ϋ“ϋÿÿÿÿ8£©¥±Χ1
+M	java:S106‘"+Replace this use of System.out by a logger.(χεξωÿÿÿÿ8¤©¥±Χ1
+M	java:S106"+Replace this use of System.out by a logger.(τ®ϋ“ϋÿÿÿÿ8¤©¥±Χ1
+M	java:S106¦"+Replace this use of System.out by a logger.(χεξωÿÿÿÿ8¤©¥±Χ1
+M	java:S106³"+Replace this use of System.out by a logger.(τ®ϋ“ϋÿÿÿÿ8¥©¥±Χ1
+M	java:S106Ό"+Replace this use of System.out by a logger.(χεξωÿÿÿÿ8¥©¥±Χ1
+M	java:S106Ι"+Replace this use of System.out by a logger.(τ®ϋ“ϋÿÿÿÿ8¥©¥±Χ1
+M	java:S106Ò"+Replace this use of System.out by a logger.(χεξωÿÿÿÿ8¥©¥±Χ1
+M	java:S106ί"+Replace this use of System.out by a logger.(τ®ϋ“ϋÿÿÿÿ8¥©¥±Χ1
+M	java:S106θ"+Replace this use of System.out by a logger.(χεξωÿÿÿÿ8¦©¥±Χ1
+M	java:S106υ"+Replace this use of System.out by a logger.(τ®ϋ“ϋÿÿÿÿ8¦©¥±Χ1
+M	java:S106ύ"+Replace this use of System.out by a logger.(χεξωÿÿÿÿ8¦©¥±Χ1
+M	java:S106‹"+Replace this use of System.out by a logger.(ΦΜΫΧψÿÿÿÿ8§©¥±Χ1
+M	java:S106’"+Replace this use of System.out by a logger.(τ®ϋ“ϋÿÿÿÿ8§©¥±Χ1
+M	java:S106›"+Replace this use of System.out by a logger.(χεξωÿÿÿÿ8§©¥±Χ1
+M	java:S106¨"+Replace this use of System.out by a logger.(τ®ϋ“ϋÿÿÿÿ8¨©¥±Χ1
+M	java:S106±"+Replace this use of System.out by a logger.(χεξωÿÿÿÿ8©©¥±Χ1
+M	java:S106Ύ"+Replace this use of System.out by a logger.(τ®ϋ“ϋÿÿÿÿ8©©¥±Χ1
+M	java:S106Η"+Replace this use of System.out by a logger.(χεξωÿÿÿÿ8©©¥±Χ1
+M	java:S106Τ"+Replace this use of System.out by a logger.(τ®ϋ“ϋÿÿÿÿ8©©¥±Χ1
+M	java:S106έ"+Replace this use of System.out by a logger.(χεξωÿÿÿÿ8ª©¥±Χ1
+p
+java:S3776ι"RRefactor this method to reduce its Cognitive Complexity from 57 to the 15 allowed.(ϋψΚ8ª©¥±Χ1
+?	java:S131ξ""Add a default case to this switch.(¶ΜΜΕ8¬©¥±Χ1
+M	java:S106τ"+Replace this use of System.out by a logger.(τ®ϋ“ϋÿÿÿÿ8¬©¥±Χ1
+M	java:S106ό"+Replace this use of System.out by a logger.(χεξωÿÿÿÿ8¬©¥±Χ1
+M	java:S106"+Replace this use of System.out by a logger.(τ®ϋ“ϋÿÿÿÿ8­©¥±Χ1
+M	java:S106’"+Replace this use of System.out by a logger.(χεξωÿÿÿÿ8­©¥±Χ1
+M	java:S106 "+Replace this use of System.out by a logger.(τ®ϋ“ϋÿÿÿÿ8­©¥±Χ1
+M	java:S106¨"+Replace this use of System.out by a logger.(χεξωÿÿÿÿ8­©¥±Χ1
+M	java:S106µ"+Replace this use of System.out by a logger.(τ®ϋ“ϋÿÿÿÿ8®©¥±Χ1
+M	java:S106½"+Replace this use of System.out by a logger.(χεξωÿÿÿÿ8®©¥±Χ1
+M	java:S106Κ"+Replace this use of System.out by a logger.(Ζ»ώ—ϋÿÿÿÿ8―©¥±Χ1
+M	java:S106Ξ"+Replace this use of System.out by a logger.(Ι“ωÿÿÿÿ8Κ“ΐ±Χ1
+M	java:S106Ψ"+Replace this use of System.out by a logger.(Πέΐϊÿÿÿÿ8Κ“ΐ±Χ1

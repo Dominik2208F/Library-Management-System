@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="BookShop:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/BookShop_jar</output-path>
+    <root id="archive" name="BookShop.jar">
+      <element id="module-output" name="BookShop" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/toedter/jcalendar/1.4/jcalendar-1.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/formdev/flatlaf/3.3/flatlaf-3.3.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

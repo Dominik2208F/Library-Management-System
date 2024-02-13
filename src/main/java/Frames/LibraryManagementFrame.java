@@ -110,7 +110,7 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
         setLayout(null);
         setResizable(false);
         setVisible(true);
-        setTitle("Library Menagement System");
+        setTitle("Library Management System");
 
     }
 
@@ -124,7 +124,7 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
                     flowLibrary = librarySpec;
                 }
             }
-            UserChooseIFrame userChooseIFrame = new UserChooseIFrame(flowLibrary, LibraryManagementFrame.this);  // przekazujesz klase IFrame z zainicjowanym obiektem UserDataBase
+            UserChooseIFrame userChooseIFrame = new UserChooseIFrame(flowLibrary, LibraryManagementFrame.this);
             dispose();
             userChooseIFrame.setVisible(true);
         }

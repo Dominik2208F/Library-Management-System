@@ -1,0 +1,5 @@
+
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¢Ôåÿÿÿÿÿ8À¤ÈÂÙ1
+~	java:S116"]Rename this field "AssignedUserToBook" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›Ä›©ûÿÿÿÿ8Ã¤ÈÂÙ1
+{
+java:S1210j"YOverride "equals(Object obj)" to comply with the contract of the "compareTo(T o)" method.(¦ÛğÆøÿÿÿÿ8Ã¤ÈÂÙ1

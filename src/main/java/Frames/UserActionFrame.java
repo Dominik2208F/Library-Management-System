@@ -447,7 +447,7 @@ public class UserActionFrame extends JFrame {
         programInfo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Program written by Dominik Jakubaszek. \n Version 1.0.1", "Message", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Program written by Dominik Jakubaszek. \n Version 2.0.0", "Message", JOptionPane.INFORMATION_MESSAGE);
             }
         });
         descendingCheckBox.addActionListener(new ActionListener() {
@@ -545,9 +545,9 @@ public class UserActionFrame extends JFrame {
                                 book.setStatus(Status.BORROWED);
                                 book.setAssignedUserToBook(user);
                             }
-                         //   modifiedModel.addElement(book.toString());
+
                         }
-                       // list.setModel(modifiedModel);
+
                         JOptionPane.showMessageDialog(null, "All books have been borrowed successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
 
                         DefaultListModel<String> modifiedModel1 = new DefaultListModel<>();
@@ -581,9 +581,9 @@ public class UserActionFrame extends JFrame {
                             book.setStatus(Status.AVAILABLE);
                             book.setAssignedUserToBook(new User("None", "none"));
                         }
-                     //   modifiedModel.addElement(book.toString());
+
                     }
-                  //  list.setModel(modifiedModel);
+
                     JOptionPane.showMessageDialog(null, "All books have been borrowed successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
 
                     DefaultListModel<String> modifiedModel1 = new DefaultListModel<>();

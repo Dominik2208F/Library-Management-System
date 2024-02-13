@@ -67,14 +67,6 @@ public class UpdateBookJFrame extends JFrame {
         JLabel imageAddBookLabel= new JLabel(setIcon("/phonebook.png"));
         imageAddBookLabel.setBounds(100, 10, 200, 65);
         add(imageAddBookLabel);
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                calendar = new CalendarIFrame(button, UpdateBookJFrame.this);
-
-            }
-        });
-
 
         titleField.setBounds(100, 90, 200, 40);
         authorFirstNameField.setBounds(100, 140, 200, 40);
@@ -154,6 +146,14 @@ public class UpdateBookJFrame extends JFrame {
         updateBook.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calendar = new CalendarIFrame(button, UpdateBookJFrame.this);
 
             }
         });

@@ -30,8 +30,6 @@ Main {
         SetUp SetUp = new SetUp(libraryDataBase);
         SetUp.createDefaultLibrariesSetUp("Pruszkowska");
         SetUp.createDefaultLibrariesSetUp("Warszawska");
-
-        new Flow(libraryDataBase);
         new LibraryManagementFrame(libraryDataBase);
 
 
