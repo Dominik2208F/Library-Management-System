@@ -27,7 +27,7 @@ public class CalendarIFrame extends JFrame {
         JCalendar calendar = new JCalendar();
         calendar.setTodayButtonVisible(true);
         calendar.setWeekOfYearVisible(true);
-
+        calendar.setMaxSelectableDate(new Date());
         selectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -61,7 +61,7 @@ public class CalendarIFrame extends JFrame {
         JCalendar calendar = new JCalendar();
         calendar.setTodayButtonVisible(true);
         calendar.setWeekOfYearVisible(true);
-
+        calendar.setMaxSelectableDate(new Date());
         selectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

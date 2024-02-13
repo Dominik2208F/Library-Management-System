@@ -16,6 +16,7 @@ import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.regex.Pattern;
 
 
@@ -164,6 +165,9 @@ public class AddBookJFrame extends JFrame {
 
         String pagesText = pagesField.getText();
 
+        LocalDate currentDate = LocalDate.now();
+        int yearCurrent = currentDate.getYear();
+
         if (title.isEmpty() || authorFirstName.isEmpty() || authorLastName.isEmpty() || authorBirthDate.isEmpty() ||
                 yearText.isEmpty() || description.isEmpty() || pagesText.isEmpty()) {
             JOptionPane.showMessageDialog(null, "All fields are required!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -181,6 +185,9 @@ public class AddBookJFrame extends JFrame {
                 year = Integer.parseInt(yearField.getText());
                 if (year <= 0) {
                     JOptionPane.showMessageDialog(null, "Invalid year format. Year cannot have such value", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(year > yearCurrent){
+                    JOptionPane.showMessageDialog(null, "Invalid year format. Year cannot be more than " +yearCurrent, "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(null, "Invalid year format. Type a valid number", "Error", JOptionPane.ERROR_MESSAGE);
