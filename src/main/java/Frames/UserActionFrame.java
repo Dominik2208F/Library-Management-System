@@ -222,7 +222,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 ConfirmChoice.setVisible(true);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
-                User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.getChoosenUserName());
+
 
 
                 for (Book Book : flowLibrary.getListOfBooks()) {
@@ -294,8 +294,6 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
 
                     if (list.getSelectedIndex() != -1) {
 
-                        DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-
                         String titleOfBookToUnassingFromUser = extractTitle(list.getSelectedValue());
                         Book bookInstance=null;
                         for(Book book : flowLibrary.getListOfBooks()){
@@ -337,9 +335,6 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
 
                     if (list.getSelectedIndex() != -1) {
                         DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-
-
-                        User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.getChoosenUserName());
 
                         String titleOfBookToUnassingFromUser = extractTitle(list.getSelectedValue());
                         Book bookInstance=null;
@@ -569,7 +564,6 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
 
-                User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.getChoosenUserName());
 
                 int odp = JOptionPane.showConfirmDialog(null, "Do you want to return all books?");
                 if (odp == JOptionPane.YES_OPTION) {
