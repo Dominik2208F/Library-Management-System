@@ -1,5 +1,6 @@
 package Frames;
 
+import Manager.CommonFunctions;
 import org.example.LibraryManager.Library;
 import org.example.LibraryManager.LibraryDataBase;
 
@@ -13,7 +14,7 @@ import java.io.InputStream;
 import java.net.URL;
 
 
-public class LibraryManagementFrame extends JFrame implements ActionListener {
+public class LibraryManagementFrame extends JFrame implements ActionListener, CommonFunctions {
 
     private JLabel welcome,assign,selectedLibrary;
     private JButton buttonConfirm;
@@ -139,25 +140,6 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
         }
     }
 
-    public ImageIcon setIcon(String source){
-        URL imageUrl = getClass().getResource(source);
-
-        ImageIcon icon=null;
-        if (imageUrl != null) {
-            try (InputStream inputStream = imageUrl.openStream()) {
-
-                Image originalImage = ImageIO.read(inputStream);
-
-                icon = new ImageIcon(originalImage);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            System.err.println("Nie udało się znaleźć zasobu.");
-        }
-        return icon;
-    }
 }
 
 

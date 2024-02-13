@@ -1,5 +1,6 @@
 package Frames;
 
+import Manager.CommonFunctions;
 import org.example.LibraryManager.Library;
 import org.example.UserManager.User;
 
@@ -14,7 +15,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserChooseIFrame extends JFrame {
+public class UserChooseIFrame extends JFrame implements CommonFunctions {
 
 
     private JButton confirmUser,showPassword;
@@ -183,25 +184,6 @@ public class UserChooseIFrame extends JFrame {
         }
     }
 
-    public ImageIcon setIcon(String source){
-        URL imageUrl = getClass().getResource(source);
-
-        ImageIcon icon=null;
-        if (imageUrl != null) {
-            try (InputStream inputStream = imageUrl.openStream()) {
-
-                Image originalImage = ImageIO.read(inputStream);
-
-                icon = new ImageIcon(originalImage);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            System.err.println("Nie udało się znaleźć zasobu.");
-        }
-        return icon;
-    }
 }
 
 

@@ -1,4 +1,4 @@
-package org.example;
+package Manager;
 
 
 import Frames.LibraryManagementFrame;

@@ -1,25 +1,20 @@
 package Frames;
 
+import Manager.CommonFunctions;
+import Manager.LengthRestrictedDocument;
 import org.example.LibraryManager.Book;
 import org.example.LibraryManager.Genre;
 import org.example.LibraryManager.Library;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.PlainDocument;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.regex.Pattern;
 
-public class UpdateBookJFrame extends JFrame {
+public class UpdateBookJFrame extends JFrame implements CommonFunctions {
     private Library library;
     private JList list;
     private CalendarIFrame calendar;
@@ -247,42 +242,5 @@ public class UpdateBookJFrame extends JFrame {
         }
     }
 
-    public ImageIcon setIcon(String source){
-        URL imageUrl = getClass().getResource(source);
 
-        ImageIcon icon=null;
-        if (imageUrl != null) {
-            try (InputStream inputStream = imageUrl.openStream()) {
-
-                Image originalImage = ImageIO.read(inputStream);
-
-                icon = new ImageIcon(originalImage);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            System.err.println("Nie udało się znaleźć zasobu.");
-        }
-        return icon;
-    }
-    public final class LengthRestrictedDocument extends PlainDocument {
-
-        private final int limit;
-
-        public LengthRestrictedDocument(int limit) {
-            this.limit = limit;
-        }
-
-        @Override
-        public void insertString(int offs, String str, AttributeSet a)
-                throws BadLocationException {
-            if (str == null)
-                return;
-
-            if ((getLength() + str.length()) <= limit) {
-                super.insertString(offs, str, a);
-            }
-        }
-    }
 }
