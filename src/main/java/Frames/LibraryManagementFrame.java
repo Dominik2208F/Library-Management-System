@@ -3,10 +3,13 @@ package Frames;
 import org.example.LibraryManager.Library;
 import org.example.LibraryManager.LibraryDataBase;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 
 
@@ -67,17 +70,29 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
         buttonConfirm.setBounds(100, 330, 200, 40);
         buttonConfirm.addActionListener(this);
 
-        ImageIcon confirm = new ImageIcon("src/approved.png");
+        ImageIcon confirm =setIcon("/approved.png");
         buttonConfirm.setIcon(confirm);
 
-        ImageIcon icon = new ImageIcon("src/pngwing.com (2).png");
-        Image originalImage = icon.getImage();
-        int newWidth = 150;
-        int newHeight = 150;
-        Image scaledImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_DEFAULT);
-        ImageIcon scaledIcon = new ImageIcon(scaledImage);
-        JLabel label = new JLabel(scaledIcon);
-        label.setBounds(120, 120, newWidth, newHeight);
+        URL imageUrl = getClass().getResource("/pngwing.com (2).png");
+        JLabel label = null;
+        if (imageUrl != null) {
+
+            try (InputStream inputStream = imageUrl.openStream()) {
+
+                Image originalImage = ImageIO.read(inputStream);
+                int newWidth = 150;
+                int newHeight = 150;
+                Image scaledImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_DEFAULT);
+                ImageIcon scaledIcon = new ImageIcon(scaledImage);
+                label = new JLabel(scaledIcon);
+                label.setBounds(120, 120, newWidth, newHeight);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.err.println("Nie udało się znaleźć zasobu.");
+        }
 
         getContentPane().setLayout(null);
         getContentPane().add(label);
@@ -124,6 +139,25 @@ public class LibraryManagementFrame extends JFrame implements ActionListener {
         }
     }
 
+    public ImageIcon setIcon(String source){
+        URL imageUrl = getClass().getResource(source);
+
+        ImageIcon icon=null;
+        if (imageUrl != null) {
+            try (InputStream inputStream = imageUrl.openStream()) {
+
+                Image originalImage = ImageIO.read(inputStream);
+
+                icon = new ImageIcon(originalImage);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.err.println("Nie udało się znaleźć zasobu.");
+        }
+        return icon;
+    }
 }
 
 

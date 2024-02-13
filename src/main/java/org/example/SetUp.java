@@ -5,6 +5,13 @@ import org.example.LibraryManager.Library;
 import org.example.LibraryManager.LibraryDataBase;
 import org.example.UserManager.UsersDataBase;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+
 public class SetUp {
 
     private LibraryDataBase libraryDataBase;
@@ -26,4 +33,5 @@ public class SetUp {
             usersDataBase.createDefaultUsers();
         }
     }
+
 }
