@@ -45,6 +45,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         list = new JList<>(listOfAction);
         list.setBounds(150, 20, 600, 150);
         add(list);
+        list.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
         setContentPane(new JPanel() {
             @Override
@@ -243,7 +244,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                     ConfirmChoice.setEnabled(true);
                     list.setModel(modifiedModel);
                     if (informationReturn) {
-                        JOptionPane.showMessageDialog(null, "Choose one book to return and confirm", "Warning", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Choose at least one book to return and confirm", "Warning", JOptionPane.INFORMATION_MESSAGE);
                     }
                     informationReturn = false;
                     borrowButtonClicked = false;
@@ -290,21 +291,62 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 categoryComboBox.setVisible(false);
                 SubCategoryComboBox.setVisible(false);
                 ConfirmChoice.setEnabled(true);
+
+                int[] selectedIndices = list.getSelectedIndices();
+                List<String> selectedValues = list.getSelectedValuesList();
                 if (borrowButtonClicked) {
 
-                    if (list.getSelectedIndex() != -1) {
+                    if (selectedIndices.length > 0) {
 
-                        String titleOfBookToUnassingFromUser = extractTitle(list.getSelectedValue());
-                        Book bookInstance=null;
-                        for(Book book : flowLibrary.getListOfBooks()){
-                            if(book.getTitle().equals(titleOfBookToUnassingFromUser)){
-                                bookInstance=book;
-                                break;
+                        if(selectedValues.size()>1){
+
+                            for(int i=0; i<selectedValues.size();i++) {
+
+                                String titleOfBookToUnassingFromUser = extractTitle(selectedValues.get(i));
+                                Book bookInstance = null;
+                                for (Book book : flowLibrary.getListOfBooks()) {
+                                    if (book.getTitle().equals(titleOfBookToUnassingFromUser)) {
+                                        bookInstance = book;
+                                        break;
+                                    }
+                                }
+                                bookInstance.setStatus(Status.BORROWED);
+                                User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.getChoosenUserName());
+                                bookInstance.setAssignedUserToBook(user);
+
+                            }
+                            int odp = JOptionPane.showConfirmDialog(null, "Do you want to borrow all selected books ?");
+                            if (odp == JOptionPane.YES_OPTION) {
+                                DefaultListModel<String> modifiedModel1 = new DefaultListModel<>();
+                                for (Book Book : flowLibrary.getListOfBooks()) {
+                                    if (Book.getStatus() == Status.AVAILABLE) {
+                                        modifiedModel1.addElement(Book.toString());
+                                    }
+                                }
+
+                                list.setModel(modifiedModel1);
+                                JOptionPane.showMessageDialog(null, "Selected books have been borrowed successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
+
+                                if (checkIfAllBooksBorrowed(flowLibrary.getListOfBooks())) {
+                                    borrowALL.setEnabled(false);
+                                    ConfirmChoice.setEnabled(false);
+                                }
+                                booksLabel.setText(RefreshListOfAvailableBook() + " books available in library");
                             }
                         }
 
+                        if (selectedValues.size() == 1) {
+                            String titleOfBookToUnassingFromUser = extractTitle(list.getSelectedValue());
+                            Book bookInstance = null;
+                            for (Book book : flowLibrary.getListOfBooks()) {
+                                if (book.getTitle().equals(titleOfBookToUnassingFromUser)) {
+                                    bookInstance = book;
+                                    break;
+                                }
+                            }
 
-                            int odp = JOptionPane.showConfirmDialog(null, "Do you want to borrow a book: " +   bookInstance.getTitle() + " ?");
+
+                            int odp = JOptionPane.showConfirmDialog(null, "Do you want to borrow a book: " + bookInstance.getTitle() + " ?");
                             if (odp == JOptionPane.YES_OPTION) {
                                 bookInstance.setStatus(Status.BORROWED);
                                 User user = flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChooseIFrame.getChoosenUserName());
@@ -325,11 +367,13 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                                     ConfirmChoice.setEnabled(false);
                                 }
                                 booksLabel.setText(RefreshListOfAvailableBook() + " books available in library");
-                                }
-                             }
+                            }
+                         }
+                        }
+
                     else {
-                        JOptionPane.showMessageDialog(null, "Choose one book", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
+                            JOptionPane.showMessageDialog(null, "Choose at least one book", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
 
                 } else if (returnButtonClicked) {
 
@@ -371,7 +415,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                             booksLabel.setText(RefreshListOfAvailableBook() + " books available in library");
                         }
                     } else {
-                        JOptionPane.showMessageDialog(null, "Choose one book", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Choose at least one book", "Error", JOptionPane.ERROR_MESSAGE);
                     }
 
                 }
@@ -423,7 +467,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 list.setModel(modifiedModel);
                 if (!checkIfAllBooksBorrowed(flowLibrary.getListOfBooks())) {
                     if (informationBorrow) {
-                        JOptionPane.showMessageDialog(null, "Choose one book to borrow and confirm", "Warning", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Choose at least one book to borrow and confirm", "Warning", JOptionPane.INFORMATION_MESSAGE);
                     }
                     informationBorrow = false;
                     ConfirmChoice.setEnabled(true);

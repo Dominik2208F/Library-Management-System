@@ -9,8 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="dodawanie użytkownika i wyświetlanie listy">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="delete users lista">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,13 +132,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00082" summary="combobox na library managment">
-      <created>1707483212777</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1707483212777</updated>
     </task>
     <task id="LOCAL-00083" summary="background gradient">
       <created>1707486586485</created>
@@ -473,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707905141921</updated>
     </task>
-    <option name="localTasksCounter" value="131" />
+    <task id="LOCAL-00131" summary="delete users lista">
+      <created>1707905300793</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1707905300794</updated>
+    </task>
+    <option name="localTasksCounter" value="132" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -488,7 +491,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="combobox na userchoose" />
     <MESSAGE value="naprawa password Hint do combobox" />
     <MESSAGE value="zdjęcia dla logowania" />
     <MESSAGE value="zdjęcia i tytuły" />
@@ -513,7 +515,8 @@
     <MESSAGE value="data z przyszłości kalendarz i walidacja roku produkcji z przyszłośći" />
     <MESSAGE value="zablokowanie stworzenie usera z takimi samym username" />
     <MESSAGE value="dodawanie użytkownika i wyświetlanie listy" />
-    <option name="LAST_COMMIT_MESSAGE" value="dodawanie użytkownika i wyświetlanie listy" />
+    <MESSAGE value="delete users lista" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete users lista" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -664,6 +664,7 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 ConfirmChoice.setVisible(false);
                 AddUserFrame addUserFrame = new AddUserFrame(userChooseIFrame, library, true);
                 addUserFrame.setVisible(true);
+                addUserFrame.setChangeFromAdminPanel(true);
                 addUserFrame.setAdminActionFrame(AdminActionFrame.this);
             }
         });

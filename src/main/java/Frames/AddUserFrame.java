@@ -26,6 +26,12 @@ public class AddUserFrame extends JFrame implements CommonFunctions {
     private UserChooseIFrame userChooseIFrame;
     private Library flowLibrary;
 
+    public void setChangeFromAdminPanel(boolean changeFromAdminPanel) {
+        this.changeFromAdminPanel = changeFromAdminPanel;
+    }
+
+    private boolean changeFromAdminPanel=false;
+
     public void setAdminActionFrame(AdminActionFrame adminActionFrame) {
         this.adminActionFrame = adminActionFrame;
     }
@@ -174,7 +180,9 @@ public class AddUserFrame extends JFrame implements CommonFunctions {
                     flowLibrary.getLibraryUserDataBase().getListOfUser().add(new User(username, password));
                     userChooseIFrame.updateListOfUsers();
                     JOptionPane.showMessageDialog(null, "User " + username +" has been added successfully", "Message",JOptionPane.INFORMATION_MESSAGE);
-                     adminActionFrame.getList().setModel(ListOfUsers(flowLibrary));
+                    if(changeFromAdminPanel) {
+                        adminActionFrame.getList().setModel(ListOfUsers(flowLibrary));
+                    }
                     setVisible(false);
                 }
             }
