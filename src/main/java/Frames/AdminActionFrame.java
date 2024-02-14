@@ -438,6 +438,11 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 returnAll.setVisible(false);
                 UserSelectionComboBoxToReturnABook.setVisible(false);
                 ConfirmChoice.setVisible(false);
+
+                list.setModel(ListOfUsers(flowLibrary));
+                list.setEnabled(false);
+
+
                 if (flowLibrary.getLibraryUserDataBase().getListOfUser().size() == 1) {
                     UserSelectionComboBox.setEnabled(false);
                     UserSelectionComboBox.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));

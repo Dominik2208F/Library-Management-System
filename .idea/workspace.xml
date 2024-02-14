@@ -9,14 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="zablokowanie stworzenie usera z takimi samym username">
-      <change afterPath="$PROJECT_DIR$/res/team.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" afterDir="false" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="dodawanie użytkownika i wyświetlanie listy">
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/CommonFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/CommonFunctions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UserManager/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UserManager/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UserManager/UsersDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UserManager/UsersDataBase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,13 +129,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00081" summary="dodanie obsługi pojedynczej komunikatu">
-      <created>1707482815813</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1707482815813</updated>
     </task>
     <task id="LOCAL-00082" summary="combobox na library managment">
       <created>1707483212777</created>
@@ -479,7 +466,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707902436225</updated>
     </task>
-    <option name="localTasksCounter" value="130" />
+    <task id="LOCAL-00130" summary="dodawanie użytkownika i wyświetlanie listy">
+      <created>1707905141921</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1707905141921</updated>
+    </task>
+    <option name="localTasksCounter" value="131" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -494,7 +488,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="kolejne ikony" />
     <MESSAGE value="combobox na userchoose" />
     <MESSAGE value="naprawa password Hint do combobox" />
     <MESSAGE value="zdjęcia dla logowania" />
@@ -519,7 +512,8 @@
     <MESSAGE value="dodanie komunikatu dodania user + zmiana biblioteki z poziomu usera" />
     <MESSAGE value="data z przyszłości kalendarz i walidacja roku produkcji z przyszłośći" />
     <MESSAGE value="zablokowanie stworzenie usera z takimi samym username" />
-    <option name="LAST_COMMIT_MESSAGE" value="zablokowanie stworzenie usera z takimi samym username" />
+    <MESSAGE value="dodawanie użytkownika i wyświetlanie listy" />
+    <option name="LAST_COMMIT_MESSAGE" value="dodawanie użytkownika i wyświetlanie listy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -548,11 +542,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java</url>
           <line>137</line>
           <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java</url>
-          <line>654</line>
-          <option name="timeStamp" value="48" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
