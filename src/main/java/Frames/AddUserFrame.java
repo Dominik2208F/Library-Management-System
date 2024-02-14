@@ -11,6 +11,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class AddUserFrame extends JFrame implements CommonFunctions {
 
@@ -129,10 +132,18 @@ public class AddUserFrame extends JFrame implements CommonFunctions {
         char[] passwordchar = passwordField.getPassword();
         String regex = "(?=.*[a-ząćęłńóśźż])(?=.*[A-ZĄĆĘŁŃÓŚŹŻ])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-ząćęłńóśźżĄĆĘŁŃÓŚŹŻ\\d@$!%*?&]{8,}$";
 
+        List<User> users = flowLibrary.getLibraryUserDataBase().getListOfUser();
+        List<String> lowerCaseUserNames = users.stream()
+                .map(user -> user.getName().toLowerCase())
+                .collect(Collectors.toList());
+
 
         if (username.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Username cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
-        } else if (passwordchar.length == 0) {
+        } else if (lowerCaseUserNames.contains(username.toLowerCase())){
+            JOptionPane.showMessageDialog(null, "Such login is no more available. Please create unique login", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        else if (passwordchar.length == 0) {
             JOptionPane.showMessageDialog(null, "Password cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             String password = new String(passwordchar);
@@ -146,14 +157,13 @@ public class AddUserFrame extends JFrame implements CommonFunctions {
                         "* Uses eight characters.\n"
                         , "Error", JOptionPane.ERROR_MESSAGE);
             }else{
-                User newUser =new User(username, password);
-                if(newUser.getName().equals("Admin") || newUser.getName().equals("admin")){
-                    JOptionPane.showMessageDialog(null, "You cannot create second admin account", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                else if( flowLibrary.getLibraryUserDataBase().getListOfUser().contains(newUser)) {
-                    JOptionPane.showMessageDialog(null, "User with identical data exist in database. You cannot create the user", "Error", JOptionPane.ERROR_MESSAGE);
+            //    User newUser =new User(username, password);
+            //    if(newUser.getName().equals("Admin") || newUser.getName().equals("admin")){
+            //        JOptionPane.showMessageDialog(null, "You cannot create second admin account", "Error", JOptionPane.ERROR_MESSAGE);
+            //    }
+            //    else if( flowLibrary.getLibraryUserDataBase().getListOfUser().contains(newUser)) {
+            //        JOptionPane.showMessageDialog(null, "User with identical data exist in database. You cannot create the user", "Error", JOptionPane.ERROR_MESSAGE);
 
-                }else {
                     flowLibrary.getLibraryUserDataBase().getListOfUser().add(new User(username, password));
                     userChooseIFrame.updateListOfUsers();
                     JOptionPane.showMessageDialog(null, "User " + username +" has been added successfully", "Message",JOptionPane.INFORMATION_MESSAGE);
@@ -161,5 +171,5 @@ public class AddUserFrame extends JFrame implements CommonFunctions {
                 }
             }
         }
-    }
+
 }
