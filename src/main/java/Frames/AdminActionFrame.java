@@ -221,7 +221,9 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 SubCategoryComboBox.setVisible(false);
                 categoryComboBox.setVisible(false);
                 ConfirmChoice.setVisible(false);
-
+                UserSelectionComboBoxToReturnABook.setVisible(false);
+                ConfirmChoiceOfGivenUser.setVisible(false);
+                returnAll.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
                 if (flowLibrary.getListOfBooks().isEmpty()) {
@@ -230,9 +232,10 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                     returnAll.setEnabled(false);
                     UserSelectionComboBoxToReturnABook.setVisible(false);
                     UserSelectionComboBoxToBorrow.setVisible(false);
+                    UserSelectionComboBoxToBorrow.setEnabled(false);
                     JOptionPane.showMessageDialog(null, "No book possible to borrow", "Warning", JOptionPane.WARNING_MESSAGE);
                 } else {
-
+                    UserSelectionComboBoxToBorrow.setEnabled(true);
                     for (Book books : flowLibrary.getListOfBooks()) {
                         modifiedModel.addElement(books.toString(true));
                     }
@@ -248,9 +251,14 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                             listOfAllUserName.add(user.getName());
                         }
                     }
-
-                    String UserNameArray[] = listOfAllUserName.toArray(new String[listOfAllUserName.size()]);
-                    UserSelectionComboBoxToBorrow.setModel(new DefaultComboBoxModel<>(UserNameArray));
+                    if(listOfAllUserName.size()!=1) {
+                        String UserNameArray[] = listOfAllUserName.toArray(new String[listOfAllUserName.size()]);
+                        UserSelectionComboBoxToBorrow.setModel(new DefaultComboBoxModel<>(UserNameArray));
+                    }
+                    else{
+                        UserSelectionComboBoxToBorrow.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));
+                        UserSelectionComboBoxToBorrow.setEnabled(false);
+                    }
                 }
             }
         });
@@ -405,6 +413,11 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                     QuickView.setEnabled(true);
                     returnBookOfAGivenUser = true;
                 }
+                else{
+                    ConfirmChoiceOfGivenUser.setVisible(false);
+                    returnAll.setVisible(false);
+                    list.setModel(modifiedModel);
+                }
 
                 if (checkIfAllBooksReturned(library.getListOfBooks())) {
 
@@ -542,7 +555,7 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 UserSelectionComboBoxToBorrow.setVisible(false);
                 list.setModel(ListOfUsers(flowLibrary));
                 list.setEnabled(false);
-
+                QuickView.setEnabled(false);
 
                 if (flowLibrary.getLibraryUserDataBase().getListOfUser().size() == 1) {
                     UserSelectionComboBox.setEnabled(false);
@@ -603,6 +616,7 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 returnAll.setVisible(false);
                 UserSelectionComboBoxToReturnABook.setVisible(false);
                 UserSelectionComboBoxToBorrow.setVisible(false);
+                QuickView.setEnabled(true);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 if (flowLibrary.getListOfBooks().isEmpty()) {
                     for (Book books : flowLibrary.getListOfBooks()) {
@@ -680,6 +694,7 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 returnAll.setVisible(false);
                 UserSelectionComboBoxToReturnABook.setVisible(false);
                 UserSelectionComboBoxToBorrow.setVisible(false);
+                QuickView.setEnabled(true);
                 if (flowLibrary.getListOfBooks().isEmpty()) {
                     ConfirmChoice.setEnabled(false);
                     JOptionPane.showMessageDialog(null,
@@ -761,7 +776,7 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
             public void actionPerformed(ActionEvent e) {
 
                 list.setModel(ListOfUsers(flowLibrary));
-
+                QuickView.setEnabled(false);
                 list.setEnabled(false);
                 UserSelectionComboBox.setVisible(false);
                 UserSelectionComboBoxToBorrow.setVisible(false);
@@ -784,6 +799,7 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 returnAll.setVisible(false);
                 UserSelectionComboBoxToReturnABook.setVisible(false);
                 UserSelectionComboBoxToBorrow.setVisible(false);
+                QuickView.setEnabled(true);
                 if (flowLibrary.getListOfBooks().isEmpty()) {
                     ConfirmChoice.setEnabled(false);
                     JOptionPane.showMessageDialog(null,
@@ -812,6 +828,7 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 SubCategoryComboBox.setVisible(false);
                 categoryComboBox.setVisible(false);
                 UserSelectionComboBoxToBorrow.setVisible(false);
+                QuickView.setEnabled(true);
                 DefaultListModel<String> updatedModel = new DefaultListModel<>();
                 for (Book books : flowLibrary.getListOfBooks()) {
                     updatedModel.addElement(books.toString(true));
