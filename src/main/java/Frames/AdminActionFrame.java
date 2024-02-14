@@ -18,7 +18,12 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
     private JMenuBar menubar;
     private JMenu Options, Program;
     private JMenuItem changeUser, changeLibrary, programInfo;
-    private JButton AddBook, ReturnInfoAllBooks, ReturnInfoOfBook, DeleteBook, UpdateBook, AddUser, DeleteUser, ReturnBookOfAGivenUser, BorrowedBooksOfUser, ConfirmChoice, QuickView, ConfirmChoiceOfGivenUser, returnAll;
+    private JButton AddBook, ReturnInfoAllBooks, ReturnInfoOfBook, DeleteBook, UpdateBook, AddUser, DeleteUser,ShowAllUsers, ReturnBookOfAGivenUser, BorrowedBooksOfUser, ConfirmChoice, QuickView, ConfirmChoiceOfGivenUser, returnAll;
+
+    public JList<String> getList() {
+        return list;
+    }
+
     private JList<String> list;
     private Library flowLibrary;
     private UserChooseIFrame userChooseIFrame;
@@ -123,21 +128,21 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
         UpdateBook.setIcon(updateBook);
 
         AddUser = new JButton("Add user");
-        AddUser.setBounds(10, 220, 130, 40);
+        AddUser.setBounds(855, 70, 120, 40);
         add(AddUser);
 
         ImageIcon addUserIcon = setIcon("/add-user_8924229 (1).png");
         AddUser.setIcon(addUserIcon);
 
         DeleteUser = new JButton("Delete user");
-        DeleteUser.setBounds(10, 270, 130, 40);
+        DeleteUser.setBounds(855, 120, 120, 40);
         add(DeleteUser);
 
         ImageIcon deleteUser = setIcon("/delete-user.png");
         DeleteUser.setIcon(deleteUser);
 
         ReturnBookOfAGivenUser = new JButton("Return book of a given user");
-        ReturnBookOfAGivenUser.setBounds(10, 320, 240, 40);
+        ReturnBookOfAGivenUser.setBounds(10, 220, 240, 40);
         add(ReturnBookOfAGivenUser);
 
         ImageIcon returnBook = setIcon("/return.png");
@@ -181,6 +186,12 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
         ConfirmChoiceOfGivenUser.setVisible(false);
         ConfirmChoiceOfGivenUser.setBackground(Color.PINK);
 
+        ShowAllUsers = new JButton("All users");
+        ShowAllUsers.setBounds(855, 170, 120, 40);
+        add(ShowAllUsers);
+        ImageIcon allUsers = setIcon("/team.png");
+        ShowAllUsers.setIcon(allUsers);
+
         ImageIcon confirmChoiceByUser = setIcon("/approved.png");
         ConfirmChoiceOfGivenUser.setIcon(confirmChoiceByUser);
 
@@ -189,6 +200,29 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
         UserSelectionComboBox.setVisible(false);
         UserSelectionComboBoxToReturnABook.setVisible(false);
         BorrowedBooksOfUser.setEnabled(false);
+
+
+        ShowAllUsers.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                categoryComboBox.setVisible(false);
+                SubCategoryComboBox.setVisible(false);
+                UserSelectionComboBox.setVisible(false);
+                ConfirmChoice.setVisible(false);
+                ConfirmChoiceOfGivenUser.setVisible(false);
+                returnAll.setVisible(false);
+                UserSelectionComboBoxToReturnABook.setVisible(false);
+                QuickView.setEnabled(false);
+
+
+                DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+                for (User user : flowLibrary.getLibraryUserDataBase().getListOfUser()) {
+                    modifiedModel.addElement(user.toString());
+                }
+                list.setModel(modifiedModel);
+                list.setEnabled(false);
+            }
+        });
         ConfirmChoiceOfGivenUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -617,11 +651,15 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
         AddUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                list.setModel(ListOfUsers(flowLibrary));
+
                 list.setEnabled(false);
                 UserSelectionComboBox.setVisible(false);
                 ConfirmChoice.setVisible(false);
                 AddUserFrame addUserFrame = new AddUserFrame(userChooseIFrame, library, true);
                 addUserFrame.setVisible(true);
+                addUserFrame.setAdminActionFrame(AdminActionFrame.this);
             }
         });
         UpdateBook.addActionListener(new ActionListener() {

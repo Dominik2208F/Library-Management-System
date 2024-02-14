@@ -18,7 +18,7 @@ public class UsersDataBase {
 
 
     public void addAdminDatabase() {
-        User user = new User("Admin", "admin");
+        User user = new User("Admin", "admin","Admin");
         listOfUser.add(user);
     }
 

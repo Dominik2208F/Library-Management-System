@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 public class AddUserFrame extends JFrame implements CommonFunctions {
 
     private JTextField usernameField;
@@ -24,6 +25,12 @@ public class AddUserFrame extends JFrame implements CommonFunctions {
     private JLabel passwordLabel,addUser;
     private UserChooseIFrame userChooseIFrame;
     private Library flowLibrary;
+
+    public void setAdminActionFrame(AdminActionFrame adminActionFrame) {
+        this.adminActionFrame = adminActionFrame;
+    }
+
+    private AdminActionFrame adminActionFrame;
 
     public AddUserFrame(UserChooseIFrame userChooseIFrame, Library library, boolean b) {
         this.userChooseIFrame = userChooseIFrame;
@@ -167,6 +174,7 @@ public class AddUserFrame extends JFrame implements CommonFunctions {
                     flowLibrary.getLibraryUserDataBase().getListOfUser().add(new User(username, password));
                     userChooseIFrame.updateListOfUsers();
                     JOptionPane.showMessageDialog(null, "User " + username +" has been added successfully", "Message",JOptionPane.INFORMATION_MESSAGE);
+                     adminActionFrame.getList().setModel(ListOfUsers(flowLibrary));
                     setVisible(false);
                 }
             }

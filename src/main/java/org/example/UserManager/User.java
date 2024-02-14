@@ -3,21 +3,40 @@ package org.example.UserManager;
 import org.example.LibraryManager.Book;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 public class User {
 
-    private List<Book> Userbooks;
     private String name;
     private String password;
+    private Date dateOfCreation;
+    private String permissionLevel;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", creation date=" + dateOfCreation + '\''+
+                ", permission level=" +permissionLevel +
+                '}';
+    }
 
     public User(String name, String password) {
         this.name = name;
         this.password = password;
-        Userbooks = new ArrayList<>();
+        dateOfCreation=new Date();
+        permissionLevel="User";
     }
 
+    public User(String name, String password,String permissionLevel) {
+        this.name = name;
+        this.password = password;
+        dateOfCreation=new Date();
+        this.permissionLevel=permissionLevel;
+    }
 
     public String getPassword() {
         return password;

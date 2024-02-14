@@ -3,6 +3,7 @@ package Manager;
 import Frames.Status;
 import org.example.LibraryManager.Book;
 import org.example.LibraryManager.Library;
+import org.example.UserManager.User;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -65,6 +66,15 @@ public interface CommonFunctions {
             }
         }
         return true;
+    }
+
+    default DefaultListModel<String> ListOfUsers(Library flowLibrary){
+
+        DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+        for (User user : flowLibrary.getLibraryUserDataBase().getListOfUser()) {
+            modifiedModel.addElement(user.toString());
+        }
+        return modifiedModel;
     }
 
 }
