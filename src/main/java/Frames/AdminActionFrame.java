@@ -227,55 +227,104 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+
+                int[] selectedIndices = list.getSelectedIndices();
+                List<String> selectedValues = list.getSelectedValuesList();
+
+
                 if (returnBookOfAGivenUser) {
-                    if (list.getSelectedIndex() != -1) {
+                    if (selectedIndices.length > 0) {
                         DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-
-
-                        String titleOfBookToUnassingFromUser = extractTitle(list.getSelectedValue());
                         String UserWithBorrowedBook = (String) UserSelectionComboBoxToReturnABook.getSelectedItem();
-                        Book bookInstance = null;
 
-                        for (Book book : ListOfBorrowedBook(library)) {
-                            if (book.getTitle().equals(titleOfBookToUnassingFromUser)) {
-                                bookInstance = book;
-                                break;
+                        if(selectedValues.size()>1) {
+
+                            for (int i = 0; i < selectedValues.size(); i++) {
+                                String titleOfBookToUnassingFromUser = extractTitle(selectedValues.get(i));
+                                Book bookInstance = null;
+
+                                for (Book book : flowLibrary.getListOfBooks()) {
+                                    if (book.getTitle().equals(titleOfBookToUnassingFromUser)) {
+                                        bookInstance = book;
+                                        break;
+                                    }
+                                }
+                                bookInstance.setStatus(Status.AVAILABLE);
+                                bookInstance.setAssignedUserToBook(new User("None", "none"));
+                            }
+
+                            int odp = JOptionPane.showConfirmDialog(null, "Do you want return all selected books ?");
+
+                            if (odp == JOptionPane.YES_OPTION) {
+                                for (Book Book : ListOfBorrowedBook(library)) {
+                                    if (Book.getStatus() == Status.BORROWED && Book.getAssignedUserToBook().getName().equals(UserWithBorrowedBook)) {
+                                        modifiedModel.addElement(Book.toString(true));
+                                    }
+                                }
+                                list.setModel(modifiedModel);
+                                JOptionPane.showMessageDialog(null, "All selected books has been returned successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
+
+                                if (modifiedModel.isEmpty()) {
+                                    JOptionPane.showMessageDialog(null, UserWithBorrowedBook + " does not have more book to return", "Message", JOptionPane.INFORMATION_MESSAGE);
+                                    ConfirmChoiceOfGivenUser.setEnabled(false);
+                                    returnAll.setEnabled(false);
+                                }
+
+                                if (checkIfAllBooksReturned(library.getListOfBooks())) {
+                                    ConfirmChoiceOfGivenUser.setEnabled(false);
+                                    returnAll.setEnabled(false);
+                                    UserSelectionComboBoxToReturnABook.setEnabled(false);
+                                    UserSelectionComboBoxToReturnABook.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));
+
+                                }
+
+
                             }
                         }
+                        if(selectedValues.size()==1) {
+                            String titleOfBookToUnassingFromUser = extractTitle(list.getSelectedValue());
+                            Book bookInstance = null;
 
-
-                        int odp = JOptionPane.showConfirmDialog(null, "Do you want return a book: " + bookInstance.getTitle() + " ?");
-
-                        if (odp == JOptionPane.YES_OPTION) {
-
-
-                            bookInstance.setStatus(Status.AVAILABLE);
-                            bookInstance.setAssignedUserToBook(new User("None", "none"));
-
-
-                            for (Book Book : ListOfBorrowedBook(library)) {
-                                if (Book.getStatus() == Status.BORROWED && Book.getAssignedUserToBook().getName().equals(UserWithBorrowedBook)) {
-                                    modifiedModel.addElement(Book.toString(true));
+                            for (Book book : ListOfBorrowedBook(library)) {
+                                if (book.getTitle().equals(titleOfBookToUnassingFromUser)) {
+                                    bookInstance = book;
+                                    break;
                                 }
                             }
 
 
-                            list.setModel(modifiedModel);
-                            if (modifiedModel.isEmpty()) {
-                                JOptionPane.showMessageDialog(null, UserWithBorrowedBook + " does not have any book to borrow", "Message", JOptionPane.INFORMATION_MESSAGE);
-                                ConfirmChoiceOfGivenUser.setEnabled(false);
-                                returnAll.setEnabled(false);
+                            int odp = JOptionPane.showConfirmDialog(null, "Do you want return a book: " + bookInstance.getTitle() + " ?");
+
+                            if (odp == JOptionPane.YES_OPTION) {
+
+
+                                bookInstance.setStatus(Status.AVAILABLE);
+                                bookInstance.setAssignedUserToBook(new User("None", "none"));
+
+
+                                for (Book Book : ListOfBorrowedBook(library)) {
+                                    if (Book.getStatus() == Status.BORROWED && Book.getAssignedUserToBook().getName().equals(UserWithBorrowedBook)) {
+                                        modifiedModel.addElement(Book.toString(true));
+                                    }
+                                }
+
+                                JOptionPane.showMessageDialog(null, "Book " + bookInstance.getTitle() + " has been returned successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
+                                list.setModel(modifiedModel);
+                                if (modifiedModel.isEmpty()) {
+                                    JOptionPane.showMessageDialog(null, UserWithBorrowedBook + " does not have any book to borrow", "Message", JOptionPane.INFORMATION_MESSAGE);
+                                    ConfirmChoiceOfGivenUser.setEnabled(false);
+                                    returnAll.setEnabled(false);
+                                }
+
+                                if (checkIfAllBooksReturned(library.getListOfBooks())) {
+                                    ConfirmChoiceOfGivenUser.setEnabled(false);
+                                    returnAll.setEnabled(false);
+                                    UserSelectionComboBoxToReturnABook.setEnabled(false);
+                                    UserSelectionComboBoxToReturnABook.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));
+
+                                }
                             }
 
-                            if (checkIfAllBooksReturned(library.getListOfBooks())) {
-                                ConfirmChoiceOfGivenUser.setEnabled(false);
-                                returnAll.setEnabled(false);
-                                UserSelectionComboBoxToReturnABook.setEnabled(false);
-                                UserSelectionComboBoxToReturnABook.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));
-
-                            }
-
-                            JOptionPane.showMessageDialog(null, "Book " + bookInstance.getTitle() + " has been returned successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
                         }
                     } else {
                         JOptionPane.showMessageDialog(null, "Choose one book", "Error", JOptionPane.ERROR_MESSAGE);
