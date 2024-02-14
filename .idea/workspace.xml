@@ -9,8 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="return more than 1 book user">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="zwracania na adminie wieluksiążek">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -130,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00085" summary="sprzatanie">
-      <created>1707487979881</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1707487979881</updated>
     </task>
     <task id="LOCAL-00086" summary="sprzatanie">
       <created>1707488180295</created>
@@ -474,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707909387687</updated>
     </task>
-    <option name="localTasksCounter" value="134" />
+    <task id="LOCAL-00134" summary="zwracania na adminie wieluksiążek">
+      <created>1707917147118</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1707917147118</updated>
+    </task>
+    <option name="localTasksCounter" value="135" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -489,7 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="zdjęcia i tytuły" />
     <MESSAGE value="add user image" />
     <MESSAGE value="nowy admin panel wymiary" />
     <MESSAGE value="update book ui nowy" />
@@ -514,7 +514,8 @@
     <MESSAGE value="delete users lista" />
     <MESSAGE value="borrow more than 1 book" />
     <MESSAGE value="return more than 1 book user" />
-    <option name="LAST_COMMIT_MESSAGE" value="return more than 1 book user" />
+    <MESSAGE value="zwracania na adminie wieluksiążek" />
+    <option name="LAST_COMMIT_MESSAGE" value="zwracania na adminie wieluksiążek" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
