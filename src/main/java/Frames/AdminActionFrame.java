@@ -840,7 +840,6 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                             JOptionPane.showMessageDialog(null,
                                     "No book to delete in " + flowLibrary.getNameOfLibrary(), "Message", JOptionPane.INFORMATION_MESSAGE);
                         }
-                        deleteBookClicked = false;
                     } else {
                         JOptionPane.showMessageDialog(null, "Choose one book", "Error", JOptionPane.ERROR_MESSAGE);
                     }
@@ -849,7 +848,6 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 if (updateBookClicked) {
                     if (list.getSelectedIndex() != -1) {
                         UpdateBookJFrame updateBookJFrame = new UpdateBookJFrame(library, list);
-                        updateBookClicked = false;
                     } else {
                         JOptionPane.showMessageDialog(null, "Choose one book", "Error", JOptionPane.ERROR_MESSAGE);
                     }
@@ -860,6 +858,7 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
             @Override
             public void actionPerformed(ActionEvent e) {
                 updateBookClicked = false;
+                deleteBookClicked = true;
                 categoryComboBox.setVisible(false);
                 SubCategoryComboBox.setVisible(false);
                 UserSelectionComboBox.setVisible(false);
@@ -881,7 +880,6 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                         informationDelete = false;
                     }
                     ConfirmChoice.setEnabled(true);
-                    deleteBookClicked = true;
                     DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                     for (Book books : flowLibrary.getListOfBooks()) {
                         modifiedModel.addElement(books.toString(true));
@@ -965,6 +963,7 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
             @Override
             public void actionPerformed(ActionEvent e) {
                 deleteBookClicked = false;
+                updateBookClicked=true;
                 list.setEnabled(true);
                 categoryComboBox.setVisible(false);
                 SubCategoryComboBox.setVisible(false);

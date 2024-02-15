@@ -143,6 +143,7 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
                 } else {
                     ChoosenUserName = selectedUserValue;
                     new LoginUserFrame(UserChooseIFrame.this, library);
+                    setVisible(false);
 
                 }
             }
