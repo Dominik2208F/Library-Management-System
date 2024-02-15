@@ -9,21 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="poprawki widocznośći do borrow A book button">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/e/2e682bba8d1cb641add86bf5b614f53ba669e41b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/e/2e682bba8d1cb641add86bf5b614f53ba669e41b" afterDir="false" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="wybór z listy. Przed logiką do zwracania i zmienna">
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/c/4cf2018acf9b42de00f835938a522046c008bc15" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/c/4cf2018acf9b42de00f835938a522046c008bc15" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/b/5b3686b46f6a881723c7af734b7c19d3c09f9e2f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/b/5b3686b46f6a881723c7af734b7c19d3c09f9e2f" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5f0b91ae7a996d48ae5aee1436627a3e4268d7bf" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5f0b91ae7a996d48ae5aee1436627a3e4268d7bf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/4/640c095562f51279fcf14202e06afe01b573d27d" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/4/640c095562f51279fcf14202e06afe01b573d27d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/d/6d887523fcb874ffe878974b356fb2985f6482bf" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/d/6d887523fcb874ffe878974b356fb2985f6482bf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/6/76998923163ea64ff0942259a4ed24251851c1d5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/6/76998923163ea64ff0942259a4ed24251851c1d5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/b/7b768d99a6f38ca2261e8ff11ce2d9aa40ca7c6b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/b/7b768d99a6f38ca2261e8ff11ce2d9aa40ca7c6b" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/8251c39afc23fd07238a418a07a93aa2b02025db" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/8251c39afc23fd07238a418a07a93aa2b02025db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Manager/CommonFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/CommonFunctions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Book.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,13 +134,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00088" summary="konfiguracja main">
-      <created>1707523603805</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
-      <option name="project" value="LOCAL" />
-      <updated>1707523603805</updated>
     </task>
     <task id="LOCAL-00089" summary="zmiana ułożenia w admin panel">
       <created>1707563365732</created>
@@ -486,7 +471,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707923567048</updated>
     </task>
-    <option name="localTasksCounter" value="137" />
+    <task id="LOCAL-00137" summary="wybór z listy. Przed logiką do zwracania i zmienna">
+      <created>1707955998797</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
+      <option name="project" value="LOCAL" />
+      <updated>1707955998798</updated>
+    </task>
+    <option name="localTasksCounter" value="138" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -501,7 +493,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="update book ui nowy" />
     <MESSAGE value="update book new UI" />
     <MESSAGE value="nowy UI user" />
     <MESSAGE value="zakaz robienia admina account" />
@@ -526,7 +517,8 @@
     <MESSAGE value="zwracania na adminie wieluksiążek" />
     <MESSAGE value="przycisk wyboru przypisania ksiazki do usera" />
     <MESSAGE value="poprawki widocznośći do borrow A book button" />
-    <option name="LAST_COMMIT_MESSAGE" value="poprawki widocznośći do borrow A book button" />
+    <MESSAGE value="wybór z listy. Przed logiką do zwracania i zmienna" />
+    <option name="LAST_COMMIT_MESSAGE" value="wybór z listy. Przed logiką do zwracania i zmienna" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -555,6 +547,27 @@
           <url>file://$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java</url>
           <line>137</line>
           <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java</url>
+          <line>458</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java</url>
+          <line>459</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java</url>
+          <line>443</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Book.java</url>
+          <line>17</line>
+          <properties field="AssignedUserToBook" class="org.example.LibraryManager.Book" />
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

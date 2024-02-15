@@ -108,7 +108,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         SubCategoryComboBox.setBounds(590, 240, 160, 40);
         add(SubCategoryComboBox);
 
-        booksLabel = new JLabel(RefreshListOfAvailableBook() + " books available in library");
+        booksLabel = new JLabel(RefreshListOfAvailableBook(library) + " books available in library");
         booksLabel.setBounds(350, -5, 200, 30);
         add(booksLabel);
 
@@ -331,7 +331,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                                     borrowALL.setEnabled(false);
                                     ConfirmChoice.setEnabled(false);
                                 }
-                                booksLabel.setText(RefreshListOfAvailableBook() + " books available in library");
+                                booksLabel.setText(RefreshListOfAvailableBook(library) + " books available in library");
                             }
                         }
 
@@ -366,7 +366,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                                     borrowALL.setEnabled(false);
                                     ConfirmChoice.setEnabled(false);
                                 }
-                                booksLabel.setText(RefreshListOfAvailableBook() + " books available in library");
+                                booksLabel.setText(RefreshListOfAvailableBook(library) + " books available in library");
                             }
                          }
                         }
@@ -408,7 +408,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                                     ConfirmChoice.setEnabled(false);
                                 }
                                 JOptionPane.showMessageDialog(null, "All selected books has been returned successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
-                                booksLabel.setText(RefreshListOfAvailableBook() + " books available in library");
+                                booksLabel.setText(RefreshListOfAvailableBook(library) + " books available in library");
                             }
                         }
                         if (selectedValues.size() == 1) {
@@ -444,7 +444,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                                     ConfirmChoice.setEnabled(false);
                                 }
                                 JOptionPane.showMessageDialog(null, "Book " + bookInstance.getTitle() + " has been returned successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
-                                booksLabel.setText(RefreshListOfAvailableBook() + " books available in library");
+                                booksLabel.setText(RefreshListOfAvailableBook(library) + " books available in library");
                             }
                         }
                     } else {
@@ -626,7 +626,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                             }
                         }
                         list.setModel(modifiedModel1);
-                        booksLabel.setText(RefreshListOfAvailableBook() + " books available in library");
+                        booksLabel.setText(RefreshListOfAvailableBook(library) + " books available in library");
                         if (checkIfAllBooksBorrowed(flowLibrary.getListOfBooks())) {
                             borrowALL.setEnabled(false);
                             ConfirmChoice.setEnabled(false);
@@ -661,7 +661,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                         }
                     }
                     list.setModel(modifiedModel1);
-                    booksLabel.setText(RefreshListOfAvailableBook() + " books available in library");
+                    booksLabel.setText(RefreshListOfAvailableBook(library) + " books available in library");
                     if (checkIfAllBooksReturned(flowLibrary.getListOfBooks())) {
                         ConfirmChoice.setEnabled(false);
                         returnAll.setEnabled(false);
@@ -839,15 +839,4 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
     }
 
 
-    public int RefreshListOfAvailableBook(){
-
-        List<Book> booksAvailable = new ArrayList<>();
-
-        for(Book book : flowLibrary.getListOfBooks()){
-            if(book.getStatus()==Status.AVAILABLE){
-                booksAvailable.add(book);
-            }
-        }
-        return booksAvailable.size();
-    }
 }

@@ -15,7 +15,7 @@ public class Book implements Comparable<Book> {
         AssignedUserToBook = assignedUserToBook;
     }
 
-    private User AssignedUserToBook =new User("None","none"); //default user to book
+    private User AssignedUserToBook; //default user to book
 
     public User getAssignedUserToBook() {
         return AssignedUserToBook;
@@ -30,6 +30,7 @@ public class Book implements Comparable<Book> {
         this.genre = genre;
         this.amountOfPage = amountOfPage;
         this.status= status;
+        AssignedUserToBook= new User("None","none");
     }
 
     public String getTitle() {

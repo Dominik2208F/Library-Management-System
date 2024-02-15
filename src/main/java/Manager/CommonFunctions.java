@@ -103,4 +103,15 @@ public interface CommonFunctions {
         return modifiedModel;
     }
 
+    default int RefreshListOfAvailableBook(Library flowLibrary){
+
+        List<Book> booksAvailable = new ArrayList<>();
+
+        for(Book book : flowLibrary.getListOfBooks()){
+            if(book.getStatus()==Status.AVAILABLE){
+                booksAvailable.add(book);
+            }
+        }
+        return booksAvailable.size();
+    }
 }
