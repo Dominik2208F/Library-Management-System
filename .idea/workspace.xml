@@ -9,19 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="naprawa logowania nowy przycisk">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/6/26618b0a4e53b14b79c7eff885d941beb25544ac" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/6/26618b0a4e53b14b79c7eff885d941beb25544ac" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/c/4cf2018acf9b42de00f835938a522046c008bc15" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/c/4cf2018acf9b42de00f835938a522046c008bc15" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5f0b91ae7a996d48ae5aee1436627a3e4268d7bf" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5f0b91ae7a996d48ae5aee1436627a3e4268d7bf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/4/640c095562f51279fcf14202e06afe01b573d27d" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/4/640c095562f51279fcf14202e06afe01b573d27d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/b/7b768d99a6f38ca2261e8ff11ce2d9aa40ca7c6b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/b/7b768d99a6f38ca2261e8ff11ce2d9aa40ca7c6b" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/8251c39afc23fd07238a418a07a93aa2b02025db" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/8251c39afc23fd07238a418a07a93aa2b02025db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/5/85af08a0b48d3bf06601b7946437225825f020a5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/5/85af08a0b48d3bf06601b7946437225825f020a5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/2/e21847d94a89f15623c6a79b3d5df7055569c2ef" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/2/e21847d94a89f15623c6a79b3d5df7055569c2ef" afterDir="false" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="wyłączenie ikon podczas logowania">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Manager/DbConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Library.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,13 +136,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00093" summary="borrow + return book proper mechanism with status">
-      <created>1707612483893</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1707612483894</updated>
     </task>
     <task id="LOCAL-00094" summary="poprawa mechanizmu + 3 przycisk">
       <created>1707613849136</created>
@@ -484,7 +473,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708001291542</updated>
     </task>
-    <option name="localTasksCounter" value="142" />
+    <task id="LOCAL-00142" summary="wyłączenie ikon podczas logowania">
+      <created>1708003370531</created>
+      <option name="number" value="00142" />
+      <option name="presentableId" value="LOCAL-00142" />
+      <option name="project" value="LOCAL" />
+      <updated>1708003370531</updated>
+    </task>
+    <option name="localTasksCounter" value="143" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -499,7 +495,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="naprawienie licznika na adminie" />
     <MESSAGE value="return confirm choice" />
     <MESSAGE value="sposob na image" />
     <MESSAGE value="image załadowane do source" />
@@ -524,7 +519,8 @@
     <MESSAGE value="zmiany regex" />
     <MESSAGE value="poprawa okienek" />
     <MESSAGE value="naprawa logowania nowy przycisk" />
-    <option name="LAST_COMMIT_MESSAGE" value="naprawa logowania nowy przycisk" />
+    <MESSAGE value="wyłączenie ikon podczas logowania" />
+    <option name="LAST_COMMIT_MESSAGE" value="wyłączenie ikon podczas logowania" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -553,6 +549,31 @@
           <url>file://$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java</url>
           <line>137</line>
           <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="47" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

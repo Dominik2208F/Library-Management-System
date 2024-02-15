@@ -211,8 +211,14 @@ public class AddUserFrame extends JFrame implements CommonFunctions {
             //        JOptionPane.showMessageDialog(null, "User with identical data exist in database. You cannot create the user", "Error", JOptionPane.ERROR_MESSAGE);
 
                     flowLibrary.getLibraryUserDataBase().getListOfUser().add(new User(username, password));
+
+
                     userChooseIFrame.updateListOfUsers();
+
+
                     JOptionPane.showMessageDialog(null, "User " + username +" has been added successfully", "Message",JOptionPane.INFORMATION_MESSAGE);
+
+
                 userChooseIFrame.getComboBoxUser().setEnabled(true);
                 userChooseIFrame.getAddUser().setEnabled(true);
                 userChooseIFrame.getConfirmUser().setEnabled(true);

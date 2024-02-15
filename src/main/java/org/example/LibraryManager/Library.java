@@ -53,7 +53,7 @@ public class Library {
                 , 1954, new Genre("Akcji"), 455, Status.AVAILABLE));
 
         listOfBooks.add(new Book("Harry Potter i Kamień Filozoficzny",
-                new Author("J.K.", "Rowling", "1989-03-18")
+                new Author("J.K.K", "Rowling", "1989-03-18")
                 , 1997, new Genre("Akcji"), 320, Status.AVAILABLE));
 
         listOfBooks.add(new Book("Zbrodnia i Kara",

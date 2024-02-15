@@ -1,6 +1,7 @@
 package Frames;
 
 import Manager.CommonFunctions;
+import Manager.Queries;
 import org.example.LibraryManager.Library;
 import org.example.LibraryManager.LibraryDataBase;
 
@@ -12,11 +13,13 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 public class LibraryManagementFrame extends JFrame implements ActionListener, CommonFunctions {
 
-    private JLabel welcome,assign,selectedLibrary;
+    private JLabel welcome,assign;
     private JButton buttonConfirm;
     private JComboBox<String> comboBox;
 
@@ -27,16 +30,30 @@ public class LibraryManagementFrame extends JFrame implements ActionListener, Co
     private LibraryDataBase libraryDataBase;
     private Library flowLibrary;
 
+    public String getSelectedLibrary() {
+        return selectedLibrary;
+    }
+
+    private String selectedLibrary;
+
+
 
     public LibraryManagementFrame(LibraryDataBase libraryDataBase) {
 
         this.libraryDataBase = libraryDataBase;
 
         DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
-        for (Library Singlelibrary : libraryDataBase.getListOfLibrary()) {
-            comboBoxModel.addElement(Singlelibrary.getNameOfLibrary());
-        }
 
+        // Zwraca listę bibliotek
+        try {
+            ResultSet set= Queries.readAllLibraries();
+            while (set.next()) {
+                comboBoxModel.addElement(set.getString("library_name"));
+            }
+        }
+        catch (Exception e){
+            System.out.println("No libraries in Data Base");
+        }
         setContentPane(new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -116,12 +133,12 @@ public class LibraryManagementFrame extends JFrame implements ActionListener, Co
     }
 
     public void IfButtonClicked() {
-        String selectedLibraryText = (String) comboBox.getSelectedItem();
-        if (selectedLibraryText == null || selectedLibraryText.isEmpty()) {
+         selectedLibrary = (String) comboBox.getSelectedItem();
+        if (selectedLibrary == null || selectedLibrary.isEmpty()) {
             JOptionPane.showMessageDialog(LibraryManagementFrame.this, "You have to choose at least 1 library", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             for (Library librarySpec : libraryDataBase.getListOfLibrary()) {
-                if (librarySpec.getNameOfLibrary().equalsIgnoreCase(selectedLibraryText)) {
+                if (librarySpec.getNameOfLibrary().equalsIgnoreCase(selectedLibrary)) {
                     flowLibrary = librarySpec;
                 }
             }

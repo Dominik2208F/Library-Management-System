@@ -8,13 +8,20 @@ import org.example.LibraryManager.LibraryDataBase;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Date;
 
 
 public class
 Main {
 
-    public static void main(String[] args)  {
+    public static void main(String[] args) throws SQLException {
 
+
+        DbConnection db  = new DbConnection();
+        Connection connection= db.connectionToDB("Library","postgres","Dominik1");
+        Queries queries = new Queries(connection);
 
         FlatLightLaf.setup();
         UIManager.put( "Button.arc", 20 );
@@ -28,8 +35,8 @@ Main {
 
         LibraryDataBase libraryDataBase = new LibraryDataBase();
         SetUp SetUp = new SetUp(libraryDataBase);
-        SetUp.createDefaultLibrariesSetUp("Pruszkowska");
-        SetUp.createDefaultLibrariesSetUp("Warszawska");
+    //    SetUp.createDefaultLibrariesSetUp("Pruszkowska");
+    //    SetUp.createDefaultLibrariesSetUp("Warszawska");
         new LibraryManagementFrame(libraryDataBase);
 
 

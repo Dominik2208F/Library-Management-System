@@ -1,6 +1,7 @@
 package Frames;
 
 import Manager.CommonFunctions;
+import Manager.Queries;
 import org.example.LibraryManager.Library;
 import org.example.UserManager.User;
 
@@ -12,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,12 +77,20 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
 
         List<String> listOfCurrentUsers = new ArrayList<String>();
 
+            //zwrócenie użytkowników z bazy danych do listy
+            ResultSet set= Queries.readUsersAssignedToLibraryByName(libraryManagementFrame.getSelectedLibrary());
+            try {
+                while (set.next()) {
 
-        for (User user : flowLibrary.getLibraryUserDataBase().getListOfUser()) {
-            listOfCurrentUsers.add(user.getName());
-            String[] usersArray = listOfCurrentUsers.toArray(new String[listOfCurrentUsers.size()]);
+                    listOfCurrentUsers.add(set.getString("username"));
+                }
+            }catch (Exception e){
+
+            }
+
+             String[] usersArray = listOfCurrentUsers.toArray(new String[listOfCurrentUsers.size()]);
              comboBoxUser.setModel(new DefaultComboBoxModel<>(usersArray));
-        }
+
 
         setContentPane(new JPanel() {
             @Override
