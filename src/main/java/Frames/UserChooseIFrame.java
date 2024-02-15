@@ -18,7 +18,16 @@ import java.util.List;
 public class UserChooseIFrame extends JFrame implements CommonFunctions {
 
 
+    public JButton getConfirmUser() {
+        return confirmUser;
+    }
+
     private JButton confirmUser,showPassword;
+
+    public JButton getAddUser() {
+        return addUser;
+    }
+
     private JButton addUser;
 
 
@@ -44,6 +53,11 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
     private String selectedUserValue;
     private Library flowLibrary;
     private LibraryManagementFrame libraryManagementFrame;
+
+    public JComboBox getComboBoxUser() {
+        return comboBoxUser;
+    }
+
     JComboBox comboBoxUser= new JComboBox<>();
 
     private JMenuBar menubar;
@@ -143,8 +157,9 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
                 } else {
                     ChoosenUserName = selectedUserValue;
                     new LoginUserFrame(UserChooseIFrame.this, library);
-                    setVisible(false);
-
+                    comboBoxUser.setEnabled(false);
+                    addUser.setEnabled(false);
+                    confirmUser.setEnabled(false);
                 }
             }
         });
@@ -154,6 +169,9 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
             public void actionPerformed(ActionEvent e) {
                 AddUserFrame addUserFrame = new AddUserFrame(UserChooseIFrame.this, library, false);
                 addUserFrame.setVisible(true);
+                comboBoxUser.setEnabled(false);
+                addUser.setEnabled(false);
+                confirmUser.setEnabled(false);
             }
         });
 

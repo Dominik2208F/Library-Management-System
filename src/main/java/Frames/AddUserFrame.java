@@ -6,10 +6,7 @@ import org.example.UserManager.User;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 import java.util.regex.Pattern;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -125,6 +122,49 @@ public class AddUserFrame extends JFrame implements CommonFunctions {
             }
         });
 
+
+        addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+                System.out.println("opened");
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                setVisible(false);
+                userChooseIFrame.setVisible(true);
+                userChooseIFrame.getComboBoxUser().setEnabled(true);
+                userChooseIFrame.getAddUser().setEnabled(true);
+                userChooseIFrame.getConfirmUser().setEnabled(true);
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+
+            }
+        });
+
+
+
         setSize(350, 300);
         setTitle("Add user");
         setLayout(null);
@@ -173,6 +213,9 @@ public class AddUserFrame extends JFrame implements CommonFunctions {
                     flowLibrary.getLibraryUserDataBase().getListOfUser().add(new User(username, password));
                     userChooseIFrame.updateListOfUsers();
                     JOptionPane.showMessageDialog(null, "User " + username +" has been added successfully", "Message",JOptionPane.INFORMATION_MESSAGE);
+                userChooseIFrame.getComboBoxUser().setEnabled(true);
+                userChooseIFrame.getAddUser().setEnabled(true);
+                userChooseIFrame.getConfirmUser().setEnabled(true);
                     setVisible(false);
                 }
             }

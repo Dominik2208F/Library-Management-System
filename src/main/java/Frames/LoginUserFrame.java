@@ -35,7 +35,9 @@ public class LoginUserFrame extends JFrame implements CommonFunctions {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                userChoose.setVisible(true);
+                userChoose.getComboBoxUser().setEnabled(true);
+                userChoose.getAddUser().setEnabled(true);
+                userChoose.getConfirmUser().setEnabled(true);
             }
         });
         if(userChooseIFrame.getChoosenUserName().equals("Admin")) {
@@ -106,6 +108,9 @@ public class LoginUserFrame extends JFrame implements CommonFunctions {
             public void windowClosing(WindowEvent e) {
                 setVisible(false);
                 userChoose.setVisible(true);
+                userChoose.getComboBoxUser().setEnabled(true);
+                userChoose.getAddUser().setEnabled(true);
+                userChoose.getConfirmUser().setEnabled(true);
             }
 
             @Override
@@ -153,6 +158,7 @@ public class LoginUserFrame extends JFrame implements CommonFunctions {
                 } else {
                     setVisible(false);
                     userChoose.setVisible(false);
+                    userChoose.getComboBoxUser().setEnabled(true);
                     new UserActionFrame(userChoose, library);
                 }
             }
