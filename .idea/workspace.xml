@@ -9,11 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="prawie skonczony mechanizm assign">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="poprawa okienek">
+      <change afterPath="$PROJECT_DIR$/res/logout.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UpdateBookJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UpdateBookJFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,20 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00090" summary="password hint i ukrywanie hasła">
-      <created>1707566424918</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1707566424918</updated>
-    </task>
-    <task id="LOCAL-00091" summary="status +">
-      <created>1707566789487</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1707566789487</updated>
     </task>
     <task id="LOCAL-00092" summary="toString admin view">
       <created>1707568278349</created>
@@ -476,7 +461,21 @@
       <option name="project" value="LOCAL" />
       <updated>1707990136832</updated>
     </task>
-    <option name="localTasksCounter" value="139" />
+    <task id="LOCAL-00139" summary="zmiany regex">
+      <created>1707995180888</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1707995180888</updated>
+    </task>
+    <task id="LOCAL-00140" summary="poprawa okienek">
+      <created>1707999048196</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1707999048196</updated>
+    </task>
+    <option name="localTasksCounter" value="141" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,8 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="nowy UI user" />
-    <MESSAGE value="zakaz robienia admina account" />
     <MESSAGE value="naprawienie licznika userAccount +status filtrowania" />
     <MESSAGE value="naprawienie licznika na adminie" />
     <MESSAGE value="return confirm choice" />
@@ -516,7 +513,9 @@
     <MESSAGE value="poprawki widocznośći do borrow A book button" />
     <MESSAGE value="wybór z listy. Przed logiką do zwracania i zmienna" />
     <MESSAGE value="prawie skonczony mechanizm assign" />
-    <option name="LAST_COMMIT_MESSAGE" value="prawie skonczony mechanizm assign" />
+    <MESSAGE value="zmiany regex" />
+    <MESSAGE value="poprawa okienek" />
+    <option name="LAST_COMMIT_MESSAGE" value="poprawa okienek" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -545,12 +544,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java</url>
           <line>137</line>
           <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Book.java</url>
-          <line>17</line>
-          <properties field="AssignedUserToBook" class="org.example.LibraryManager.Book" />
-          <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
