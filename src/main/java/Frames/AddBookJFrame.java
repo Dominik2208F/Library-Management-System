@@ -172,12 +172,14 @@ public class AddBookJFrame extends JFrame {
                 yearText.isEmpty() || description.isEmpty() || pagesText.isEmpty()) {
             JOptionPane.showMessageDialog(null, "All fields are required!", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            String regex = "^[a-zA-Z]+$";
+            String regex ="^[a-zA-Z][a-zA-Z ]*$";
+            String regexSurname= "^[a-zA-Z]+$";
             if (!Pattern.matches(regex, authorFirstName)) {
                 JOptionPane.showMessageDialog(null, "Invalid format. Name cannot have such value", "Error", JOptionPane.ERROR_MESSAGE);
-            } else if (!Pattern.matches(regex, authorLastName)) {
+            } else if (!Pattern.matches(regexSurname, authorLastName)) {
                 JOptionPane.showMessageDialog(null, "Invalid format. Surname cannot have such value", "Error", JOptionPane.ERROR_MESSAGE);
             }
+
 
             int year = 0;
             int pages = 0;
@@ -202,7 +204,7 @@ public class AddBookJFrame extends JFrame {
                 JOptionPane.showMessageDialog(null, "Invalid pages format. Type a valid number", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
-            if (pages != 0 && year != 0 && Pattern.matches(regex, authorFirstName) && Pattern.matches(regex, authorLastName)) {
+            if (pages != 0 && year != 0 && Pattern.matches(regex, authorFirstName) && Pattern.matches(regexSurname, authorLastName)) {
 
                 Author author = new Author(authorFirstName, authorLastName, authorBirthDate);
                 Genre genre = new Genre(description);
