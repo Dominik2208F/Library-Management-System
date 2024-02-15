@@ -1,16 +1,16 @@
 
 E
-java:S1604"(Make this anonymous inner class a lambda(Àê¸•8±†¬ôÙ1
+java:S1604"(Make this anonymous inner class a lambda(Àê¸•8Æ•Ó¤Ú1
 E
-java:S1604A"(Make this anonymous inner class a lambda(Àê¸•8³†¬ôÙ1
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(úÃ†ş8ß‹İÿØ1
+java:S1604A"(Make this anonymous inner class a lambda(Àê¸•8¨ÍÙ¤Ú1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(úÃ†ş8Á²¶¤Ú1
 i
-java:S3252"LUse static access with "javax.swing.WindowConstants" for "DISPOSE_ON_CLOSE".(Ì—İ8Á†¬ôÙ1
+java:S3252"LUse static access with "javax.swing.WindowConstants" for "DISPOSE_ON_CLOSE".(Ì—İ8Ô•Ó¤Ú1
 i
-java:S3252:"LUse static access with "javax.swing.WindowConstants" for "DISPOSE_ON_CLOSE".(Ì—İ8È†¬ôÙ1
+java:S3252:"LUse static access with "javax.swing.WindowConstants" for "DISPOSE_ON_CLOSE".(Ì—İ8ÄÍÙ¤Ú1
 J
-java:S1172Y"-Remove this unused method parameter "button".(İ‰°á8Ë†¬ôÙ1
+java:S1172Y"-Remove this unused method parameter "button".(İ‰°á8Ù²¶¤Ú1
 V
-java:S1068"4Remove this unused "updateBookJFrame" private field.(­§ûÿÿÿÿ8Ë†¬ôÙ1
+java:S1068"4Remove this unused "updateBookJFrame" private field.(­§ûÿÿÿÿ8ÉÍÙ¤Ú1
 S
-java:S1068"6Remove this unused "overViewBookJFrame" private field.(ÎûÖ8Ë†¬ôÙ1
+java:S1068"6Remove this unused "overViewBookJFrame" private field.(ÎûÖ8İ•Ó¤Ú1

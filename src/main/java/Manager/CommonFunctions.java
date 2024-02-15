@@ -58,6 +58,20 @@ public interface CommonFunctions {
         return booksAvailable;
     }
 
+    default List<Book> ListOfAvailableBook(Library flowLibrary) {
+        List<Book> booksAvailable = new ArrayList<>();
+
+        for (Book book : flowLibrary.getListOfBooks()) {
+            if (book.getStatus() == Status.AVAILABLE) {
+                booksAvailable.add(book);
+            }
+        }
+        return booksAvailable;
+    }
+
+
+
+
     default  boolean checkIfAllBooksReturned(List<Book> books) {
 
         for (Book book : books) {
@@ -67,6 +81,18 @@ public interface CommonFunctions {
         }
         return true;
     }
+
+    default boolean checkIfAllBooksBorrowed( List<Book> books){
+
+        for(Book book : books){
+            if(book.getStatus()==Status.AVAILABLE){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
 
     default DefaultListModel<String> ListOfUsers(Library flowLibrary){
 

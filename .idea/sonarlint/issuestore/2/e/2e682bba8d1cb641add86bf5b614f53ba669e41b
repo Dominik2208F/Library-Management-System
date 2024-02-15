@@ -1,6 +1,8 @@
 
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ê®ĞÉıÿÿÿÿ8§í³âÖ1
-u	java:S116"TRename this field "Userbooks" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥Ì‡ıÿÿÿÿÿ8‰…àÖ1
-j	java:S1005"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚÎâ¤8 ÕÃäÕ1
-L	java:S106<"+Replace this use of System.out by a logger.(Ş€Éùÿÿÿÿ8øµââÕ1
-L	java:S106?"+Replace this use of System.out by a logger.(«ÑÒøÿÿÿÿ8ùµââÕ1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ê®ĞÉıÿÿÿÿ8ß¤û·Ú1
+^
+java:S1128"<Remove this unused import 'org.example.LibraryManager.Book'.(’°ïçıÿÿÿÿ8ßŞ‡¸Ú1
+M
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ßŞ‡¸Ú1
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ßŞ‡¸Ú1

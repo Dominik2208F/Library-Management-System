@@ -1,16 +1,23 @@
 
 i
-java:S1192†"FDefine a constant instead of duplicating this literal "Error" 5 times.(‘·½³ÿÿÿÿÿ8óî°Ú1
+java:S1192”"FDefine a constant instead of duplicating this literal "Error" 4 times.(‘·½³ÿÿÿÿÿ8Ñú·Ú1
 E
-java:S1604d"(Make this anonymous inner class a lambda(Ï¸8ôî°Ú1
+java:S1604m"(Make this anonymous inner class a lambda(Ï¸8Òú·Ú1
 J
-java:S1604k"(Make this anonymous inner class a lambda(ÃÒ¡¿ıÿÿÿÿ8õî°Ú1
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(úÃ†ş8ü»º‘Ú1
+java:S1604t"(Make this anonymous inner class a lambda(ÃÒ¡¿ıÿÿÿÿ8Òú·Ú1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(úÃ†ş8Ôú·Ú1
 G
-java:S1659"%Declare "addUser" on a separate line.(»¦õúÿÿÿÿ8™ï°Ú1
+java:S1659"%Declare "addUser" on a separate line.(»¦õúÿÿÿÿ8€û·Ú1
+|
+java:S1450 "_Remove the "adminActionFrame" field and declare it as a local variable in the relevant methods.(ï«8äÑæ¿Ú1
 J
-java:S1948"-Make "flowLibrary" transient or serializable.(ş¸é±8šï°Ú1
+java:S1948"-Make "flowLibrary" transient or serializable.(ş¸é±8û·Ú1
+J
+java:S1172""(Remove this unused method parameter "b".(â“Ñïÿÿÿÿÿ8‚û·Ú1
 
-java:S1186J"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(÷—8«ï°Ú1
+java:S1186S"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(÷—8Šû·Ú1
 £
-java:S1186U"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(˜Â½€øÿÿÿÿ8«ï°Ú1
+java:S1186^"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(˜Â½€øÿÿÿÿ8Šû·Ú1
+^	java:S125¦"<This block of commented-out lines of code should be removed.(œ‚•½ùÿÿÿÿ8œû·Ú1
+Q
+java:S1068 "4Remove this unused "adminActionFrame" private field.(ï«8ïÑæ¿Ú1

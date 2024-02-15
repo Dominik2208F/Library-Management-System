@@ -44,3 +44,7 @@ P
 ,src/main/java/Frames/OverViewBookJFrame.java,d\3\d3b360b3cbf860f75ab994bcb733faf67bdd5af9
 O
 src/main/java/Manager/Main.java,8\6\865db9ba086696152b412f976df2d117b108c678
+P
+ src/main/java/Manager/SetUp.java,8\c\8c8348283ab014acf72f0d65eb786cccaa7e16cf
+Z
+*src/main/java/Manager/CommonFunctions.java,e\2\e2bb85aa9f4462f68dbe4b737b7a3d03b6378edd
