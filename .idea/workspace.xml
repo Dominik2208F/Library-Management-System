@@ -9,15 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="wyłączenie ikon podczas logowania">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Manager/DbConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" afterDir="false" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="2 pierwsze zapytania do biblioteki i wyświetlania userów działaja ok">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/PasswordPopUpJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/PasswordPopUpJFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Library.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,13 +134,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00094" summary="poprawa mechanizmu + 3 przycisk">
-      <created>1707613849136</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1707613849136</updated>
     </task>
     <task id="LOCAL-00095" summary="filtrowanie">
       <created>1707652465490</created>
@@ -480,7 +471,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708003370531</updated>
     </task>
-    <option name="localTasksCounter" value="143" />
+    <task id="LOCAL-00143" summary="2 pierwsze zapytania do biblioteki i wyświetlania userów działaja ok">
+      <created>1708037638832</created>
+      <option name="number" value="00143" />
+      <option name="presentableId" value="LOCAL-00143" />
+      <option name="project" value="LOCAL" />
+      <updated>1708037638832</updated>
+    </task>
+    <option name="localTasksCounter" value="144" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -495,7 +493,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="return confirm choice" />
     <MESSAGE value="sposob na image" />
     <MESSAGE value="image załadowane do source" />
     <MESSAGE value="wywalenie starego kodu + walidacja na hasło" />
@@ -520,7 +517,8 @@
     <MESSAGE value="poprawa okienek" />
     <MESSAGE value="naprawa logowania nowy przycisk" />
     <MESSAGE value="wyłączenie ikon podczas logowania" />
-    <option name="LAST_COMMIT_MESSAGE" value="wyłączenie ikon podczas logowania" />
+    <MESSAGE value="2 pierwsze zapytania do biblioteki i wyświetlania userów działaja ok" />
+    <option name="LAST_COMMIT_MESSAGE" value="2 pierwsze zapytania do biblioteki i wyświetlania userów działaja ok" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -549,31 +547,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java</url>
           <line>137</line>
           <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>46</line>
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>42</line>
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>50</line>
-          <option name="timeStamp" value="47" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

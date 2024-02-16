@@ -1,6 +1,7 @@
 package Frames;
 
-import org.example.UserManager.User;
+import Manager.Queries;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -48,8 +49,7 @@ public class PasswordPopUpJFrame extends JFrame {
 
         String name= userChooseIFrame.getSelectedUserValue();
 
-            User user = userChooseIFrame.getFlowLibrary().getLibraryUserDataBase().returnObjectOfUserByName(name);
-            char[] letters =user.getPassword().toCharArray();
+            char[] letters =Queries.getPasswordFromUserByName(name).toCharArray();
 
             StringBuilder buildHint= new StringBuilder();
             int counter=0;

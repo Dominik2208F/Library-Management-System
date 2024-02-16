@@ -3,6 +3,8 @@ package Manager;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Queries {
 
@@ -64,6 +66,59 @@ public class Queries {
         }
         return resultSet;
     }
+
+    public static String getPasswordFromUserByName(String Name){
+        ResultSet resultSet=null;
+        Statement statement;
+        try{
+            String query=String.format("SELECT password FROM public.users WHERE username='%s'",Name);
+            statement=connection.createStatement();
+            resultSet=statement.executeQuery(query);
+
+            while(resultSet.next()){
+                return resultSet.getString("password");
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    public static String getIdOfLibraryByName(String name){
+
+        ResultSet resultSet=null;
+        Statement statement;
+        try{
+            String query=String.format("SELECT library_id FROM public.library where library_Name='%s'",name);
+            statement=connection.createStatement();
+            resultSet=statement.executeQuery(query);
+
+            while(resultSet.next()){
+                return resultSet.getString("library_id");
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    public static void updateDataBaseWithNewUser(String userName,String password,String idOfLibrary){
+
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        String formattedDate = today.format(formatter);
+
+        Statement statement;
+        try {
+            String query = String.format("INSERT INTO public.users (username, library_id, dateofcreation, permissionlevel, password) VALUES ('%s', %s, '%s', 'User', '%s')", userName, idOfLibrary, formattedDate, password);
+            statement = connection.createStatement();
+            statement.executeUpdate(query);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
     public void update_name(String tableName,String oldValue,String newValue){
         Statement statement;
         try{

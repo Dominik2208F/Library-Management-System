@@ -3,7 +3,6 @@ package Frames;
 import Manager.CommonFunctions;
 import Manager.Queries;
 import org.example.LibraryManager.Library;
-import org.example.UserManager.User;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -145,7 +144,7 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
                 setVisible(false);
             }
         });
-
+        //zrobione
         showPassword.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -158,6 +157,7 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
                 }
             }
         });
+
         confirmUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -229,11 +229,17 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
 
     public void updateListOfUsers() {
         List<String> listOfCurrentUsers = new ArrayList<String>();
-        for (User user : flowLibrary.getLibraryUserDataBase().getListOfUser()) {
-            listOfCurrentUsers.add(user.getName());
-            String[] usersArray = listOfCurrentUsers.toArray(new String[listOfCurrentUsers.size()]);
-            comboBoxUser.setModel(new DefaultComboBoxModel<>(usersArray));
+        ResultSet set= Queries.readUsersAssignedToLibraryByName(libraryManagementFrame.getSelectedLibrary());
+        try {
+            while (set.next()) {
+
+                listOfCurrentUsers.add(set.getString("username"));
+            }
+        }catch (Exception e){
+
         }
+        String[] usersArray = listOfCurrentUsers.toArray(new String[listOfCurrentUsers.size()]);
+        comboBoxUser.setModel(new DefaultComboBoxModel<>(usersArray));
     }
 
 }
