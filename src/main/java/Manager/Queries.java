@@ -144,10 +144,11 @@ public class Queries {
         ResultSet resultSet=null;
         Statement statement;
         try{
-            String query=String.format("SELECT status,user_id, title, author.first_name, author.last_name,yearofproduction,genre.name FROM public.book\n" +
+            String query=String.format("SELECT status,users.username,users.user_id, title, author.first_name, author.last_name,yearofproduction,genre.name  FROM public.book\n" +
                     "LEFT JOIN author on book.author_id=author.author_id\n" +
                     "LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
                     "LEFT JOIN library on book.library_id= library.library_id\n" +
+                    "LEFT JOIN users on book.user_id=users.user_id\n"+
                     "WHERE library.library_name='%s'",libraryName);
             statement=connection.createStatement();
             resultSet=statement.executeQuery(query);
@@ -155,16 +156,16 @@ public class Queries {
             while(resultSet.next()){
 
                 String status=resultSet.getString("status");
-                String assignedTo=resultSet.getString("user_id");
+                String assignedTo=resultSet.getString("username");
                 if(assignedTo==null){
                     assignedTo="None";
                 }
                 String title=resultSet.getString("title");
-                String author=resultSet.getString("first_name") +resultSet.getString("last_name");
+                String author=resultSet.getString("first_name") +" "+resultSet.getString("last_name");
                 String yearOfProduction=resultSet.getString("yearofproduction");
                 String genre=resultSet.getString("name");
 
-                String bookInfo = "Status: " + status + " Assigned to: " + assignedTo + " Title: " + title + " Author: " + author + " Production date: " + yearOfProduction + " Genre: " + genre;
+                String bookInfo = "Status: " + status+ "," + " Assigned to: " + assignedTo+ ","  + " Title: " + title +"," + " Author: " + author +"," + " Production date: " + yearOfProduction +"," + " Genre: " + genre;
 
                allBooks.add(bookInfo);
             }
@@ -174,6 +175,96 @@ public class Queries {
         return allBooks;
     }
 
+    public static List<String> getAllAvailableBook(String libraryName){
+        List<String> allBooks= new ArrayList<>();
+        ResultSet resultSet=null;
+        Statement statement;
+        try{
+            String query=String.format("SELECT status, users.username,users.user_id, title, author.first_name, author.last_name,yearofproduction,genre.name  FROM public.book\n" +
+                    "LEFT JOIN author on book.author_id=author.author_id\n" +
+                    "LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
+                    "LEFT JOIN library on book.library_id= library.library_id\n" +
+                    "LEFT JOIN users on book.user_id=users.user_id\n"+
+                    "WHERE library.library_name='%s' and  book.status='AVAILABLE' and book.user_id is NULL",libraryName);
+            statement=connection.createStatement();
+            resultSet=statement.executeQuery(query);
+
+            while(resultSet.next()){
+                String status=resultSet.getString("status");
+                String assignedTo=resultSet.getString("username");
+                if(assignedTo==null){
+                    assignedTo="None";
+                }
+                String title=resultSet.getString("title");
+                String author=resultSet.getString("first_name") + " "+resultSet.getString("last_name");
+                String yearOfProduction=resultSet.getString("yearofproduction");
+                String genre=resultSet.getString("name");
+
+                String bookInfo = "Status: " + status+ "," + " Assigned to: " + assignedTo+ ","  + " Title: " + title +"," + " Author: " + author +"," + " Production date: " + yearOfProduction +"," + " Genre: " + genre;
+                allBooks.add(bookInfo);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return allBooks;
+    }
+
+    public static boolean checkIfAnyBookIsAvailable(String libraryName){
+        List<String> allBooks= new ArrayList<>();
+        ResultSet resultSet=null;
+        Statement statement;
+        try{
+            String query=String.format("SELECT status, users.username,users.user_id, title, author.first_name, author.last_name,yearofproduction,genre.name  FROM public.book\n" +
+                    "LEFT JOIN author on book.author_id=author.author_id\n" +
+                    "LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
+                    "LEFT JOIN library on book.library_id= library.library_id\n" +
+                    "LEFT JOIN users on book.user_id=users.user_id\n"+
+                    "WHERE library.library_name='%s' and  book.status='AVAILABLE' and book.user_id is NULL",libraryName);
+            statement=connection.createStatement();
+            resultSet=statement.executeQuery(query);
+
+            while(resultSet.next()){
+                String status=resultSet.getString("status");
+               if(status.equals("AVAILABLE")){
+                   return true;
+               }
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return false;
+    }
+
+
+    public static void updateBookStatusByTitle(String library, String status, String value,String assignedTo){
+        Statement statement;
+        try{
+            String query=String.format("UPDATE book\n" +
+                    "SET status = '%s', user_id = (SELECT user_id FROM users WHERE username = '%s')\n" +
+                    "WHERE title = '%s' AND library_id IN (SELECT library_id FROM library WHERE library_name = '%s');",status,assignedTo,value,library);
+            statement=connection.createStatement();
+            statement.executeUpdate(query);
+            System.out.println("Data updated");
+
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+    public static void updateALLBooksStatusInLibrary(String library,String assignedTo, String statusOld, String statusNew){
+        Statement statement;
+        try{
+            String query=String.format("UPDATE book\n" +
+                    "SET status = '%s', user_id = (SELECT user_id FROM users WHERE username = '%s')\n" +
+                    "WHERE status='%s' AND library_id IN (SELECT library_id FROM library WHERE library_name = '%s');",statusNew, assignedTo,statusOld,library);
+            statement=connection.createStatement();
+            statement.executeUpdate(query);
+            System.out.println("Data updated");
+
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
 
 
 

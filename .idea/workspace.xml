@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="zostawienie flowlibrary do momentu przepisania na bazy danych + logowanie poprawnie z DB">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="show all">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" afterDir="false" />
@@ -131,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00096" summary="naprawa filtrowania aby było widoczne od razu, bez koniecznosci przekliwania się">
-      <created>1707652643639</created>
-      <option name="number" value="00096" />
-      <option name="presentableId" value="LOCAL-00096" />
-      <option name="project" value="LOCAL" />
-      <updated>1707652643639</updated>
     </task>
     <task id="LOCAL-00097" summary="quick view">
       <created>1707655821644</created>
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708065960501</updated>
     </task>
-    <option name="localTasksCounter" value="145" />
+    <task id="LOCAL-00145" summary="show all">
+      <created>1708068582565</created>
+      <option name="number" value="00145" />
+      <option name="presentableId" value="LOCAL-00145" />
+      <option name="project" value="LOCAL" />
+      <updated>1708068582565</updated>
+    </task>
+    <option name="localTasksCounter" value="146" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -490,7 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="image załadowane do source" />
     <MESSAGE value="wywalenie starego kodu + walidacja na hasło" />
     <MESSAGE value="wywalenie starego kodu" />
     <MESSAGE value="ograniczenie ilości znaków dla add book i update book" />
@@ -515,7 +514,8 @@
     <MESSAGE value="wyłączenie ikon podczas logowania" />
     <MESSAGE value="2 pierwsze zapytania do biblioteki i wyświetlania userów działaja ok" />
     <MESSAGE value="zostawienie flowlibrary do momentu przepisania na bazy danych + logowanie poprawnie z DB" />
-    <option name="LAST_COMMIT_MESSAGE" value="zostawienie flowlibrary do momentu przepisania na bazy danych + logowanie poprawnie z DB" />
+    <MESSAGE value="show all" />
+    <option name="LAST_COMMIT_MESSAGE" value="show all" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -546,30 +546,17 @@
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java</url>
-          <line>140</line>
-          <option name="timeStamp" value="36" />
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
+          <line>334</line>
+          <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java</url>
-          <line>139</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java</url>
-          <line>141</line>
-          <option name="timeStamp" value="38" />
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
+          <line>336</line>
+          <option name="timeStamp" value="46" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="Book.getStatus() == Status.BORROWED" />
-        <watch expression="Book.getAssignedUserToBook().getName().equals(userChooseIFrame.getChoosenUserName()" />
-        <watch expression="userChooseIFrame.getChoosenUserName()" />
-        <watch expression="libraryDataBase.getListOfLibrary()" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
