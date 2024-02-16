@@ -204,6 +204,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 categoryComboBox.setVisible(false);
                 SubCategoryComboBox.setVisible(false);
                 ConfirmChoice.setEnabled(true);
+                borrowALL.setVisible(false);
 
 
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
@@ -231,15 +232,12 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
 
-
-
-                for (Book Book : flowLibrary.getListOfBooks()) {
-                    if(Book.getStatus()==Status.BORROWED && Book.getAssignedUserToBook().getName().equals(userChooseIFrame.getChoosenUserName())) {
-                        modifiedModel.addElement(Book.toString());
-                    }
+                for (String book : Queries.getAllBorrowedBooksByUser(CurrentLibraryName,userChooseIFrame.getSelectedUserValue())) {
+                        modifiedModel.addElement(book);
                 }
+                list.setModel(modifiedModel);
 
-                if (checkIfAllBooksReturned(library.getListOfBooks())) {
+                if (!Queries.checkIfAnyBookIsInStatusBorrowed(CurrentLibraryName,userChooseIFrame.getSelectedUserValue())) {
 
                     ConfirmChoice.setEnabled(false);
                     returnAll.setEnabled(false);
@@ -306,15 +304,14 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                     if (selectedIndices.length > 0) {
 
                         if(selectedValues.size()>1){
-
+                            int odp = JOptionPane.showConfirmDialog(null, "Do you want to borrow all selected books ?");
+                            if (odp == JOptionPane.YES_OPTION) {
                             for(int i=0; i<selectedValues.size();i++) {
 
                                 String titleOfBookToUnassingFromUser = extractTitle(selectedValues.get(i));
                                 Queries.updateBookStatusByTitle(CurrentLibraryName,"BORROWED",titleOfBookToUnassingFromUser,userChooseIFrame.getSelectedUserValue());
 
                             }
-                            int odp = JOptionPane.showConfirmDialog(null, "Do you want to borrow all selected books ?");
-                            if (odp == JOptionPane.YES_OPTION) {
 
                                 DefaultListModel<String> modifiedModel1 = new DefaultListModel<>();
                                 for (String book : Queries.getAllAvailableBook(CurrentLibraryName)) {
@@ -367,70 +364,50 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                         DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
                         if(selectedValues.size()>1) {
+                            int odp = JOptionPane.showConfirmDialog(null, "Do you want return all selected books? ");
+                            if (odp == JOptionPane.YES_OPTION) {
+
 
                             for (int i = 0; i < selectedValues.size(); i++) {
                                 String titleOfBookToUnassingFromUser = extractTitle(selectedValues.get(i));
-                                Book bookInstance = null;
 
-                                for (Book book : flowLibrary.getListOfBooks()) {
-                                    if (book.getTitle().equals(titleOfBookToUnassingFromUser)) {
-                                        bookInstance = book;
-                                        break;
-                                    }
-                                }
-                                bookInstance.setStatus(Status.AVAILABLE);
-                                bookInstance.setAssignedUserToBook(new User("None", "none"));
+                                Queries.updateBookStatusByTitle(CurrentLibraryName,"AVAILABLE",titleOfBookToUnassingFromUser,null);
+
                             }
-                            int odp = JOptionPane.showConfirmDialog(null, "Do you want return all selected books? ");
-                            if (odp == JOptionPane.YES_OPTION) {
-                                for (Book Book : flowLibrary.getListOfBooks()) {
-                                    if (Book.getStatus() == Status.BORROWED && Book.getAssignedUserToBook().getName().equals(userChooseIFrame.getChoosenUserName())) {
-                                        modifiedModel.addElement(Book.toString());
-                                    }
-                                }
+
+
+                            for (String book : Queries.getAllBorrowedBooksByUser(CurrentLibraryName,userChooseIFrame.getSelectedUserValue())) {
+                                modifiedModel.addElement(book);
+                            }
                                 list.setModel(modifiedModel);
-                                if (checkIfAllBooksReturned(library.getListOfBooks())) {
+
+                                if (!Queries.checkIfAnyBookIsInStatusBorrowed(CurrentLibraryName,userChooseIFrame.getSelectedUserValue())) {
                                     returnAll.setEnabled(false);
                                     ConfirmChoice.setEnabled(false);
                                 }
                                 JOptionPane.showMessageDialog(null, "All selected books has been returned successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
-                                booksLabel.setText(RefreshListOfAvailableBook(library) + " books available in library");
+                              //  booksLabel.setText(RefreshListOfAvailableBook(library) + " books available in library");
                             }
                         }
                         if (selectedValues.size() == 1) {
                             String titleOfBookToUnassingFromUser = extractTitle(list.getSelectedValue());
-                            Book bookInstance = null;
 
-                            for (Book book : flowLibrary.getListOfBooks()) {
-                                if (book.getTitle().equals(titleOfBookToUnassingFromUser)) {
-                                    bookInstance = book;
-                                    break;
-                                }
-                            }
-
-
-                            int odp = JOptionPane.showConfirmDialog(null, "Do you want return a book: " + bookInstance.getTitle() + " ?");
+                            int odp = JOptionPane.showConfirmDialog(null, "Do you want return a book: " + titleOfBookToUnassingFromUser + " ?");
                             if (odp == JOptionPane.YES_OPTION) {
 
-
-                                bookInstance.setStatus(Status.AVAILABLE);
-                                bookInstance.setAssignedUserToBook(new User("None", "none"));
-
-
-                                for (Book Book : flowLibrary.getListOfBooks()) {
-                                    if (Book.getStatus() == Status.BORROWED && Book.getAssignedUserToBook().getName().equals(userChooseIFrame.getChoosenUserName())) {
-                                        modifiedModel.addElement(Book.toString());
-                                    }
+                                Queries.updateBookStatusByTitle(CurrentLibraryName,"AVAILABLE",titleOfBookToUnassingFromUser,null);
+                                for (String book : Queries.getAllBorrowedBooksByUser(CurrentLibraryName,userChooseIFrame.getSelectedUserValue())) {
+                                    modifiedModel.addElement(book);
                                 }
                                 list.setModel(modifiedModel);
 
 
-                                if (checkIfAllBooksReturned(library.getListOfBooks())) {
+                                if (!Queries.checkIfAnyBookIsInStatusBorrowed(CurrentLibraryName,userChooseIFrame.getSelectedUserValue())) {
                                     returnAll.setEnabled(false);
                                     ConfirmChoice.setEnabled(false);
                                 }
-                                JOptionPane.showMessageDialog(null, "Book " + bookInstance.getTitle() + " has been returned successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
-                                booksLabel.setText(RefreshListOfAvailableBook(library) + " books available in library");
+                                JOptionPane.showMessageDialog(null, "Book " + titleOfBookToUnassingFromUser + " has been returned successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
+                               // booksLabel.setText(RefreshListOfAvailableBook(library) + " books available in library");
                             }
                         }
                     } else {
@@ -595,7 +572,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
 
                     int odp = JOptionPane.showConfirmDialog(null, "Do you want to borrow all books?");
                     if (odp == JOptionPane.YES_OPTION) {
-                        Queries.updateALLBooksStatusInLibrary(CurrentLibraryName,userChooseIFrame.getSelectedUserValue(),"AVAILABLE","BORROWED");
+                        Queries.setAllBooksBorrowed(CurrentLibraryName,userChooseIFrame.getSelectedUserValue(),"AVAILABLE","BORROWED");
 
                         JOptionPane.showMessageDialog(null, "All books have been borrowed successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
 
@@ -618,31 +595,22 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-
-
-
                 int odp = JOptionPane.showConfirmDialog(null, "Do you want to return all books?");
                 if (odp == JOptionPane.YES_OPTION) {
-                    for (Book book : flowLibrary.getListOfBooks()) {
-                        if (book.getStatus()==Status.BORROWED && book.getAssignedUserToBook().getName().equals(userChooseIFrame.getChoosenUserName())) {
-                            book.setStatus(Status.AVAILABLE);
-                            book.setAssignedUserToBook(new User("None", "none"));
-                        }
 
-                    }
-
+                    Queries.setAllBooksAvailable(CurrentLibraryName,null,"BORROWED","AVAILABLE",userChooseIFrame.getSelectedUserValue());
                     JOptionPane.showMessageDialog(null, "All books have been borrowed successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
 
+
                     DefaultListModel<String> modifiedModel1 = new DefaultListModel<>();
-                    for (Book Book : flowLibrary.getListOfBooks()) {
-                        if (Book.getStatus() == Status.BORROWED && Book.getAssignedUserToBook().getName().equals(userChooseIFrame.getChoosenUserName())) {
-                            modifiedModel1.addElement(Book.toString());
-                        }
+                    for (String book : Queries.getAllBorrowedBooksByUser(CurrentLibraryName,userChooseIFrame.getSelectedUserValue())) {
+                        modifiedModel1.addElement(book);
                     }
                     list.setModel(modifiedModel1);
-                    booksLabel.setText(RefreshListOfAvailableBook(library) + " books available in library");
-                    if (checkIfAllBooksReturned(flowLibrary.getListOfBooks())) {
+
+                 //   booksLabel.setText(RefreshListOfAvailableBook(library) + " books available in library");
+
+                    if (!Queries.checkIfAnyBookIsInStatusBorrowed(CurrentLibraryName,userChooseIFrame.getSelectedUserValue())) {
                         ConfirmChoice.setEnabled(false);
                         returnAll.setEnabled(false);
                     }

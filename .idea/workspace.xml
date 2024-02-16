@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="show all">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="borrow operation done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" afterDir="false" />
@@ -131,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00097" summary="quick view">
-      <created>1707655821644</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1707655821644</updated>
     </task>
     <task id="LOCAL-00098" summary="dodanie opcji szukania po assigned to, UI modyfikacje admina">
       <created>1707658862750</created>
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708068582565</updated>
     </task>
-    <option name="localTasksCounter" value="146" />
+    <task id="LOCAL-00146" summary="borrow operation done">
+      <created>1708077358550</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1708077358550</updated>
+    </task>
+    <option name="localTasksCounter" value="147" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -490,7 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="wywalenie starego kodu + walidacja na hasło" />
     <MESSAGE value="wywalenie starego kodu" />
     <MESSAGE value="ograniczenie ilości znaków dla add book i update book" />
     <MESSAGE value="sprzątanie powtarzającego się kodu" />
@@ -515,7 +514,8 @@
     <MESSAGE value="2 pierwsze zapytania do biblioteki i wyświetlania userów działaja ok" />
     <MESSAGE value="zostawienie flowlibrary do momentu przepisania na bazy danych + logowanie poprawnie z DB" />
     <MESSAGE value="show all" />
-    <option name="LAST_COMMIT_MESSAGE" value="show all" />
+    <MESSAGE value="borrow operation done" />
+    <option name="LAST_COMMIT_MESSAGE" value="borrow operation done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -544,16 +544,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java</url>
           <line>137</line>
           <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>334</line>
-          <option name="timeStamp" value="45" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>336</line>
-          <option name="timeStamp" value="46" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
