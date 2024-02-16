@@ -1,6 +1,6 @@
 
 i
-java:S1192”"FDefine a constant instead of duplicating this literal "Error" 4 times.(‘·½³ÿÿÿÿÿ8Ñú·Ú1
+java:S1192È"FDefine a constant instead of duplicating this literal "Error" 4 times.(‘·½³ÿÿÿÿÿ8Ñú·Ú1
 E
 java:S1604m"(Make this anonymous inner class a lambda(Ï¸8Òú·Ú1
 J
@@ -18,6 +18,22 @@ java:S1172""(Remove this unused method parameter "b".(â“Ñïÿÿÿÿÿ8‚û·Ú1
 java:S1186S"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(÷—8Šû·Ú1
 £
 java:S1186^"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(˜Â½€øÿÿÿÿ8Šû·Ú1
-^	java:S125¦"<This block of commented-out lines of code should be removed.(œ‚•½ùÿÿÿÿ8œû·Ú1
+¤
+java:S1186ƒ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Š¿˜¶ûÿÿÿÿ8ÉÔ„„Û1
+
+java:S1186‘"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Æ†êC8ÊÔ„„Û1
+¤
+java:S1186•"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(›ĞêÕûÿÿÿÿ8ÊÔ„„Û1
+¤
+java:S1186š"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Šá® şÿÿÿÿ8ÊÔ„„Û1
+¤
+java:S1186Ÿ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ô—»ûÿÿÿÿ8ÊÔ„„Û1
+Ÿ
+java:S1186¤"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(£íÂ´8ÊÔ„„Û1
+F	java:S108À")Either remove or fill this block of code.(”ı¾8ÓÔ„„Û1
+[
+java:S1128"9Remove this unused import 'org.example.UserManager.User'.(‹©»Œùÿÿÿÿ8²Õ„„Û1
+L
+java:S1068"/Remove this unused "flowLibrary" private field.(ş¸é±8µÕ„„Û1
 Q
 java:S1068 "4Remove this unused "adminActionFrame" private field.(ï«8ïÑæ¿Ú1

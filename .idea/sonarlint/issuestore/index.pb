@@ -48,3 +48,7 @@ P
  src/main/java/Manager/SetUp.java,8\c\8c8348283ab014acf72f0d65eb786cccaa7e16cf
 Z
 *src/main/java/Manager/CommonFunctions.java,e\2\e2bb85aa9f4462f68dbe4b737b7a3d03b6378edd
+W
+'src/main/java/Manager/DbConnection.java,e\4\e414714d768232635f391e1e1c3dd270a995ed76
+R
+"src/main/java/Manager/Queries.java,4\7\47fba06fa83002b8874b322db5f7dd0b1af892e2

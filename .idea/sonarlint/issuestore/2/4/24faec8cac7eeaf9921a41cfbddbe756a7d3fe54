@@ -1,15 +1,15 @@
 
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(úÃ†ş8ì®¿üÙ1
-e
-java:S1659"CDeclare "assign" and all following declarations on a separate line.(õ·ìıûÿÿÿÿ8¦ÜÚüÙ1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(úÃ†ş8‡ú’…Û1
+F
+java:S1659"$Declare "assign" on a separate line.(˜·¦üÿÿÿÿ8îäŸ…Û1
 M
-java:S1948"1Make "libraryDataBase" transient or serializable.(¥€ş8¦ÜÚüÙ1
+java:S1948"1Make "libraryDataBase" transient or serializable.(¥€ş8ïäŸ…Û1
 J
-java:S1948"-Make "flowLibrary" transient or serializable.(ş¸é±8¦ÜÚüÙ1
-G	java:S106^"+Replace this use of System.err by a logger.(ÿâƒÙ8âŸ•Ú1
+java:S1948"-Make "flowLibrary" transient or serializable.(ş¸é±8ïäŸ…Û1
+L	java:S1067"+Replace this use of System.out by a logger.(îù¬±şÿÿÿÿ8òäŸ…Û1
+G	java:S106p"+Replace this use of System.err by a logger.(ÿâƒÙ8†åŸ…Û1
 k
-java:S3252m"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(Õû»öşÿÿÿÿ8ş®¿üÙ1
-o	java:S100u"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñé³øüÿÿÿÿ8ş®¿üÙ1
-H	java:S106"+Replace this use of System.err by a logger.(ÿâƒÙ8ôŸ•Ú1
-U
-java:S1068"3Remove this unused "selectedLibrary" private field.(õ·ìıûÿÿÿÿ8®ÜÚüÙ1
+java:S3252"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(Õû»öşÿÿÿÿ8ŠåŸ…Û1
+p	java:S100‡"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñé³øüÿÿÿÿ8‹åŸ…Û1
+O
+java:S1128"2Remove this unused import 'java.sql.SQLException'.(ÛïÆŸ8ÉÏš…Û1

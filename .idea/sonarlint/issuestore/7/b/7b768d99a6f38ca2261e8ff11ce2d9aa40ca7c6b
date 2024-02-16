@@ -1,27 +1,31 @@
 
 Q
-java:S3740/"/Provide the parametrized type for this generic.(ÄÂÎøÿÿÿÿ8À„¯åÚ1
+java:S3740:"/Provide the parametrized type for this generic.(¹ñ÷ûÿÿÿÿ8‚ğ»„Û1
+Q
+java:S3740>"/Provide the parametrized type for this generic.(ÄÂÎøÿÿÿÿ8‚ğ»„Û1
 {
-java:S2293>"YReplace the type specification in this constructor call with the diamond operator ("<>").(˜îûÿÿÿÿ8Ò™ş£Ú1
+java:S2293M"YReplace the type specification in this constructor call with the diamond operator ("<>").(˜îûÿÿÿÿ8Á„¯åÚ1
 |
-java:S2293Ë"YReplace the type specification in this constructor call with the diamond operator ("<>").(˜îûÿÿÿÿ8Á„¯åÚ1
-D
-java:S1604u"(Make this anonymous inner class a lambda(‚Ø÷x8ÔÁƒ¤Ú1
+java:S2293ç"YReplace the type specification in this constructor call with the diamond operator ("<>").(˜îûÿÿÿÿ8ƒğ»„Û1
 E
-java:S1604}"(Make this anonymous inner class a lambda(ßÛ¬8Á„¯åÚ1
+java:S1604Œ"(Make this anonymous inner class a lambda(‚Ø÷x8„ğ»„Û1
 F
-java:S1604‰"(Make this anonymous inner class a lambda(õ»õ´8Á„¯åÚ1
+java:S1604”"(Make this anonymous inner class a lambda(ßÛ¬8„ğ»„Û1
 F
-java:S1604˜"(Make this anonymous inner class a lambda(‹Êí8Á„¯åÚ1
+java:S1604¡"(Make this anonymous inner class a lambda(õ»õ´8„ğ»„Û1
+F
+java:S1604±"(Make this anonymous inner class a lambda(‹Êí8„ğ»„Û1
 v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(úÃ†ş8Õ™ş£Ú1
 [
-java:S2589"8Remove this expression which always evaluates to "false"(ı§Ùåøÿÿÿÿ8Ñ„¯åÚ1
-{	java:S116*"ZRename this field "ChoosenUserName" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­¿ııÿÿÿÿ8â™ş£Ú1
-s	java:S1162"RRename this field "Options" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«À¼»şÿÿÿÿ8Ò„¯åÚ1
+java:S2589¥"8Remove this expression which always evaluates to "false"(ı§Ùåøÿÿÿÿ8šğ»„Û1
+{	java:S1164"ZRename this field "ChoosenUserName" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­¿ııÿÿÿÿ8›ğ»„Û1
+s	java:S116A"RRename this field "Options" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«À¼»şÿÿÿÿ8›ğ»„Û1
 L
-java:S1659"*Declare "showPassword" on a separate line.(•ĞÅùüÿÿÿÿ8é™ş£Ú1
+java:S1659"*Declare "showPassword" on a separate line.(•ĞÅùüÿÿÿÿ8é™ş£Ú1
 J
-java:S1948-"-Make "flowLibrary" transient or serializable.(ş¸é±8ì™ş£Ú1
-H	java:S106³"+Replace this use of System.err by a logger.(éÔ—¹8ÿ™ş£Ú1
+java:S19487"-Make "flowLibrary" transient or serializable.(ş¸é±8Ÿğ»„Û1
+E	java:S108V")Either remove or fill this block of code.(”ı¾8õµ„„Û1
+H	java:S106Ï"+Replace this use of System.err by a logger.(éÔ—¹8ÿ™ş£Ú1
 l
-java:S3252Ã"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(Õû»öşÿÿÿÿ8€šş£Ú1
+java:S3252ß"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(Õû»öşÿÿÿÿ8€šş£Ú1
+F	java:S108î")Either remove or fill this block of code.(”ı¾8²ğ»„Û1

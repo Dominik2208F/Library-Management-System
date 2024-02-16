@@ -110,7 +110,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         categoryComboBox.setSelectedItem("Select");
 
         SubCategoryComboBox = new JComboBox<>();
-        SubCategoryComboBox.setBounds(590, 240, 160, 40);
+        SubCategoryComboBox.setBounds(590, 240, 180, 40);
         add(SubCategoryComboBox);
 
       //  booksLabel = new JLabel(RefreshListOfAvailableBook(library) + " books available in library");
@@ -540,11 +540,9 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 ConfirmChoice.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
-                if (flowLibrary.getListOfBooks().isEmpty()) {
+                if (Queries.getCurrentStateOfBooks(CurrentLibraryName).isEmpty()) {
                     ConfirmChoice.setEnabled(false);
-                    for (Book books : flowLibrary.getListOfBooks()) {
-                        modifiedModel.addElement(books.toString());
-                    }
+
                     list.setModel(modifiedModel);
                     ConfirmChoice.setEnabled(false);
                     SubCategoryComboBox.setEnabled(false);
@@ -554,8 +552,9 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                     ConfirmChoice.setEnabled(false);
                     SubCategoryComboBox.setEnabled(true);
                     categoryComboBox.setEnabled(true);
-                    for (Book books : flowLibrary.getListOfBooks()) {
-                        modifiedModel.addElement(books.toString());
+
+                    for (String book : Queries.getCurrentStateOfBooks(CurrentLibraryName)) {
+                        modifiedModel.addElement(book);
                     }
                     list.setModel(modifiedModel);
                 }
@@ -661,14 +660,13 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
 
         String selectedCategory = (String) categoryComboBox.getSelectedItem();
         String selectedGenre = (String) SubCategoryComboBox.getSelectedItem();
+
         DefaultListModel<String> modifiedModel = new DefaultListModel<>();
         if (selectedCategory.equals("Genre")) {
-            for (Book book : flowLibrary.getListOfBooks()) {
-                if (book.getGenre().getName().equals(selectedGenre)) {
-                    modifiedModel.addElement(book.toString());
-                    list.setModel(modifiedModel);
-                }
-            }
+
+            modifiedModel.addAll(Queries.filterBookByGenre(CurrentLibraryName,selectedGenre));
+            list.setModel(modifiedModel);
+
             if (modifiedModel.isEmpty()) {
                 list.setModel(modifiedModel);
                 JOptionPane.showMessageDialog(null,
@@ -749,9 +747,9 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
 
         List<String> listOfAuthorSurnames = new ArrayList<>();
 
-        for (Book book : flowLibrary.getListOfBooks()) {
-            if (!listOfAuthorSurnames.contains(book.getAuthor().getLastName())) {
-                listOfAuthorSurnames.add(book.getAuthor().getLastName());
+        for (String author: Queries.getAllAuthorsInLibrary(CurrentLibraryName)) {
+            if (!listOfAuthorSurnames.contains(author)) {
+                listOfAuthorSurnames.add(author);
             }
         }
 
