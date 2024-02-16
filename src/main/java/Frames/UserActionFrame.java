@@ -1,6 +1,7 @@
 package Frames;
 
 import Manager.CommonFunctions;
+import Manager.Queries;
 import org.example.LibraryManager.Book;
 import org.example.LibraryManager.Library;
 import org.example.UserManager.User;
@@ -36,10 +37,14 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
     private boolean informationReturn = true;
     private Map<String, List<String>> subcategoriesMap = new HashMap<>();
 
+    private String CurrentLibraryName;
+
     public UserActionFrame(UserChooseIFrame userChooseIFrame, Library library) {
 
         this.flowLibrary = library;
         this.userChooseIFrame = userChooseIFrame;
+        CurrentLibraryName=userChooseIFrame.getLibraryManagementFrame().getSelectedLibrary();
+
 
         DefaultListModel<String> listOfAction = new DefaultListModel<>();
         list = new JList<>(listOfAction);
@@ -108,9 +113,9 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         SubCategoryComboBox.setBounds(590, 240, 160, 40);
         add(SubCategoryComboBox);
 
-        booksLabel = new JLabel(RefreshListOfAvailableBook(library) + " books available in library");
-        booksLabel.setBounds(350, -5, 200, 30);
-        add(booksLabel);
+      //  booksLabel = new JLabel(RefreshListOfAvailableBook(library) + " books available in library");
+     //   booksLabel.setBounds(350, -5, 200, 30);
+     //   add(booksLabel);
 
 
         ascendingCheckBox = new JCheckBox("Sort Ascending");
@@ -199,9 +204,11 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 categoryComboBox.setVisible(false);
                 SubCategoryComboBox.setVisible(false);
                 ConfirmChoice.setEnabled(true);
+
+
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-                for (Book Book : flowLibrary.getListOfBooks()) {
-                    modifiedModel.addElement(Book.toString());
+                for (String book : Queries.getCurrentStateOfBooks(CurrentLibraryName)) {
+                    modifiedModel.addElement(book);
                 }
                 list.setModel(modifiedModel);
             }

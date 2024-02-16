@@ -9,12 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="2 pierwsze zapytania do biblioteki i wyświetlania userów działaja ok">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="zostawienie flowlibrary do momentu przepisania na bazy danych + logowanie poprawnie z DB">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00095" summary="filtrowanie">
-      <created>1707652465490</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
-      <option name="project" value="LOCAL" />
-      <updated>1707652465490</updated>
     </task>
     <task id="LOCAL-00096" summary="naprawa filtrowania aby było widoczne od razu, bez koniecznosci przekliwania się">
       <created>1707652643639</created>
@@ -478,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708037638832</updated>
     </task>
-    <option name="localTasksCounter" value="144" />
+    <task id="LOCAL-00144" summary="zostawienie flowlibrary do momentu przepisania na bazy danych + logowanie poprawnie z DB">
+      <created>1708065960501</created>
+      <option name="number" value="00144" />
+      <option name="presentableId" value="LOCAL-00144" />
+      <option name="project" value="LOCAL" />
+      <updated>1708065960501</updated>
+    </task>
+    <option name="localTasksCounter" value="145" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -493,7 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="sposob na image" />
     <MESSAGE value="image załadowane do source" />
     <MESSAGE value="wywalenie starego kodu + walidacja na hasło" />
     <MESSAGE value="wywalenie starego kodu" />
@@ -518,7 +514,8 @@
     <MESSAGE value="naprawa logowania nowy przycisk" />
     <MESSAGE value="wyłączenie ikon podczas logowania" />
     <MESSAGE value="2 pierwsze zapytania do biblioteki i wyświetlania userów działaja ok" />
-    <option name="LAST_COMMIT_MESSAGE" value="2 pierwsze zapytania do biblioteki i wyświetlania userów działaja ok" />
+    <MESSAGE value="zostawienie flowlibrary do momentu przepisania na bazy danych + logowanie poprawnie z DB" />
+    <option name="LAST_COMMIT_MESSAGE" value="zostawienie flowlibrary do momentu przepisania na bazy danych + logowanie poprawnie z DB" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -549,24 +546,19 @@
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java</url>
-          <line>149</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java</url>
-          <line>151</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java</url>
-          <line>144</line>
+          <line>140</line>
           <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java</url>
-          <line>143</line>
+          <line>139</line>
           <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java</url>
+          <line>141</line>
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
