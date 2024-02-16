@@ -9,20 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="mechanizm zwracania i pozyczenai działa prawidłowo na oby dwóch bibliotekach">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/4/24faec8cac7eeaf9921a41cfbddbe756a7d3fe54" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/4/24faec8cac7eeaf9921a41cfbddbe756a7d3fe54" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/c/4cf2018acf9b42de00f835938a522046c008bc15" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/c/4cf2018acf9b42de00f835938a522046c008bc15" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/6/76998923163ea64ff0942259a4ed24251851c1d5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/6/76998923163ea64ff0942259a4ed24251851c1d5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/b/7b768d99a6f38ca2261e8ff11ce2d9aa40ca7c6b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/b/7b768d99a6f38ca2261e8ff11ce2d9aa40ca7c6b" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/8251c39afc23fd07238a418a07a93aa2b02025db" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/8251c39afc23fd07238a418a07a93aa2b02025db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/4/b41e6b9820012c6dfd43d0772f40a27aaeddc7b8" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/4/b41e6b9820012c6dfd43d0772f40a27aaeddc7b8" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/3/d3b360b3cbf860f75ab994bcb733faf67bdd5af9" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/3/d3b360b3cbf860f75ab994bcb733faf67bdd5af9" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/2/e21847d94a89f15623c6a79b3d5df7055569c2ef" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/2/e21847d94a89f15623c6a79b3d5df7055569c2ef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="genre filtering">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -142,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00099" summary="naprawa zarządzenai returnALl i borrowALl">
-      <created>1707661976388</created>
-      <option name="number" value="00099" />
-      <option name="presentableId" value="LOCAL-00099" />
-      <option name="project" value="LOCAL" />
-      <updated>1707661976389</updated>
     </task>
     <task id="LOCAL-00100" summary="filtrowanie user panel">
       <created>1707662170441</created>
@@ -486,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708083616691</updated>
     </task>
-    <option name="localTasksCounter" value="148" />
+    <task id="LOCAL-00148" summary="genre filtering">
+      <created>1708123757713</created>
+      <option name="number" value="00148" />
+      <option name="presentableId" value="LOCAL-00148" />
+      <option name="project" value="LOCAL" />
+      <updated>1708123757713</updated>
+    </task>
+    <option name="localTasksCounter" value="149" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -501,7 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ograniczenie ilości znaków dla add book i update book" />
     <MESSAGE value="sprzątanie powtarzającego się kodu" />
     <MESSAGE value="sprzątanie powtarzającego się kodu cz2" />
     <MESSAGE value="zmiana nazwy przycisku log out" />
@@ -526,7 +514,8 @@
     <MESSAGE value="show all" />
     <MESSAGE value="borrow operation done" />
     <MESSAGE value="mechanizm zwracania i pozyczenai działa prawidłowo na oby dwóch bibliotekach" />
-    <option name="LAST_COMMIT_MESSAGE" value="mechanizm zwracania i pozyczenai działa prawidłowo na oby dwóch bibliotekach" />
+    <MESSAGE value="genre filtering" />
+    <option name="LAST_COMMIT_MESSAGE" value="genre filtering" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

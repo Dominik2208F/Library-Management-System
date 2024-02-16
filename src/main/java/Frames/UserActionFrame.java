@@ -659,45 +659,39 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
     public  void subCategoryFiltering(){
 
         String selectedCategory = (String) categoryComboBox.getSelectedItem();
-        String selectedGenre = (String) SubCategoryComboBox.getSelectedItem();
+        String selectedValue = (String) SubCategoryComboBox.getSelectedItem();
 
         DefaultListModel<String> modifiedModel = new DefaultListModel<>();
         if (selectedCategory.equals("Genre")) {
 
-            modifiedModel.addAll(Queries.filterBookByGenre(CurrentLibraryName,selectedGenre));
+            modifiedModel.addAll(Queries.filterBookByGenre(CurrentLibraryName,selectedValue));
             list.setModel(modifiedModel);
 
             if (modifiedModel.isEmpty()) {
                 list.setModel(modifiedModel);
                 JOptionPane.showMessageDialog(null,
-                        "No book meets the criteria Category " + selectedCategory + " and " + selectedGenre, "Message", JOptionPane.INFORMATION_MESSAGE);
+                        "No book meets the criteria Category " + selectedCategory + " and " + selectedValue, "Message", JOptionPane.INFORMATION_MESSAGE);
             }
         } else if (selectedCategory.equals("Author")) {
 
-            for (Book book : flowLibrary.getListOfBooks()) {
-                if (book.getAuthor().getLastName().equals(selectedGenre)) {
-                    modifiedModel.addElement(book.toString());
-                    list.setModel(modifiedModel);
-                }
-            }
+            String[] partsOfAuthors=selectedValue.split(" ");
+
+            modifiedModel.addAll(Queries.filterBookByAuthorNameAndSurname(CurrentLibraryName,partsOfAuthors[1],partsOfAuthors[0]));
+            list.setModel(modifiedModel);
+
             if (modifiedModel.isEmpty()) {
                 list.setModel(modifiedModel);
                 JOptionPane.showMessageDialog(null,
-                        "No book meets the criteria Category " + selectedCategory + " and " + selectedGenre, "Message", JOptionPane.INFORMATION_MESSAGE);
+                        "No book meets the criteria Category " + selectedCategory + " and " + selectedValue, "Message", JOptionPane.INFORMATION_MESSAGE);
             }
         }
         else if(selectedCategory.equals("Status")){
-
-            for (Book book : flowLibrary.getListOfBooks()) {
-                if (book.getStatus().toString().equals(selectedGenre)) {
-                    modifiedModel.addElement(book.toString());
-                    list.setModel(modifiedModel);
-                }
-            }
+            modifiedModel.addAll(Queries.filterBookByStatus(CurrentLibraryName,selectedValue));
+            list.setModel(modifiedModel);
             if (modifiedModel.isEmpty()) {
                 list.setModel(modifiedModel);
                 JOptionPane.showMessageDialog(null,
-                        "No book meets the criteria Category " + selectedCategory + " and " + selectedGenre, "Message", JOptionPane.INFORMATION_MESSAGE);
+                        "No book meets the criteria Category " + selectedCategory + " and " + selectedValue, "Message", JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }
