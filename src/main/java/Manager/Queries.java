@@ -119,6 +119,26 @@ public class Queries {
         }
     }
 
+    public static String getPasswordOfUser(String username,String libraryName){
+
+        ResultSet resultSet=null;
+        Statement statement;
+        try{
+            String query=String.format("SELECT password FROM public.users LEFT JOIN library on users.library_id=library.library_id where library.library_name='%s' and users.username='%s'",libraryName,username);
+            statement=connection.createStatement();
+            resultSet=statement.executeQuery(query);
+
+            while(resultSet.next()){
+                return resultSet.getString("password");
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
+
+
+
     public void update_name(String tableName,String oldValue,String newValue){
         Statement statement;
         try{

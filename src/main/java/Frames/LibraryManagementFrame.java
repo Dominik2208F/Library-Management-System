@@ -140,6 +140,7 @@ public class LibraryManagementFrame extends JFrame implements ActionListener, Co
             for (Library librarySpec : libraryDataBase.getListOfLibrary()) {
                 if (librarySpec.getNameOfLibrary().equalsIgnoreCase(selectedLibrary)) {
                     flowLibrary = librarySpec;
+                    break;
                 }
             }
             UserChooseIFrame userChooseIFrame = new UserChooseIFrame(flowLibrary, LibraryManagementFrame.this);

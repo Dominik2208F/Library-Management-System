@@ -11,10 +11,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="2 pierwsze zapytania do biblioteki i wyświetlania userów działaja ok">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/PasswordPopUpJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/PasswordPopUpJFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -548,6 +548,26 @@
           <line>137</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java</url>
+          <line>149</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java</url>
+          <line>151</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java</url>
+          <line>144</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java</url>
+          <line>143</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -555,6 +575,7 @@
         <watch expression="Book.getStatus() == Status.BORROWED" />
         <watch expression="Book.getAssignedUserToBook().getName().equals(userChooseIFrame.getChoosenUserName()" />
         <watch expression="userChooseIFrame.getChoosenUserName()" />
+        <watch expression="libraryDataBase.getListOfLibrary()" />
       </configuration>
     </watches-manager>
   </component>

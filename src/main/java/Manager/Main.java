@@ -36,8 +36,8 @@ Main {
 
         LibraryDataBase libraryDataBase = new LibraryDataBase();
         SetUp SetUp = new SetUp(libraryDataBase);
-    //    SetUp.createDefaultLibrariesSetUp("Pruszkowska");
-    //    SetUp.createDefaultLibrariesSetUp("Warszawska");
+        SetUp.createDefaultLibrariesSetUp("Pruszkowska");
+        SetUp.createDefaultLibrariesSetUp("Warszawska");
         new LibraryManagementFrame(libraryDataBase);
 
 

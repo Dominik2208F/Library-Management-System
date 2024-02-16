@@ -1,6 +1,7 @@
 package Frames;
 
 import Manager.CommonFunctions;
+import Manager.Queries;
 import org.example.LibraryManager.Library;
 
 import javax.swing.*;
@@ -146,8 +147,12 @@ public class LoginUserFrame extends JFrame implements CommonFunctions {
     public void logInto(Library library) {
         char[] passwordchar = passwordField.getPassword();
         String password = new String(passwordchar);
+        String UserName=userChoose.getChoosenUserName();
 
-        if (flowLibrary.getLibraryUserDataBase().returnObjectOfUserByName(userChoose.getChoosenUserName()).getPassword().equalsIgnoreCase(password)) {
+        String passwordFromDB= Queries.getPasswordOfUser(UserName,userChoose.getLibraryManagementFrame().getSelectedLibrary());
+
+
+        if (passwordFromDB.equals(password)) {
             int odp = JOptionPane.showConfirmDialog(null, "Confirm your choice");
 
             if (odp == JOptionPane.YES_OPTION) {
