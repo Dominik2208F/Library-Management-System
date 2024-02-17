@@ -163,7 +163,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         ImageIcon qucikView = setIcon("/view.png");
         QuickView.setIcon(qucikView);
 
-        filter = new JButton("Filter books in library");
+        filter = new JButton("Full filter of books");
         filter.setBounds(10, 250, 200, 40);
         add(filter);
 
@@ -187,7 +187,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         Sort.setIcon(sortIcon);
 
 
-        categoryComboBoxBorrow = new JComboBox<>(new String[]{"Author", "Genre", "Select","All"});
+        categoryComboBoxBorrow = new JComboBox<>(new String[]{"Author", "Genre", "Select","All available"});
         categoryComboBoxBorrow.setBounds(400, 190, 160, 40);
         add(categoryComboBoxBorrow);
        categoryComboBoxBorrow.setSelectedItem("Select");
@@ -653,6 +653,9 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 if (descendingCheckBox.isSelected()) {
                     ascendingCheckBox.setSelected(false);
                     SortingComboBox();
+                } else if (!ascendingCheckBox.isSelected()) {
+                    ascendingCheckBox.setSelected(true);
+                    SortingComboBox();
                 }
             }
         });
@@ -662,6 +665,9 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
             public void itemStateChanged(ItemEvent e) {
                 if (ascendingCheckBox.isSelected()) {
                     descendingCheckBox.setSelected(false);
+                    SortingComboBox();
+                } else if (!descendingCheckBox.isSelected()) {
+                    descendingCheckBox.setSelected(true);
                     SortingComboBox();
                 }
             }
@@ -673,6 +679,9 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 if (descendingCheckBoxFiltering.isSelected()) {
                     ascendingCheckBoxFiltering.setSelected(false);
                     subCategoryFiltering();
+                } else if (!ascendingCheckBoxFiltering.isSelected()) {
+                    ascendingCheckBoxFiltering.setSelected(true);
+                    subCategoryFiltering();
                 }
             }
         });
@@ -680,8 +689,11 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         ascendingCheckBoxFiltering.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
-                if (ascendingCheckBoxFiltering.isSelected() ) {
+                if (ascendingCheckBoxFiltering.isSelected()) {
                     descendingCheckBoxFiltering.setSelected(false);
+                    subCategoryFiltering();
+                } else if (!descendingCheckBoxFiltering.isSelected()) {
+                    descendingCheckBoxFiltering.setSelected(true);
                     subCategoryFiltering();
                 }
             }
@@ -709,6 +721,9 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 if (descendingCheckBoxFilteringBorrow.isSelected()) {
                     ascendingCheckBoxFilteringBorrow.setSelected(false);
                     subCategoryFilteringBorrow();
+                } else if (!ascendingCheckBoxFilteringBorrow.isSelected()) {
+                    ascendingCheckBoxFilteringBorrow.setSelected(true);
+                    subCategoryFilteringBorrow();
                 }
             }
         });
@@ -718,6 +733,9 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
             public void itemStateChanged(ItemEvent e) {
                 if (ascendingCheckBoxFilteringBorrow.isSelected()) {
                     descendingCheckBoxFilteringBorrow.setSelected(false);
+                    subCategoryFilteringBorrow();
+                } else if (!descendingCheckBoxFilteringBorrow.isSelected()) {
+                    descendingCheckBoxFilteringBorrow.setSelected(true);
                     subCategoryFilteringBorrow();
                 }
             }
@@ -1026,7 +1044,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 JOptionPane.showMessageDialog(null,
                         "No book meets the criteria Category " + selectedCategory + " and " + selectedValue, "Message", JOptionPane.INFORMATION_MESSAGE);
             }
-        } else if (selectedCategory.equals("All")) {
+        } else if (selectedCategory.equals("All available")) {
 
             if (ascendingCheckBoxFilteringBorrow.isSelected()) {
                 modifiedModel.addAll(Queries.getAllAvailableBookSorting(CurrentLibraryName,"ASC"));
@@ -1110,14 +1128,14 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         subcategoriesMap.put("Select", Arrays.asList(" "));
         subcategoriesMap.put("Author", listOfAuthorSurnames);
         subcategoriesMap.put("Genre", Arrays.asList("Akcji","Przygodowa", "ScienceFiction", "Romans", "Historyczne", "Akademickie", "Finansowe", "Dramat"));
-        subcategoriesMap.put("All", Arrays.asList(" "));
+        subcategoriesMap.put("All available", Arrays.asList(" "));
         String selectedCategory = (String) categoryComboBoxBorrow.getSelectedItem();
 
         List<String> subcategories = subcategoriesMap.get(selectedCategory);
         String subcategoriesArray[] = subcategories.toArray(new String[subcategories.size()]);
 
 
-        if (subcategories != null && !selectedCategory.equals("Select") && !selectedCategory.equals("All")) {
+        if (subcategories != null && !selectedCategory.equals("Select") && !selectedCategory.equals("All available")) {
             ascendingCheckBoxFilteringBorrow.setVisible(true);
             descendingCheckBoxFilteringBorrow.setVisible(true);
             SubCategoryComboBoxBorrow.setEnabled(true);
