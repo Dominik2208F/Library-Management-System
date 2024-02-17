@@ -30,7 +30,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
     JLabel booksLabel;
 
     private JComboBox<String> sortComboBox, categoryComboBox, SubCategoryComboBox,categoryComboBoxBorrow,SubCategoryComboBoxBorrow;
-    private JComboBox<Integer> rangeComboBox,scrollableComboBox;
+    private JComboBox<Integer> rangeComboBoxLeft,scrollableComboBox;
 
     private boolean borrowButtonClicked = false;
     private boolean returnButtonClicked = false;
@@ -232,22 +232,35 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         scrollableComboBox.setMaximumRowCount(10); // Set the maximum visible rows
 
         // Create a JComboBox with range selection from 0 to 200
-        rangeComboBox = new JComboBox<>();
+        rangeComboBoxLeft = new JComboBox<>();
         DefaultComboBoxModel<Integer> rangeModel = new DefaultComboBoxModel<>();
         for (int i = 0; i <= 2024; i++) {
             rangeModel.addElement(i);
         }
-        rangeComboBox.setModel(rangeModel);
+        rangeComboBoxLeft.setModel(rangeModel);
 
-        add(rangeComboBox);
+        add(rangeComboBoxLeft);
         add(scrollableComboBox);
 
-        rangeComboBox.setBounds(590, 240, 70, 40);
+        rangeComboBoxLeft.setBounds(590, 240, 70, 40);
         scrollableComboBox.setBounds(670,240,70,40);
 
 
-        rangeComboBox.setVisible(false);
+        rangeComboBoxLeft.setVisible(false);
         scrollableComboBox.setVisible(false);
+
+        rangeComboBoxLeft.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                subCategoryFiltering();
+            }
+        });
+        scrollableComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                subCategoryFiltering();
+            }
+        });
 
         QuickView.addActionListener(new ActionListener() {
             @Override
@@ -282,7 +295,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 SubCategoryComboBoxBorrow.setVisible(false);
                 categoryComboBoxBorrow.setVisible(false);
 
-                rangeComboBox.setVisible(false);
+                rangeComboBoxLeft.setVisible(false);
                 scrollableComboBox.setVisible(false);
 
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
@@ -314,7 +327,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 SubCategoryComboBoxBorrow.setVisible(false);
                 categoryComboBoxBorrow.setVisible(false);
 
-                rangeComboBox.setVisible(false);
+                rangeComboBoxLeft.setVisible(false);
                 scrollableComboBox.setVisible(false);
 
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
@@ -365,7 +378,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 categoryComboBoxBorrow.setVisible(false);
                 list.setEnabled(true);
 
-                rangeComboBox.setVisible(false);
+                rangeComboBoxLeft.setVisible(false);
                 scrollableComboBox.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
@@ -397,7 +410,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 SubCategoryComboBox.setVisible(false);
                 ConfirmChoice.setEnabled(true);
 
-                rangeComboBox.setVisible(false);
+                rangeComboBoxLeft.setVisible(false);
                 scrollableComboBox.setVisible(false);
 
                 if(!returnButtonClicked) {
@@ -551,7 +564,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 SubCategoryComboBoxBorrow.setVisible(false);
                 categoryComboBoxBorrow.setVisible(false);
 
-                rangeComboBox.setVisible(false);
+                rangeComboBoxLeft.setVisible(false);
                 scrollableComboBox.setVisible(false);
 
                 new UserChooseIFrame(userChooseIFrame.getFlowLibrary(), userChooseIFrame.getLibraryManagementFrame());
@@ -571,7 +584,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 SubCategoryComboBoxBorrow.setVisible(false);
                 categoryComboBoxBorrow.setVisible(false);
 
-                rangeComboBox.setVisible(false);
+                rangeComboBoxLeft.setVisible(false);
                 scrollableComboBox.setVisible(false);
 
                 sortComboBox.setVisible(false);
@@ -605,7 +618,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 SubCategoryComboBoxBorrow.setVisible(true);
                 categoryComboBoxBorrow.setVisible(true);
 
-                rangeComboBox.setVisible(false);
+                rangeComboBoxLeft.setVisible(false);
                 scrollableComboBox.setVisible(false);
 
                 DefaultListModel<String> modifiedModelOverall = new DefaultListModel<>();
@@ -784,7 +797,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 }
                 else if(selectedCategory.equals("Production date")){
 
-                    rangeComboBox.setVisible(true);
+                    rangeComboBoxLeft.setVisible(true);
                     scrollableComboBox.setVisible(true);
                     SubCategoryComboBox.setEnabled(true);
                     categoryComboBox.setEnabled(true);
@@ -953,6 +966,28 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                         "No book meets the criteria Category " + selectedCategory + " and " + selectedValue, "Message", JOptionPane.INFORMATION_MESSAGE);
             }
         }
+
+        else if(selectedCategory.equals("Production date")) {
+
+            Integer minValue = (Integer) rangeComboBoxLeft.getSelectedItem();
+            Integer MaxValue = (Integer) scrollableComboBox.getSelectedItem();
+
+            if (minValue != 0 && MaxValue != 0) {
+                if (ascendingCheckBoxFiltering.isSelected()) {
+                    modifiedModel.addAll(Queries.filterBookByProductionDate(CurrentLibraryName, minValue, MaxValue, "ASC"));
+                }
+                if (descendingCheckBoxFiltering.isSelected()) {
+                    modifiedModel.addAll(Queries.filterBookByProductionDate(CurrentLibraryName, minValue, MaxValue, "DESC"));
+                }
+                list.setModel(modifiedModel);
+
+                if (modifiedModel.isEmpty()) {
+                    list.setModel(modifiedModel);
+                    JOptionPane.showMessageDialog(null,
+                            "No book meets the criteria Category " + selectedCategory + " and range between min: " + minValue + " and " + MaxValue, "Message", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        }
     }
 
     public  void subCategoryFilteringBorrow(){
@@ -1069,22 +1104,23 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
             SubCategoryComboBox.setEnabled(true);
             SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
             SubCategoryComboBox.setVisible(true);
-            rangeComboBox.setVisible(false);
+            rangeComboBoxLeft.setVisible(false);
             scrollableComboBox.setVisible(false);
             subCategoryFiltering();
 
         }else if(selectedCategory.equals("Production date")){
             SubCategoryComboBox.setVisible(false);
-            rangeComboBox.setVisible(true);
+            rangeComboBoxLeft.setVisible(true);
             scrollableComboBox.setVisible(true);
         }
         else {
+            SubCategoryComboBox.setEnabled(false);
+            rangeComboBoxLeft.setVisible(false);
+            scrollableComboBox.setVisible(false);
             JOptionPane.showMessageDialog(null,
                     "Choose filter parameter", "Message", JOptionPane.INFORMATION_MESSAGE);
             SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
-            SubCategoryComboBox.setEnabled(false);
-            rangeComboBox.setVisible(false);
-            scrollableComboBox.setVisible(false);
+
             list.setModel(new DefaultListModel<>());
         }
     }
