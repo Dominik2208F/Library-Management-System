@@ -299,7 +299,7 @@ public class Queries {
                     " WHERE status='%s' AND library_id IN (SELECT library_id FROM library WHERE library_name = '%s') AND user_id IN (SELECT user_id FROM users WHERE username = '%s')",statusNew,assignTO,statusOld,library,currentAssigned));
             statement=connection.createStatement();
             statement.executeUpdate(query);
-            System.out.println("Data updated");
+            System.out.println("Data updated: "+"Library "+library+" has been assigned to " +assignTO + " Old status "+statusOld + " New Status "+statusNew + " was assgined to"+currentAssigned);
 
         }catch (Exception e){
             System.out.println(e);
@@ -385,7 +385,7 @@ public class Queries {
                 String author=resultSet.getString("first_name") + " "+resultSet.getString("last_name");
                 String yearOfProduction=resultSet.getString("yearofproduction");
                 String genree=resultSet.getString("name");
-                String bookInfo ="Status: " + status+ "," +  "Title: " + title +"," + " Author: " + author +"," + " Production date: " + yearOfProduction +"," + " Genre: " + genree;
+                String bookInfo ="Status: " + status+ "," +  " Title: " + title +"," + " Author: " + author +"," + " Production date: " + yearOfProduction +"," + " Genre: " + genree;
                 allBooks.add(bookInfo);
             }
         }catch (Exception e){
@@ -415,7 +415,7 @@ public class Queries {
                 String author=resultSet.getString("first_name") + " "+resultSet.getString("last_name");
                 String yearOfProduction=resultSet.getString("yearofproduction");
                 String genree=resultSet.getString("name");
-                String bookInfo ="Status: " + status+ "," +  "Title: " + title +"," + " Author: " + author +"," + " Production date: " + yearOfProduction +"," + " Genre: " + genree;
+                String bookInfo ="Status: " + status+ "," +  " Title: " + title +"," + " Author: " + author +"," + " Production date: " + yearOfProduction +"," + " Genre: " + genree;
                 allBooks.add(bookInfo);
             }
         }catch (Exception e){
@@ -446,7 +446,7 @@ public class Queries {
                 String author=resultSet.getString("first_name") + " "+resultSet.getString("last_name");
                 String yearOfProduction=resultSet.getString("yearofproduction");
                 String genree=resultSet.getString("name");
-                String bookInfo ="Status: " + status+ "," +  "Title: " + title +"," + " Author: " + author +"," + " Production date: " + yearOfProduction +"," + " Genre: " + genree;
+                String bookInfo ="Status: " + status+ "," +  " Title: " + title +"," + " Author: " + author +"," + " Production date: " + yearOfProduction +"," + " Genre: " + genree;
                 allBooks.add(bookInfo);
             }
         }catch (Exception e){
@@ -456,7 +456,7 @@ public class Queries {
         return allBooks;
     }
 
-    public static List<String> filterBookByAuthorNameAndSurnameOnlyAvailable(String libraryName,String name,String Surname,String sortinDirection){
+    public static List<String> filterBookByAuthorNameAndSurnameOnlyAvailable(String libraryName,String name,String Surname,String sortingDirection){
         List<String> allBooks= new ArrayList<>();
         ResultSet resultSet=null;
         Statement statement;
@@ -466,7 +466,7 @@ public class Queries {
                     "    LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
                     "    LEFT JOIN library on book.library_id= library.library_id\n" +
                     "    LEFT JOIN users on book.user_id=users.user_id\n" +
-                    "    WHERE library.library_name='%s' and  author.first_name='%s' and author.last_name='%s' and status='AVAILABLE' ORDER BY title %s",libraryName,name,Surname,sortinDirection);
+                    "    WHERE library.library_name='%s' and  author.first_name='%s' and author.last_name='%s' and status='AVAILABLE' ORDER BY title %s",libraryName,name,Surname,sortingDirection);
             statement=connection.createStatement();
             resultSet=statement.executeQuery(query);
 
@@ -476,7 +476,7 @@ public class Queries {
                 String author=resultSet.getString("first_name") + " "+resultSet.getString("last_name");
                 String yearOfProduction=resultSet.getString("yearofproduction");
                 String genree=resultSet.getString("name");
-                String bookInfo ="Status: " + status+ "," +  "Title: " + title +"," + " Author: " + author +"," + " Production date: " + yearOfProduction +"," + " Genre: " + genree;
+                String bookInfo ="Status: " + status+ "," +  " Title: " + title +"," + " Author: " + author +"," + " Production date: " + yearOfProduction +"," + " Genre: " + genree;
                 allBooks.add(bookInfo);
             }
         }catch (Exception e){
@@ -507,7 +507,7 @@ public class Queries {
                 String author=resultSet.getString("first_name") + " "+resultSet.getString("last_name");
                 String yearOfProduction=resultSet.getString("yearofproduction");
                 String genree=resultSet.getString("name");
-                String bookInfo ="Status: " + status+ "," +  "Title: " + title +"," + " Author: " + author +"," + " Production date: " + yearOfProduction +"," + " Genre: " + genree;
+                String bookInfo ="Status: " + status+ "," +  " Title: " + title +"," + " Author: " + author +"," + " Production date: " + yearOfProduction +"," + " Genre: " + genree;
                 allBooks.add(bookInfo);
             }
         }catch (Exception e){

@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="filtrowanie całe zrobione w połączeniu z sortowaniem+nowa funkcjonalnosc">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="gotowe przycisku pod filtrowanie na borrow">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" afterDir="false" />
@@ -131,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00102" summary="naprawa usuniecia usera z ksiązkami">
-      <created>1707698872483</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1707698872483</updated>
     </task>
     <task id="LOCAL-00103" summary="dodanie kolorów do innych Framów">
       <created>1707701603811</created>
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708128520240</updated>
     </task>
-    <option name="localTasksCounter" value="151" />
+    <task id="LOCAL-00151" summary="gotowe przycisku pod filtrowanie na borrow">
+      <created>1708133666141</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1708133666141</updated>
+    </task>
+    <option name="localTasksCounter" value="152" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -490,7 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="zmiana nazwy przycisku log out" />
     <MESSAGE value="dodanie komunikatu dodania user + zmiana biblioteki z poziomu usera" />
     <MESSAGE value="data z przyszłości kalendarz i walidacja roku produkcji z przyszłośći" />
     <MESSAGE value="zablokowanie stworzenie usera z takimi samym username" />
@@ -515,98 +514,25 @@
     <MESSAGE value="genre filtering" />
     <MESSAGE value="filtrowanie całe zrobione." />
     <MESSAGE value="filtrowanie całe zrobione w połączeniu z sortowaniem+nowa funkcjonalnosc" />
-    <option name="LAST_COMMIT_MESSAGE" value="filtrowanie całe zrobione w połączeniu z sortowaniem+nowa funkcjonalnosc" />
+    <MESSAGE value="gotowe przycisku pod filtrowanie na borrow" />
+    <option name="LAST_COMMIT_MESSAGE" value="gotowe przycisku pod filtrowanie na borrow" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/Users.java</url>
-          <line>88</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/PasswordPopUpJFrame.java</url>
-          <line>55</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/PasswordPopUpJFrame.java</url>
-          <line>60</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/PasswordPopUpJFrame.java</url>
-          <line>64</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java</url>
-          <line>137</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>876</line>
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>895</line>
-          <option name="timeStamp" value="53" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>896</line>
-          <option name="timeStamp" value="54" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>899</line>
-          <option name="timeStamp" value="55" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>900</line>
-          <option name="timeStamp" value="56" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>902</line>
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>1024</line>
-          <option name="timeStamp" value="69" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>1029</line>
-          <option name="timeStamp" value="70" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>1020</line>
-          <option name="timeStamp" value="71" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>913</line>
-          <option name="timeStamp" value="72" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>916</line>
-          <option name="timeStamp" value="74" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>919</line>
-          <option name="timeStamp" value="75" />
+          <line>629</line>
+          <option name="timeStamp" value="87" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="list.getSelectedValue()" />
+        <watch expression="extractTitle(list.getSelectedValue())" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
