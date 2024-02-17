@@ -9,9 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="poprawa działania filtra na borrow">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="naprawa checboxów do filtrowania borrow i zwykłego oraz sortowania">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00110" summary="add user image">
-      <created>1707761749201</created>
-      <option name="number" value="00110" />
-      <option name="presentableId" value="LOCAL-00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1707761749201</updated>
     </task>
     <task id="LOCAL-00111" summary="nowy admin panel wymiary">
       <created>1707762915134</created>
@@ -474,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708187688587</updated>
     </task>
-    <option name="localTasksCounter" value="159" />
+    <task id="LOCAL-00159" summary="naprawa checboxów do filtrowania borrow i zwykłego oraz sortowania">
+      <created>1708188331316</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1708188331316</updated>
+    </task>
+    <option name="localTasksCounter" value="160" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -489,7 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="zwracania na adminie wieluksiążek" />
     <MESSAGE value="przycisk wyboru przypisania ksiazki do usera" />
     <MESSAGE value="poprawki widocznośći do borrow A book button" />
     <MESSAGE value="wybór z listy. Przed logiką do zwracania i zmienna" />
@@ -514,7 +514,8 @@
     <MESSAGE value="filtrowanie naprawione żeby resetował od razu wartość" />
     <MESSAGE value="filtrowanie działa po production i pages" />
     <MESSAGE value="poprawa działania filtra na borrow" />
-    <option name="LAST_COMMIT_MESSAGE" value="poprawa działania filtra na borrow" />
+    <MESSAGE value="naprawa checboxów do filtrowania borrow i zwykłego oraz sortowania" />
+    <option name="LAST_COMMIT_MESSAGE" value="naprawa checboxów do filtrowania borrow i zwykłego oraz sortowania" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

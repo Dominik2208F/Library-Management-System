@@ -117,11 +117,12 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
      //   add(booksLabel);
 
 
-        ascendingCheckBox = new JCheckBox("Sort Ascending");
-        ascendingCheckBox.setBounds(250, 190, 150, 30);
+        ascendingCheckBox = new JCheckBox("Sort \uD83E\uDC79");
+        ascendingCheckBox.setBounds(500, 185, 150, 30);
+        ascendingCheckBox.setSelected(true);
 
-        descendingCheckBox = new JCheckBox("Sort Descending");
-        descendingCheckBox.setBounds(400, 190, 150, 30);
+        descendingCheckBox = new JCheckBox("Sort \uD83E\uDC7B");
+        descendingCheckBox.setBounds(500, 205, 150, 30);
         add(ascendingCheckBox);
         add(descendingCheckBox);
 
@@ -181,7 +182,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
 
         Sort = new JButton("Sort books in library");
         Sort.setBounds(10, 300, 200, 40);
-        add(Sort);
+      //  add(Sort);
 
         ImageIcon sortIcon = setIcon("/from-a-to-z.png");
         Sort.setIcon(sortIcon);
@@ -275,9 +276,9 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 list.setEnabled(true);
                 returnAll.setVisible(false);
                 ConfirmChoice.setVisible(false);
-                ascendingCheckBox.setVisible(false);
-                descendingCheckBox.setVisible(false);
-                sortComboBox.setVisible(false);
+                ascendingCheckBox.setVisible(true);
+                descendingCheckBox.setVisible(true);
+                sortComboBox.setVisible(true);
                 categoryComboBox.setVisible(false);
                 SubCategoryComboBox.setVisible(false);
                 ConfirmChoice.setEnabled(true);
@@ -1163,45 +1164,18 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
     }
     public  void SortingComboBox(){
         DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-        List<Book> temporaryList = new ArrayList<>();
 
-
-        temporaryList.addAll(flowLibrary.getListOfBooks());
-        Comparator<Book> comparator = null;
         String selectedSortOption = (String) sortComboBox.getSelectedItem();
 
-
-        if ("Title".equals(selectedSortOption)) {
-            comparator = Comparator.comparing(Book::getTitle);
-        } else if ("Author".equals(selectedSortOption)) {
-            comparator = Comparator.comparing(Book::getAuthor);
-        } else if ("Genre".equals(selectedSortOption)) {
-            comparator = Comparator.comparing(Book::getGenre);
-        }
-        else if("Status".equals(selectedSortOption)){
-            comparator = Comparator.comparing(Book::getStatus);
-        }
-        //
-        if (!ascendingCheckBox.isSelected() && !descendingCheckBox.isSelected()) {
-            JOptionPane.showMessageDialog(null, "Choose ascending or descending type and try again", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            if (comparator != null) {
                 if (ascendingCheckBox.isSelected()) {
-                    Collections.sort(temporaryList, comparator);
+                    modifiedModel.addAll(Queries.sortBookByParameter(CurrentLibraryName,selectedSortOption.toLowerCase(),"ASC"));
+                    list.setModel(modifiedModel);
                 }
-
 
                 if (descendingCheckBox.isSelected()) {
-                    Collections.sort(temporaryList, comparator.reversed());
+                    modifiedModel.addAll(Queries.sortBookByParameter(CurrentLibraryName,selectedSortOption.toLowerCase(),"DESC"));
+                    list.setModel(modifiedModel);
                 }
 
-            }
-
-            for (Book book : temporaryList) {
-                modifiedModel.addElement(book.toString());
-            }
-            list.setModel(modifiedModel);
         }
-    }
-
 }
