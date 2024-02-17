@@ -239,8 +239,8 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         add(rangeComboBoxLeft);
         add(scrollableComboBox);
 
-        rangeComboBoxLeft.setBounds(590, 240, 70, 40);
-        scrollableComboBox.setBounds(670,240,70,40);
+        rangeComboBoxLeft.setBounds(590, 290, 70, 40);
+        scrollableComboBox.setBounds(670,290,70,40);
 
 
         rangeComboBoxLeft.setVisible(false);
@@ -1130,20 +1130,21 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
             subCategoryFiltering();
 
         }else if(selectedCategory.equals("Production date") || selectedCategory.equals("Pages")){
-            SubCategoryComboBox.setVisible(false);
+            SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
             rangeComboBoxLeft.setVisible(true);
             scrollableComboBox.setVisible(true);
+            SubCategoryComboBox.setEnabled(false);
+            SubCategoryComboBox.setVisible(true);
             subCategoryFiltering();
         }
         else {
+            list.setModel(new DefaultListModel<>());
+            SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
             SubCategoryComboBox.setEnabled(false);
             rangeComboBoxLeft.setVisible(false);
             scrollableComboBox.setVisible(false);
             JOptionPane.showMessageDialog(null,
                     "Choose filter parameter", "Message", JOptionPane.INFORMATION_MESSAGE);
-            SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
-
-            list.setModel(new DefaultListModel<>());
         }
     }
 
