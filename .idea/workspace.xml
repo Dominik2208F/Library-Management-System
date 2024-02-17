@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="genre filtering">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="filtrowanie całe zrobione.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" afterDir="false" />
@@ -131,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00100" summary="filtrowanie user panel">
-      <created>1707662170441</created>
-      <option name="number" value="00100" />
-      <option name="presentableId" value="LOCAL-00100" />
-      <option name="project" value="LOCAL" />
-      <updated>1707662170441</updated>
     </task>
     <task id="LOCAL-00101" summary="nowy UI">
       <created>1707697710197</created>
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708123757713</updated>
     </task>
-    <option name="localTasksCounter" value="149" />
+    <task id="LOCAL-00149" summary="filtrowanie całe zrobione.">
+      <created>1708125975912</created>
+      <option name="number" value="00149" />
+      <option name="presentableId" value="LOCAL-00149" />
+      <option name="project" value="LOCAL" />
+      <updated>1708125975912</updated>
+    </task>
+    <option name="localTasksCounter" value="150" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -490,7 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="sprzątanie powtarzającego się kodu" />
     <MESSAGE value="sprzątanie powtarzającego się kodu cz2" />
     <MESSAGE value="zmiana nazwy przycisku log out" />
     <MESSAGE value="dodanie komunikatu dodania user + zmiana biblioteki z poziomu usera" />
@@ -515,7 +514,8 @@
     <MESSAGE value="borrow operation done" />
     <MESSAGE value="mechanizm zwracania i pozyczenai działa prawidłowo na oby dwóch bibliotekach" />
     <MESSAGE value="genre filtering" />
-    <option name="LAST_COMMIT_MESSAGE" value="genre filtering" />
+    <MESSAGE value="filtrowanie całe zrobione." />
+    <option name="LAST_COMMIT_MESSAGE" value="filtrowanie całe zrobione." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
