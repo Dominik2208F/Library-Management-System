@@ -546,6 +546,36 @@ public class Queries {
         return allBooks;
     }
 
+    public static List<String> filterBookByPages(String libraryName,Integer min,Integer max,String sortDirection){
+        List<String> allBooks= new ArrayList<>();
+        ResultSet resultSet=null;
+        Statement statement;
+        try{
+            String query=String.format(" SELECT status, users.username,pages, title, author.first_name, author.last_name,yearofproduction,genre.name  FROM public.book\n" +
+                    "LEFT JOIN author on book.author_id=author.author_id\n" +
+                    "LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
+                    "LEFT JOIN library on book.library_id= library.library_id\n" +
+                    "LEFT JOIN users on book.user_id=users.user_id\n" +
+                    "WHERE library.library_name='%s' AND  pages BETWEEN '%s' AND '%s' ORDER BY yearofproduction %s",libraryName,min,max,sortDirection);
+            statement=connection.createStatement();
+            resultSet=statement.executeQuery(query);
+            while(resultSet.next()){
+                String status=resultSet.getString("status");
+                String title=resultSet.getString("title");
+                String author=resultSet.getString("first_name") + " "+resultSet.getString("last_name");
+                String yearOfProduction=resultSet.getString("yearofproduction");
+                String genree=resultSet.getString("name");
+                String pages=resultSet.getString("pages");
+                String bookInfo ="Status: " + status+ "," +  " Title: " + title +"," + " Author: " + author +"," + " Production date: " + yearOfProduction +"," + " Genre: " + genree+" Pages: "+pages;
+                allBooks.add(bookInfo);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+            e.printStackTrace();
+        }
+        return allBooks;
+    }
+
 
 
 

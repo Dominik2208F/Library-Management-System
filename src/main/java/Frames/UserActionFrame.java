@@ -105,7 +105,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         sortComboBox.setBounds(590, 190, 160, 40);
         add(sortComboBox);
 
-        categoryComboBox = new JComboBox<>(new String[]{"Author", "Genre", "Select","Status","Production date"});
+        categoryComboBox = new JComboBox<>(new String[]{"Author", "Genre", "Select","Status","Production date","Pages"});
         categoryComboBox.setBounds(590, 190, 160, 40);
         add(categoryComboBox);
         categoryComboBox.setSelectedItem("Select");
@@ -223,7 +223,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
 
         scrollableComboBox = new JComboBox<>();
         DefaultComboBoxModel<Integer> scrollableModel = new DefaultComboBoxModel<>();
-        for (int i = 1800; i <= 2024; i++) {
+        for (int i = 0; i <= 2024; i++) {
             scrollableModel.addElement(i);
         }
         scrollableComboBox.setModel(scrollableModel);
@@ -231,7 +231,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
 
         rangeComboBoxLeft = new JComboBox<>();
         DefaultComboBoxModel<Integer> rangeModel = new DefaultComboBoxModel<>();
-        for (int i = 1800; i <= 2024; i++) {
+        for (int i = 0; i <= 2024; i++) {
             rangeModel.addElement(i);
         }
         rangeComboBoxLeft.setModel(rangeModel);
@@ -986,6 +986,28 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 }
             }
         }
+        else if(selectedCategory.equals("Pages")) {
+
+            Integer minValue = (Integer) rangeComboBoxLeft.getSelectedItem();
+            Integer MaxValue = (Integer) scrollableComboBox.getSelectedItem();
+
+            if (minValue != 0 || MaxValue != 0) {
+                if (ascendingCheckBoxFiltering.isSelected()) {
+                    modifiedModel.addAll(Queries.filterBookByPages(CurrentLibraryName, minValue, MaxValue, "ASC"));
+                    list.setModel(modifiedModel);
+                }
+                if (descendingCheckBoxFiltering.isSelected()) {
+                    modifiedModel.addAll(Queries.filterBookByPages(CurrentLibraryName, minValue, MaxValue, "DESC"));
+                    list.setModel(modifiedModel);
+                }
+
+                if (modifiedModel.isEmpty()) {
+                    list.setModel(modifiedModel);
+                    JOptionPane.showMessageDialog(null,
+                            "No book meets the criteria Category " + selectedCategory + " and range between min: " + minValue + " and " + MaxValue, "Message", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        }
     }
 
     public  void subCategoryFilteringBorrow(){
@@ -1091,6 +1113,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         subcategoriesMap.put("Author", listOfAuthorSurnames);
         subcategoriesMap.put("Genre", Arrays.asList("Akcji","Przygodowa", "ScienceFiction", "Romans", "Historyczne", "Akademickie", "Finansowe", "Dramat"));
         subcategoriesMap.put("Production date", Arrays.asList("Select range"));
+        subcategoriesMap.put("Pages", Arrays.asList("Select range"));
 
 
         String selectedCategory = (String) categoryComboBox.getSelectedItem();
@@ -1098,7 +1121,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         String subcategoriesArray[] = subcategories.toArray(new String[subcategories.size()]);
 
 
-        if (subcategories != null && !selectedCategory.equals("Select") && !selectedCategory.equals("Production date")) {
+        if (subcategories != null && !selectedCategory.equals("Select") && !selectedCategory.equals("Production date") && !selectedCategory.equals("Pages")) {
             SubCategoryComboBox.setEnabled(true);
             SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
             SubCategoryComboBox.setVisible(true);
@@ -1106,10 +1129,11 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
             scrollableComboBox.setVisible(false);
             subCategoryFiltering();
 
-        }else if(selectedCategory.equals("Production date")){
+        }else if(selectedCategory.equals("Production date") || selectedCategory.equals("Pages")){
             SubCategoryComboBox.setVisible(false);
             rangeComboBoxLeft.setVisible(true);
             scrollableComboBox.setVisible(true);
+            subCategoryFiltering();
         }
         else {
             SubCategoryComboBox.setEnabled(false);
