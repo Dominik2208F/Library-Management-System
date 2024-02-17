@@ -9,10 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="przyciski pod production date">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="działąjace filtrowanie po dacie produktu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,13 +130,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00105" summary="kolejne ikony">
-      <created>1707737051582</created>
-      <option name="number" value="00105" />
-      <option name="presentableId" value="LOCAL-00105" />
-      <option name="project" value="LOCAL" />
-      <updated>1707737051582</updated>
     </task>
     <task id="LOCAL-00106" summary="combobox na userchoose">
       <created>1707740579818</created>
@@ -475,7 +467,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708178334124</updated>
     </task>
-    <option name="localTasksCounter" value="154" />
+    <task id="LOCAL-00154" summary="działąjace filtrowanie po dacie produktu">
+      <created>1708179779421</created>
+      <option name="number" value="00154" />
+      <option name="presentableId" value="LOCAL-00154" />
+      <option name="project" value="LOCAL" />
+      <updated>1708179779421</updated>
+    </task>
+    <option name="localTasksCounter" value="155" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -490,7 +489,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="zablokowanie stworzenie usera z takimi samym username" />
     <MESSAGE value="dodawanie użytkownika i wyświetlanie listy" />
     <MESSAGE value="delete users lista" />
     <MESSAGE value="borrow more than 1 book" />
@@ -515,14 +513,15 @@
     <MESSAGE value="gotowe przycisku pod filtrowanie na borrow" />
     <MESSAGE value="gotowe filtrowanie na borrow i znikanie przycisków." />
     <MESSAGE value="przyciski pod production date" />
-    <option name="LAST_COMMIT_MESSAGE" value="przyciski pod production date" />
+    <MESSAGE value="działąjace filtrowanie po dacie produktu" />
+    <option name="LAST_COMMIT_MESSAGE" value="działąjace filtrowanie po dacie produktu" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>687</line>
+          <line>684</line>
           <option name="timeStamp" value="87" />
         </line-breakpoint>
       </breakpoints>

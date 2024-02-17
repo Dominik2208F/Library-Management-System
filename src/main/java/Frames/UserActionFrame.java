@@ -221,20 +221,17 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         categoryComboBox.setVisible(false);
 
 
-
-        // Create a JComboBox with scrollable capability
         scrollableComboBox = new JComboBox<>();
         DefaultComboBoxModel<Integer> scrollableModel = new DefaultComboBoxModel<>();
-        for (int i = 0; i <= 2024; i++) {
+        for (int i = 1800; i <= 2024; i++) {
             scrollableModel.addElement(i);
         }
         scrollableComboBox.setModel(scrollableModel);
-        scrollableComboBox.setMaximumRowCount(10); // Set the maximum visible rows
+        scrollableComboBox.setMaximumRowCount(10);
 
-        // Create a JComboBox with range selection from 0 to 200
         rangeComboBoxLeft = new JComboBox<>();
         DefaultComboBoxModel<Integer> rangeModel = new DefaultComboBoxModel<>();
-        for (int i = 0; i <= 2024; i++) {
+        for (int i = 1800; i <= 2024; i++) {
             rangeModel.addElement(i);
         }
         rangeComboBoxLeft.setModel(rangeModel);
@@ -681,7 +678,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 }
             }
         });
-        ascendingCheckBoxFiltering.setSelected(true); //default value
+        ascendingCheckBoxFiltering.setSelected(true);
         ascendingCheckBoxFiltering.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -774,7 +771,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 String selectedCategory = (String) categoryComboBox.getSelectedItem();
 
-                if(!selectedCategory.equals("Select")) {   // empty list as default
+                if(!selectedCategory.equals("Select")) {
                     if (Queries.getCurrentStateOfBooks(CurrentLibraryName).isEmpty()) {
                         ConfirmChoice.setEnabled(false);
 
@@ -972,14 +969,15 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
             Integer minValue = (Integer) rangeComboBoxLeft.getSelectedItem();
             Integer MaxValue = (Integer) scrollableComboBox.getSelectedItem();
 
-            if (minValue != 0 && MaxValue != 0) {
+            if (minValue != 0 || MaxValue != 0) {
                 if (ascendingCheckBoxFiltering.isSelected()) {
                     modifiedModel.addAll(Queries.filterBookByProductionDate(CurrentLibraryName, minValue, MaxValue, "ASC"));
+                    list.setModel(modifiedModel);
                 }
                 if (descendingCheckBoxFiltering.isSelected()) {
                     modifiedModel.addAll(Queries.filterBookByProductionDate(CurrentLibraryName, minValue, MaxValue, "DESC"));
+                    list.setModel(modifiedModel);
                 }
-                list.setModel(modifiedModel);
 
                 if (modifiedModel.isEmpty()) {
                     list.setModel(modifiedModel);
