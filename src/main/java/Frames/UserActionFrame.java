@@ -4,8 +4,6 @@ import Manager.CommonFunctions;
 import Manager.Queries;
 import org.example.LibraryManager.Book;
 import org.example.LibraryManager.Library;
-import org.example.UserManager.User;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -610,8 +608,8 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 SubCategoryComboBoxBorrow.setEnabled(true);
                 categoryComboBoxBorrow.setEnabled(true);
 
-                ascendingCheckBoxFilteringBorrow.setVisible(true);
-                descendingCheckBoxFilteringBorrow.setVisible(true);
+                ascendingCheckBoxFilteringBorrow.setVisible(false);
+                descendingCheckBoxFilteringBorrow.setVisible(false);
                 SubCategoryComboBoxBorrow.setVisible(true);
                 categoryComboBoxBorrow.setVisible(true);
 
@@ -884,28 +882,6 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
     }
 
 
-    public boolean checkIfAllBooksBorrowed( List<Book> books){
-
-
-
-        for(Book book : books){
-            if(book.getStatus()==Status.AVAILABLE){
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public boolean checkIfAllBooksReturned( List<Book> books){
-
-        for(Book book : books){
-            if(book.getStatus()==Status.BORROWED){
-                return false;
-            }
-        }
-        return true;
-    }
-
     public  void subCategoryFiltering(){
 
         String selectedCategory = (String) categoryComboBox.getSelectedItem();
@@ -1009,7 +985,6 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
             }
         }
     }
-
     public  void subCategoryFilteringBorrow(){
 
         String selectedCategory = (String) categoryComboBoxBorrow.getSelectedItem();
@@ -1051,50 +1026,25 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 JOptionPane.showMessageDialog(null,
                         "No book meets the criteria Category " + selectedCategory + " and " + selectedValue, "Message", JOptionPane.INFORMATION_MESSAGE);
             }
-        }
-    }
+        } else if (selectedCategory.equals("All")) {
 
-    public  void SortingComboBox(){
-        DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-        List<Book> temporaryList = new ArrayList<>();
-
-
-        temporaryList.addAll(flowLibrary.getListOfBooks());
-        Comparator<Book> comparator = null;
-        String selectedSortOption = (String) sortComboBox.getSelectedItem();
-
-
-        if ("Title".equals(selectedSortOption)) {
-            comparator = Comparator.comparing(Book::getTitle);
-        } else if ("Author".equals(selectedSortOption)) {
-            comparator = Comparator.comparing(Book::getAuthor);
-        } else if ("Genre".equals(selectedSortOption)) {
-            comparator = Comparator.comparing(Book::getGenre);
-        }
-        else if("Status".equals(selectedSortOption)){
-            comparator = Comparator.comparing(Book::getStatus);
-        }
-        //
-        if (!ascendingCheckBox.isSelected() && !descendingCheckBox.isSelected()) {
-            JOptionPane.showMessageDialog(null, "Choose ascending or descending type and try again", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            if (comparator != null) {
-                if (ascendingCheckBox.isSelected()) {
-                    Collections.sort(temporaryList, comparator);
-                }
-
-
-                if (descendingCheckBox.isSelected()) {
-                    Collections.sort(temporaryList, comparator.reversed());
-                }
+            if (ascendingCheckBoxFilteringBorrow.isSelected()) {
+                modifiedModel.addAll(Queries.getAllAvailableBookSorting(CurrentLibraryName,"ASC"));
 
             }
-
-            for (Book book : temporaryList) {
-                modifiedModel.addElement(book.toString());
+            if (descendingCheckBoxFilteringBorrow.isSelected()) {
+                modifiedModel.addAll(Queries.getAllAvailableBookSorting(CurrentLibraryName,"DESC"));
             }
             list.setModel(modifiedModel);
+
+            if (modifiedModel.isEmpty()) {
+                list.setModel(modifiedModel);
+                JOptionPane.showMessageDialog(null,
+                        "No book meets the criteria Category " + selectedCategory + " and " + selectedValue, "Message", JOptionPane.INFORMATION_MESSAGE);
+            }
+
         }
+
     }
     public void categoryFiltering(){
 
@@ -1147,7 +1097,6 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                     "Choose filter parameter", "Message", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-
     public void categoryFilteringBorrow(){
 
         List<String> listOfAuthorSurnames = new ArrayList<>();
@@ -1160,7 +1109,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
 
         subcategoriesMap.put("Select", Arrays.asList(" "));
         subcategoriesMap.put("Author", listOfAuthorSurnames);
-        subcategoriesMap.put("Genre", Arrays.asList("Przygodowa", "Akcji", "ScienceFiction", "Romans", "Historyczne", "Akademickie", "Finansowe", "Dramat"));
+        subcategoriesMap.put("Genre", Arrays.asList("Akcji","Przygodowa", "ScienceFiction", "Romans", "Historyczne", "Akademickie", "Finansowe", "Dramat"));
         subcategoriesMap.put("All", Arrays.asList(" "));
         String selectedCategory = (String) categoryComboBoxBorrow.getSelectedItem();
 
@@ -1169,25 +1118,72 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
 
 
         if (subcategories != null && !selectedCategory.equals("Select") && !selectedCategory.equals("All")) {
+            ascendingCheckBoxFilteringBorrow.setVisible(true);
+            descendingCheckBoxFilteringBorrow.setVisible(true);
             SubCategoryComboBoxBorrow.setEnabled(true);
             SubCategoryComboBoxBorrow.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
             SubCategoryComboBoxBorrow.setVisible(true);
             subCategoryFilteringBorrow();
         } else if(selectedCategory.equals("Select")) {
-            JOptionPane.showMessageDialog(null,
-                        "Choose filter parameter", "Message", JOptionPane.INFORMATION_MESSAGE);
-            SubCategoryComboBoxBorrow.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
+            SubCategoryComboBoxBorrow.setModel(new DefaultComboBoxModel<>());
             SubCategoryComboBoxBorrow.setEnabled(false);
             list.setModel(new DefaultListModel<>());
+            ascendingCheckBoxFilteringBorrow.setVisible(false);
+            descendingCheckBoxFilteringBorrow.setVisible(false);
+            JOptionPane.showMessageDialog(null,
+                        "Choose filter parameter", "Message", JOptionPane.INFORMATION_MESSAGE);
         }
-        else {
+        else { //ALL
+            ascendingCheckBoxFilteringBorrow.setVisible(true);
+            descendingCheckBoxFilteringBorrow.setVisible(true);
             DefaultListModel model= new DefaultListModel<>();
             model.addAll(Queries.getAllAvailableBook(CurrentLibraryName));
             SubCategoryComboBoxBorrow.setEnabled(false);
+            SubCategoryComboBoxBorrow.setModel(new DefaultComboBoxModel<>());
             list.setModel(model);
         }
     }
+    public  void SortingComboBox(){
+        DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+        List<Book> temporaryList = new ArrayList<>();
 
 
+        temporaryList.addAll(flowLibrary.getListOfBooks());
+        Comparator<Book> comparator = null;
+        String selectedSortOption = (String) sortComboBox.getSelectedItem();
+
+
+        if ("Title".equals(selectedSortOption)) {
+            comparator = Comparator.comparing(Book::getTitle);
+        } else if ("Author".equals(selectedSortOption)) {
+            comparator = Comparator.comparing(Book::getAuthor);
+        } else if ("Genre".equals(selectedSortOption)) {
+            comparator = Comparator.comparing(Book::getGenre);
+        }
+        else if("Status".equals(selectedSortOption)){
+            comparator = Comparator.comparing(Book::getStatus);
+        }
+        //
+        if (!ascendingCheckBox.isSelected() && !descendingCheckBox.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Choose ascending or descending type and try again", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (comparator != null) {
+                if (ascendingCheckBox.isSelected()) {
+                    Collections.sort(temporaryList, comparator);
+                }
+
+
+                if (descendingCheckBox.isSelected()) {
+                    Collections.sort(temporaryList, comparator.reversed());
+                }
+
+            }
+
+            for (Book book : temporaryList) {
+                modifiedModel.addElement(book.toString());
+            }
+            list.setModel(modifiedModel);
+        }
+    }
 
 }
