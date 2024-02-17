@@ -19,7 +19,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
     JMenuBar menubar;
     JMenu Options, Program;
     JMenuItem changeUser, changeLibrary, programInfo;
-    JButton Sort,BorrowAbook,ReturnAbook,ConfirmChoice,returnAll,borrowALL, filter,ShowAllBook,QuickView;
+    JButton lookfor,BorrowAbook,ReturnAbook,ConfirmChoice,returnAll,borrowALL, filter,ShowAllBook,QuickView;
     JList<String> list;
     Library flowLibrary;
     UserChooseIFrame userChooseIFrame;
@@ -165,7 +165,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         QuickView.setIcon(qucikView);
 
         filter = new JButton("Full filter of books");
-        filter.setBounds(10, 250, 200, 40);
+        filter.setBounds(10, 200, 200, 40);
         add(filter);
 
         ImageIcon filterIcon = setIcon("/filter.png");
@@ -180,12 +180,12 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         ImageIcon confirm = setIcon("/approved.png");
         ConfirmChoice.setIcon(confirm);
 
-        Sort = new JButton("Sort books in library");
-        Sort.setBounds(10, 300, 200, 40);
-      //  add(Sort);
+        lookfor = new JButton("Look for a book");
+        lookfor.setBounds(10, 250, 200, 40);
+        add(lookfor);
 
         ImageIcon sortIcon = setIcon("/from-a-to-z.png");
-        Sort.setIcon(sortIcon);
+        lookfor.setIcon(sortIcon);
 
 
         categoryComboBoxBorrow = new JComboBox<>(new String[]{"Author", "Genre", "Select","All available"});
@@ -295,6 +295,14 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 scrollableComboBox.setVisible(false);
 
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+
+                if(Queries.getCurrentStateOfBooks(CurrentLibraryName).isEmpty()){
+                    JOptionPane.showMessageDialog(null,
+                            "No book in library ","Messege", JOptionPane.INFORMATION_MESSAGE);
+                    sortComboBox.setVisible(false);
+                    ascendingCheckBox.setVisible(false);
+                    descendingCheckBox.setVisible(false);
+                }
                 for (String book : Queries.getCurrentStateOfBooks(CurrentLibraryName)) {
                     modifiedModel.addElement(book);
                 }
@@ -354,28 +362,27 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 }
             }
         });
-        Sort.addActionListener(new ActionListener() {
+        lookfor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ascendingCheckBox.setVisible(true);
-                descendingCheckBox.setVisible(true);
+                ascendingCheckBox.setVisible(false);
+                descendingCheckBox.setVisible(false);
                 ascendingCheckBoxFiltering.setVisible(false);
                 descendingCheckBoxFiltering.setVisible(false);
                 categoryComboBox.setVisible(false);
                 SubCategoryComboBox.setVisible(false);
-                sortComboBox.setVisible(true);
+                sortComboBox.setVisible(false);
                 returnAll.setVisible(false);
                 borrowALL.setVisible(false);
                 ConfirmChoice.setVisible(false);
-
                 ascendingCheckBoxFilteringBorrow.setVisible(false);
                 descendingCheckBoxFilteringBorrow.setVisible(false);
                 SubCategoryComboBoxBorrow.setVisible(false);
                 categoryComboBoxBorrow.setVisible(false);
                 list.setEnabled(true);
-
                 rangeComboBoxLeft.setVisible(false);
                 scrollableComboBox.setVisible(false);
+
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
                 if (flowLibrary.getListOfBooks().isEmpty()) {
