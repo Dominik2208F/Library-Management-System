@@ -614,6 +614,40 @@ public class Queries {
         return allBooks;
     }
 
+    public static List<String> searchForBookByTitle(String libraryName,String text,String sortDirection){
+        List<String> allBooks= new ArrayList<>();
+        ResultSet resultSet=null;
+        Statement statement;
+        try{
+            String query=" SELECT status, users.username, pages, title, author.first_name, author.last_name, yearofproduction, genre.name " +
+                    "FROM public.book " +
+                    "LEFT JOIN author ON book.author_id = author.author_id " +
+                    "LEFT JOIN genre ON book.genre_id = genre.genre_id " +
+                    "LEFT JOIN library ON book.library_id = library.library_id " +
+                    "LEFT JOIN users ON book.user_id = users.user_id " +
+                    "WHERE library.library_name = '" + libraryName + "' AND LOWER(title) LIKE LOWER('" + text + "%') " +
+                    "ORDER BY title " + sortDirection;
+
+            statement=connection.createStatement();
+            resultSet=statement.executeQuery(query);
+            while(resultSet.next()){
+                String status=resultSet.getString("status");
+                String title=resultSet.getString("title");
+                String author=resultSet.getString("first_name") + " "+resultSet.getString("last_name");
+                String yearOfProduction=resultSet.getString("yearofproduction");
+                String genree=resultSet.getString("name");
+                String bookInfo ="Status: " + status+ "," +  " Title: " + title +"," + " Author: " + author +"," + " Production date: " + yearOfProduction +"," + " Genre: " + genree;
+                allBooks.add(bookInfo);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+            e.printStackTrace();
+        }
+        return allBooks;
+    }
+
+
+
     public static List<String> sortBookByParameter(String libraryName,String parameter,String sortDirection){
         List<String> allBooks= new ArrayList<>();
         ResultSet resultSet=null;

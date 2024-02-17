@@ -5,11 +5,10 @@ import Manager.Queries;
 import org.example.LibraryManager.Book;
 import org.example.LibraryManager.Library;
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.*;
 import java.util.List;
 import java.util.*;
 
@@ -19,13 +18,14 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
     JMenuBar menubar;
     JMenu Options, Program;
     JMenuItem changeUser, changeLibrary, programInfo;
-    JButton lookfor,BorrowAbook,ReturnAbook,ConfirmChoice,returnAll,borrowALL, filter,ShowAllBook,QuickView;
+    JButton lookfor,BorrowAbook,ReturnAbook,ConfirmChoice,returnAll,borrowALL, filter,ShowAllBook,QuickView,Search;
     JList<String> list;
     Library flowLibrary;
     UserChooseIFrame userChooseIFrame;
     JCheckBox ascendingCheckBox,ascendingCheckBoxFiltering,ascendingCheckBoxFilteringBorrow;
     JCheckBox descendingCheckBox,descendingCheckBoxFiltering,descendingCheckBoxFilteringBorrow;
-    JLabel booksLabel;
+    JLabel booksLabel,lookForJLabel;
+    JTextField lookForTextField;
 
     private JComboBox<String> sortComboBox, categoryComboBox, SubCategoryComboBox,categoryComboBoxBorrow,SubCategoryComboBoxBorrow;
     private JComboBox<Integer> rangeComboBoxLeft,scrollableComboBox;
@@ -82,6 +82,64 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         setJMenuBar(menubar);
         menubar.add(Options);
         menubar.add(Program);
+
+        lookForTextField=new JTextField();
+        lookForTextField.setBounds(590,190,160,40);
+        add(lookForTextField);
+
+
+        lookForTextField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                DefaultListModel modifiedModel = new DefaultListModel<>();
+                for (String book : Queries.getCurrentStateOfBooks(CurrentLibraryName)) {
+                    modifiedModel.addElement(book);
+                }
+                list.setModel(modifiedModel);
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+
+            }
+        });
+
+        lookForTextField.setVisible(false);
+
+                lookForJLabel = new JLabel("Enter phrase");
+        lookForJLabel.setBounds(520,190,160,40);
+        add(lookForJLabel);
+
+        lookForJLabel.setVisible(false);
+        ImageIcon iconLookFor= setIcon("/search.png");
+        Search= new JButton("Search");
+        Search.setIcon(iconLookFor);
+        Search.setBounds(590,240,160,40);
+        add(Search);
+
+        Search.setVisible(false);
+
+        Search.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                DefaultListModel model= new DefaultListModel();
+             String textToSearch= lookForTextField.getText();
+             if(textToSearch.isEmpty()){
+                 JOptionPane.showMessageDialog(null,
+                         "Type title to look for", "Message", JOptionPane.INFORMATION_MESSAGE);
+             }
+             else{
+                model.addAll(Queries.searchForBookByTitle(CurrentLibraryName,textToSearch,"ASC"));
+                list.setModel(model);
+             }
+            }
+        });
+
 
         returnAll = new JButton("Return all");
         returnAll.setBounds(590, 190, 160, 40);
@@ -180,7 +238,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         ImageIcon confirm = setIcon("/approved.png");
         ConfirmChoice.setIcon(confirm);
 
-        lookfor = new JButton("Look for a book");
+        lookfor = new JButton("Search a book");
         lookfor.setBounds(10, 250, 200, 40);
         add(lookfor);
 
@@ -245,6 +303,26 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         rangeComboBoxLeft.setVisible(false);
         scrollableComboBox.setVisible(false);
 
+        lookForTextField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == KeyEvent.VK_ENTER && lookForTextField.isFocusOwner()){
+                    DefaultListModel model= new DefaultListModel();
+                    String textToSearch= lookForTextField.getText();
+                    if(textToSearch.isEmpty()){
+                        JOptionPane.showMessageDialog(null,
+                                "Type title to look for", "Message", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    else{
+                        model.addAll(Queries.searchForBookByTitle(CurrentLibraryName,textToSearch,"ASC"));
+                        list.setModel(model);
+                    }
+                }
+            }
+        });
+
+
+
         rangeComboBoxLeft.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -294,6 +372,10 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 rangeComboBoxLeft.setVisible(false);
                 scrollableComboBox.setVisible(false);
 
+                lookForTextField.setVisible(false);
+                lookForJLabel.setVisible(false);
+                Search.setVisible(false);
+
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
                 if(Queries.getCurrentStateOfBooks(CurrentLibraryName).isEmpty()){
@@ -334,6 +416,9 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 rangeComboBoxLeft.setVisible(false);
                 scrollableComboBox.setVisible(false);
 
+                lookForTextField.setVisible(false);
+                lookForJLabel.setVisible(false);
+                Search.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
 
@@ -383,9 +468,13 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 rangeComboBoxLeft.setVisible(false);
                 scrollableComboBox.setVisible(false);
 
+                lookForTextField.setVisible(true);
+                lookForJLabel.setVisible(true);
+                Search.setVisible(true);
+
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
-                if (flowLibrary.getListOfBooks().isEmpty()) {
+                if (Queries.getCurrentStateOfBooks(CurrentLibraryName).isEmpty()) {
                     for (Book books : flowLibrary.getListOfBooks()) {
                         modifiedModel.addElement(books.toString());
                     }
@@ -393,11 +482,10 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                     ConfirmChoice.setEnabled(false);
                     JOptionPane.showMessageDialog(null, "No books in library", "Warning", JOptionPane.WARNING_MESSAGE);
                 } else {
-                    for (Book books : flowLibrary.getListOfBooks()) {
-                        modifiedModel.addElement(books.toString());
+                    for (String book : Queries.getCurrentStateOfBooks(CurrentLibraryName)) {
+                       modifiedModel.addElement(book);
                     }
                     list.setModel(modifiedModel);
-                    ConfirmChoice.setEnabled(false);
                 }
             }
         });
@@ -415,6 +503,10 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
 
                 rangeComboBoxLeft.setVisible(false);
                 scrollableComboBox.setVisible(false);
+
+                lookForTextField.setVisible(false);
+                lookForJLabel.setVisible(false);
+                Search.setVisible(false);
 
                 if(!returnButtonClicked) {
                     ascendingCheckBoxFilteringBorrow.setVisible(true);
@@ -570,6 +662,8 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 rangeComboBoxLeft.setVisible(false);
                 scrollableComboBox.setVisible(false);
 
+                lookForTextField.setVisible(false);
+
                 new UserChooseIFrame(userChooseIFrame.getFlowLibrary(), userChooseIFrame.getLibraryManagementFrame());
                 setVisible(false);
             }
@@ -590,6 +684,8 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 rangeComboBoxLeft.setVisible(false);
                 scrollableComboBox.setVisible(false);
 
+                lookForTextField.setVisible(false);
+
                 sortComboBox.setVisible(false);
                 new LibraryManagementFrame(userChooseIFrame.getLibraryManagementFrame().getLibraryDataBase());
                 setVisible(false);
@@ -606,10 +702,10 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 categoryComboBox.setVisible(false);
                 SubCategoryComboBox.setVisible(false);
                 borrowButtonClicked = true;
-                ConfirmChoice.setEnabled(true);
+                ConfirmChoice.setEnabled(false);
                 ConfirmChoice.setVisible(true);
                 borrowALL.setVisible(true);
-                borrowALL.setEnabled(true);
+                borrowALL.setEnabled(false);
                 returnAll.setVisible(false);
                 list.setEnabled(true);
 
@@ -624,19 +720,26 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 rangeComboBoxLeft.setVisible(false);
                 scrollableComboBox.setVisible(false);
 
+                lookForTextField.setVisible(false);
+                lookForJLabel.setVisible(false);
+                Search.setVisible(false);
+
                 DefaultListModel<String> modifiedModelOverall = new DefaultListModel<>();
 
-                for (String book : Queries.getAllAvailableBook(CurrentLibraryName)) {
-                        modifiedModelOverall.addElement(book);
-                }
-                list.setModel(modifiedModelOverall);
+              ///  for (String book : Queries.getAllAvailableBook(CurrentLibraryName)) {
+              //          modifiedModelOverall.addElement(book);
+              //  }
+              //  list.setModel(modifiedModelOverall);
 
                 if (Queries.checkIfAnyBookIsAvailable(CurrentLibraryName)) {
                     if (informationBorrow) {
                         JOptionPane.showMessageDialog(null, "Choose at least one book to borrow and confirm", "Warning", JOptionPane.INFORMATION_MESSAGE);
                     }
+                    String StartVariable= (String )categoryComboBoxBorrow.getSelectedItem();
+                    if(!StartVariable.equals("Select")){
+                        categoryFilteringBorrow();
+                    }
                     informationBorrow = false;
-                    ConfirmChoice.setEnabled(true);
                     borrowButtonClicked = true;
 
                 } else {
@@ -790,7 +893,9 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 SubCategoryComboBoxBorrow.setVisible(false);
                 categoryComboBoxBorrow.setVisible(false);
 
-
+                lookForTextField.setVisible(false);
+                lookForJLabel.setVisible(false);
+                Search.setVisible(false);
 
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 String selectedCategory = (String) categoryComboBox.getSelectedItem();
@@ -1144,6 +1249,8 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
 
 
         if (subcategories != null && !selectedCategory.equals("Select") && !selectedCategory.equals("All available")) {
+            ConfirmChoice.setEnabled(true);
+            borrowALL.setEnabled(true);
             ascendingCheckBoxFilteringBorrow.setVisible(true);
             descendingCheckBoxFilteringBorrow.setVisible(true);
             SubCategoryComboBoxBorrow.setEnabled(true);
@@ -1153,6 +1260,8 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         } else if(selectedCategory.equals("Select")) {
             SubCategoryComboBoxBorrow.setModel(new DefaultComboBoxModel<>());
             SubCategoryComboBoxBorrow.setEnabled(false);
+            ConfirmChoice.setEnabled(false);
+            borrowALL.setEnabled(false);
             list.setModel(new DefaultListModel<>());
             ascendingCheckBoxFilteringBorrow.setVisible(false);
             descendingCheckBoxFilteringBorrow.setVisible(false);
@@ -1160,6 +1269,8 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                         "Choose filter parameter", "Message", JOptionPane.INFORMATION_MESSAGE);
         }
         else { //ALL
+            ConfirmChoice.setEnabled(true);
+            borrowALL.setEnabled(true);
             ascendingCheckBoxFilteringBorrow.setVisible(true);
             descendingCheckBoxFilteringBorrow.setVisible(true);
             DefaultListModel model= new DefaultListModel<>();

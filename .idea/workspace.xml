@@ -9,9 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="sortowanie przeniesione i naprawione">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="przygotowanie pod wyszukiwanie książki">
+      <change afterPath="$PROJECT_DIR$/res/search.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,13 +132,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00112" summary="update book ui nowy">
-      <created>1707764226224</created>
-      <option name="number" value="00112" />
-      <option name="presentableId" value="LOCAL-00112" />
-      <option name="project" value="LOCAL" />
-      <updated>1707764226224</updated>
     </task>
     <task id="LOCAL-00113" summary="update book new UI">
       <created>1707764641715</created>
@@ -474,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708191802212</updated>
     </task>
-    <option name="localTasksCounter" value="161" />
+    <task id="LOCAL-00161" summary="przygotowanie pod wyszukiwanie książki">
+      <created>1708192565236</created>
+      <option name="number" value="00161" />
+      <option name="presentableId" value="LOCAL-00161" />
+      <option name="project" value="LOCAL" />
+      <updated>1708192565236</updated>
+    </task>
+    <option name="localTasksCounter" value="162" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -489,7 +491,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="poprawki widocznośći do borrow A book button" />
     <MESSAGE value="wybór z listy. Przed logiką do zwracania i zmienna" />
     <MESSAGE value="prawie skonczony mechanizm assign" />
     <MESSAGE value="zmiany regex" />
@@ -514,9 +515,29 @@
     <MESSAGE value="poprawa działania filtra na borrow" />
     <MESSAGE value="naprawa checboxów do filtrowania borrow i zwykłego oraz sortowania" />
     <MESSAGE value="sortowanie przeniesione i naprawione" />
-    <option name="LAST_COMMIT_MESSAGE" value="sortowanie przeniesione i naprawione" />
+    <MESSAGE value="przygotowanie pod wyszukiwanie książki" />
+    <option name="LAST_COMMIT_MESSAGE" value="przygotowanie pod wyszukiwanie książki" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
+          <line>645</line>
+          <option name="timeStamp" value="110" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
+          <line>317</line>
+          <option name="timeStamp" value="113" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
+          <line>308</line>
+          <option name="timeStamp" value="114" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="list.getSelectedValue()" />
