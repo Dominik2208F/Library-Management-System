@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="filtrowanie całe zrobione.">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="filtrowanie całe zrobione w połączeniu z sortowaniem+nowa funkcjonalnosc">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" afterDir="false" />
@@ -131,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00101" summary="nowy UI">
-      <created>1707697710197</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1707697710198</updated>
     </task>
     <task id="LOCAL-00102" summary="naprawa usuniecia usera z ksiązkami">
       <created>1707698872483</created>
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708125975912</updated>
     </task>
-    <option name="localTasksCounter" value="150" />
+    <task id="LOCAL-00150" summary="filtrowanie całe zrobione w połączeniu z sortowaniem+nowa funkcjonalnosc">
+      <created>1708128520240</created>
+      <option name="number" value="00150" />
+      <option name="presentableId" value="LOCAL-00150" />
+      <option name="project" value="LOCAL" />
+      <updated>1708128520240</updated>
+    </task>
+    <option name="localTasksCounter" value="151" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -490,7 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="sprzątanie powtarzającego się kodu cz2" />
     <MESSAGE value="zmiana nazwy przycisku log out" />
     <MESSAGE value="dodanie komunikatu dodania user + zmiana biblioteki z poziomu usera" />
     <MESSAGE value="data z przyszłości kalendarz i walidacja roku produkcji z przyszłośći" />
@@ -515,7 +514,8 @@
     <MESSAGE value="mechanizm zwracania i pozyczenai działa prawidłowo na oby dwóch bibliotekach" />
     <MESSAGE value="genre filtering" />
     <MESSAGE value="filtrowanie całe zrobione." />
-    <option name="LAST_COMMIT_MESSAGE" value="filtrowanie całe zrobione." />
+    <MESSAGE value="filtrowanie całe zrobione w połączeniu z sortowaniem+nowa funkcjonalnosc" />
+    <option name="LAST_COMMIT_MESSAGE" value="filtrowanie całe zrobione w połączeniu z sortowaniem+nowa funkcjonalnosc" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -544,6 +544,66 @@
           <url>file://$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java</url>
           <line>137</line>
           <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
+          <line>876</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
+          <line>895</line>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
+          <line>896</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
+          <line>899</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
+          <line>900</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
+          <line>902</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
+          <line>1024</line>
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
+          <line>1029</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
+          <line>1020</line>
+          <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
+          <line>913</line>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
+          <line>916</line>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
+          <line>919</line>
+          <option name="timeStamp" value="75" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

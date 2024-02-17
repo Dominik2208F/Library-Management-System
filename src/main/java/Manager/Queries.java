@@ -395,6 +395,37 @@ public class Queries {
         return allBooks;
     }
 
+    public static List<String> filterBookByGenreOnlyAvailable(String libraryName,String genre,String sortDirection){
+        List<String> allBooks= new ArrayList<>();
+        ResultSet resultSet=null;
+        Statement statement;
+        try{
+            String  query = String.format(" SELECT status, users.username, title, author.first_name, author.last_name,yearofproduction,genre.name  FROM public.book\n" +
+                    "    LEFT JOIN author on book.author_id=author.author_id\n" +
+                    "    LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
+                    "    LEFT JOIN library on book.library_id= library.library_id\n" +
+                    "    LEFT JOIN users on book.user_id=users.user_id\n" +
+                    "    WHERE library.library_name='%s' and  genre.name='%s' and book.status='AVAILABLE' ORDER BY title %s", libraryName, genre,sortDirection);
+            statement=connection.createStatement();
+            resultSet=statement.executeQuery(query);
+
+            while(resultSet.next()){
+                String status=resultSet.getString("status");
+                String title=resultSet.getString("title");
+                String author=resultSet.getString("first_name") + " "+resultSet.getString("last_name");
+                String yearOfProduction=resultSet.getString("yearofproduction");
+                String genree=resultSet.getString("name");
+                String bookInfo ="Status: " + status+ "," +  "Title: " + title +"," + " Author: " + author +"," + " Production date: " + yearOfProduction +"," + " Genre: " + genree;
+                allBooks.add(bookInfo);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+            e.printStackTrace();
+        }
+        return allBooks;
+    }
+
+
     public static List<String> filterBookByAuthorNameAndSurname(String libraryName,String name,String Surname,String sortinDirection){
         List<String> allBooks= new ArrayList<>();
         ResultSet resultSet=null;
@@ -425,6 +456,38 @@ public class Queries {
         return allBooks;
     }
 
+    public static List<String> filterBookByAuthorNameAndSurnameOnlyAvailable(String libraryName,String name,String Surname,String sortinDirection){
+        List<String> allBooks= new ArrayList<>();
+        ResultSet resultSet=null;
+        Statement statement;
+        try{
+            String query=String.format(" SELECT status, users.username, title, author.first_name, author.last_name,yearofproduction,genre.name  FROM public.book\n" +
+                    "    LEFT JOIN author on book.author_id=author.author_id\n" +
+                    "    LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
+                    "    LEFT JOIN library on book.library_id= library.library_id\n" +
+                    "    LEFT JOIN users on book.user_id=users.user_id\n" +
+                    "    WHERE library.library_name='%s' and  author.first_name='%s' and author.last_name='%s' and status='AVAILABLE' ORDER BY title %s",libraryName,name,Surname,sortinDirection);
+            statement=connection.createStatement();
+            resultSet=statement.executeQuery(query);
+
+            while(resultSet.next()){
+                String status=resultSet.getString("status");
+                String title=resultSet.getString("title");
+                String author=resultSet.getString("first_name") + " "+resultSet.getString("last_name");
+                String yearOfProduction=resultSet.getString("yearofproduction");
+                String genree=resultSet.getString("name");
+                String bookInfo ="Status: " + status+ "," +  "Title: " + title +"," + " Author: " + author +"," + " Production date: " + yearOfProduction +"," + " Genre: " + genree;
+                allBooks.add(bookInfo);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+            e.printStackTrace();
+        }
+        return allBooks;
+    }
+
+
+
     public static List<String> filterBookByStatus(String libraryName,String statuss,String sortDirection){
         List<String> allBooks= new ArrayList<>();
         ResultSet resultSet=null;
@@ -453,12 +516,6 @@ public class Queries {
         }
         return allBooks;
     }
-
-
-
-
-
-
 
 
 
