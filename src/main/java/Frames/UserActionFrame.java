@@ -1370,7 +1370,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
 
         if (subcategories != null && !selectedCategory.equals("Select") && !selectedCategory.equals("All available")) {
             ConfirmChoice.setEnabled(true);
-            borrowALL.setEnabled(true);
+            borrowALL.setEnabled(false);
             ascendingCheckBoxFilteringBorrow.setVisible(true);
             descendingCheckBoxFilteringBorrow.setVisible(true);
             SubCategoryComboBoxBorrow.setEnabled(true);
