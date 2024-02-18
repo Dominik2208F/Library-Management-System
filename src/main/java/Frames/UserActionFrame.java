@@ -4,6 +4,8 @@ import Manager.CommonFunctions;
 import Manager.Queries;
 import org.example.LibraryManager.Book;
 import org.example.LibraryManager.Library;
+import org.example.UserManager.User;
+
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -18,7 +20,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
     JMenuBar menubar;
     JMenu Options, Program;
     JMenuItem changeUser, changeLibrary, programInfo;
-    JButton lookfor,BorrowAbook,ReturnAbook,ConfirmChoice,returnAll,borrowALL, filter,ShowAllBook,QuickView,Search;
+    JButton lookfor,BorrowAbook,ReturnAbook,ConfirmChoice,returnAll,borrowALL, filter,ShowAllBook,QuickView,Search,TransactionButton;
     JList<String> list;
     Library flowLibrary;
     UserChooseIFrame userChooseIFrame;
@@ -43,7 +45,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         this.flowLibrary = library;
         this.userChooseIFrame = userChooseIFrame;
         CurrentLibraryName=userChooseIFrame.getLibraryManagementFrame().getSelectedLibrary();
-
+        userChooseIFrame.getSelectedUserValue();
 
         DefaultListModel<String> listOfAction = new DefaultListModel<>();
         list = new JList<>(listOfAction);
@@ -86,6 +88,8 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         lookForTextField=new JTextField();
         lookForTextField.setBounds(590,190,160,40);
         add(lookForTextField);
+
+
 
 
         lookForTextField.getDocument().addDocumentListener(new DocumentListener() {
@@ -227,6 +231,55 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         ImageIcon sortIcon = setIcon("/from-a-to-z.png");
         lookfor.setIcon(sortIcon);
 
+
+        TransactionButton=new JButton("Transactions history");
+        TransactionButton.setBounds(10,300,200,40);
+        add(TransactionButton);
+
+        TransactionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ascendingCheckBox.setVisible(false);
+                descendingCheckBox.setVisible(false);
+                ascendingCheckBoxFiltering.setVisible(false);
+                descendingCheckBoxFiltering.setVisible(false);
+                sortComboBox.setVisible(false);
+                categoryComboBox.setVisible(false);
+                SubCategoryComboBox.setVisible(false);
+                borrowButtonClicked = false;
+                ConfirmChoice.setEnabled(false);
+                ConfirmChoice.setVisible(false);
+                borrowALL.setVisible(false);
+                borrowALL.setEnabled(false);
+                returnAll.setVisible(false);
+                list.setEnabled(true);
+
+                SubCategoryComboBoxBorrow.setEnabled(false);
+                categoryComboBoxBorrow.setEnabled(false);
+
+                ascendingCheckBoxFilteringBorrow.setVisible(false);
+                descendingCheckBoxFilteringBorrow.setVisible(false);
+                SubCategoryComboBoxBorrow.setVisible(false);
+                categoryComboBoxBorrow.setVisible(false);
+
+                rangeComboBoxLeft.setVisible(false);
+                scrollableComboBox.setVisible(false);
+
+                lookForTextField.setVisible(false);
+                lookForJLabel.setVisible(false);
+                Search.setVisible(false);
+
+                ascendingCheckBoxLOOKFOR.setVisible(false);
+                descendingCheckBoxLOOKFOR.setVisible(false);
+
+                DefaultListModel model= new DefaultListModel<>();
+                model.addAll(Queries.getAllTransactionByUser(CurrentLibraryName, userChooseIFrame.getChoosenUserName()));
+                list.setModel(model);
+            }
+        });
+
+        ImageIcon transaction = setIcon("/transaction (1).png");
+        TransactionButton.setIcon(transaction);
 
         categoryComboBoxBorrow = new JComboBox<>(new String[]{"Author", "Genre", "Select","All available"});
         categoryComboBoxBorrow.setBounds(400, 190, 160, 40);
@@ -523,7 +576,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
 
                                 String titleOfBookToUnassingFromUser = extractTitle(selectedValues.get(i));
                                 Queries.updateBookStatusByTitle(CurrentLibraryName,"BORROWED",titleOfBookToUnassingFromUser,userChooseIFrame.getSelectedUserValue());
-
+                                Queries.insertBorrowedBookToHistory(userChooseIFrame.getSelectedUserValue(),titleOfBookToUnassingFromUser,CurrentLibraryName,"is borrowed");
                             }
 
                                 DefaultListModel<String> modifiedModel1 = new DefaultListModel<>();
@@ -551,7 +604,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
 
 
                                 Queries.updateBookStatusByTitle(CurrentLibraryName,"BORROWED",titleOfBookToUnassingFromUser,userChooseIFrame.getSelectedUserValue());
-
+                                Queries.insertBorrowedBookToHistory(userChooseIFrame.getSelectedUserValue(),titleOfBookToUnassingFromUser,CurrentLibraryName,"is borrowed");
                                 DefaultListModel<String> modifiedModel1 = new DefaultListModel<>();
                                 for (String book : Queries.getAllAvailableBook(CurrentLibraryName)) {
                                     modifiedModel1.addElement(book);
@@ -589,7 +642,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                                 String titleOfBookToUnassingFromUser = extractTitle(selectedValues.get(i));
 
                                 Queries.updateBookStatusByTitle(CurrentLibraryName,"AVAILABLE",titleOfBookToUnassingFromUser,null);
-
+                                Queries.insertBorrowedBookToHistory(userChooseIFrame.getSelectedUserValue(),titleOfBookToUnassingFromUser,CurrentLibraryName,"is returned");
                             }
 
 
@@ -615,6 +668,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                             if (odp == JOptionPane.YES_OPTION) {
 
                                 Queries.updateBookStatusByTitle(CurrentLibraryName,"AVAILABLE",titleOfBookToUnassingFromUser,null);
+                                Queries.insertBorrowedBookToHistory(userChooseIFrame.getSelectedUserValue(),titleOfBookToUnassingFromUser,CurrentLibraryName,"is returned");
                                 for (String book : Queries.getAllBorrowedBooksByUser(CurrentLibraryName,userChooseIFrame.getSelectedUserValue())) {
                                     modifiedModel.addElement(book);
                                 }
@@ -726,7 +780,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
               ///  for (String book : Queries.getAllAvailableBook(CurrentLibraryName)) {
               //          modifiedModelOverall.addElement(book);
               //  }
-              //  list.setModel(modifiedModelOverall);
+                 list.setModel(modifiedModelOverall);
 
                 if (Queries.checkIfAnyBookIsAvailable(CurrentLibraryName)) {
                     if (informationBorrow) {
@@ -998,6 +1052,12 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
 
                     int odp = JOptionPane.showConfirmDialog(null, "Do you want to borrow all books?");
                     if (odp == JOptionPane.YES_OPTION) {
+
+                        for (String book : Queries.getAllAvailableBook(CurrentLibraryName)) {
+                           String title=extractTitle(book);
+                           Queries.insertBorrowedBookToHistory(userChooseIFrame.getChoosenUserName(),title,CurrentLibraryName,"is borrowed");
+                        }
+
                         Queries.setAllBooksBorrowed(CurrentLibraryName,userChooseIFrame.getSelectedUserValue(),"AVAILABLE","BORROWED");
 
                         JOptionPane.showMessageDialog(null, "All books have been borrowed successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
@@ -1026,8 +1086,15 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 int odp = JOptionPane.showConfirmDialog(null, "Do you want to return all books?");
                 if (odp == JOptionPane.YES_OPTION) {
 
+                    for(String book : Queries.getAllBorrowedBooksByUser(CurrentLibraryName,userChooseIFrame.getSelectedUserValue())){
+                        String title=extractTitle(book);
+                        Queries.insertBorrowedBookToHistory(userChooseIFrame.getSelectedUserValue(),title,CurrentLibraryName,"is returned");
+                    }
+
+
                     Queries.setAllBooksAvailable(CurrentLibraryName,null,"BORROWED","AVAILABLE",userChooseIFrame.getSelectedUserValue());
                     JOptionPane.showMessageDialog(null, "All books have been borrowed successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
+
 
 
                     DefaultListModel<String> modifiedModel1 = new DefaultListModel<>();

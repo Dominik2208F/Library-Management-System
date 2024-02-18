@@ -322,7 +322,7 @@ public class Queries {
                     "WHERE status='%s' AND library_id IN (SELECT library_id FROM library WHERE library_name = '%s');",statusNew, assignedTo,statusOld,library);
             statement=connection.createStatement();
             statement.executeUpdate(query);
-            System.out.println("Data updated");
+            System.out.println("All book set as borrowed");
 
         }catch (Exception e){
             System.out.println(e);
@@ -645,6 +645,58 @@ public class Queries {
         }
         return allBooks;
     }
+
+    public static List<String> getAllTransactionByUser(String libraryName,String username){
+        List<String> allBooks= new ArrayList<>();
+        ResultSet resultSet=null;
+        Statement statement;
+        try{
+            String query=String.format(" SELECT dateoftransaction,direction,users.username,title,author.first_name,author.last_name,yearofproduction,genre.name  FROM public.borrowedbooks\n"+
+                    "LEFT JOIN library ON borrowedbooks.library_id = library.library_id\n"+
+                    "LEFT JOIN book ON borrowedbooks.book_id = book.book_id\n"+
+                    "LEFT JOIN users ON borrowedbooks.user_id = users.user_id\n"+
+                    "LEFT JOIN genre ON book.genre_id = genre.genre_id\n"+
+                    "LEFT JOIN author ON book.author_id = author.author_id\n"+
+                     "WHERE library.library_name='%s' and users.username='%s'",libraryName,username);
+
+            statement=connection.createStatement();
+            resultSet=statement.executeQuery(query);
+            while(resultSet.next()){
+                String direction=resultSet.getString("direction");
+                String dateOFtransaction=resultSet.getString("dateoftransaction");
+                String title=resultSet.getString("title");
+                String author=resultSet.getString("first_name") + " "+resultSet.getString("last_name");
+                String yearOfProduction=resultSet.getString("yearofproduction");
+                String genree=resultSet.getString("name");
+                String bookInfo ="Time: " + dateOFtransaction+ "," +"Direction: "+direction+ ","+  " Title: " + title +"," + " Author: " + author;
+                allBooks.add(bookInfo);
+            }
+        }catch (Exception e){
+            System.out.println(e);
+            e.printStackTrace();
+        }
+        return allBooks;
+    }
+
+
+    public static void insertBorrowedBookToHistory(String user, String title, String library,String direction){
+
+        Statement statement;
+        try{
+            String query=String.format("INSERT INTO BorrowedBooks (user_id, book_id, dateoftransaction, library_id, direction)\n" +
+                    "VALUES (\n" +
+                    "    (SELECT user_id FROM Users WHERE username = '%s'),\n" +
+                    "    (SELECT book_id FROM Book WHERE title = '%s'),\n" +
+                    "    now(),\n" +
+                    "    (SELECT library_id FROM Library WHERE library_name = '%s'),'%s')",user,title,library,direction);
+            statement=connection.createStatement();
+            statement.executeUpdate(query);
+            System.out.println("Book has been saved in history user: "+ user +" title: "+title + " direction "+direction );
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
 
 
 
