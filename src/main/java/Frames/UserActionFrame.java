@@ -20,14 +20,14 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
     JMenuBar menubar;
     JMenu Options, Program;
     JMenuItem changeUser, changeLibrary, programInfo;
-    JButton lookfor,BorrowAbook,ReturnAbook,ConfirmChoice,returnAll,borrowALL, filter,ShowAllBook,QuickView,Search,TransactionButton;
+    JButton lookfor,BorrowAbook,ReturnAbook,ConfirmChoice,returnAll,borrowALL, filter,ShowAllBook,QuickView,Search,TransactionButton,transactionLeftSelect,transactionRightSelect;
     JList<String> list;
     Library flowLibrary;
     UserChooseIFrame userChooseIFrame;
     JCheckBox ascendingCheckBox,ascendingCheckBoxFiltering,ascendingCheckBoxFilteringBorrow,ascendingCheckBoxLOOKFOR;
     JCheckBox descendingCheckBox,descendingCheckBoxFiltering,descendingCheckBoxFilteringBorrow,descendingCheckBoxLOOKFOR;
     JLabel booksLabel,lookForJLabel;
-    JTextField lookForTextField;
+    JTextField lookForTextField,transactionRight,transactionLeft;
 
     private JComboBox<String> sortComboBox, categoryComboBox, SubCategoryComboBox,categoryComboBoxBorrow,SubCategoryComboBoxBorrow,TransactionComboBox;
     private JComboBox<Integer> rangeComboBoxLeft,scrollableComboBox;
@@ -39,6 +39,14 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
     private Map<String, List<String>> subcategoriesMap = new HashMap<>();
 
     private String CurrentLibraryName;
+
+    public JTextField getTransactionRight() {
+        return transactionRight;
+    }
+
+    public JTextField getTransactionLeft() {
+        return transactionLeft;
+    }
 
     public UserActionFrame(UserChooseIFrame userChooseIFrame, Library library) {
 
@@ -237,7 +245,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         add(TransactionButton);
 
         TransactionComboBox= new JComboBox<>(new String[]{"All","is borrowed","is returned"});
-        TransactionComboBox.setBounds(550, 190, 160, 40);
+        TransactionComboBox.setBounds(590, 190, 160, 40);
         add(TransactionComboBox);
         TransactionComboBox.setSelectedItem("All");
         TransactionComboBox.setVisible(false);
@@ -245,16 +253,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         TransactionComboBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String choice =(String) TransactionComboBox.getSelectedItem();
-                DefaultListModel model= new DefaultListModel<>();
-                if(!choice.equals("All")) {
-                    model.addAll(Queries.getAllTransactionByUserStatus(CurrentLibraryName, userChooseIFrame.getSelectedUserValue(), choice));
-                    list.setModel(model);
-                }
-                else{
-                    model.addAll(Queries.getAllTransactionByUser(CurrentLibraryName, userChooseIFrame.getChoosenUserName()));
-                    list.setModel(model);
-                }
+                transactionFiltering();
             }
         });
 
@@ -295,6 +294,11 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 descendingCheckBoxLOOKFOR.setVisible(false);
 
                 TransactionComboBox.setVisible(true);
+                transactionLeft.setVisible(true);
+                transactionRight.setVisible(true);
+
+                transactionLeftSelect.setVisible(true);
+                transactionRightSelect.setVisible(true);
 
                 DefaultListModel model= new DefaultListModel<>();
                 model.addAll(Queries.getAllTransactionByUser(CurrentLibraryName, userChooseIFrame.getChoosenUserName()));
@@ -439,6 +443,11 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 descendingCheckBoxLOOKFOR.setVisible(false);
 
                 TransactionComboBox.setVisible(false);
+                transactionLeft.setVisible(false);
+                transactionRight.setVisible(false);
+
+                transactionLeftSelect.setVisible(false);
+                transactionRightSelect.setVisible(false);
 
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
@@ -488,6 +497,10 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 descendingCheckBoxLOOKFOR.setVisible(false);
 
                 TransactionComboBox.setVisible(false);
+                transactionLeft.setVisible(false);
+                transactionRight.setVisible(false);
+                transactionLeftSelect.setVisible(false);
+                transactionRightSelect.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
 
@@ -545,6 +558,10 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 descendingCheckBoxLOOKFOR.setVisible(true);
 
                 TransactionComboBox.setVisible(false);
+                transactionLeft.setVisible(false);
+                transactionRight.setVisible(false);
+                transactionLeftSelect.setVisible(false);
+                transactionRightSelect.setVisible(false);
 
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
@@ -592,6 +609,10 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                     categoryComboBoxBorrow.setVisible(true);
                 }
                 TransactionComboBox.setVisible(false);
+                transactionLeft.setVisible(false);
+                transactionRight.setVisible(false);
+                transactionLeftSelect.setVisible(false);
+                transactionRightSelect.setVisible(false);
 
                 int[] selectedIndices = list.getSelectedIndices();
                 List<String> selectedValues = list.getSelectedValuesList();
@@ -807,6 +828,11 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
 
                 TransactionComboBox.setVisible(false);
 
+                transactionLeft.setVisible(false);
+                transactionRight.setVisible(false);
+                transactionLeftSelect.setVisible(false);
+                transactionRightSelect.setVisible(false);
+
                 DefaultListModel<String> modifiedModelOverall = new DefaultListModel<>();
 
               ///  for (String book : Queries.getAllAvailableBook(CurrentLibraryName)) {
@@ -985,6 +1011,10 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
 
 
                 TransactionComboBox.setVisible(false);
+                transactionLeft.setVisible(false);
+                transactionRight.setVisible(false);
+                transactionLeftSelect.setVisible(false);
+                transactionRightSelect.setVisible(false);
 
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 String selectedCategory = (String) categoryComboBox.getSelectedItem();
@@ -1147,6 +1177,53 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 }
             }
         });
+
+
+        transactionLeft = new JTextField();
+        add(transactionLeft);
+        transactionLeft.setEnabled(false);
+
+        transactionRight = new JTextField();
+        add(transactionRight);
+        transactionRight.setEnabled(false);
+
+
+
+        transactionLeft.setBounds(360, 190, 100, 40);
+        transactionRight.setBounds(480,190,100,40);
+
+        transactionLeft.setVisible(false);
+        transactionRight.setVisible(false);
+
+
+        transactionLeftSelect= new JButton("Select");
+        add(transactionLeftSelect);
+
+        transactionRightSelect = new JButton("Select");
+        add(transactionRightSelect);
+
+
+
+        transactionLeftSelect.setBounds(360, 240, 100, 30);
+
+        transactionLeftSelect.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new CalendarIFrame(UserActionFrame.this,"Left");
+                transactionFiltering();
+            }
+        });
+        transactionRightSelect.setBounds(480,240,100,30);
+
+        transactionRightSelect.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new CalendarIFrame(UserActionFrame.this,"Right");
+                transactionFiltering();
+            }
+        });
+        transactionLeftSelect.setVisible(false);
+        transactionRightSelect.setVisible(false);
 
 
 
@@ -1462,5 +1539,36 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 model.addAll(Queries.searchForBookByTitle(CurrentLibraryName,textToSearch,"DESC"));
                 list.setModel(model);}
         }
+        public void transactionFiltering(){
+            String choice =(String) TransactionComboBox.getSelectedItem();
+            DefaultListModel model= new DefaultListModel<>();
+            if(!choice.equals("All")) {
 
+                if(!transactionLeft.getText().isEmpty() && !transactionRight.getText().isEmpty()){
+                    model.addAll(Queries.getAllTransactionByUserStatusANDDate(CurrentLibraryName, userChooseIFrame.getChoosenUserName(),choice,transactionLeft.getText(),transactionRight.getText()));
+                    if(model.isEmpty()){
+                        JOptionPane.showMessageDialog(null, "No results for that range of date FROM: "+transactionLeft.getText()+" TO: "+transactionRight.getText(), "Message", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    list.setModel(model);
+                }
+                else {
+                    model.addAll(Queries.getAllTransactionByUserStatus(CurrentLibraryName, userChooseIFrame.getSelectedUserValue(), choice));
+                    list.setModel(model);
+                }
+            }
+            else{ //ALL
+                if(!transactionLeft.getText().isEmpty() && !transactionRight.getText().isEmpty()){
+                    model.addAll(Queries.getAllTransactionByUserAndDate(CurrentLibraryName, userChooseIFrame.getChoosenUserName(),transactionLeft.getText(),transactionRight.getText()));
+                    if(model.isEmpty()){
+                        JOptionPane.showMessageDialog(null, "No results for that range of date FROM: "+transactionLeft.getText()+" TO: "+transactionRight.getText(), "Message", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    list.setModel(model);
+                }
+                else{
+                    model.addAll(Queries.getAllTransactionByUser(CurrentLibraryName, userChooseIFrame.getChoosenUserName()));
+                    list.setModel(model);
+                }
+
+            }
+        }
 }
