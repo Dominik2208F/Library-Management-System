@@ -355,7 +355,6 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
             rangeModel.addElement(i);
         }
         rangeComboBoxLeft.setModel(rangeModel);
-
         add(rangeComboBoxLeft);
         add(scrollableComboBox);
 
@@ -1196,12 +1195,19 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         transactionRight.setVisible(false);
 
 
-        transactionLeftSelect= new JButton("Select");
+
+
+        transactionLeftSelect= new JButton("From");
         add(transactionLeftSelect);
 
-        transactionRightSelect = new JButton("Select");
-        add(transactionRightSelect);
+        ImageIcon iconleft= setIcon("/calendar.png");
 
+        transactionLeftSelect.setIcon(iconleft);
+
+
+        transactionRightSelect = new JButton("To");
+        add(transactionRightSelect);
+        transactionRightSelect.setIcon(iconleft);
 
 
         transactionLeftSelect.setBounds(360, 240, 100, 30);
@@ -1547,6 +1553,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 if(!transactionLeft.getText().isEmpty() || !transactionRight.getText().isEmpty()){
                     model.addAll(Queries.getAllTransactionByUserStatusANDDate(CurrentLibraryName, userChooseIFrame.getChoosenUserName(),choice,transactionLeft.getText(),transactionRight.getText()));
                     if(model.isEmpty()){
+                        list.setModel(model);
                         JOptionPane.showMessageDialog(null, "No results for that range of date FROM: "+transactionLeft.getText()+" TO: "+transactionRight.getText(), "Message", JOptionPane.INFORMATION_MESSAGE);
                     }
                     list.setModel(model);
@@ -1560,6 +1567,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 if(!transactionLeft.getText().isEmpty() || !transactionRight.getText().isEmpty()){
                     model.addAll(Queries.getAllTransactionByUserAndDate(CurrentLibraryName, userChooseIFrame.getChoosenUserName(),transactionLeft.getText(),transactionRight.getText()));
                     if(model.isEmpty()){
+                        list.setModel(model);
                         JOptionPane.showMessageDialog(null, "No results for that range of date FROM: "+transactionLeft.getText()+" TO: "+transactionRight.getText(), "Message", JOptionPane.INFORMATION_MESSAGE);
                     }
                     list.setModel(model);
