@@ -9,14 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="wyszukiwanie ksiazki z sortowaniem działa">
-      <change afterPath="$PROJECT_DIR$/res/transaction (1).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/0/20d7ff1beb4e709368e6570bc3d89f9765451de2" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/0/20d7ff1beb4e709368e6570bc3d89f9765451de2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/6/268b15c463af7f62d6c79508ebaa7f319911c658" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/6/268b15c463af7f62d6c79508ebaa7f319911c658" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/c/4cf2018acf9b42de00f835938a522046c008bc15" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/c/4cf2018acf9b42de00f835938a522046c008bc15" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/8251c39afc23fd07238a418a07a93aa2b02025db" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/8251c39afc23fd07238a418a07a93aa2b02025db" afterDir="false" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="poprawa formatowania czasu na histori transakcji">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -136,13 +130,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00115" summary="zakaz robienia admina account">
-      <created>1707765672422</created>
-      <option name="number" value="00115" />
-      <option name="presentableId" value="LOCAL-00115" />
-      <option name="project" value="LOCAL" />
-      <updated>1707765672422</updated>
     </task>
     <task id="LOCAL-00116" summary="naprawienie licznika userAccount +status filtrowania">
       <created>1707766554286</created>
@@ -480,7 +467,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708215187950</updated>
     </task>
-    <option name="localTasksCounter" value="164" />
+    <task id="LOCAL-00164" summary="historia działa poprawnie">
+      <created>1708258564526</created>
+      <option name="number" value="00164" />
+      <option name="presentableId" value="LOCAL-00164" />
+      <option name="project" value="LOCAL" />
+      <updated>1708258564527</updated>
+    </task>
+    <option name="localTasksCounter" value="165" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -495,8 +489,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="zmiany regex" />
-    <MESSAGE value="poprawa okienek" />
     <MESSAGE value="naprawa logowania nowy przycisk" />
     <MESSAGE value="wyłączenie ikon podczas logowania" />
     <MESSAGE value="2 pierwsze zapytania do biblioteki i wyświetlania userów działaja ok" />
@@ -520,7 +512,9 @@
     <MESSAGE value="przygotowanie pod wyszukiwanie książki" />
     <MESSAGE value="wyszukiwanie ksiażki działa" />
     <MESSAGE value="wyszukiwanie ksiazki z sortowaniem działa" />
-    <option name="LAST_COMMIT_MESSAGE" value="wyszukiwanie ksiazki z sortowaniem działa" />
+    <MESSAGE value="historia działa poprawnie" />
+    <MESSAGE value="poprawa formatowania czasu na histori transakcji" />
+    <option name="LAST_COMMIT_MESSAGE" value="poprawa formatowania czasu na histori transakcji" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

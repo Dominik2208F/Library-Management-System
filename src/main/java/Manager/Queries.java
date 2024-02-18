@@ -651,13 +651,13 @@ public class Queries {
         ResultSet resultSet=null;
         Statement statement;
         try{
-            String query=String.format(" SELECT dateoftransaction,direction,users.username,title,author.first_name,author.last_name,yearofproduction,genre.name  FROM public.borrowedbooks\n"+
+            String query=String.format(" SELECT DATE_TRUNC('second', dateoftransaction) AS dateoftransaction,direction,users.username,title,author.first_name,author.last_name,yearofproduction,genre.name  FROM public.borrowedbooks\n"+
                     "LEFT JOIN library ON borrowedbooks.library_id = library.library_id\n"+
                     "LEFT JOIN book ON borrowedbooks.book_id = book.book_id\n"+
                     "LEFT JOIN users ON borrowedbooks.user_id = users.user_id\n"+
                     "LEFT JOIN genre ON book.genre_id = genre.genre_id\n"+
                     "LEFT JOIN author ON book.author_id = author.author_id\n"+
-                     "WHERE library.library_name='%s' and users.username='%s'",libraryName,username);
+                     "WHERE library.library_name='%s' and users.username='%s' ORDER BY dateoftransaction DESC",libraryName,username);
 
             statement=connection.createStatement();
             resultSet=statement.executeQuery(query);
