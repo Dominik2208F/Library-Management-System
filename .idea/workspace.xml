@@ -9,8 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="domyslne sortowanie malejąće po dacie w historii">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="borrow all zablokowane dla innych kategorii">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00117" summary="naprawienie licznika na adminie">
-      <created>1707766906037</created>
-      <option name="number" value="00117" />
-      <option name="presentableId" value="LOCAL-00117" />
-      <option name="project" value="LOCAL" />
-      <updated>1707766906037</updated>
     </task>
     <task id="LOCAL-00118" summary="return confirm choice">
       <created>1707776225639</created>
@@ -473,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708258888114</updated>
     </task>
-    <option name="localTasksCounter" value="166" />
+    <task id="LOCAL-00166" summary="borrow all zablokowane dla innych kategorii">
+      <created>1708259264474</created>
+      <option name="number" value="00166" />
+      <option name="presentableId" value="LOCAL-00166" />
+      <option name="project" value="LOCAL" />
+      <updated>1708259264474</updated>
+    </task>
+    <option name="localTasksCounter" value="167" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -488,7 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="wyłączenie ikon podczas logowania" />
     <MESSAGE value="2 pierwsze zapytania do biblioteki i wyświetlania userów działaja ok" />
     <MESSAGE value="zostawienie flowlibrary do momentu przepisania na bazy danych + logowanie poprawnie z DB" />
     <MESSAGE value="show all" />
@@ -513,7 +514,8 @@
     <MESSAGE value="historia działa poprawnie" />
     <MESSAGE value="poprawa formatowania czasu na histori transakcji" />
     <MESSAGE value="domyslne sortowanie malejąće po dacie w historii" />
-    <option name="LAST_COMMIT_MESSAGE" value="domyslne sortowanie malejąće po dacie w historii" />
+    <MESSAGE value="borrow all zablokowane dla innych kategorii" />
+    <option name="LAST_COMMIT_MESSAGE" value="borrow all zablokowane dla innych kategorii" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -525,17 +527,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>352</line>
+          <line>376</line>
           <option name="timeStamp" value="113" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>343</line>
-          <option name="timeStamp" value="114" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>606</line>
+          <line>636</line>
           <option name="timeStamp" value="122" />
         </line-breakpoint>
       </breakpoints>

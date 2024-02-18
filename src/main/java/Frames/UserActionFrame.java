@@ -29,7 +29,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
     JLabel booksLabel,lookForJLabel;
     JTextField lookForTextField;
 
-    private JComboBox<String> sortComboBox, categoryComboBox, SubCategoryComboBox,categoryComboBoxBorrow,SubCategoryComboBoxBorrow;
+    private JComboBox<String> sortComboBox, categoryComboBox, SubCategoryComboBox,categoryComboBoxBorrow,SubCategoryComboBoxBorrow,TransactionComboBox;
     private JComboBox<Integer> rangeComboBoxLeft,scrollableComboBox;
 
     private boolean borrowButtonClicked = false;
@@ -224,7 +224,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         ImageIcon confirm = setIcon("/approved.png");
         ConfirmChoice.setIcon(confirm);
 
-        lookfor = new JButton("Search a book");
+        lookfor = new JButton("Search title");
         lookfor.setBounds(10, 250, 200, 40);
         add(lookfor);
 
@@ -235,6 +235,28 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         TransactionButton=new JButton("Transactions history");
         TransactionButton.setBounds(10,300,200,40);
         add(TransactionButton);
+
+        TransactionComboBox= new JComboBox<>(new String[]{"All","is borrowed","is returned"});
+        TransactionComboBox.setBounds(550, 190, 160, 40);
+        add(TransactionComboBox);
+        TransactionComboBox.setSelectedItem("All");
+        TransactionComboBox.setVisible(false);
+
+        TransactionComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String choice =(String) TransactionComboBox.getSelectedItem();
+                DefaultListModel model= new DefaultListModel<>();
+                if(!choice.equals("All")) {
+                    model.addAll(Queries.getAllTransactionByUserStatus(CurrentLibraryName, userChooseIFrame.getSelectedUserValue(), choice));
+                    list.setModel(model);
+                }
+                else{
+                    model.addAll(Queries.getAllTransactionByUser(CurrentLibraryName, userChooseIFrame.getChoosenUserName()));
+                    list.setModel(model);
+                }
+            }
+        });
 
         TransactionButton.addActionListener(new ActionListener() {
             @Override
@@ -272,6 +294,8 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 ascendingCheckBoxLOOKFOR.setVisible(false);
                 descendingCheckBoxLOOKFOR.setVisible(false);
 
+                TransactionComboBox.setVisible(true);
+
                 DefaultListModel model= new DefaultListModel<>();
                 model.addAll(Queries.getAllTransactionByUser(CurrentLibraryName, userChooseIFrame.getChoosenUserName()));
                 list.setModel(model);
@@ -284,7 +308,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         categoryComboBoxBorrow = new JComboBox<>(new String[]{"Author", "Genre", "Select","All available"});
         categoryComboBoxBorrow.setBounds(400, 190, 160, 40);
         add(categoryComboBoxBorrow);
-       categoryComboBoxBorrow.setSelectedItem("Select");
+        categoryComboBoxBorrow.setSelectedItem("Select");
 
         SubCategoryComboBoxBorrow = new JComboBox<>();
         SubCategoryComboBoxBorrow.setBounds(400, 240, 180, 40);
@@ -414,6 +438,8 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 ascendingCheckBoxLOOKFOR.setVisible(false);
                 descendingCheckBoxLOOKFOR.setVisible(false);
 
+                TransactionComboBox.setVisible(false);
+
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
                 if(Queries.getCurrentStateOfBooks(CurrentLibraryName).isEmpty()){
@@ -460,6 +486,8 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
 
                 ascendingCheckBoxLOOKFOR.setVisible(false);
                 descendingCheckBoxLOOKFOR.setVisible(false);
+
+                TransactionComboBox.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
 
@@ -516,6 +544,8 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 ascendingCheckBoxLOOKFOR.setVisible(true);
                 descendingCheckBoxLOOKFOR.setVisible(true);
 
+                TransactionComboBox.setVisible(false);
+
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
                 if (Queries.getCurrentStateOfBooks(CurrentLibraryName).isEmpty()) {
@@ -561,7 +591,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                     SubCategoryComboBoxBorrow.setVisible(true);
                     categoryComboBoxBorrow.setVisible(true);
                 }
-
+                TransactionComboBox.setVisible(false);
 
                 int[] selectedIndices = list.getSelectedIndices();
                 List<String> selectedValues = list.getSelectedValuesList();
@@ -775,6 +805,8 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 ascendingCheckBoxLOOKFOR.setVisible(false);
                 descendingCheckBoxLOOKFOR.setVisible(false);
 
+                TransactionComboBox.setVisible(false);
+
                 DefaultListModel<String> modifiedModelOverall = new DefaultListModel<>();
 
               ///  for (String book : Queries.getAllAvailableBook(CurrentLibraryName)) {
@@ -950,6 +982,9 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
 
                 ascendingCheckBoxLOOKFOR.setVisible(false);
                 descendingCheckBoxLOOKFOR.setVisible(false);
+
+
+                TransactionComboBox.setVisible(false);
 
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 String selectedCategory = (String) categoryComboBox.getSelectedItem();
@@ -1416,7 +1451,6 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 }
 
         }
-
         public void sortFunction(){
             DefaultListModel model = new DefaultListModel();
             String textToSearch = lookForTextField.getText();
