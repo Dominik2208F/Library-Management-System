@@ -22,8 +22,8 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
     JList<String> list;
     Library flowLibrary;
     UserChooseIFrame userChooseIFrame;
-    JCheckBox ascendingCheckBox,ascendingCheckBoxFiltering,ascendingCheckBoxFilteringBorrow;
-    JCheckBox descendingCheckBox,descendingCheckBoxFiltering,descendingCheckBoxFilteringBorrow;
+    JCheckBox ascendingCheckBox,ascendingCheckBoxFiltering,ascendingCheckBoxFilteringBorrow,ascendingCheckBoxLOOKFOR;
+    JCheckBox descendingCheckBox,descendingCheckBoxFiltering,descendingCheckBoxFilteringBorrow,descendingCheckBoxLOOKFOR;
     JLabel booksLabel,lookForJLabel;
     JTextField lookForTextField;
 
@@ -122,24 +122,6 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         add(Search);
 
         Search.setVisible(false);
-
-        Search.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                DefaultListModel model= new DefaultListModel();
-             String textToSearch= lookForTextField.getText();
-             if(textToSearch.isEmpty()){
-                 JOptionPane.showMessageDialog(null,
-                         "Type title to look for", "Message", JOptionPane.INFORMATION_MESSAGE);
-             }
-             else{
-                model.addAll(Queries.searchForBookByTitle(CurrentLibraryName,textToSearch,"ASC"));
-                list.setModel(model);
-             }
-            }
-        });
-
 
         returnAll = new JButton("Return all");
         returnAll.setBounds(590, 190, 160, 40);
@@ -376,6 +358,9 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 lookForJLabel.setVisible(false);
                 Search.setVisible(false);
 
+                ascendingCheckBoxLOOKFOR.setVisible(false);
+                descendingCheckBoxLOOKFOR.setVisible(false);
+
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
                 if(Queries.getCurrentStateOfBooks(CurrentLibraryName).isEmpty()){
@@ -419,6 +404,9 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 lookForTextField.setVisible(false);
                 lookForJLabel.setVisible(false);
                 Search.setVisible(false);
+
+                ascendingCheckBoxLOOKFOR.setVisible(false);
+                descendingCheckBoxLOOKFOR.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
 
@@ -472,6 +460,9 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 lookForJLabel.setVisible(true);
                 Search.setVisible(true);
 
+                ascendingCheckBoxLOOKFOR.setVisible(true);
+                descendingCheckBoxLOOKFOR.setVisible(true);
+
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
                 if (Queries.getCurrentStateOfBooks(CurrentLibraryName).isEmpty()) {
@@ -507,6 +498,9 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 lookForTextField.setVisible(false);
                 lookForJLabel.setVisible(false);
                 Search.setVisible(false);
+
+                ascendingCheckBoxLOOKFOR.setVisible(false);
+                descendingCheckBoxLOOKFOR.setVisible(false);
 
                 if(!returnButtonClicked) {
                     ascendingCheckBoxFilteringBorrow.setVisible(true);
@@ -724,6 +718,9 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 lookForJLabel.setVisible(false);
                 Search.setVisible(false);
 
+                ascendingCheckBoxLOOKFOR.setVisible(false);
+                descendingCheckBoxLOOKFOR.setVisible(false);
+
                 DefaultListModel<String> modifiedModelOverall = new DefaultListModel<>();
 
               ///  for (String book : Queries.getAllAvailableBook(CurrentLibraryName)) {
@@ -897,6 +894,9 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 lookForJLabel.setVisible(false);
                 Search.setVisible(false);
 
+                ascendingCheckBoxLOOKFOR.setVisible(false);
+                descendingCheckBoxLOOKFOR.setVisible(false);
+
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 String selectedCategory = (String) categoryComboBox.getSelectedItem();
 
@@ -935,6 +935,59 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
             }
 
         });
+
+
+        ascendingCheckBoxLOOKFOR = new JCheckBox("Sort search \uD83E\uDC79");
+        ascendingCheckBoxLOOKFOR.setBounds(420, 185, 150, 30);
+
+        descendingCheckBoxLOOKFOR = new JCheckBox("Sort search \uD83E\uDC7B");
+        descendingCheckBoxLOOKFOR.setBounds(420, 205, 150, 30);
+        add(ascendingCheckBoxLOOKFOR);
+        add(descendingCheckBoxLOOKFOR);
+
+        ascendingCheckBoxLOOKFOR.setVisible(false);
+        descendingCheckBoxLOOKFOR.setVisible(false);
+
+        descendingCheckBoxLOOKFOR.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (descendingCheckBoxLOOKFOR.isSelected()) {
+                    ascendingCheckBoxLOOKFOR.setSelected(false);
+                    sortFunction();
+                } else if (!ascendingCheckBoxLOOKFOR.isSelected()) {
+                    ascendingCheckBoxLOOKFOR.setSelected(true);
+                    sortFunction();
+                }
+            }
+        });
+        ascendingCheckBoxLOOKFOR.setSelected(true);
+        ascendingCheckBoxLOOKFOR.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (ascendingCheckBoxLOOKFOR.isSelected()) {
+                    descendingCheckBoxLOOKFOR.setSelected(false);
+                   sortFunction();
+                } else if (!descendingCheckBoxFiltering.isSelected()) {
+                    descendingCheckBoxFiltering.setSelected(true);
+                    sortFunction();
+                }
+            }
+        });
+
+        Search.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultListModel model = new DefaultListModel();
+                String textToSearch = lookForTextField.getText();
+                if (textToSearch.isEmpty()) {
+                    JOptionPane.showMessageDialog(null,
+                            "Type title to look for", "Message", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    sortFunction();
+                }
+            }
+        });
+
         borrowALL.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -1296,4 +1349,17 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 }
 
         }
+
+        public void sortFunction(){
+            DefaultListModel model = new DefaultListModel();
+            String textToSearch = lookForTextField.getText();
+            if (ascendingCheckBoxLOOKFOR.isSelected()) {
+                model.addAll(Queries.searchForBookByTitle(CurrentLibraryName,textToSearch,"ASC"));
+                list.setModel(model);
+            }
+            else if(descendingCheckBoxLOOKFOR.isSelected()){
+                model.addAll(Queries.searchForBookByTitle(CurrentLibraryName,textToSearch,"DESC"));
+                list.setModel(model);}
+        }
+
 }
