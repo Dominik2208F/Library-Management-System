@@ -682,6 +682,12 @@ public class Queries {
         List<String> allBooks= new ArrayList<>();
         ResultSet resultSet=null;
         Statement statement;
+        if(right.equals("")){
+            LocalDate today = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String formattedDate = today.format(formatter);
+            right=formattedDate;
+        }
         try{
             String query=String.format(" SELECT DATE_TRUNC('second', dateoftransaction) AS dateoftransaction,direction,users.username,title,author.first_name,author.last_name,yearofproduction,genre.name  FROM public.borrowedbooks\n"+
                     "LEFT JOIN library ON borrowedbooks.library_id = library.library_id\n"+
@@ -746,6 +752,12 @@ public class Queries {
         List<String> allBooks= new ArrayList<>();
         ResultSet resultSet=null;
         Statement statement;
+        if(to.equals("")){
+            LocalDate today = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String formattedDate = today.format(formatter);
+            to=formattedDate;
+        }
         try{
             String query=String.format(" SELECT DATE_TRUNC('second', dateoftransaction) AS dateoftransaction,direction,users.username,title,author.first_name,author.last_name,yearofproduction,genre.name  FROM public.borrowedbooks\n"+
                     "LEFT JOIN library ON borrowedbooks.library_id = library.library_id\n"+

@@ -1544,7 +1544,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
             DefaultListModel model= new DefaultListModel<>();
             if(!choice.equals("All")) {
 
-                if(!transactionLeft.getText().isEmpty() && !transactionRight.getText().isEmpty()){
+                if(!transactionLeft.getText().isEmpty() || !transactionRight.getText().isEmpty()){
                     model.addAll(Queries.getAllTransactionByUserStatusANDDate(CurrentLibraryName, userChooseIFrame.getChoosenUserName(),choice,transactionLeft.getText(),transactionRight.getText()));
                     if(model.isEmpty()){
                         JOptionPane.showMessageDialog(null, "No results for that range of date FROM: "+transactionLeft.getText()+" TO: "+transactionRight.getText(), "Message", JOptionPane.INFORMATION_MESSAGE);
@@ -1557,7 +1557,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 }
             }
             else{ //ALL
-                if(!transactionLeft.getText().isEmpty() && !transactionRight.getText().isEmpty()){
+                if(!transactionLeft.getText().isEmpty() || !transactionRight.getText().isEmpty()){
                     model.addAll(Queries.getAllTransactionByUserAndDate(CurrentLibraryName, userChooseIFrame.getChoosenUserName(),transactionLeft.getText(),transactionRight.getText()));
                     if(model.isEmpty()){
                         JOptionPane.showMessageDialog(null, "No results for that range of date FROM: "+transactionLeft.getText()+" TO: "+transactionRight.getText(), "Message", JOptionPane.INFORMATION_MESSAGE);
