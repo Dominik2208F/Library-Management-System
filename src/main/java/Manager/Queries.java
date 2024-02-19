@@ -60,7 +60,7 @@ public class Queries {
         ResultSet resultSet=null;
         Statement statement;
         try{
-            String query=String.format("SELECT username FROM public.users LEFT JOIN library on users.library_Id=library.library_id WHERE library.library_name='%s'",Name);
+            String query=String.format("SELECT username FROM public.users LEFT JOIN library on users.library_Id=library.library_id WHERE library.library_name='%s' ORDER BY username ASC",Name);
             statement=connection.createStatement();
             resultSet=statement.executeQuery(query);
         }catch (Exception e){
@@ -838,6 +838,41 @@ public class Queries {
         }
         return resultSet;
     }
+
+
+    public static String userPassword(String libraryName,String username){
+        ResultSet resultSet=null;
+        Statement statement;
+        String password=null;
+        try{
+            String query=String.format("SELECT password FROM public.users\n" +
+                    "LEFT JOIN library on library.library_id=users.library_id\n" +
+                    "where username='%s' and library_name='%s'",username,libraryName);
+            statement=connection.createStatement();
+            resultSet=statement.executeQuery(query);
+            while(resultSet.next()) {
+                password = resultSet.getString("password");
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return password;
+    }
+
+    public static void updatePassword(String passwordNew,String library,String username){
+        Statement statement;
+        try{
+            String query=String.format("Update Users set password='%s'\n" +
+                    "where username='%s' and library_id IN (SELECT library_id FROM library WHERE library_name = '%s')",passwordNew,username,library);
+            statement=connection.createStatement();
+            statement.executeUpdate(query);
+            System.out.println("Password updated");
+
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
 
 
 

@@ -9,12 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="naprawa quick View i borrow odświeżania listy">
-      <change afterPath="$PROJECT_DIR$/res/user-avatar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Frames/MyAccountOverViewJFrame.java" afterDir="false" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="user overview Tab added">
+      <change afterPath="$PROJECT_DIR$/res/padlock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Frames/ChangePasswordJFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,13 +133,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00124" summary="sprzątanie powtarzającego się kodu">
-      <created>1707830272696</created>
-      <option name="number" value="00124" />
-      <option name="presentableId" value="LOCAL-00124" />
-      <option name="project" value="LOCAL" />
-      <updated>1707830272696</updated>
     </task>
     <task id="LOCAL-00125" summary="sprzątanie powtarzającego się kodu cz2">
       <created>1707830762444</created>
@@ -478,7 +470,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708330370876</updated>
     </task>
-    <option name="localTasksCounter" value="173" />
+    <task id="LOCAL-00173" summary="user overview Tab added">
+      <created>1708336226034</created>
+      <option name="number" value="00173" />
+      <option name="presentableId" value="LOCAL-00173" />
+      <option name="project" value="LOCAL" />
+      <updated>1708336226035</updated>
+    </task>
+    <option name="localTasksCounter" value="174" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -493,7 +492,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="filtrowanie całe zrobione." />
     <MESSAGE value="filtrowanie całe zrobione w połączeniu z sortowaniem+nowa funkcjonalnosc" />
     <MESSAGE value="gotowe przycisku pod filtrowanie na borrow" />
     <MESSAGE value="gotowe filtrowanie na borrow i znikanie przycisków." />
@@ -518,7 +516,8 @@
     <MESSAGE value="poprawki do transakcji filtrowania i ikony" />
     <MESSAGE value="formatowanie i sprzątanie kodu" />
     <MESSAGE value="naprawa quick View i borrow odświeżania listy" />
-    <option name="LAST_COMMIT_MESSAGE" value="naprawa quick View i borrow odświeżania listy" />
+    <MESSAGE value="user overview Tab added" />
+    <option name="LAST_COMMIT_MESSAGE" value="user overview Tab added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -530,17 +529,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>335</line>
+          <line>341</line>
           <option name="timeStamp" value="113" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>611</line>
+          <line>617</line>
           <option name="timeStamp" value="122" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>1221</line>
+          <line>1227</line>
           <option name="timeStamp" value="140" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

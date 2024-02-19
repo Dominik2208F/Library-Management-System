@@ -107,6 +107,12 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
             }
         });
 
+        accountChangePassword.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ChangePasswordJFrame(CurrentLibraryName, userChooseIFrame.getChoosenUserName());
+            }
+        });
 
         lookForTextField = new JTextField();
         lookForTextField.setBounds(590, 190, 160, 40);
