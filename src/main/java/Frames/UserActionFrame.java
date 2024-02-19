@@ -92,13 +92,10 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         Program.add(programInfo);
         MenageAccount.add(accountInfo);
         MenageAccount.add(accountChangePassword);
-
         menubar.add(MenageAccount);
-        menubar.add(Program);
         menubar.add(Options);
+        menubar.add(Program);
         setJMenuBar(menubar);
-
-
 
         accountInfo.addActionListener(new ActionListener() {
             @Override
