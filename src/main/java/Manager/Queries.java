@@ -807,7 +807,6 @@ public class Queries {
     }
 
     public static ResultSet getQucikViewInfo(String libraryName,String titlearg){
-        List<String> allBooks= new ArrayList<>();
         ResultSet resultSet=null;
         Statement statement;
         try{
@@ -824,6 +823,22 @@ public class Queries {
         }
         return resultSet;
     }
+
+    public static ResultSet userInfo(String libraryName,String username){
+        ResultSet resultSet=null;
+        Statement statement;
+        try{
+            String query=String.format("SELECT user_id,username,dateofcreation,permissionlevel,library_name FROM public.users\n" +
+                    "LEFT JOIN library ON library.library_id=users.library_id\n" +
+                    "where username='%s'and library_name='%s'",username,libraryName);
+            statement=connection.createStatement();
+            resultSet=statement.executeQuery(query);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return resultSet;
+    }
+
 
 
     public static List<String> sortBookByParameter(String libraryName,String parameter,String sortDirection){

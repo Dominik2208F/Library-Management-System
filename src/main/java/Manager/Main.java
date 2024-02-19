@@ -24,6 +24,7 @@ Main {
         Connection connection= db.connectionToDB("Library","postgres","Dominik1");
         Queries queries = new Queries(connection);
 
+
         FlatLightLaf.setup();
         UIManager.put( "Button.arc", 20 );
         UIManager.put( "Component.arc", 20 );

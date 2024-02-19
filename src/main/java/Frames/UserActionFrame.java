@@ -16,8 +16,8 @@ import java.util.*;
 public class UserActionFrame extends JFrame implements CommonFunctions {
 
     JMenuBar menubar;
-    JMenu Options, Program;
-    JMenuItem changeUser, changeLibrary, programInfo;
+    JMenu Options, Program,MenageAccount;
+    JMenuItem changeUser, changeLibrary, programInfo,accountChangePassword,accountInfo;
     JButton lookfor, BorrowAbook, ReturnAbook, ConfirmChoice, returnAll, borrowALL, filter, ShowAllBook, QuickView, Search, TransactionButton, transactionLeftSelect, transactionRightSelect;
     JList<String> list;
     Library flowLibrary;
@@ -80,16 +80,33 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         menubar = new JMenuBar();
         Options = new JMenu("Options");
         Program = new JMenu("Info");
+        MenageAccount = new JMenu("My account");
         changeUser = new JMenuItem("Log out");
         changeLibrary = new JMenuItem("Change library");
         programInfo = new JMenuItem("About");
+        accountInfo = new JMenuItem("Account info");
+        accountChangePassword = new JMenuItem("Change password");
+
         Options.add(changeUser);
         Options.add(changeLibrary);
         Program.add(programInfo);
+        MenageAccount.add(accountInfo);
+        MenageAccount.add(accountChangePassword);
 
-        setJMenuBar(menubar);
-        menubar.add(Options);
+        menubar.add(MenageAccount);
         menubar.add(Program);
+        menubar.add(Options);
+        setJMenuBar(menubar);
+
+
+
+        accountInfo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new MyAccountOverViewJFrame(CurrentLibraryName, userChooseIFrame.getChoosenUserName());
+            }
+        });
+
 
         lookForTextField = new JTextField();
         lookForTextField.setBounds(590, 190, 160, 40);
