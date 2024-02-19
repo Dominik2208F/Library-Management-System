@@ -43,9 +43,17 @@ public class ChangePasswordJFrame extends JFrame implements CommonFunctions {
 
 
         JButton button = new JButton("Confirm");
-        button.setBounds(110, 300, 120, 35);
+        button.setBounds(110, 300, 150, 35);
         add(button);
         button.setVisible(true);
+
+        JButton button2 = new JButton("Previous screen");
+        button2.setBounds(110, 345, 150, 35);
+        add(button2);
+        button2.setVisible(true);
+
+        ImageIcon goBackButton = setIcon("/logout.png");
+        button2.setIcon(goBackButton);
 
         ImageIcon okIcon = setIcon("/check.png");
         button.setIcon(okIcon);
@@ -151,14 +159,22 @@ public class ChangePasswordJFrame extends JFrame implements CommonFunctions {
 
     public void saveUser(String libraryNameField,String username) {
 
+        char[] passwordcharOLD = OldPassword.getPassword();
         char[] passwordchar = newPassword.getPassword();
         String passwordNew = new String(passwordchar);
+        String passwordOLD = new String(passwordcharOLD);
         String regex = "(?=.*[a-ząćęłńóśźż])(?=.*[A-ZĄĆĘŁŃÓŚŹŻ])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-ząćęłńóśźżĄĆĘŁŃÓŚŹŻ\\d@$!%*?&]{8,}$";
         String passwordFromDataBase = Queries.userPassword(libraryNameField,username);
-        if(passwordFromDataBase.equals(passwordNew)){
+        if(!passwordFromDataBase.equals(passwordOLD)){
+            JOptionPane.showMessageDialog(null, "Wrong current password.Try again"
+                    , "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(passwordFromDataBase.equals(passwordNew)){
+
             JOptionPane.showMessageDialog(null, "New password cannot be the same as current"
                     , "Error", JOptionPane.ERROR_MESSAGE);
         }
+
         else if (passwordchar.length == 0) {
             JOptionPane.showMessageDialog(null, "Password cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
         } else {

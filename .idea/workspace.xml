@@ -9,12 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="user overview Tab added">
-      <change afterPath="$PROJECT_DIR$/res/padlock.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Frames/ChangePasswordJFrame.java" afterDir="false" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="zmiana hasła zakładka działa ok">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/ChangePasswordJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/ChangePasswordJFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,13 +130,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00125" summary="sprzątanie powtarzającego się kodu cz2">
-      <created>1707830762444</created>
-      <option name="number" value="00125" />
-      <option name="presentableId" value="LOCAL-00125" />
-      <option name="project" value="LOCAL" />
-      <updated>1707830762444</updated>
     </task>
     <task id="LOCAL-00126" summary="zmiana nazwy przycisku log out">
       <created>1707830965223</created>
@@ -477,7 +467,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708336226035</updated>
     </task>
-    <option name="localTasksCounter" value="174" />
+    <task id="LOCAL-00174" summary="zmiana hasła zakładka działa ok">
+      <created>1708339216093</created>
+      <option name="number" value="00174" />
+      <option name="presentableId" value="LOCAL-00174" />
+      <option name="project" value="LOCAL" />
+      <updated>1708339216093</updated>
+    </task>
+    <option name="localTasksCounter" value="175" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -492,7 +489,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="filtrowanie całe zrobione w połączeniu z sortowaniem+nowa funkcjonalnosc" />
     <MESSAGE value="gotowe przycisku pod filtrowanie na borrow" />
     <MESSAGE value="gotowe filtrowanie na borrow i znikanie przycisków." />
     <MESSAGE value="przyciski pod production date" />
@@ -517,7 +513,8 @@
     <MESSAGE value="formatowanie i sprzątanie kodu" />
     <MESSAGE value="naprawa quick View i borrow odświeżania listy" />
     <MESSAGE value="user overview Tab added" />
-    <option name="LAST_COMMIT_MESSAGE" value="user overview Tab added" />
+    <MESSAGE value="zmiana hasła zakładka działa ok" />
+    <option name="LAST_COMMIT_MESSAGE" value="zmiana hasła zakładka działa ok" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

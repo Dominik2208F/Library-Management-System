@@ -56,7 +56,7 @@ public class OverViewBookJFrame extends JFrame implements CommonFunctions {
         select.setEnabled(false);
 
         JButton button = new JButton("OK");
-        button.setBounds(150, 490, 100, 40);
+        button.setBounds(140, 490, 100, 40);
         add(button);
         button.setVisible(true);
 
