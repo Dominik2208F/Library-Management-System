@@ -806,7 +806,24 @@ public class Queries {
         }
     }
 
-
+    public static ResultSet getQucikViewInfo(String libraryName,String titlearg){
+        List<String> allBooks= new ArrayList<>();
+        ResultSet resultSet=null;
+        Statement statement;
+        try{
+            String query=String.format("SELECT status,users.username,users.user_id, title, author.first_name, author.last_name,author.date_of_birth,yearofproduction,genre.name,pages  FROM public.book\n" +
+                    "                    LEFT JOIN author on book.author_id=author.author_id\n" +
+                    "                    LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
+                    "                    LEFT JOIN library on book.library_id= library.library_id\n" +
+                    "                    LEFT JOIN users on book.user_id=users.user_id\n" +
+                    "                    WHERE library.library_name='%s' and title='%s'",libraryName,titlearg);
+            statement=connection.createStatement();
+            resultSet=statement.executeQuery(query);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return resultSet;
+    }
 
 
     public static List<String> sortBookByParameter(String libraryName,String parameter,String sortDirection){

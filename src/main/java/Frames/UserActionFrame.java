@@ -341,7 +341,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
             public void actionPerformed(ActionEvent e) {
 
                 if (list.getSelectedIndex() != -1) {
-                    new OverViewBookJFrame(library, list);
+                    new OverViewBookJFrame(CurrentLibraryName, list);
                 } else {
                     JOptionPane.showMessageDialog(null, "Choose one book from list", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -566,11 +566,12 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                                     Queries.insertBorrowedBookToHistory(userChooseIFrame.getSelectedUserValue(), titleOfBookToUnassingFromUser, CurrentLibraryName, "is borrowed");
                                 }
 
-                                DefaultListModel<String> modifiedModel1 = new DefaultListModel<>();
-                                for (String book : Queries.getAllAvailableBook(CurrentLibraryName)) {
-                                    modifiedModel1.addElement(book);
-                                }
-                                list.setModel(modifiedModel1);
+                             //   DefaultListModel<String> modifiedModel1 = new DefaultListModel<>();
+                             //   for (String book : Queries.getAllAvailableBook(CurrentLibraryName)) {
+                             //       modifiedModel1.addElement(book);
+                             //   }
+                             //   list.setModel(modifiedModel1);
+                                subCategoryFilteringBorrow();
                                 JOptionPane.showMessageDialog(null, "Selected books have been borrowed successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
 
                                 if (!Queries.checkIfAnyBookIsAvailable(CurrentLibraryName)) {
@@ -592,11 +593,12 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
 
                                 Queries.updateBookStatusByTitle(CurrentLibraryName, "BORROWED", titleOfBookToUnassingFromUser, userChooseIFrame.getSelectedUserValue());
                                 Queries.insertBorrowedBookToHistory(userChooseIFrame.getSelectedUserValue(), titleOfBookToUnassingFromUser, CurrentLibraryName, "is borrowed");
-                                DefaultListModel<String> modifiedModel1 = new DefaultListModel<>();
-                                for (String book : Queries.getAllAvailableBook(CurrentLibraryName)) {
-                                    modifiedModel1.addElement(book);
-                                }
-                                list.setModel(modifiedModel1);
+                             //   DefaultListModel<String> modifiedModel1 = new DefaultListModel<>();
+                             //   for (String book : Queries.getAllAvailableBook(CurrentLibraryName)) {
+                             //       modifiedModel1.addElement(book);
+                             //  }
+                             //   list.setModel(modifiedModel1);
+                                subCategoryFilteringBorrow();
 
                                 JOptionPane.showMessageDialog(null, "Book " + titleOfBookToUnassingFromUser + " has been borrowed successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
 

@@ -1,16 +1,25 @@
 
+h
+java:S1192$"KDefine a constant instead of duplicating this literal "yyyy-MM-dd" 3 times.(ûú»ú8á³ÀæÛ1
 E
-java:S1604"(Make this anonymous inner class a lambda(Àê¸•8Æ•Ó¤Ú1
+java:S1604 "(Make this anonymous inner class a lambda(Àê¸•8Æ•Ó¤Ú1
 E
-java:S1604A"(Make this anonymous inner class a lambda(Àê¸•8¨ÍÙ¤Ú1
+java:S1604B"(Make this anonymous inner class a lambda(Àê¸•8¨ÍÙ¤Ú1
+E
+java:S1604i"(Make this anonymous inner class a lambda(Àê¸•8â³ÀæÛ1
 v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(úÃ†ş8Á²¶¤Ú1
 i
-java:S3252"LUse static access with "javax.swing.WindowConstants" for "DISPOSE_ON_CLOSE".(Ì—İ8Ô•Ó¤Ú1
+java:S3252"LUse static access with "javax.swing.WindowConstants" for "DISPOSE_ON_CLOSE".(Ì—İ8Ô•Ó¤Ú1
 i
-java:S3252:"LUse static access with "javax.swing.WindowConstants" for "DISPOSE_ON_CLOSE".(Ì—İ8ÄÍÙ¤Ú1
+java:S3252;"LUse static access with "javax.swing.WindowConstants" for "DISPOSE_ON_CLOSE".(Ì—İ8ÄÍÙ¤Ú1
 J
-java:S1172Y"-Remove this unused method parameter "button".(İ‰°á8Ù²¶¤Ú1
+java:S1172Z"-Remove this unused method parameter "button".(İ‰°á8’¦ŸçÛ1
+i
+java:S3252b"LUse static access with "javax.swing.WindowConstants" for "DISPOSE_ON_CLOSE".(Ì—İ8ò³ÀæÛ1
+X	java:S125~"<This block of commented-out lines of code should be removed.(ˆ§Ä—8ŒÛÆæÛ1
 V
 java:S1068"4Remove this unused "updateBookJFrame" private field.(­§ûÿÿÿÿ8ÉÍÙ¤Ú1
 S
 java:S1068"6Remove this unused "overViewBookJFrame" private field.(ÎûÖ8İ•Ó¤Ú1
+P
+java:S1068"3Remove this unused "userActionFrame" private field.(‘®¨Ó8¥áÂæÛ1

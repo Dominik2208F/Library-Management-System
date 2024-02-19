@@ -1,6 +1,7 @@
 package Frames;
 
 import Manager.CommonFunctions;
+import Manager.Queries;
 import org.example.LibraryManager.Book;
 import org.example.LibraryManager.Library;
 
@@ -8,9 +9,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 
 public class OverViewBookJFrame extends JFrame implements CommonFunctions {
-    private Library library;
     private JList list;
     private CalendarIFrame calendar;
 
@@ -25,10 +26,10 @@ public class OverViewBookJFrame extends JFrame implements CommonFunctions {
     private JTextField yearField = new JTextField();
     private JComboBox<String> genreComboBox = new JComboBox<>(new String[]{"Przygodowa", "Akcji", "ScienceFiction", "Romans", "Historyczne", "Akademickie", "Finansowe", "Dramat"});
     private JTextField pagesField = new JTextField();
+    private JTextField statusField = new JTextField();
 
-    public OverViewBookJFrame(Library library, JList list) {
+    public OverViewBookJFrame(String libraryName, JList list) {
 
-        this.library = library;
         this.list = list;
 
         setContentPane(new JPanel() {
@@ -47,21 +48,33 @@ public class OverViewBookJFrame extends JFrame implements CommonFunctions {
             }
         });
 
-        JButton button = new JButton("Select");
-        button.setBounds(200, 240, 100, 40);
+        JButton select = new JButton("Select");
+
+        select.setBounds(200, 240, 100, 40);
+        add(select);
+
+        select.setEnabled(false);
+
+        JButton button = new JButton("OK");
+        button.setBounds(150, 490, 100, 40);
         add(button);
-        button.setEnabled(false);
+        button.setVisible(true);
+
+        ImageIcon okIcon = setIcon("/check.png");
+        button.setIcon(okIcon);
+
         JLabel imageAddBookLabel= new JLabel(setIcon("/research.png"));
         imageAddBookLabel.setBounds(100, 10, 200, 65);
         add(imageAddBookLabel);
 
+
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                calendar = new CalendarIFrame(button, OverViewBookJFrame.this);
-
+                dispose();
             }
         });
+
 
 
         titleField.setBounds(100, 90, 200, 40);
@@ -72,41 +85,70 @@ public class OverViewBookJFrame extends JFrame implements CommonFunctions {
         yearField.setBounds(100, 290, 200, 40);
         genreComboBox.setBounds(100, 340, 200, 40);
         pagesField.setBounds(100, 390, 200, 40);
+        statusField.setBounds(100,440,200,40);
+
 
        String TitleToUpdate = extractTitle((String) list.getSelectedValue());
 
 
+        ResultSet resultSet=Queries.getQucikViewInfo(libraryName,TitleToUpdate);
 
-        for (Book book : library.getListOfBooks()) {
-            if (book.getTitle().equals(TitleToUpdate)) {
-                titleField.setText(book.getTitle());
-                authorFirstNameField.setText(book.getAuthor().getFirstName());
-                authorLastNameField.setText(book.getAuthor().getLastName());
-                authorBirthDateField.setText(book.getAuthor().getDateOfBirth());
-                yearField.setText(String.valueOf(book.getDateOfProduction()));
-                genreComboBox.setSelectedItem(book.getGenre().getName());
-                pagesField.setText(String.valueOf(book.getAmountOfPage()));
+
+        String status = null;
+        String dateOfBirth = null;
+        String title = null;
+        String authorFirstName = null;
+        String authorLastName = null;
+        String yearOfProduction = null;
+        String genre = null;
+        String pages = null;
+        try {
+            while (resultSet.next()) {
+
+                 status = resultSet.getString("status");
+                 dateOfBirth = resultSet.getString("date_of_birth");
+                 title = resultSet.getString("title");
+                 authorFirstName = resultSet.getString("first_name");
+                 authorLastName=resultSet.getString("last_name");
+                 yearOfProduction = resultSet.getString("yearofproduction");
+                 genre = resultSet.getString("name");
+                 pages = resultSet.getString("pages");
+
+
+
+
             }
+        }catch (Exception e){
 
         }
 
+        statusField.setText(status);
+        titleField.setText(title);
+        authorFirstNameField.setText(authorFirstName);
+        authorLastNameField.setText(authorLastName);
+        authorBirthDateField.setText(dateOfBirth);
+        yearField.setText(yearOfProduction);
+        genreComboBox.setSelectedItem(genre);
+        pagesField.setText(pages);
 
-        add(new JLabel("Title:")).setBounds(15, 85, 100, 35);
+        add(new JLabel("Title:")).setBounds(15, 90, 100, 35);
         add(titleField);
-        add(new JLabel("First Name:")).setBounds(15, 135, 100, 35);
+        add(new JLabel("First Name:")).setBounds(15, 140, 100, 35);
         add(authorFirstNameField);
-        add(new JLabel("Last Name:")).setBounds(15, 185, 100, 35);
+        add(new JLabel("Last Name:")).setBounds(15, 190, 100, 35);
         add(authorLastNameField);
-        add(new JLabel("Birth Date:")).setBounds(15, 235, 100, 35);
+        add(new JLabel("Birth Date:")).setBounds(15, 240, 100, 35);
         add(authorBirthDateField);
-        add(new JLabel("Year:")).setBounds(15, 285, 100, 35);
+        add(new JLabel("Year:")).setBounds(15, 290, 100, 35);
         add(yearField);
-        add(new JLabel("Genre:")).setBounds(15, 335, 100, 35);
+        add(new JLabel("Genre:")).setBounds(15, 340, 100, 35);
         add(genreComboBox);
-        add(new JLabel("Pages:")).setBounds(15, 385, 100, 35);
+        add(new JLabel("Pages:")).setBounds(15, 390, 100, 35);
         add(pagesField);
+        add(new JLabel("Status:")).setBounds(15, 435, 100, 35);
+        add(statusField);
 
-
+        statusField.setEditable(false);
         titleField.setEditable(false);
         authorFirstNameField.setEditable(false);
         authorLastNameField.setEditable(false);
@@ -116,7 +158,7 @@ public class OverViewBookJFrame extends JFrame implements CommonFunctions {
         pagesField.setEditable(false);
 
 
-        setSize(400, 550);
+        setSize(400, 580);
         setTitle("Qucik overview");
         setLayout(null);
         setResizable(false);

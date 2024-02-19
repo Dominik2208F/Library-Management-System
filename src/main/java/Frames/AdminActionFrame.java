@@ -40,6 +40,8 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
     private JComboBox<String> categoryComboBox, SubCategoryComboBox, UserSelectionComboBox, UserSelectionComboBoxToReturnABook,UserSelectionComboBoxToBorrow;
     private Map<String, List<String>> subcategoriesMap = new HashMap<>();
 
+    private String CurrentLibraryName=userChooseIFrame.getLibraryManagementFrame().getSelectedLibrary();
+
     public AdminActionFrame(UserChooseIFrame userChooseIFrame, Library library) {
 
         this.flowLibrary = library;
@@ -709,7 +711,7 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
             public void actionPerformed(ActionEvent e) {
 
                 if (list.getSelectedIndex() != -1) {
-                    new OverViewBookJFrame(library, list);
+                    new OverViewBookJFrame(CurrentLibraryName, list);
                 } else {
                     JOptionPane.showMessageDialog(null, "Choose one book from list", "Error", JOptionPane.ERROR_MESSAGE);
                 }
