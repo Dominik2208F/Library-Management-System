@@ -2,6 +2,7 @@ package Manager;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLOutput;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -115,14 +116,34 @@ public class AdminQueries {
         }
     }
 
+    public static String searchAuthorByDetails(String authorFirstName,String lastName){
+
+        Statement statement;
+        String AuthorId = null;
+        try {
+            statement = connection.createStatement();
+            String readAuthorId = String.format("SELECT author_id FROM public.author\n" +
+                    "where first_name='%s' and last_name='%s'", authorFirstName, lastName);
+
+            ResultSet resultSet = statement.executeQuery(readAuthorId);
+            while (resultSet.next()) {
+                 AuthorId = resultSet.getString("author_id");
+            }
+        }catch (Exception e){
+
+        }
+        return AuthorId;
+    }
+
+
     public static void addBook(String title,String authorFirstName,String lastName,String dateofbirth,String yearOfProduction, String pages, String status, String user_id,String library_name,String genre_name,boolean is_deleted){
         Statement statement;
-        // create author
         try{
             statement=connection.createStatement();
 
             String updateAuthor=String.format("INSERT INTO author (first_name, last_name, date_of_birth)\n" +
-                    "VALUES ('%s', '%s', '%s')",authorFirstName,lastName,dateofbirth);
+                    "VALUES ('%s', '%s', '%s')\n"+
+                    "ON CONFLICT (first_name, last_name, date_of_birth) DO NOTHING",authorFirstName,lastName,dateofbirth);
 
             statement.executeUpdate(updateAuthor);
             System.out.println("Author created");
@@ -156,41 +177,36 @@ public class AdminQueries {
                     genreId= "1";
                     break;
                 case "Przygodowa":
-                    genreId= "2";
-                    break;
-                case "ScienceFiction":
-                    genreId= "3";
-                    break;
-                case "Romans":
-                    genreId= "4";
-                    break;
-                case "Historyczne":
                     genreId= "5";
                     break;
+                case "ScienceFiction":
+                    genreId= "2";
+                    break;
+                case "Romans":
+                    genreId= "3";
+                    break;
+                case "Historyczne":
+                    genreId= "4";
+                    break;
                 case "Akademickie":
-                    genreId= "6";
+                    genreId= "8";
                     break;
                 case "Finansowe":
-                    genreId= "7";
+                    genreId= "9";
                     break;
                 case "Dramat":
-                    genreId= "8";
+                    genreId= "6";
                     break;
                 default:
                     genreId ="0";
                     break;
             }
 
-
             String addBook=String.format("INSERT INTO Book (title, author_id, yearofproduction,pages, status, user_id,library_id, genre_id,is_deleted)\n" +
                     "VALUES ('%s', %s, %s, %s, '%s',%s, %s, %s,%s);\n",title,newAuthorCreatedId,yearOfProduction,pages,status,user_id,libraryId,genreId,is_deleted);
 
             statement.executeUpdate(addBook);
             System.out.println("Book created");
-
-
-
-
 
         }catch (Exception e){
             System.out.println(e);
@@ -199,6 +215,65 @@ public class AdminQueries {
 
     }
 
+
+    public static void updateBook(String title, String authorName, String authorLastName, String dateOfBirth, String yearOfProduction, String pages, String genre_name, String titleToUpdate){
+        Statement statement;
+        try {
+            statement=connection.createStatement();
+            String author = String.format("INSERT INTO author (first_name, last_name, date_of_birth)\n" +
+                    "VALUES ('%s', '%s', '%s')\n"+
+                    "ON CONFLICT (first_name, last_name, date_of_birth) DO NOTHING", authorName, authorLastName, dateOfBirth);
+
+            statement.executeUpdate(author);
+            String authorID = searchAuthorByDetails(authorName, authorLastName);
+            System.out.println("Author id fetched " +authorID);
+
+            String genreId;
+
+            switch(genre_name) {
+                case "Akcji":
+                    genreId= "1";
+                    break;
+                case "Przygodowa":
+                    genreId= "5";
+                    break;
+                case "ScienceFiction":
+                    genreId= "2";
+                    break;
+                case "Romans":
+                    genreId= "3";
+                    break;
+                case "Historyczne":
+                    genreId= "4";
+                    break;
+                case "Akademickie":
+                    genreId= "8";
+                    break;
+                case "Finansowe":
+                    genreId= "9";
+                    break;
+                case "Dramat":
+                    genreId= "6";
+                    break;
+                default:
+                    genreId ="0";
+                    break;
+            }
+            String updateBook = String.format("UPDATE Book\n" +
+                    "SET title = '%s', \n" +
+                    "   author_id = %s, \n"+
+                    "    yearofproduction = %s, \n" +
+                    "    pages = %s,\n" +
+                    "    genre_id = %s \n" +
+                    "WHERE title='%s'  ", title,authorID, yearOfProduction, pages, genreId,titleToUpdate);
+            statement.executeUpdate(updateBook);
+            System.out.println("Book updated");
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+
+    }
 
 
 

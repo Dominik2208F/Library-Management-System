@@ -9,12 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="usuwanie ksiazki zrobione">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="dodawanie ksiazki zrobione">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UpdateBookJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UpdateBookJFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Manager/AdminQueries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/AdminQueries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,13 +133,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00131" summary="delete users lista">
-      <created>1707905300793</created>
-      <option name="number" value="00131" />
-      <option name="presentableId" value="LOCAL-00131" />
-      <option name="project" value="LOCAL" />
-      <updated>1707905300794</updated>
     </task>
     <task id="LOCAL-00132" summary="borrow more than 1 book">
       <created>1707909010641</created>
@@ -477,7 +470,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708428029858</updated>
     </task>
-    <option name="localTasksCounter" value="180" />
+    <task id="LOCAL-00180" summary="dodawanie ksiazki zrobione">
+      <created>1708465428445</created>
+      <option name="number" value="00180" />
+      <option name="presentableId" value="LOCAL-00180" />
+      <option name="project" value="LOCAL" />
+      <updated>1708465428446</updated>
+    </task>
+    <option name="localTasksCounter" value="181" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -492,7 +492,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="działąjace filtrowanie po dacie produktu od 0 wartosci" />
     <MESSAGE value="filtrowanie naprawione żeby resetował od razu wartość" />
     <MESSAGE value="filtrowanie działa po production i pages" />
     <MESSAGE value="poprawa działania filtra na borrow" />
@@ -517,7 +516,8 @@
     <MESSAGE value="działa show all + filtrowanie admin" />
     <MESSAGE value="dodanie nowego statusu usunięte ksiażki do query na userze" />
     <MESSAGE value="usuwanie ksiazki zrobione" />
-    <option name="LAST_COMMIT_MESSAGE" value="usuwanie ksiazki zrobione" />
+    <MESSAGE value="dodawanie ksiazki zrobione" />
+    <option name="LAST_COMMIT_MESSAGE" value="dodawanie ksiazki zrobione" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

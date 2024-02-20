@@ -82,16 +82,12 @@ public class AddBookJFrame extends JFrame {
         yearField.setBounds(100, 290, 200, 40);
         genreComboBox.setBounds(100, 340, 200, 40);
         pagesField.setBounds(100, 390, 200, 40);
-
         titleField.setDocument(new LengthRestrictedDocument(40));
         authorFirstNameField.setDocument(new LengthRestrictedDocument(40));
         authorLastNameField.setDocument(new LengthRestrictedDocument(40));
         authorBirthDateField.setDocument(new LengthRestrictedDocument(40));
         yearField.setDocument(new LengthRestrictedDocument(4));
         pagesField.setDocument(new LengthRestrictedDocument(6));
-
-
-
 
         add(new JLabel("Title:")).setBounds(15, 85, 100, 35);
         add(titleField);
@@ -109,6 +105,7 @@ public class AddBookJFrame extends JFrame {
         add(pagesField);
         addBook.setBounds(115, 440, 150, 40);
         add(addBook);
+
         KeyListener keyListener = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -125,6 +122,7 @@ public class AddBookJFrame extends JFrame {
             public void keyReleased(KeyEvent e) {
             }
         };
+
 
         titleField.addKeyListener(keyListener);
         authorFirstNameField.addKeyListener(keyListener);
@@ -147,7 +145,6 @@ public class AddBookJFrame extends JFrame {
                 AddBook(fromPanelAbove);
             }
         });
-
         setSize(400, 550);
         setTitle("Add book");
         setLayout(null);
@@ -211,7 +208,7 @@ public class AddBookJFrame extends JFrame {
 
 
                 AdminQueries.addBook(title,authorFirstName,authorLastName,authorBirthDate,yearText,pagesText,"AVAILABLE","null",userChooseIFrame.getLibraryManagementFrame().getSelectedLibrary(),description,false);
-
+                JOptionPane.showMessageDialog(null, "Book added successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
                 DefaultListModel<String> updatedModel = new DefaultListModel<>();
                 Queries.getAllAvailableBook(userChooseIFrame.getLibraryManagementFrame().getSelectedLibrary()).stream()
                         .map(String::toString)

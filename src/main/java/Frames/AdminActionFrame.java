@@ -863,7 +863,7 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
 
                 if (updateBookClicked) {
                     if (list.getSelectedIndex() != -1) {
-                        UpdateBookJFrame updateBookJFrame = new UpdateBookJFrame(library, list);
+                        new UpdateBookJFrame(list,userChooseIFrame);
                     } else {
                         JOptionPane.showMessageDialog(null, "Choose one book", "Error", JOptionPane.ERROR_MESSAGE);
                     }
@@ -996,24 +996,26 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 QuickView.setEnabled(true);
                 ascendingCheckBoxFiltering.setVisible(false);
                 descendingCheckBoxFiltering.setVisible(false);
-                if (flowLibrary.getListOfBooks().isEmpty()) {
+                if (Queries.getAllAvailableBook(CurrentLibraryName).isEmpty()) {
                     ConfirmChoice.setEnabled(false);
                     JOptionPane.showMessageDialog(null,
                             "No book to update " + flowLibrary.getNameOfLibrary(), "Message", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     updateBookClicked = true;
+
+                    DefaultListModel<String> modifiedModel = new DefaultListModel<>();
+                    Queries.getAllAvailableBook(CurrentLibraryName).stream()
+                            .map(String::toString)
+                            .forEach(modifiedModel::addElement);
+                    list.setModel(modifiedModel);
                     if (informationUpdate) {
                         JOptionPane.showMessageDialog(null,
                                 "Choose one book from list and click confirm", "Message", JOptionPane.INFORMATION_MESSAGE);
                         informationUpdate = false;
                     }
-                    DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-                    for (Book books : flowLibrary.getListOfBooks()) {
-                        modifiedModel.addElement(books.toString(true));
-                        list.setModel(modifiedModel);
+
                     }
                 }
-            }
         });
         AddBook.addActionListener(new ActionListener() {
             @Override
