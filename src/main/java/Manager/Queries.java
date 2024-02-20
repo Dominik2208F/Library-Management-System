@@ -139,11 +139,12 @@ public class Queries {
         return null;
     }
 
-    public static List<String> getCurrentStateOfBooks(String libraryName){
+    public static List<String> getCurrentStateOfBooks(String libraryName,String permission){
         List<String> allBooks= new ArrayList<>();
         ResultSet resultSet=null;
         Statement statement;
         try{
+
             String query=String.format("SELECT status,users.username,users.user_id, title, author.first_name, author.last_name,yearofproduction,genre.name  FROM public.book\n" +
                     "LEFT JOIN author on book.author_id=author.author_id\n" +
                     "LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
@@ -164,9 +165,13 @@ public class Queries {
                 String author=resultSet.getString("first_name") +" "+resultSet.getString("last_name");
                 String yearOfProduction=resultSet.getString("yearofproduction");
                 String genre=resultSet.getString("name");
-
-                String bookInfo = "Status: " + status+ "," + " Title: " + title +"," + " Author: " + author +"," + " Production date: " + yearOfProduction +"," + " Genre: " + genre;
-
+                String bookInfo;
+                if(permission.equals("Admin")){
+                    bookInfo = "Status: " + status + "," +"Assigned to: "+assignedTo+ ","+ " Title: " + title + "," + " Author: " + author + "," + " Production date: " + yearOfProduction + "," + " Genre: " + genre;
+                }
+                else {
+                    bookInfo = "Status: " + status + "," + " Title: " + title + "," + " Author: " + author + "," + " Production date: " + yearOfProduction + "," + " Genre: " + genre;
+                }
                allBooks.add(bookInfo);
             }
         }catch (Exception e){

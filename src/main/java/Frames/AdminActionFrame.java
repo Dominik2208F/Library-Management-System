@@ -1,6 +1,8 @@
 package Frames;
 
+import Manager.AdminQueries;
 import Manager.CommonFunctions;
+import Manager.Queries;
 import org.example.LibraryManager.Book;
 import org.example.LibraryManager.Library;
 import org.example.UserManager.User;
@@ -9,6 +11,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.sql.ResultSet;
 import java.util.List;
 import java.util.*;
 
@@ -28,6 +33,7 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
     private Library flowLibrary;
     private UserChooseIFrame userChooseIFrame;
     private JLabel booksLabel;
+    private JCheckBox descendingCheckBoxFiltering,ascendingCheckBoxFiltering;
 
     boolean deleteBookClicked = false;
     boolean updateBookClicked = false;
@@ -40,12 +46,15 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
     private JComboBox<String> categoryComboBox, SubCategoryComboBox, UserSelectionComboBox, UserSelectionComboBoxToReturnABook,UserSelectionComboBoxToBorrow;
     private Map<String, List<String>> subcategoriesMap = new HashMap<>();
 
-    private String CurrentLibraryName=userChooseIFrame.getLibraryManagementFrame().getSelectedLibrary();
+    private String CurrentLibraryName;
+
 
     public AdminActionFrame(UserChooseIFrame userChooseIFrame, Library library) {
 
         this.flowLibrary = library;
         this.userChooseIFrame = userChooseIFrame;
+
+        CurrentLibraryName=userChooseIFrame.getLibraryManagementFrame().getSelectedLibrary();
 
         DefaultListModel<String> listOfAction = new DefaultListModel<>();
         list = new JList<>(listOfAction);
@@ -363,6 +372,9 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 QuickView.setEnabled(false);
                 UserSelectionComboBoxToBorrow.setVisible(false);
                 borrowALL.setVisible(false);
+
+                ascendingCheckBoxFiltering.setVisible(false);
+                descendingCheckBoxFiltering.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
                 for (User user : flowLibrary.getLibraryUserDataBase().getListOfUser()) {
                     modifiedModel.addElement(user.toString());
@@ -662,6 +674,8 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 returnAll.setVisible(false);
                 returnBookOfAGivenUser = true;
                 borrowBookOfAGivenUser=false;
+                ascendingCheckBoxFiltering.setVisible(false);
+                descendingCheckBoxFiltering.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
                 booksLabel.setText(RefreshListOfAvailableBook(library) + " books available in library");
@@ -732,6 +746,8 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 list.setModel(ListOfUsers(flowLibrary));
                 list.setEnabled(false);
                 QuickView.setEnabled(false);
+                ascendingCheckBoxFiltering.setVisible(false);
+                descendingCheckBoxFiltering.setVisible(false);
 
                 if (flowLibrary.getLibraryUserDataBase().getListOfUser().size() == 1) {
                     UserSelectionComboBox.setEnabled(false);
@@ -794,22 +810,22 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 UserSelectionComboBoxToBorrow.setVisible(false);
                 QuickView.setEnabled(true);
                 borrowALL.setVisible(false);
+                ascendingCheckBoxFiltering.setVisible(false);
+                descendingCheckBoxFiltering.setVisible(false);
+
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-                if (flowLibrary.getListOfBooks().isEmpty()) {
-                    for (Book books : flowLibrary.getListOfBooks()) {
-                        modifiedModel.addElement(books.toString(true));
-                    }
+                if (Queries.getCurrentStateOfBooks(CurrentLibraryName,"Admin").isEmpty()) {
                     list.setModel(modifiedModel);
                     SubCategoryComboBox.setEnabled(false);
                     categoryComboBox.setEnabled(false);
                     JOptionPane.showMessageDialog(null, "No books in library", "Warning", JOptionPane.WARNING_MESSAGE);
                 } else {
-                    for (Book books : flowLibrary.getListOfBooks()) {
-                        modifiedModel.addElement(books.toString(true));
+                    for (String book : Queries.getCurrentStateOfBooks(CurrentLibraryName,"Admin")) {
+                        modifiedModel.addElement(book);
                     }
+                    list.setModel(modifiedModel);
                     SubCategoryComboBox.setEnabled(true);
                     categoryComboBox.setEnabled(true);
-                    list.setModel(modifiedModel);
                     list.setEnabled(true);
                 }
             }
@@ -871,6 +887,8 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 UserSelectionComboBoxToReturnABook.setVisible(false);
                 UserSelectionComboBoxToBorrow.setVisible(false);
                 QuickView.setEnabled(true);
+                ascendingCheckBoxFiltering.setVisible(false);
+                descendingCheckBoxFiltering.setVisible(false);
                 if (flowLibrary.getListOfBooks().isEmpty()) {
                     ConfirmChoice.setEnabled(false);
                     JOptionPane.showMessageDialog(null,
@@ -955,6 +973,8 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 list.setEnabled(false);
                 UserSelectionComboBox.setVisible(false);
                 UserSelectionComboBoxToBorrow.setVisible(false);
+                ascendingCheckBoxFiltering.setVisible(false);
+                descendingCheckBoxFiltering.setVisible(false);
                 ConfirmChoice.setVisible(false);
                 AddUserFrame addUserFrame = new AddUserFrame(userChooseIFrame, library, true);
                 addUserFrame.setVisible(true);
@@ -976,6 +996,8 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 UserSelectionComboBoxToReturnABook.setVisible(false);
                 UserSelectionComboBoxToBorrow.setVisible(false);
                 QuickView.setEnabled(true);
+                ascendingCheckBoxFiltering.setVisible(false);
+                descendingCheckBoxFiltering.setVisible(false);
                 if (flowLibrary.getListOfBooks().isEmpty()) {
                     ConfirmChoice.setEnabled(false);
                     JOptionPane.showMessageDialog(null,
@@ -1005,6 +1027,8 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 categoryComboBox.setVisible(false);
                 UserSelectionComboBoxToBorrow.setVisible(false);
                 QuickView.setEnabled(true);
+                ascendingCheckBoxFiltering.setVisible(false);
+                descendingCheckBoxFiltering.setVisible(false);
                 DefaultListModel<String> updatedModel = new DefaultListModel<>();
                 for (Book books : flowLibrary.getListOfBooks()) {
                     updatedModel.addElement(books.toString(true));
@@ -1020,6 +1044,43 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 JOptionPane.showMessageDialog(null, "Program written by Dominik Jakubaszek. \n Version 2.0.0", "Message", JOptionPane.INFORMATION_MESSAGE);
             }
         });
+
+        ascendingCheckBoxFiltering = new JCheckBox("Sort filter \uD83E\uDC79");
+        ascendingCheckBoxFiltering.setBounds(560, 205, 150, 30);
+
+        descendingCheckBoxFiltering = new JCheckBox("Sort filter \uD83E\uDC7B");
+        descendingCheckBoxFiltering.setBounds(560, 230, 150, 30);
+        add(ascendingCheckBoxFiltering);
+        add(descendingCheckBoxFiltering);
+
+        descendingCheckBoxFiltering.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (descendingCheckBoxFiltering.isSelected()) {
+                    ascendingCheckBoxFiltering.setSelected(false);
+                    subCategoryFiltering();
+                } else if (!ascendingCheckBoxFiltering.isSelected()) {
+                    ascendingCheckBoxFiltering.setSelected(true);
+                    subCategoryFiltering();
+                }
+            }
+        });
+        ascendingCheckBoxFiltering.setSelected(true);
+        ascendingCheckBoxFiltering.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (ascendingCheckBoxFiltering.isSelected()) {
+                    descendingCheckBoxFiltering.setSelected(false);
+                    subCategoryFiltering();
+                } else if (!descendingCheckBoxFiltering.isSelected()) {
+                    descendingCheckBoxFiltering.setSelected(true);
+                    subCategoryFiltering();
+                }
+            }
+        });
+
+        ascendingCheckBoxFiltering.setVisible(false);
+        descendingCheckBoxFiltering.setVisible(false);
 
         JScrollPane scrollPane = new JScrollPane(list);
         scrollPane.setBounds(150, 20, 700, 150);
@@ -1037,81 +1098,102 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
     public void subCategoryFiltering() {
 
         String selectedCategory = (String) categoryComboBox.getSelectedItem();
-        String selectedOption = (String) SubCategoryComboBox.getSelectedItem();
+        String selectedValue = (String) SubCategoryComboBox.getSelectedItem();
         DefaultListModel<String> modifiedModel = new DefaultListModel<>();
         if (selectedCategory.equals("Genre")) {
-            for (Book book : flowLibrary.getListOfBooks()) {
-                if (book.getGenre().getName().equals(selectedOption)) {
-                    modifiedModel.addElement(book.toString(true));
-                    list.setModel(modifiedModel);
-                }
+
+
+            if (ascendingCheckBoxFiltering.isSelected()) {
+                modifiedModel.addAll(Queries.filterBookByGenre(CurrentLibraryName, selectedValue, "ASC"));
+
             }
+            if (descendingCheckBoxFiltering.isSelected()) {
+                modifiedModel.addAll(Queries.filterBookByGenre(CurrentLibraryName, selectedValue, "DESC"));
+            }
+            list.setModel(modifiedModel);
+
             if (modifiedModel.isEmpty()) {
                 list.setModel(modifiedModel);
                 JOptionPane.showMessageDialog(null,
-                        "No book meets the criteria Category " + selectedCategory + " and " + selectedOption, "Message", JOptionPane.INFORMATION_MESSAGE);
-
+                        "No book meets the criteria Category " + selectedCategory + " and " + selectedValue, "Message", JOptionPane.INFORMATION_MESSAGE);
             }
+
         } else if (selectedCategory.equals("Author")) {
+            String[] partsOfAuthors = selectedValue.split(" ");
 
-            for (Book book : flowLibrary.getListOfBooks()) {
-                if (book.getAuthor().getLastName().equals(selectedOption)) {
-                    modifiedModel.addElement(book.toString(true));
-                }
-                list.setModel(modifiedModel);
+            if (ascendingCheckBoxFiltering.isSelected()) {
+                modifiedModel.addAll(Queries.filterBookByAuthorNameAndSurname(CurrentLibraryName, partsOfAuthors[1], partsOfAuthors[0], "ASC"));
             }
+            if (descendingCheckBoxFiltering.isSelected()) {
+                modifiedModel.addAll(Queries.filterBookByAuthorNameAndSurname(CurrentLibraryName, partsOfAuthors[1], partsOfAuthors[0], "DESC"));
+            }
+            list.setModel(modifiedModel);
+
             if (modifiedModel.isEmpty()) {
                 list.setModel(modifiedModel);
                 JOptionPane.showMessageDialog(null,
-                        "No book meets the criteria Category " + selectedCategory + " and " + selectedOption, "Message", JOptionPane.INFORMATION_MESSAGE);
+                        "No book meets the criteria Category " + selectedCategory + " and " + selectedValue, "Message", JOptionPane.INFORMATION_MESSAGE);
             }
         } else if (selectedCategory.equals("Status")) {
 
-            for (Book book : flowLibrary.getListOfBooks()) {
-                if (book.getStatus().toString().equals(selectedOption)) {
-                    modifiedModel.addElement(book.toString(true));
-                    list.setModel(modifiedModel);
-                }
+            if (ascendingCheckBoxFiltering.isSelected()) {
+                modifiedModel.addAll(Queries.filterBookByStatus(CurrentLibraryName, selectedValue, "ASC"));
             }
+            if (descendingCheckBoxFiltering.isSelected()) {
+                modifiedModel.addAll(Queries.filterBookByStatus(CurrentLibraryName, selectedValue, "DESC"));
+            }
+            list.setModel(modifiedModel);
+
             if (modifiedModel.isEmpty()) {
                 list.setModel(modifiedModel);
                 JOptionPane.showMessageDialog(null,
-                        "No book meets the criteria Category " + selectedCategory + " and " + selectedOption, "Message", JOptionPane.INFORMATION_MESSAGE);
+                        "No book meets the criteria Category " + selectedCategory + " and " + selectedValue, "Message", JOptionPane.INFORMATION_MESSAGE);
             }
-
         } else if (selectedCategory.equals("Assigned to")) {
 
-            for (Book book : flowLibrary.getListOfBooks()) {
-                if (book.getAssignedUserToBook().getName().equals(selectedOption)) {
-                    modifiedModel.addElement(book.toString(true));
-                    list.setModel(modifiedModel);
-                }
+            if (ascendingCheckBoxFiltering.isSelected()) {
+                modifiedModel.addAll(AdminQueries.getAllBookFilteredByAssignedTo(CurrentLibraryName, selectedValue, "ASC"));
             }
+            if (descendingCheckBoxFiltering.isSelected()) {
+                modifiedModel.addAll(AdminQueries.getAllBookFilteredByAssignedTo(CurrentLibraryName, selectedValue, "DESC"));
+            }
+            list.setModel(modifiedModel);
+
             if (modifiedModel.isEmpty()) {
                 list.setModel(modifiedModel);
                 JOptionPane.showMessageDialog(null,
-                        "No book meets the criteria Category " + selectedCategory + " and " + selectedOption, "Message", JOptionPane.INFORMATION_MESSAGE);
+                        "No book meets the criteria Category " + selectedCategory + " and " + selectedValue, "Message", JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }
 
     public void categoryFiltering() {
 
-        List<String> listOfAuthorSurnames = new ArrayList<>();
         List<String> listOfUsers = new ArrayList<>();
 
-        for (Book book : flowLibrary.getListOfBooks()) {
-            if (!listOfAuthorSurnames.contains(book.getAuthor().getLastName())) {
-                listOfAuthorSurnames.add(book.getAuthor().getLastName());
+        List<String> listOfAuthorSurnames = new ArrayList<>();
+
+        for (String author : Queries.getAllAuthorsInLibrary(CurrentLibraryName)) {
+            if (!listOfAuthorSurnames.contains(author)) {
+                listOfAuthorSurnames.add(author);
             }
         }
 
-        for (User user : flowLibrary.getLibraryUserDataBase().getListOfUser()) {
-            if (!user.getName().equals("Admin")) {
-                listOfUsers.add(user.getName());
+
+
+
+
+
+        ResultSet set= AdminQueries.getAllAssignedToUsers(CurrentLibraryName);
+        try {
+            while (set.next()) {
+
+                listOfUsers.add(set.getString("username"));
             }
+        }catch (Exception e){
+
         }
-        listOfUsers.add(new User("None", "none").getName());
+        listOfUsers.add("None");
 
         subcategoriesMap.put("Select", Arrays.asList(" "));
         subcategoriesMap.put("Status", Arrays.asList(Status.AVAILABLE.toString(), Status.BORROWED.toString()));
@@ -1126,6 +1208,8 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
 
 
         if (subcategories != null && !selectedCategory.equals("Select")) {
+            ascendingCheckBoxFiltering.setVisible(true);
+            descendingCheckBoxFiltering.setVisible(true);
             SubCategoryComboBox.setEnabled(true);
             SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
             SubCategoryComboBox.setVisible(true);
@@ -1133,6 +1217,8 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
         } else {
             SubCategoryComboBox.setModel(new DefaultComboBoxModel<>(subcategoriesArray));
             SubCategoryComboBox.setEnabled(false);
+            ascendingCheckBoxFiltering.setVisible(false);
+            descendingCheckBoxFiltering.setVisible(false);
         }
     }
 

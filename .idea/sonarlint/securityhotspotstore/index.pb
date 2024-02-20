@@ -52,3 +52,7 @@ W
 'src/main/java/Manager/DbConnection.java,e\4\e414714d768232635f391e1e1c3dd270a995ed76
 R
 "src/main/java/Manager/Queries.java,4\7\47fba06fa83002b8874b322db5f7dd0b1af892e2
+a
+1src/main/java/Frames/MyAccountOverViewJFrame.java,c\7\c71746b648a45a45b3ba53367f7dc7de1a1b808f
+^
+.src/main/java/Frames/ChangePasswordJFrame.java,0\f\0f4a9d938c5edad4ed8d86df07964bb9b52ba24f

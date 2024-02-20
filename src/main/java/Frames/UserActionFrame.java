@@ -20,7 +20,6 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
     JMenuItem changeUser, changeLibrary, programInfo,accountChangePassword,accountInfo;
     JButton lookfor, BorrowAbook, ReturnAbook, ConfirmChoice, returnAll, borrowALL, filter, ShowAllBook, QuickView, Search, TransactionButton, transactionLeftSelect, transactionRightSelect;
     JList<String> list;
-    Library flowLibrary;
     UserChooseIFrame userChooseIFrame;
     JCheckBox ascendingCheckBox, ascendingCheckBoxFiltering, ascendingCheckBoxFilteringBorrow, ascendingCheckBoxLOOKFOR;
     JCheckBox descendingCheckBox, descendingCheckBoxFiltering, descendingCheckBoxFilteringBorrow, descendingCheckBoxLOOKFOR;
@@ -46,9 +45,8 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         return transactionLeft;
     }
 
-    public UserActionFrame(UserChooseIFrame userChooseIFrame, Library library) {
+    public UserActionFrame(UserChooseIFrame userChooseIFrame) {
 
-        this.flowLibrary = library;
         this.userChooseIFrame = userChooseIFrame;
         CurrentLibraryName = userChooseIFrame.getLibraryManagementFrame().getSelectedLibrary();
         userChooseIFrame.getSelectedUserValue();
@@ -125,7 +123,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
             @Override
             public void removeUpdate(DocumentEvent e) {
                 DefaultListModel modifiedModel = new DefaultListModel<>();
-                for (String book : Queries.getCurrentStateOfBooks(CurrentLibraryName)) {
+                for (String book : Queries.getCurrentStateOfBooks(CurrentLibraryName,"User")) {
                     modifiedModel.addElement(book);
                 }
                 list.setModel(modifiedModel);
@@ -194,7 +192,6 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         descendingCheckBox.setBounds(500, 205, 150, 30);
         add(ascendingCheckBox);
         add(descendingCheckBox);
-
         ascendingCheckBoxFiltering = new JCheckBox("Sort filter \uD83E\uDC79");
         ascendingCheckBoxFiltering.setBounds(500, 185, 150, 30);
 
@@ -202,6 +199,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         descendingCheckBoxFiltering.setBounds(500, 205, 150, 30);
         add(ascendingCheckBoxFiltering);
         add(descendingCheckBoxFiltering);
+
 
 
         BorrowAbook = new JButton("Borrow");
@@ -407,14 +405,14 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
 
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
-                if (Queries.getCurrentStateOfBooks(CurrentLibraryName).isEmpty()) {
+                if (Queries.getCurrentStateOfBooks(CurrentLibraryName,"User").isEmpty()) {
                     JOptionPane.showMessageDialog(null,
                             "No book in library ", "Messege", JOptionPane.INFORMATION_MESSAGE);
                     sortComboBox.setVisible(false);
                     ascendingCheckBox.setVisible(false);
                     descendingCheckBox.setVisible(false);
                 }
-                for (String book : Queries.getCurrentStateOfBooks(CurrentLibraryName)) {
+                for (String book : Queries.getCurrentStateOfBooks(CurrentLibraryName,"User")) {
                     modifiedModel.addElement(book);
                 }
                 list.setModel(modifiedModel);
@@ -521,15 +519,12 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
 
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
-                if (Queries.getCurrentStateOfBooks(CurrentLibraryName).isEmpty()) {
-                    for (Book books : flowLibrary.getListOfBooks()) {
-                        modifiedModel.addElement(books.toString());
-                    }
+                if (Queries.getCurrentStateOfBooks(CurrentLibraryName,"User").isEmpty()) {
                     list.setModel(modifiedModel);
                     ConfirmChoice.setEnabled(false);
                     JOptionPane.showMessageDialog(null, "No books in library", "Warning", JOptionPane.WARNING_MESSAGE);
                 } else {
-                    for (String book : Queries.getCurrentStateOfBooks(CurrentLibraryName)) {
+                    for (String book : Queries.getCurrentStateOfBooks(CurrentLibraryName,"User")) {
                         modifiedModel.addElement(book);
                     }
                     list.setModel(modifiedModel);
@@ -881,7 +876,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 String selectedCategory = (String) categoryComboBox.getSelectedItem();
 
                 if (!selectedCategory.equals("Select")) {
-                    if (Queries.getCurrentStateOfBooks(CurrentLibraryName).isEmpty()) {
+                    if (Queries.getCurrentStateOfBooks(CurrentLibraryName,"User").isEmpty()) {
                         ConfirmChoice.setEnabled(false);
 
                         list.setModel(modifiedModel);
@@ -895,7 +890,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                         categoryComboBox.setEnabled(true);
 
 
-                        for (String book : Queries.getCurrentStateOfBooks(CurrentLibraryName)) {
+                        for (String book : Queries.getCurrentStateOfBooks(CurrentLibraryName,"User")) {
                             modifiedModel.addElement(book);
                         }
                         list.setModel(modifiedModel);

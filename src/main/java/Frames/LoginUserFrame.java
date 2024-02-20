@@ -164,7 +164,7 @@ public class LoginUserFrame extends JFrame implements CommonFunctions {
                     setVisible(false);
                     userChoose.setVisible(false);
                     userChoose.getComboBoxUser().setEnabled(true);
-                    new UserActionFrame(userChoose, library);
+                    new UserActionFrame(userChoose);
                 }
             }
         } else {
