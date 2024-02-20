@@ -275,6 +275,33 @@ public class AdminQueries {
 
     }
 
+    public static List<String> getAllUsersInfo(String libraryName) {
+        List<String> users = new ArrayList<>();
+        ResultSet resultSet = null;
+        Statement statement;
 
 
+        try {
+            String query = String.format("SELECT * FROM public.users\n" +
+                    "LEFT JOIN library on library.library_id=users.library_id\n" +
+                    "where library.library_name='%s' ORDER BY user_id ASC", libraryName);
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                String user_id = resultSet.getString("user_id");
+                String username = resultSet.getString("username");
+                String dateofcreation = resultSet.getString("dateofcreation");
+                String permissionlevel = resultSet.getString("permissionlevel");
+                String password = resultSet.getString("password");
+                String libraryname = resultSet.getString("library_name");
+
+                String userinfo = "ID: " + user_id + "," + " Username: " + username + "," + "Creation date: " + dateofcreation + "," + " Permission level: " + permissionlevel + "," + " Password: " + password + "," + " Library: " + libraryname;
+                users.add(userinfo);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return users;
+    }
 }

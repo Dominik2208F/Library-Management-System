@@ -9,7 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="update book + zabezpieczenie na konflikt" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="czyszczenie">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/AdminQueries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/AdminQueries.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -127,20 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00133" summary="return more than 1 book user">
-      <created>1707909387687</created>
-      <option name="number" value="00133" />
-      <option name="presentableId" value="LOCAL-00133" />
-      <option name="project" value="LOCAL" />
-      <updated>1707909387687</updated>
-    </task>
-    <task id="LOCAL-00134" summary="zwracania na adminie wieluksiążek">
-      <created>1707917147118</created>
-      <option name="number" value="00134" />
-      <option name="presentableId" value="LOCAL-00134" />
-      <option name="project" value="LOCAL" />
-      <updated>1707917147118</updated>
     </task>
     <task id="LOCAL-00135" summary="przycisk wyboru przypisania ksiazki do usera">
       <created>1707920313976</created>
@@ -471,7 +461,21 @@
       <option name="project" value="LOCAL" />
       <updated>1708471458360</updated>
     </task>
-    <option name="localTasksCounter" value="182" />
+    <task id="LOCAL-00182" summary="zabezpiecznie na dodawanie takiego samego autora w book add i generacje id zrobione">
+      <created>1708471635500</created>
+      <option name="number" value="00182" />
+      <option name="presentableId" value="LOCAL-00182" />
+      <option name="project" value="LOCAL" />
+      <updated>1708471635500</updated>
+    </task>
+    <task id="LOCAL-00183" summary="czyszczenie">
+      <created>1708471708370</created>
+      <option name="number" value="00183" />
+      <option name="presentableId" value="LOCAL-00183" />
+      <option name="project" value="LOCAL" />
+      <updated>1708471708370</updated>
+    </task>
+    <option name="localTasksCounter" value="184" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -486,8 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="filtrowanie działa po production i pages" />
-    <MESSAGE value="poprawa działania filtra na borrow" />
     <MESSAGE value="naprawa checboxów do filtrowania borrow i zwykłego oraz sortowania" />
     <MESSAGE value="sortowanie przeniesione i naprawione" />
     <MESSAGE value="przygotowanie pod wyszukiwanie książki" />
@@ -511,7 +513,9 @@
     <MESSAGE value="usuwanie ksiazki zrobione" />
     <MESSAGE value="dodawanie ksiazki zrobione" />
     <MESSAGE value="update book + zabezpieczenie na konflikt" />
-    <option name="LAST_COMMIT_MESSAGE" value="update book + zabezpieczenie na konflikt" />
+    <MESSAGE value="zabezpiecznie na dodawanie takiego samego autora w book add i generacje id zrobione" />
+    <MESSAGE value="czyszczenie" />
+    <option name="LAST_COMMIT_MESSAGE" value="czyszczenie" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -572,9 +576,9 @@
           <option name="timeStamp" value="151" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/UpdateBookJFrame.java</url>
-          <line>250</line>
-          <option name="timeStamp" value="166" />
+          <url>file://$PROJECT_DIR$/src/main/java/Manager/AdminQueries.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="167" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

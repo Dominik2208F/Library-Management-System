@@ -375,9 +375,9 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 ascendingCheckBoxFiltering.setVisible(false);
                 descendingCheckBoxFiltering.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-                for (User user : flowLibrary.getLibraryUserDataBase().getListOfUser()) {
-                    modifiedModel.addElement(user.toString());
-                }
+                AdminQueries.getAllUsersInfo(CurrentLibraryName).stream()
+                        .map(String::toString)
+                        .forEach(modifiedModel::addElement);
                 list.setModel(modifiedModel);
                 list.setEnabled(false);
             }
