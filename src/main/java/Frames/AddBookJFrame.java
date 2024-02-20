@@ -3,7 +3,6 @@ package Frames;
 import Manager.AdminQueries;
 import Manager.LengthRestrictedDocument;
 import Manager.Queries;
-import org.example.LibraryManager.Book;
 import org.example.LibraryManager.Library;
 
 import javax.imageio.ImageIO;
@@ -22,7 +21,7 @@ import java.util.regex.Pattern;
 
 public class AddBookJFrame extends JFrame {
 
-    private Library flowLibrary;
+
     public JList fromPanelAbove;
     private CalendarIFrame calendar;
     private JTextField titleField = new JTextField();
@@ -71,7 +70,6 @@ public class AddBookJFrame extends JFrame {
         select.setBounds(200, 240, 100, 40);
         add(select);
 
-        this.flowLibrary = flowLibrary;
         this.fromPanelAbove = list;
 
         titleField.setBounds(100, 90, 200, 40);

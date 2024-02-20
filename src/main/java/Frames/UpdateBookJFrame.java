@@ -4,9 +4,7 @@ import Manager.AdminQueries;
 import Manager.CommonFunctions;
 import Manager.LengthRestrictedDocument;
 import Manager.Queries;
-import org.example.LibraryManager.Book;
-import org.example.LibraryManager.Genre;
-import org.example.LibraryManager.Library;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,7 +19,6 @@ import java.util.regex.Pattern;
 public class UpdateBookJFrame extends JFrame implements CommonFunctions {
     private JList list;
     private CalendarIFrame calendar;
-
     public JTextField getAuthorBirthDateField() {
         return authorBirthDateField;
     }
