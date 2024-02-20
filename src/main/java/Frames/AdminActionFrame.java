@@ -837,27 +837,25 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 if (deleteBookClicked) {
                     if (list.getSelectedIndex() != -1) {
 
-                        List<String> listOfBooksToIterateThrough = new ArrayList<>();
-                        int selectedBookIndexToRemove = list.getSelectedIndex();
-                        int odp = JOptionPane.showConfirmDialog(null, "Do you want to remove a book: " + flowLibrary.getListOfBooks().get(selectedBookIndexToRemove).getTitle() + " ?");
+                        String selectedBookToRemove = (String) extractTitle(list.getSelectedValue());
+                        int odp = JOptionPane.showConfirmDialog(null, "Do you want to remove a book: " + selectedBookToRemove + " ?");
 
                         if (odp == JOptionPane.YES_OPTION) {
 
-                            //Remove
-                            flowLibrary.getListOfBooks().remove(selectedBookIndexToRemove);
-                            for (Book book : flowLibrary.getListOfBooks()) {
-                                listOfBooksToIterateThrough.add(book.toString(true));
-                            }
+                            AdminQueries.deleteBookByTitle(selectedBookToRemove,CurrentLibraryName);
 
-                            String BooksAfterRemove[] = listOfBooksToIterateThrough.toArray(new String[listOfBooksToIterateThrough.size()]);
-                            list.setModel(new DefaultComboBoxModel<>(BooksAfterRemove));
-                            booksLabel.setText(flowLibrary.getListOfBooks().size() + " books in library");
+                            DefaultListModel<String> modifiedModelOverall = new DefaultListModel<>();
+                            for (String book : Queries.getAllAvailableBook(CurrentLibraryName)) {
+                                modifiedModelOverall.addElement(book);
+                            }
+                            list.setModel(modifiedModelOverall);
                         }
-                        if (flowLibrary.getListOfBooks().isEmpty()) {
+                        if (Queries.getAllAvailableBook(CurrentLibraryName).isEmpty()) {
                             ConfirmChoice.setEnabled(false);
                             JOptionPane.showMessageDialog(null,
                                     "No book to delete in " + flowLibrary.getNameOfLibrary(), "Message", JOptionPane.INFORMATION_MESSAGE);
                         }
+
                     } else {
                         JOptionPane.showMessageDialog(null, "Choose one book", "Error", JOptionPane.ERROR_MESSAGE);
                     }
@@ -889,25 +887,25 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 QuickView.setEnabled(true);
                 ascendingCheckBoxFiltering.setVisible(false);
                 descendingCheckBoxFiltering.setVisible(false);
-                if (flowLibrary.getListOfBooks().isEmpty()) {
+
+                if (Queries.getAllAvailableBook(CurrentLibraryName).isEmpty()) {
                     ConfirmChoice.setEnabled(false);
                     JOptionPane.showMessageDialog(null,
                             "No book to delete in " + flowLibrary.getNameOfLibrary(), "Message", JOptionPane.INFORMATION_MESSAGE);
                 } else {
+                    ConfirmChoice.setEnabled(true);
+                    DefaultListModel<String> modifiedModelOverall = new DefaultListModel<>();
+                    for (String book : Queries.getAllAvailableBook(CurrentLibraryName)) {
+                        modifiedModelOverall.addElement(book);
+                    }
+                    list.setModel(modifiedModelOverall);
+                    SubCategoryComboBox.setEnabled(true);
+                    categoryComboBox.setEnabled(true);
                     if (informationDelete) {
                         JOptionPane.showMessageDialog(null,
                                 "Choose one book from list and click confirm", "Message", JOptionPane.INFORMATION_MESSAGE);
                         informationDelete = false;
                     }
-                    ConfirmChoice.setEnabled(true);
-                    DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-                    for (Book books : flowLibrary.getListOfBooks()) {
-                        modifiedModel.addElement(books.toString(true));
-                    }
-                    SubCategoryComboBox.setEnabled(true);
-                    categoryComboBox.setEnabled(true);
-                    list.setModel(modifiedModel);
-
                 }
             }
         });

@@ -248,10 +248,6 @@ public class Queries {
         return allBooks;
     }
 
-
-
-
-
     public static boolean checkIfAnyBookIsAvailable(String libraryName){
         ResultSet resultSet=null;
         Statement statement;

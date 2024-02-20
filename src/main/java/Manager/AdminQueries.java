@@ -98,4 +98,23 @@ public class AdminQueries {
             return allBooks;
         }
     }
+
+    public static void deleteBookByTitle(String title, String library){
+        Statement statement;
+        try{
+            String query=String.format("UPDATE Book\n" +
+                    "SET is_deleted = true\n" +
+                    "WHERE title = '%s'\n" +
+                    "AND library_id = (SELECT library_id FROM Library WHERE library.library_name = '%s') and book.is_deleted= false;",title,library);
+            statement=connection.createStatement();
+            statement.executeUpdate(query);
+            System.out.println("Data updated");
+
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+
+
 }

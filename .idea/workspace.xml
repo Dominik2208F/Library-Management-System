@@ -9,8 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="działa show all + filtrowanie admin">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="dodanie nowego statusu usunięte ksiażki do query na userze">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Manager/AdminQueries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/AdminQueries.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" afterDir="false" />
     </list>
@@ -131,13 +132,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00129" summary="zablokowanie stworzenie usera z takimi samym username">
-      <created>1707902436225</created>
-      <option name="number" value="00129" />
-      <option name="presentableId" value="LOCAL-00129" />
-      <option name="project" value="LOCAL" />
-      <updated>1707902436225</updated>
     </task>
     <task id="LOCAL-00130" summary="dodawanie użytkownika i wyświetlanie listy">
       <created>1707905141921</created>
@@ -475,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708424256883</updated>
     </task>
-    <option name="localTasksCounter" value="178" />
+    <task id="LOCAL-00178" summary="dodanie nowego statusu usunięte ksiażki do query na userze">
+      <created>1708426766339</created>
+      <option name="number" value="00178" />
+      <option name="presentableId" value="LOCAL-00178" />
+      <option name="project" value="LOCAL" />
+      <updated>1708426766339</updated>
+    </task>
+    <option name="localTasksCounter" value="179" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -490,7 +491,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="przyciski pod production date" />
     <MESSAGE value="działąjace filtrowanie po dacie produktu" />
     <MESSAGE value="działąjace filtrowanie po dacie produktu od 0 wartosci" />
     <MESSAGE value="filtrowanie naprawione żeby resetował od razu wartość" />
@@ -515,14 +515,15 @@
     <MESSAGE value="zmiana hasła zakładka działa ok" />
     <MESSAGE value="poprawa walidacji nadawania nowego hasła" />
     <MESSAGE value="działa show all + filtrowanie admin" />
-    <option name="LAST_COMMIT_MESSAGE" value="działa show all + filtrowanie admin" />
+    <MESSAGE value="dodanie nowego statusu usunięte ksiażki do query na userze" />
+    <option name="LAST_COMMIT_MESSAGE" value="dodanie nowego statusu usunięte ksiażki do query na userze" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>650</line>
+          <line>646</line>
           <option name="timeStamp" value="110" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -542,27 +543,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>705</line>
+          <line>701</line>
           <option name="timeStamp" value="142" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>693</line>
+          <line>689</line>
           <option name="timeStamp" value="146" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>692</line>
+          <line>688</line>
           <option name="timeStamp" value="147" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>691</line>
+          <line>687</line>
           <option name="timeStamp" value="148" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>690</line>
+          <line>686</line>
           <option name="timeStamp" value="149" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
