@@ -1,9 +1,9 @@
 package Frames;
 
+import Manager.AdminQueries;
 import Manager.LengthRestrictedDocument;
-import org.example.LibraryManager.Author;
+import Manager.Queries;
 import org.example.LibraryManager.Book;
-import org.example.LibraryManager.Genre;
 import org.example.LibraryManager.Library;
 
 import javax.imageio.ImageIO;
@@ -38,10 +38,12 @@ public class AddBookJFrame extends JFrame {
     private JTextField pagesField = new JTextField();
     private JComboBox<String> genreComboBox = new JComboBox<>(new String[]{"Przygodowa", "Akcji", "ScienceFiction", "Romans", "Historyczne", "Akademickie", "Finansowe", "Dramat"});
     private  JLabel BooksLebel;
+    private UserChooseIFrame userChooseIFrame;
 
-    public AddBookJFrame(Library flowLibrary, JList<String> list,JLabel book) {
+    public AddBookJFrame(Library flowLibrary, JList<String> list, JLabel book, UserChooseIFrame userChooseIFrame) {
 
     this.BooksLebel=book;
+    this.userChooseIFrame=userChooseIFrame;
         setContentPane(new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -154,6 +156,7 @@ public class AddBookJFrame extends JFrame {
     }
 
     public void AddBook(JList list) {
+
         String title = titleField.getText();
         String authorFirstName = authorFirstNameField.getText();
         String authorLastName = authorLastNameField.getText();
@@ -206,17 +209,15 @@ public class AddBookJFrame extends JFrame {
 
             if (pages != 0 && year != 0 && Pattern.matches(regex, authorFirstName) && Pattern.matches(regexSurname, authorLastName)) {
 
-                Author author = new Author(authorFirstName, authorLastName, authorBirthDate);
-                Genre genre = new Genre(description);
-                Book newBook = new Book(title, author, year, genre, pages,Status.AVAILABLE);
-                flowLibrary.getListOfBooks().add(newBook);
+
+                AdminQueries.addBook(title,authorFirstName,authorLastName,authorBirthDate,yearText,pagesText,"AVAILABLE","null",userChooseIFrame.getLibraryManagementFrame().getSelectedLibrary(),description,false);
 
                 DefaultListModel<String> updatedModel = new DefaultListModel<>();
-                for (Book book : flowLibrary.getListOfBooks()) {
-                    updatedModel.addElement(book.toString(true));
-                }
+                Queries.getAllAvailableBook(userChooseIFrame.getLibraryManagementFrame().getSelectedLibrary()).stream()
+                        .map(String::toString)
+                        .forEach(updatedModel::addElement);
+
                 list.setModel(updatedModel);
-                BooksLebel.setText(flowLibrary.getListOfBooks().size() + " books in library");
                 dispose();
             }
         }

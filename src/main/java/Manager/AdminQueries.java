@@ -115,6 +115,91 @@ public class AdminQueries {
         }
     }
 
+    public static void addBook(String title,String authorFirstName,String lastName,String dateofbirth,String yearOfProduction, String pages, String status, String user_id,String library_name,String genre_name,boolean is_deleted){
+        Statement statement;
+        // create author
+        try{
+            statement=connection.createStatement();
+
+            String updateAuthor=String.format("INSERT INTO author (first_name, last_name, date_of_birth)\n" +
+                    "VALUES ('%s', '%s', '%s')",authorFirstName,lastName,dateofbirth);
+
+            statement.executeUpdate(updateAuthor);
+            System.out.println("Author created");
+
+            String readAuthorId=String.format("SELECT author_id FROM public.author\n" +
+                    "where first_name='%s' and last_name='%s'",authorFirstName,lastName);
+
+            ResultSet resultSet = statement.executeQuery(readAuthorId);
+            String newAuthorCreatedId="";
+            while(resultSet.next()){
+                newAuthorCreatedId=resultSet.getString("author_id");
+            }
+
+            System.out.println("Author id fetched");
+
+            String readLibraryId=String.format("SELECT library_id FROM public.library\n" +
+                    "            where library_name='%s'",library_name);
+
+            ResultSet resultSet1 = statement.executeQuery(readLibraryId);
+            String libraryId="";
+            while(resultSet1.next()){
+                libraryId=resultSet1.getString("library_id");
+            }
+            System.out.println("Library id fetched");
+
+
+            String genreId;
+
+            switch(genre_name) {
+                case "Akcji":
+                    genreId= "1";
+                    break;
+                case "Przygodowa":
+                    genreId= "2";
+                    break;
+                case "ScienceFiction":
+                    genreId= "3";
+                    break;
+                case "Romans":
+                    genreId= "4";
+                    break;
+                case "Historyczne":
+                    genreId= "5";
+                    break;
+                case "Akademickie":
+                    genreId= "6";
+                    break;
+                case "Finansowe":
+                    genreId= "7";
+                    break;
+                case "Dramat":
+                    genreId= "8";
+                    break;
+                default:
+                    genreId ="0";
+                    break;
+            }
+
+
+            String addBook=String.format("INSERT INTO Book (title, author_id, yearofproduction,pages, status, user_id,library_id, genre_id,is_deleted)\n" +
+                    "VALUES ('%s', %s, %s, %s, '%s',%s, %s, %s,%s);\n",title,newAuthorCreatedId,yearOfProduction,pages,status,user_id,libraryId,genreId,is_deleted);
+
+            statement.executeUpdate(addBook);
+            System.out.println("Book created");
+
+
+
+
+
+        }catch (Exception e){
+            System.out.println(e);
+        }
+
+
+    }
+
+
 
 
 }

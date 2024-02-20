@@ -22,8 +22,8 @@ Main {
 
         DbConnection db  = new DbConnection();
         Connection connection= db.connectionToDB("Library","postgres","Dominik1");
-        Queries queries = new Queries(connection);
-        AdminQueries queries1= new AdminQueries(connection);
+        new Queries(connection);
+        new AdminQueries(connection);
 
         FlatLightLaf.setup();
         UIManager.put( "Button.arc", 20 );

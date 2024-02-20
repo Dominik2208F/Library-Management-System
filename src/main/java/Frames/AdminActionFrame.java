@@ -1028,11 +1028,13 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 ascendingCheckBoxFiltering.setVisible(false);
                 descendingCheckBoxFiltering.setVisible(false);
                 DefaultListModel<String> updatedModel = new DefaultListModel<>();
-                for (Book books : flowLibrary.getListOfBooks()) {
-                    updatedModel.addElement(books.toString(true));
-                }
+
+                Queries.getAllAvailableBook(CurrentLibraryName).stream()
+                        .map(String::toString)
+                        .forEach(updatedModel::addElement);
+
                 list.setModel(updatedModel);
-                AddBookJFrame addBookJFrame = new AddBookJFrame(flowLibrary, list, booksLabel);
+                new AddBookJFrame(flowLibrary, list, booksLabel,userChooseIFrame);
 
             }
         });
