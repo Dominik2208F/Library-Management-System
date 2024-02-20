@@ -150,7 +150,7 @@ public class Queries {
                     "LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
                     "LEFT JOIN library on book.library_id= library.library_id\n" +
                     "LEFT JOIN users on book.user_id=users.user_id\n"+
-                    "WHERE library.library_name='%s' ORDER BY title",libraryName);
+                    "WHERE library.library_name='%s' and book.is_deleted = false ORDER BY title",libraryName);
             statement=connection.createStatement();
             resultSet=statement.executeQuery(query);
 
@@ -190,7 +190,7 @@ public class Queries {
                     "LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
                     "LEFT JOIN library on book.library_id= library.library_id\n" +
                     "LEFT JOIN users on book.user_id=users.user_id\n"+
-                    "WHERE library.library_name='%s' and  book.status='AVAILABLE' and book.user_id is NULL ORDER BY title",libraryName);
+                    "WHERE library.library_name='%s' and  book.status='AVAILABLE' and book.user_id is NULL and book.is_deleted = false ORDER BY title",libraryName);
             statement=connection.createStatement();
             resultSet=statement.executeQuery(query);
 
@@ -224,7 +224,7 @@ public class Queries {
                     "LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
                     "LEFT JOIN library on book.library_id= library.library_id\n" +
                     "LEFT JOIN users on book.user_id=users.user_id\n"+
-                    "WHERE library.library_name='%s' and  book.status='AVAILABLE' and book.user_id is NULL ORDER BY title %s",libraryName,sortingDirection);
+                    "WHERE library.library_name='%s' and  book.status='AVAILABLE' and book.user_id is NULL and book.is_deleted = false ORDER BY title %s",libraryName,sortingDirection);
             statement=connection.createStatement();
             resultSet=statement.executeQuery(query);
 
@@ -261,7 +261,7 @@ public class Queries {
                     "LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
                     "LEFT JOIN library on book.library_id= library.library_id\n" +
                     "LEFT JOIN users on book.user_id=users.user_id\n"+
-                    "WHERE library.library_name='%s' and  book.status='AVAILABLE' and book.user_id is NULL",libraryName);
+                    "WHERE library.library_name='%s' and  book.status='AVAILABLE' and book.user_id is NULL and book.is_deleted = false",libraryName);
             statement=connection.createStatement();
             resultSet=statement.executeQuery(query);
 
@@ -286,7 +286,7 @@ public class Queries {
                     "LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
                     "LEFT JOIN library on book.library_id= library.library_id\n" +
                     "LEFT JOIN users on book.user_id=users.user_id\n"+
-                    "WHERE library.library_name='%s' and  book.status='BORROWED' and users.username='%s'",libraryName,userName);
+                    "WHERE library.library_name='%s' and  book.status='BORROWED' and users.username='%s' and book.is_deleted = false",libraryName,userName);
             statement=connection.createStatement();
             resultSet=statement.executeQuery(query);
 
@@ -309,7 +309,7 @@ public class Queries {
         try{
             String query=String.format("UPDATE book\n" +
                     "SET status = '%s', user_id = (SELECT user_id FROM users WHERE username = '%s')\n" +
-                    "WHERE title = '%s' AND library_id IN (SELECT library_id FROM library WHERE library_name = '%s');",status,assignedTo,value,library);
+                    "WHERE title = '%s' AND library_id IN (SELECT library_id FROM library WHERE library_name = '%s') and book.is_deleted = false;",status,assignedTo,value,library);
             statement=connection.createStatement();
             statement.executeUpdate(query);
             System.out.println("Data updated");
@@ -324,7 +324,7 @@ public class Queries {
         try{
             String query=String.format("UPDATE book\n" +
                     "SET status = '%s', user_id = (SELECT user_id FROM users WHERE username = '%s')\n" +
-                    "WHERE status='%s' AND library_id IN (SELECT library_id FROM library WHERE library_name = '%s');",statusNew, assignedTo,statusOld,library);
+                    "WHERE status='%s' AND library_id IN (SELECT library_id FROM library WHERE library_name = '%s' ) and book.is_deleted = false;",statusNew, assignedTo,statusOld,library);
             statement=connection.createStatement();
             statement.executeUpdate(query);
             System.out.println("All book set as borrowed");
@@ -339,7 +339,7 @@ public class Queries {
         try{
             String query=String.format(String.format("UPDATE book \n" +
                     " SET status = '%s', user_id = (SELECT user_id FROM users WHERE username = '%s') \n" +
-                    " WHERE status='%s' AND library_id IN (SELECT library_id FROM library WHERE library_name = '%s') AND user_id IN (SELECT user_id FROM users WHERE username = '%s')",statusNew,assignTO,statusOld,library,currentAssigned));
+                    " WHERE status='%s' AND library_id IN (SELECT library_id FROM library WHERE library_name = '%s') AND user_id IN (SELECT user_id FROM users WHERE username = '%s') and book.is_deleted = false",statusNew,assignTO,statusOld,library,currentAssigned));
             statement=connection.createStatement();
             statement.executeUpdate(query);
             System.out.println("Data updated: "+"Library "+library+" has been assigned to " +assignTO + " Old status "+statusOld + " New Status "+statusNew + " was assgined to"+currentAssigned);
@@ -360,7 +360,7 @@ public class Queries {
                     "LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
                     "LEFT JOIN library on book.library_id= library.library_id\n" +
                     "LEFT JOIN users on book.user_id=users.user_id\n"+
-                    "WHERE library.library_name='%s' and  book.status='BORROWED' and users.username='%s' ORDER BY title",libraryName,userName);
+                    "WHERE library.library_name='%s' and  book.status='BORROWED' and users.username='%s' and book.is_deleted = false ORDER BY title",libraryName,userName);
             statement=connection.createStatement();
             resultSet=statement.executeQuery(query);
 
@@ -391,7 +391,7 @@ public class Queries {
         try{
             String query=String.format("SELECT author.last_name, author.first_name,library.library_id FROM public.author\n" +
                     "LEFT JOIN book on book.author_id = author.author_id\n" +
-                    "LEFT JOIN library on book.library_id= library.library_id where library.library_name='%s' ORDER BY last_name",libraryName);
+                    "LEFT JOIN library on book.library_id= library.library_id where library.library_name='%s' and book.is_deleted = false ORDER BY last_name",libraryName);
             statement=connection.createStatement();
             resultSet=statement.executeQuery(query);
 
@@ -418,7 +418,7 @@ public class Queries {
                         "    LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
                         "    LEFT JOIN library on book.library_id= library.library_id\n" +
                         "    LEFT JOIN users on book.user_id=users.user_id\n" +
-                        "    WHERE library.library_name='%s' and  genre.name='%s' ORDER BY title %s", libraryName, genre,sortDirection);
+                        "    WHERE library.library_name='%s' and  genre.name='%s' and book.is_deleted = false ORDER BY title  %s " , libraryName, genre,sortDirection);
                 statement=connection.createStatement();
                 resultSet=statement.executeQuery(query);
 
@@ -448,7 +448,7 @@ public class Queries {
                     "    LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
                     "    LEFT JOIN library on book.library_id= library.library_id\n" +
                     "    LEFT JOIN users on book.user_id=users.user_id\n" +
-                    "    WHERE library.library_name='%s' and  genre.name='%s' and book.status='AVAILABLE' ORDER BY title %s", libraryName, genre,sortDirection);
+                    "    WHERE library.library_name='%s' and  genre.name='%s' and book.status='AVAILABLE' and book.is_deleted = false ORDER BY title %s", libraryName, genre,sortDirection);
             statement=connection.createStatement();
             resultSet=statement.executeQuery(query);
 
@@ -479,7 +479,7 @@ public class Queries {
                     "    LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
                     "    LEFT JOIN library on book.library_id= library.library_id\n" +
                     "    LEFT JOIN users on book.user_id=users.user_id\n" +
-                    "    WHERE library.library_name='%s' and  author.first_name='%s' and author.last_name='%s' ORDER BY title %s",libraryName,name,Surname,sortinDirection);
+                    "    WHERE library.library_name='%s' and  author.first_name='%s' and author.last_name='%s' and book.is_deleted = false ORDER BY title %s",libraryName,name,Surname,sortinDirection);
             statement=connection.createStatement();
             resultSet=statement.executeQuery(query);
 
@@ -509,7 +509,7 @@ public class Queries {
                     "    LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
                     "    LEFT JOIN library on book.library_id= library.library_id\n" +
                     "    LEFT JOIN users on book.user_id=users.user_id\n" +
-                    "    WHERE library.library_name='%s' and  author.first_name='%s' and author.last_name='%s' and status='AVAILABLE' ORDER BY title %s",libraryName,name,Surname,sortingDirection);
+                    "    WHERE library.library_name='%s' and  author.first_name='%s' and author.last_name='%s' and status='AVAILABLE' and book.is_deleted = false ORDER BY title %s",libraryName,name,Surname,sortingDirection);
             statement=connection.createStatement();
             resultSet=statement.executeQuery(query);
 
@@ -541,7 +541,7 @@ public class Queries {
                     "LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
                     "LEFT JOIN library on book.library_id= library.library_id\n" +
                     "LEFT JOIN users on book.user_id=users.user_id\n" +
-                    "WHERE library.library_name='%s' and  status='%s' ORDER BY title %s",libraryName,statuss,sortDirection);
+                    "WHERE library.library_name='%s' and  status='%s' and book.is_deleted = false ORDER BY title %s",libraryName,statuss,sortDirection);
             statement=connection.createStatement();
             resultSet=statement.executeQuery(query);
             while(resultSet.next()){
@@ -570,7 +570,7 @@ public class Queries {
                     "LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
                     "LEFT JOIN library on book.library_id= library.library_id\n" +
                     "LEFT JOIN users on book.user_id=users.user_id\n" +
-                    "WHERE library.library_name='%s' AND  yearofproduction BETWEEN '%s' AND '%s' ORDER BY yearofproduction %s",libraryName,min,max,sortDirection);
+                    "WHERE library.library_name='%s' AND  yearofproduction BETWEEN '%s' AND '%s' and book.is_deleted = false ORDER BY yearofproduction %s",libraryName,min,max,sortDirection);
             statement=connection.createStatement();
             resultSet=statement.executeQuery(query);
             while(resultSet.next()){
@@ -599,7 +599,7 @@ public class Queries {
                     "LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
                     "LEFT JOIN library on book.library_id= library.library_id\n" +
                     "LEFT JOIN users on book.user_id=users.user_id\n" +
-                    "WHERE library.library_name='%s' AND  pages BETWEEN '%s' AND '%s' ORDER BY yearofproduction %s",libraryName,min,max,sortDirection);
+                    "WHERE library.library_name='%s' AND  pages BETWEEN '%s' AND '%s' and book.is_deleted = false ORDER BY yearofproduction %s",libraryName,min,max,sortDirection);
             statement=connection.createStatement();
             resultSet=statement.executeQuery(query);
             while(resultSet.next()){
@@ -630,7 +630,7 @@ public class Queries {
                     "LEFT JOIN genre ON book.genre_id = genre.genre_id " +
                     "LEFT JOIN library ON book.library_id = library.library_id " +
                     "LEFT JOIN users ON book.user_id = users.user_id " +
-                    "WHERE library.library_name = '" + libraryName + "' AND LOWER(title) LIKE LOWER('" + text + "%') " +
+                    "WHERE library.library_name = '" + libraryName + "' AND LOWER(title) LIKE LOWER('" + text + "%') and book.is_deleted = false " +
                     "ORDER BY title " + sortDirection;
 
             statement=connection.createStatement();
@@ -820,7 +820,7 @@ public class Queries {
                     "                    LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
                     "                    LEFT JOIN library on book.library_id= library.library_id\n" +
                     "                    LEFT JOIN users on book.user_id=users.user_id\n" +
-                    "                    WHERE library.library_name='%s' and title='%s'",libraryName,titlearg);
+                    "                    WHERE library.library_name='%s' and title='%s' and book.is_deleted = false",libraryName,titlearg);
             statement=connection.createStatement();
             resultSet=statement.executeQuery(query);
         }catch (Exception e){

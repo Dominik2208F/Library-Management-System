@@ -44,7 +44,7 @@ public class AdminQueries {
                         "                    LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
                         "                    LEFT JOIN library on book.library_id= library.library_id\n" +
                         "                    LEFT JOIN users on book.user_id=users.user_id\n" +
-                        "                    WHERE library.library_name='%s' and users.username is null ORDER BY title %s ", libraryName,direction);
+                        "                    WHERE library.library_name='%s' and users.username is null and book.is_deleted = false ORDER BY title %s ", libraryName,direction);
                 statement = connection.createStatement();
                 resultSet = statement.executeQuery(query);
 
@@ -74,7 +74,7 @@ public class AdminQueries {
                         "                    LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
                         "                    LEFT JOIN library on book.library_id= library.library_id\n" +
                         "                    LEFT JOIN users on book.user_id=users.user_id\n" +
-                        "                    WHERE library.library_name='%s' and users.username='%s' ORDER BY title %s", libraryName, userName,direction);
+                        "                    WHERE library.library_name='%s' and users.username='%s' and book.is_deleted = false ORDER BY title %s", libraryName, userName,direction);
                 statement = connection.createStatement();
                 resultSet = statement.executeQuery(query);
 
