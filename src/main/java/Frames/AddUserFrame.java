@@ -3,8 +3,6 @@ package Frames;
 import Manager.CommonFunctions;
 import Manager.Queries;
 import org.example.LibraryManager.Library;
-import org.example.UserManager.User;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

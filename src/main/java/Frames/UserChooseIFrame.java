@@ -76,7 +76,6 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
 
         List<String> listOfCurrentUsers = new ArrayList<String>();
 
-            //zwrócenie użytkowników z bazy danych do listy
             ResultSet set= Queries.readUsersAssignedToLibraryByName(libraryManagementFrame.getSelectedLibrary());
             try {
                 while (set.next()) {

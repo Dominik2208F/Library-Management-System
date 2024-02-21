@@ -20,13 +20,6 @@ public class SetUp {
         UsersDataBase usersDataBase = new UsersDataBase();
         Library library = new Library(usersDataBase, name);
         libraryDataBase.addLibrary(library);
-      //  if (name.equals("Pruszkowska")) {
-      //      library.addDefaultBooksToPruszkowskaLibrary();
-      //      usersDataBase.createDefaultUsers();
-      //  } else {
-      //      library.addDefaultBookswarszawskaToLibrary();
-      //      usersDataBase.createDefaultUsers();
-      //  }
     }
 
 }

@@ -2,9 +2,6 @@ package Frames;
 
 import Manager.CommonFunctions;
 import Manager.Queries;
-import org.example.LibraryManager.Book;
-import org.example.LibraryManager.Library;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

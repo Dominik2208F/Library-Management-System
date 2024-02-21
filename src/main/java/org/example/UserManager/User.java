@@ -1,10 +1,6 @@
 package org.example.UserManager;
 
-import org.example.LibraryManager.Book;
-
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
 public class User {
@@ -38,9 +34,7 @@ public class User {
         this.permissionLevel=permissionLevel;
     }
 
-    public String getPassword() {
-        return password;
-    }
+
     public String getName() {
         return name;
     }

@@ -37,20 +37,8 @@ public class Book implements Comparable<Book> {
         return title;
     }
 
-    public Author getAuthor() {
-        return author;
-    }
-
-    public int getDateOfProduction() {
-        return dateOfProduction;
-    }
-
     public Genre getGenre() {
         return genre;
-    }
-
-    public int getAmountOfPage() {
-        return amountOfPage;
     }
 
     @Override
@@ -78,20 +66,9 @@ public class Book implements Comparable<Book> {
         this.title = title;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
-
-    public void setDateOfProduction(int dateOfProduction) {
-        this.dateOfProduction = dateOfProduction;
-    }
 
     public void setGenre(Genre genre) {
         this.genre = genre;
-    }
-
-    public void setAmountOfPage(int amountOfPage) {
-        this.amountOfPage = amountOfPage;
     }
 
 

@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+
 
 
 public class LibraryManagementFrame extends JFrame implements ActionListener, CommonFunctions {

@@ -2,7 +2,6 @@ package Manager;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLOutput;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +12,6 @@ public class AdminQueries {
     public AdminQueries(Connection connection) {
         this.connection=connection;
     }
-
 
 
     public static ResultSet getAllAssignedToUsers(String library){
@@ -135,7 +133,6 @@ public class AdminQueries {
         return AuthorId;
     }
 
-
     public static void addBook(String title,String authorFirstName,String lastName,String dateofbirth,String yearOfProduction, String pages, String status, String user_id,String library_name,String genre_name,boolean is_deleted){
         Statement statement;
         try{
@@ -214,7 +211,6 @@ public class AdminQueries {
 
 
     }
-
 
     public static void updateBook(String title, String authorName, String authorLastName, String dateOfBirth, String yearOfProduction, String pages, String genre_name, String titleToUpdate){
         Statement statement;
