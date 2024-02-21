@@ -1001,13 +1001,10 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 borrowALL.setVisible(false);
                 UserSelectionComboBoxToReturnABook.setVisible(false);
                 UserSelectionComboBoxToBorrow.setVisible(false);
-                QuickView.setEnabled(false);
+                QuickView.setEnabled(true);
                 ascendingCheckBoxFiltering.setVisible(false);
                 descendingCheckBoxFiltering.setVisible(false);
                 UserSelectionComboBoxToFilterTransaction.setVisible(true);
-
-                model.addAll(AdminQueries.getAllTransactions(CurrentLibraryName));
-                list.setModel(model);
 
                 if (AdminQueries.getAllTransactions(CurrentLibraryName).isEmpty()) {
                     list.setModel(model);
@@ -1016,8 +1013,8 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 } else {
                     model.addAll(AdminQueries.getAllTransactions(CurrentLibraryName));
                     list.setModel(model);
-                    list.setEnabled(false);
-                    QuickView.setEnabled(false);
+                    list.setEnabled(true);
+                    QuickView.setEnabled(true);
                     UserSelectionComboBoxToFilterTransaction.setVisible(true);
 
                     String UserNameArray[] = AdminQueries.readAllUsersAssignedToLibraryWithoutAdmin(CurrentLibraryName).toArray(new String[AdminQueries.readAllUsersAssignedToLibraryWithoutAdmin(CurrentLibraryName).size()]);
@@ -1038,14 +1035,15 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                         modifiedModel.addElement(transaction);
                     }
                     list.setModel(modifiedModel);
-                    list.setEnabled(false);
-                    QuickView.setEnabled(false);
+                    list.setEnabled(true);
+                    QuickView.setEnabled(true);
 
                 }
                 else{
                     ConfirmChoiceOfGivenUser.setVisible(false);
                     returnAll.setVisible(false);
                     borrowALL.setVisible(false);
+                    QuickView.setEnabled(false);
                     list.setModel(modifiedModel);
                 }
 

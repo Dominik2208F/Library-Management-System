@@ -9,10 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="all logs">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="filtrowanie po userach transakcji ok">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/AdminQueries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/AdminQueries.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00142" summary="wyłączenie ikon podczas logowania">
-      <created>1708003370531</created>
-      <option name="number" value="00142" />
-      <option name="presentableId" value="LOCAL-00142" />
-      <option name="project" value="LOCAL" />
-      <updated>1708003370531</updated>
     </task>
     <task id="LOCAL-00143" summary="2 pierwsze zapytania do biblioteki i wyświetlania userów działaja ok">
       <created>1708037638832</created>
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708512909672</updated>
     </task>
-    <option name="localTasksCounter" value="191" />
+    <task id="LOCAL-00191" summary="filtrowanie po userach transakcji ok">
+      <created>1708518553229</created>
+      <option name="number" value="00191" />
+      <option name="presentableId" value="LOCAL-00191" />
+      <option name="project" value="LOCAL" />
+      <updated>1708518553229</updated>
+    </task>
+    <option name="localTasksCounter" value="192" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -490,7 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="wyszukiwanie ksiazki z sortowaniem działa" />
     <MESSAGE value="historia działa poprawnie" />
     <MESSAGE value="poprawa formatowania czasu na histori transakcji" />
     <MESSAGE value="domyslne sortowanie malejąće po dacie w historii" />
@@ -515,7 +514,8 @@
     <MESSAGE value="czyszczenie" />
     <MESSAGE value="zwracanie przez admina zrobione" />
     <MESSAGE value="all logs" />
-    <option name="LAST_COMMIT_MESSAGE" value="all logs" />
+    <MESSAGE value="filtrowanie po userach transakcji ok" />
+    <option name="LAST_COMMIT_MESSAGE" value="filtrowanie po userach transakcji ok" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -562,7 +562,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java</url>
-          <line>1176</line>
+          <line>1174</line>
           <properties class="Frames.AdminActionFrame" method="categoryFiltering">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

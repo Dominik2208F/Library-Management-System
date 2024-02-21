@@ -17,7 +17,7 @@ public class AddUserFrame extends JFrame implements CommonFunctions {
 
     private JTextField usernameField;
     private JPasswordField passwordField;
-    private JButton saveButton;
+    private JButton saveButton,GoBackButton;
     private JLabel usernameLabel;
     private JLabel passwordLabel,addUser;
     private UserChooseIFrame userChooseIFrame;
@@ -53,7 +53,7 @@ public class AddUserFrame extends JFrame implements CommonFunctions {
         });
         usernameField = new JTextField();
         passwordField = new JPasswordField();
-        JToggleButton showHideButton = new JToggleButton("Show/hide");
+        JToggleButton showHideButton = new JToggleButton();
         saveButton = new JButton("Save");
         usernameLabel = new JLabel("Username:");
         passwordLabel = new JLabel("Password:");
@@ -61,8 +61,8 @@ public class AddUserFrame extends JFrame implements CommonFunctions {
         passwordLabel.setBounds(30,115 , 100, 30);
         usernameField.setBounds(100, 85, 150, 30);
         passwordField.setBounds(100, 120, 150, 30);
-        saveButton.setBounds(180, 170, 100, 30);
-        showHideButton.setBounds(50, 170, 120, 30);
+        saveButton.setBounds(100, 160, 150, 30);
+        showHideButton.setBounds(255, 120, 60, 30);
 
         ImageIcon iconAddUser = setIcon("/following.png");
         addUser = new JLabel(iconAddUser);
@@ -74,6 +74,24 @@ public class AddUserFrame extends JFrame implements CommonFunctions {
         saveButton.setIcon(save);
         ImageIcon qucikView = setIcon("/view.png");
         showHideButton.setIcon(qucikView);
+
+
+        GoBackButton =new JButton("Previous screen");
+        GoBackButton.setBounds(100, 200, 150, 30);
+        ImageIcon goBackButton = setIcon("/logout.png");
+        GoBackButton.setIcon(goBackButton);
+        add(GoBackButton);
+
+
+        GoBackButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                userChooseIFrame.getComboBoxUser().setEnabled(true);
+                userChooseIFrame.getAddUser().setEnabled(true);
+                userChooseIFrame.getConfirmUser().setEnabled(true);
+            }
+        });
 
 
         KeyListener keyListener = new KeyListener() {
