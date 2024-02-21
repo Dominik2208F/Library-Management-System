@@ -1164,7 +1164,7 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
         subcategoriesMap.put("Select", Arrays.asList(" "));
         subcategoriesMap.put("Status", Arrays.asList(Status.AVAILABLE.toString(), Status.BORROWED.toString()));
         subcategoriesMap.put("Author", listOfAuthorSurnames);
-        subcategoriesMap.put("Genre", Arrays.asList("Przygodowa", "Akcji", "ScienceFiction", "Romans", "Historyczne", "Akademickie", "Finansowe", "Dramat"));
+        subcategoriesMap.put("Genre", Arrays.asList("Przygodowa", "Akcji", "Science Fiction", "Romans", "Historyczne", "Akademickie", "Finansowe", "Dramat"));
         subcategoriesMap.put("Assigned to", listOfUsers);
 
         String selectedCategory = (String) categoryComboBox.getSelectedItem();

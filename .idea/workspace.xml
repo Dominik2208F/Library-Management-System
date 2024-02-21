@@ -9,10 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="naprawa podwojnego wyswietlania listy">
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="usuwanie usera ok">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/BookShop_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/BookShop_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/AdminQueries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/AdminQueries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,13 +132,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00144" summary="zostawienie flowlibrary do momentu przepisania na bazy danych + logowanie poprawnie z DB">
-      <created>1708065960501</created>
-      <option name="number" value="00144" />
-      <option name="presentableId" value="LOCAL-00144" />
-      <option name="project" value="LOCAL" />
-      <updated>1708065960501</updated>
     </task>
     <task id="LOCAL-00145" summary="show all">
       <created>1708068582565</created>
@@ -475,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708520383395</updated>
     </task>
-    <option name="localTasksCounter" value="193" />
+    <task id="LOCAL-00193" summary="usuwanie usera ok">
+      <created>1708524287560</created>
+      <option name="number" value="00193" />
+      <option name="presentableId" value="LOCAL-00193" />
+      <option name="project" value="LOCAL" />
+      <updated>1708524287560</updated>
+    </task>
+    <option name="localTasksCounter" value="194" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -490,7 +491,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="poprawa formatowania czasu na histori transakcji" />
     <MESSAGE value="domyslne sortowanie malejąće po dacie w historii" />
     <MESSAGE value="borrow all zablokowane dla innych kategorii" />
     <MESSAGE value="filtrowanie po statusie transakcji" />
@@ -515,7 +515,8 @@
     <MESSAGE value="all logs" />
     <MESSAGE value="filtrowanie po userach transakcji ok" />
     <MESSAGE value="naprawa podwojnego wyswietlania listy" />
-    <option name="LAST_COMMIT_MESSAGE" value="naprawa podwojnego wyswietlania listy" />
+    <MESSAGE value="usuwanie usera ok" />
+    <option name="LAST_COMMIT_MESSAGE" value="usuwanie usera ok" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

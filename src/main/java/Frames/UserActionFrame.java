@@ -1390,7 +1390,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         subcategoriesMap.put("Select", Arrays.asList(" "));
         subcategoriesMap.put("Status", Arrays.asList(Status.AVAILABLE.toString(), Status.BORROWED.toString()));
         subcategoriesMap.put("Author", listOfAuthorSurnames);
-        subcategoriesMap.put("Genre", Arrays.asList("Akcji", "Przygodowa", "ScienceFiction", "Romans", "Historyczne", "Akademickie", "Finansowe", "Dramat"));
+        subcategoriesMap.put("Genre", Arrays.asList("Akcji", "Przygodowa", "Science Fiction", "Romans", "Historyczne", "Akademickie", "Finansowe", "Dramat"));
         subcategoriesMap.put("Production date", Arrays.asList("Select range"));
         subcategoriesMap.put("Pages", Arrays.asList("Select range"));
 
