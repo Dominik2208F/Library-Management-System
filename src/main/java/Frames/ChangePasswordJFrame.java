@@ -161,7 +161,7 @@ public class ChangePasswordJFrame extends JFrame implements CommonFunctions {
         char[] passwordchar = newPassword.getPassword();
         String passwordNew = new String(passwordchar);
         String passwordOLD = new String(passwordcharOLD);
-        String regex = "(?=.*[a-ząćęłńóśźż])(?=.*[A-ZĄĆĘŁŃÓŚŹŻ])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-ząćęłńóśźżĄĆĘŁŃÓŚŹŻ\\d@$!%*?&]{8,}$";
+        String regex = "(?=.*[a-ząćęłńóśźż])(?=.*[A-ZĄĆĘŁŃÓŚŹŻ])(?=.*\\d)(?=.*[@$!%*?&#])[A-Za-ząćęłńóśźżĄĆĘŁŃÓŚŹŻ\\d@$!%*?&#]{8,}$";
         String passwordFromDataBase = Queries.userPassword(libraryNameField,username);
         if(!passwordFromDataBase.equals(passwordOLD)){
             JOptionPane.showMessageDialog(null, "Wrong current password.Try again"
