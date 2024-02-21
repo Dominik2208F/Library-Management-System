@@ -99,10 +99,6 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
         ImageIcon qucikView = setIcon("/view.png");
         QuickView.setIcon(qucikView);
 
-     //   booksLabel = new JLabel(flowLibrary.getListOfBooks().size() + " books in library");
-     //   booksLabel.setBounds(400, -5, 180, 30);
-     //   add(booksLabel);
-
         AddBook = new JButton("Add a book");
         AddBook.setBounds(10, 20, 130, 40);
         add(AddBook);
@@ -316,7 +312,6 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
 
                 returnBookOfAGivenUser = false;
                 borrowBookOfAGivenUser=true;
-              //  booksLabel.setText(RefreshListOfAvailableBook(library) + " books available in library");
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
                 if (Queries.getAllAvailableBook(CurrentLibraryName).isEmpty()) {

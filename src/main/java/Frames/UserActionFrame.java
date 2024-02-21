@@ -111,7 +111,6 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         lookForTextField.setBounds(590, 190, 160, 40);
         add(lookForTextField);
 
-
         lookForTextField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -176,11 +175,6 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
         SubCategoryComboBox = new JComboBox<>();
         SubCategoryComboBox.setBounds(590, 240, 180, 40);
         add(SubCategoryComboBox);
-
-        //  booksLabel = new JLabel(RefreshListOfAvailableBook(library) + " books available in library");
-        //   booksLabel.setBounds(350, -5, 200, 30);
-        //   add(booksLabel);
-
 
         ascendingCheckBox = new JCheckBox("Sort \uD83E\uDC79");
         ascendingCheckBox.setBounds(500, 185, 150, 30);
@@ -1090,7 +1084,7 @@ public class UserActionFrame extends JFrame implements CommonFunctions {
                 }
             }
         });
-        ascendingCheckBoxFilteringBorrow.setSelected(true); //default value
+        ascendingCheckBoxFilteringBorrow.setSelected(true);
         ascendingCheckBoxFilteringBorrow.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
