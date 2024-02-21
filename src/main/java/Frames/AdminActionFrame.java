@@ -683,19 +683,14 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 descendingCheckBoxFiltering.setVisible(false);
                 UserSelectionComboBoxToFilterTransaction.setVisible(false);
 
-                if (flowLibrary.getLibraryUserDataBase().getListOfUser().size() == 1) {
+                if (AdminQueries.getAllUsersInfo(CurrentLibraryName).size() == 1) {
                     UserSelectionComboBox.setEnabled(false);
                     UserSelectionComboBox.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));
                     JOptionPane.showMessageDialog(null,
                             "No additional users assigned to library", "Message", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     List<String> listOfUserName = new ArrayList<>();
-                    listOfUserName.add("Select");
-                    for (User user : flowLibrary.getLibraryUserDataBase().getListOfUser()) {
-                        if (!user.getName().equals("Admin")) {
-                            listOfUserName.add(user.getName());
-                        }
-                    }
+                    listOfUserName.addAll(AdminQueries.readAllUsersAssignedToLibraryWithoutAdmin(CurrentLibraryName));
                     String UserNameArray[] = listOfUserName.toArray(new String[listOfUserName.size()]);
                     UserSelectionComboBox.setModel(new DefaultComboBoxModel<>(UserNameArray));
                 }
@@ -851,51 +846,22 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 String selectedUserToDelete = (String) UserSelectionComboBox.getSelectedItem();
                 if (!selectedUserToDelete.equals("Select")) {
 
-                    List<User> arrayCopyToIterate = new ArrayList<>(flowLibrary.getLibraryUserDataBase().getListOfUser());
+                    int odp = JOptionPane.showConfirmDialog(null, "Do you want to remove " + selectedUserToDelete + "?\nIt will delete all transaction history and returns book assigned to user", "Message", JOptionPane.YES_NO_OPTION);
+                    if (odp == JOptionPane.YES_OPTION) {
 
-                    for (User user : arrayCopyToIterate) {
-                        if (user.getName().equals(selectedUserToDelete)) {
-                            int odp = JOptionPane.showConfirmDialog(null, "Do you want to remove " + user.getName() + " ?", "Message", JOptionPane.YES_NO_OPTION);
-                            if (odp == JOptionPane.YES_OPTION) {
+                                AdminQueries.DeleteUser(CurrentLibraryName,selectedUserToDelete);
 
 
-                                flowLibrary.getLibraryUserDataBase().getListOfUser().remove(user);
-
-                                for (Book book : flowLibrary.getListOfBooks()) {
-                                    if (book.getAssignedUserToBook().getName().equals(selectedUserToDelete)) {
-                                        book.setStatus(Status.AVAILABLE);
-                                        book.setAssignedUserToBook(new User("None", "none"));
-                                    }
-                                }
-
-
-                                List<String> UpdatedListOfUsers = new ArrayList<>();
-                                for (User user1 : flowLibrary.getLibraryUserDataBase().getListOfUser()) {
-                                    if (!user1.getName().equals("Admin")) {
-                                        UpdatedListOfUsers.add(user1.getName());
-                                    }
-                                }
-
-                                DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-                                for (Book books : flowLibrary.getListOfBooks()) {
-                                    modifiedModel.addElement(books.toString(true));
-                                }
-                                list.setModel(modifiedModel);
-
-
-                                if (UpdatedListOfUsers.isEmpty()) {
+                                if ( AdminQueries.readAllUsersAssignedToLibraryWithoutAdmin(CurrentLibraryName).isEmpty()) {
                                     UserSelectionComboBox.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));
                                     UserSelectionComboBox.setEnabled(false);
                                 } else {
-                                    String modifiedUserArray[] = UpdatedListOfUsers.toArray(new String[UpdatedListOfUsers.size()]);
+                                    String modifiedUserArray[] =   AdminQueries.readAllUsersAssignedToLibraryWithoutAdmin(CurrentLibraryName).toArray(new String[ AdminQueries.readAllUsersAssignedToLibraryWithoutAdmin(CurrentLibraryName).size()]);
                                     UserSelectionComboBox.setModel(new DefaultComboBoxModel<>(modifiedUserArray));
                                 }
                             }
                         }
                     }
-
-                }
-            }
         });
         AddUser.addActionListener(new ActionListener() {
             @Override

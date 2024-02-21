@@ -459,4 +459,47 @@ public class AdminQueries {
         return allBooks;
     }
 
+    public static void DeleteUser(String libraryName, String userName){
+
+        Statement statement;
+        try {
+
+            statement = connection.createStatement();
+
+            String unassignUserFrombookAndChangeStatusToAvailable = String.format("UPDATE book\n" +
+                    "SET status = 'AVAILABLE', user_id = NULL\n" +
+                    "WHERE book_id IN (\n" +
+                    "    SELECT borrowedbooks.book_id\n" +
+                    "    FROM borrowedbooks\n" +
+                    "    LEFT JOIN library ON library.library_id = book.library_id\n" +
+                    "    LEFT JOIN users ON book.user_id = users.user_id\n" +
+                    "    WHERE library.library_name = '%s' AND users.username = '%s'\n" +
+                    ")", libraryName,userName);
+
+            statement.executeUpdate(unassignUserFrombookAndChangeStatusToAvailable);
+            System.out.println("All books assigned to " +userName +"have now status: AVAILABLE in " +libraryName);
+
+
+            String deletAllTransaction = String.format("DELETE FROM borrowedBooks\n" +
+                    "WHERE user_id IN (SELECT user_id FROM users WHERE username = '%s')\n" +
+                    "and library_id IN (Select library_id from library where library_name='%s');", userName,libraryName);
+
+            statement.executeUpdate(deletAllTransaction);
+            System.out.println("All transaction related to user: " +userName +" has been deleted from " + libraryName);
+
+
+
+            String deletuser = String.format("DELETE FROM users\n" +
+                   "where username='%s'\n" +
+                    "and library_id IN (Select library_id from library where library_name='%s');", userName,libraryName);
+
+            statement.executeUpdate(deletuser);
+            System.out.println("User: " +userName+ " has been deleted from " + libraryName);
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        }
+
 }
