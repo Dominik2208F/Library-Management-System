@@ -309,6 +309,9 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 UserSelectionComboBoxToReturnABook.setVisible(false);
                 ConfirmChoiceOfGivenUser.setVisible(false);
                 returnAll.setVisible(false);
+                borrowALL.setVisible(false);
+                descendingCheckBoxFiltering.setVisible(false);
+                ascendingCheckBoxFiltering.setVisible(false);
 
                 returnBookOfAGivenUser = false;
                 borrowBookOfAGivenUser=true;
@@ -383,94 +386,74 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 if (returnBookOfAGivenUser) {
                     if (selectedIndices.length > 0) {
                         DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-                        String UserWithBorrowedBook = (String) UserSelectionComboBoxToReturnABook.getSelectedItem();
+                        String UserToReturnBook = (String) UserSelectionComboBoxToReturnABook.getSelectedItem();
 
                         if(selectedValues.size()>1) {
 
-                            for (int i = 0; i < selectedValues.size(); i++) {
-                                String titleOfBookToUnassingFromUser = extractTitle(selectedValues.get(i));
-                                Book bookInstance = null;
-
-                                for (Book book : flowLibrary.getListOfBooks()) {
-                                    if (book.getTitle().equals(titleOfBookToUnassingFromUser)) {
-                                        bookInstance = book;
-                                        break;
-                                    }
-                                }
-                                bookInstance.setStatus(Status.AVAILABLE);
-                                bookInstance.setAssignedUserToBook(new User("None", "none"));
-                            }
 
                             int odp = JOptionPane.showConfirmDialog(null, "Do you want return all selected books ?");
 
                             if (odp == JOptionPane.YES_OPTION) {
-                                for (Book Book : ListOfBorrowedBook(library)) {
-                                    if (Book.getStatus() == Status.BORROWED && Book.getAssignedUserToBook().getName().equals(UserWithBorrowedBook)) {
-                                        modifiedModel.addElement(Book.toString(true));
-                                    }
+
+
+
+                                for (int i = 0; i < selectedValues.size(); i++) {
+                                    String titleOfBookToUnassingFromUser = extractTitle(selectedValues.get(i));
+                                    Queries.updateBookStatusByTitle(CurrentLibraryName, "AVAILABLE", titleOfBookToUnassingFromUser, null);
+                                    Queries.insertBorrowedBookToHistory(UserToReturnBook, titleOfBookToUnassingFromUser, CurrentLibraryName, "is returned");
                                 }
+
+
+                                for (String book : AdminQueries.getAllBorrowedBooksByUserOrder(CurrentLibraryName, UserToReturnBook,"Admin","username")) {
+                                    modifiedModel.addElement(book);
+                                }
+
                                 list.setModel(modifiedModel);
+
                                 JOptionPane.showMessageDialog(null, "All selected books has been returned successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
-
-                                if (modifiedModel.isEmpty()) {
-                                    JOptionPane.showMessageDialog(null, UserWithBorrowedBook + " does not have more book to return", "Message", JOptionPane.INFORMATION_MESSAGE);
+                                if (!Queries.checkIfAnyBookIsInStatusBorrowed(CurrentLibraryName, UserToReturnBook)) {
                                     ConfirmChoiceOfGivenUser.setEnabled(false);
                                     returnAll.setEnabled(false);
+                                 //   UserSelectionComboBoxToReturnABook.setEnabled(false);
+                                 //   UserSelectionComboBoxToReturnABook.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));
+
                                 }
-
-                                if (checkIfAllBooksReturned(library.getListOfBooks())) {
+                                if (modifiedModel.isEmpty()) {
+                                    JOptionPane.showMessageDialog(null, UserToReturnBook + " does not have more book to return", "Message", JOptionPane.INFORMATION_MESSAGE);
                                     ConfirmChoiceOfGivenUser.setEnabled(false);
                                     returnAll.setEnabled(false);
-                                    UserSelectionComboBoxToReturnABook.setEnabled(false);
-                                    UserSelectionComboBoxToReturnABook.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));
-
                                 }
 
                             }
                         }
                         if(selectedValues.size()==1) {
                             String titleOfBookToUnassingFromUser = extractTitle(list.getSelectedValue());
-                            Book bookInstance = null;
 
-                            for (Book book : ListOfBorrowedBook(library)) {
-                                if (book.getTitle().equals(titleOfBookToUnassingFromUser)) {
-                                    bookInstance = book;
-                                    break;
-                                }
-                            }
-
-
-                            int odp = JOptionPane.showConfirmDialog(null, "Do you want return a book: " + bookInstance.getTitle() + " ?");
-
+                            int odp = JOptionPane.showConfirmDialog(null, "Do you want return a book: "+ titleOfBookToUnassingFromUser +  " ?");
                             if (odp == JOptionPane.YES_OPTION) {
 
+                                Queries.updateBookStatusByTitle(CurrentLibraryName, "AVAILABLE", titleOfBookToUnassingFromUser, null);
+                                Queries.insertBorrowedBookToHistory(UserToReturnBook, titleOfBookToUnassingFromUser, CurrentLibraryName, "is returned");
 
-                                bookInstance.setStatus(Status.AVAILABLE);
-                                bookInstance.setAssignedUserToBook(new User("None", "none"));
-
-
-                                for (Book Book : ListOfBorrowedBook(library)) {
-                                    if (Book.getStatus() == Status.BORROWED && Book.getAssignedUserToBook().getName().equals(UserWithBorrowedBook)) {
-                                        modifiedModel.addElement(Book.toString(true));
-                                    }
+                                for (String book : AdminQueries.getAllBorrowedBooksByUserOrder(CurrentLibraryName, UserToReturnBook,"Admin","username")) {
+                                    modifiedModel.addElement(book);
                                 }
 
-                                JOptionPane.showMessageDialog(null, "Book " + bookInstance.getTitle() + " has been returned successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "Book " + titleOfBookToUnassingFromUser  + " has been returned successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
                                 list.setModel(modifiedModel);
+
+                                if (!Queries.checkIfAnyBookIsInStatusBorrowed(CurrentLibraryName, UserToReturnBook)) {
+                                    ConfirmChoiceOfGivenUser.setEnabled(false);
+                                    returnAll.setEnabled(false);
+                                    //   UserSelectionComboBoxToReturnABook.setEnabled(false);
+                                    //   UserSelectionComboBoxToReturnABook.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));
+                                }
                                 if (modifiedModel.isEmpty()) {
-                                    JOptionPane.showMessageDialog(null, UserWithBorrowedBook + " does not have any book to borrow", "Message", JOptionPane.INFORMATION_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, UserToReturnBook + " does not have any book to borrow", "Message", JOptionPane.INFORMATION_MESSAGE);
                                     ConfirmChoiceOfGivenUser.setEnabled(false);
                                     returnAll.setEnabled(false);
                                 }
 
-                                if (checkIfAllBooksReturned(library.getListOfBooks())) {
-                                    ConfirmChoiceOfGivenUser.setEnabled(false);
-                                    returnAll.setEnabled(false);
-                                    UserSelectionComboBoxToReturnABook.setEnabled(false);
-                                    UserSelectionComboBoxToReturnABook.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));
-
-                                }
-                                booksLabel.setText(RefreshListOfAvailableBook(library) + " books available in library");
                             }
                         }
                     } else {
@@ -540,18 +523,14 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
-                String UserWithBorrowedBook = (String) UserSelectionComboBoxToReturnABook.getSelectedItem();
+                String UserToReturn = (String) UserSelectionComboBoxToReturnABook.getSelectedItem();
 
-                if (!UserWithBorrowedBook.equals("Select")) {
+                if (!UserToReturn.equals("Select")) {
 
                     ConfirmChoiceOfGivenUser.setVisible(true);
                     returnAll.setVisible(true);
                     returnAll.setEnabled(true);
-                    for (Book Book : ListOfBorrowedBook(library)) {
-                        if (Book.getAssignedUserToBook().getName().equals(UserWithBorrowedBook)) {
-                            modifiedModel.addElement(Book.toString(true));
-                        }
-                    }
+                    modifiedModel.addAll(AdminQueries.getAllBorrowedBooksByUserOrder(CurrentLibraryName, UserToReturn,"Admin","username"));
                     list.setModel(modifiedModel);
                     list.setEnabled(true);
                     QuickView.setEnabled(true);
@@ -562,26 +541,18 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                     list.setModel(modifiedModel);
                 }
 
-                if (checkIfAllBooksReturned(library.getListOfBooks())) {
+                if (!Queries.checkIfAnyBookIsInStatusBorrowed(CurrentLibraryName, UserToReturn)) {
 
                     ConfirmChoiceOfGivenUser.setEnabled(false);
                     returnAll.setEnabled(false);
 
                     list.setModel(modifiedModel);
                     JOptionPane.showMessageDialog(null, "No books to return", "Warning", JOptionPane.WARNING_MESSAGE);
-                    //  borrowButtonClicked = false;
+
                 } else {
                     ConfirmChoiceOfGivenUser.setEnabled(true);
                     list.setModel(modifiedModel);
-                    // /    if (informationReturn) {
-                    //        JOptionPane.showMessageDialog(null, "Choose one book to return and confirm", "Warning", JOptionPane.INFORMATION_MESSAGE);
-                    //    }
-                    //  informationReturn = false;
-                    //  borrowButtonClicked = false;
-                    // returnButtonClicked = true;
                 }
-
-
             }
         });
         returnAll.addActionListener(new ActionListener() {
@@ -590,34 +561,34 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
 
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
-                String UserWithBorrowedBook = (String) UserSelectionComboBoxToReturnABook.getSelectedItem();
+                String UserToReturn = (String) UserSelectionComboBoxToReturnABook.getSelectedItem();
+
                 int odp = JOptionPane.showConfirmDialog(null, "Do you want to return all books?");
                 if (odp == JOptionPane.YES_OPTION) {
-                    for (Book book : flowLibrary.getListOfBooks()) {
-                        if (book.getStatus() == Status.BORROWED && book.getAssignedUserToBook().getName().equals(UserWithBorrowedBook)) {
-                            book.setStatus(Status.AVAILABLE);
-                            book.setAssignedUserToBook(new User("None", "none"));
-                        }
-                        booksLabel.setText(RefreshListOfAvailableBook(library) + " books available in library");
+
+                    for (String book : Queries.getAllBorrowedBooksByUser(CurrentLibraryName, UserToReturn,"User")) {
+                        String title = extractTitle(book);
+                        Queries.insertBorrowedBookToHistory(UserToReturn, title, CurrentLibraryName, "is returned");
                     }
+
+                    Queries.setAllBooksAvailable(CurrentLibraryName, null, "BORROWED", "AVAILABLE", UserToReturn);
                     JOptionPane.showMessageDialog(null, "All books have been borrowed successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
 
                     DefaultListModel<String> modifiedModel1 = new DefaultListModel<>();
-                    for (Book Book : flowLibrary.getListOfBooks()) {
-                        if (Book.getStatus() == Status.BORROWED && Book.getAssignedUserToBook().getName().equals(userChooseIFrame.getChoosenUserName())) {
-                            modifiedModel1.addElement(Book.toString());
-                        }
+                    for (String book : Queries.getAllBorrowedBooksByUser(CurrentLibraryName, UserToReturn,"User")) {
+                        modifiedModel1.addElement(book);
                     }
                     list.setModel(modifiedModel1);
+
                     if (modifiedModel.isEmpty()) {
                         ConfirmChoiceOfGivenUser.setEnabled(false);
                         returnAll.setEnabled(false);
                     }
-                    if (checkIfAllBooksReturned(flowLibrary.getListOfBooks())) {
+                    if (!Queries.checkIfAnyBookIsInStatusBorrowed(CurrentLibraryName, UserToReturn)) {
                         ConfirmChoiceOfGivenUser.setEnabled(false);
                         returnAll.setEnabled(false);
-                        UserSelectionComboBoxToReturnABook.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));
-                        UserSelectionComboBoxToReturnABook.setEnabled(false);
+                      //  UserSelectionComboBoxToReturnABook.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));
+                      //  UserSelectionComboBoxToReturnABook.setEnabled(false);
 
                     }
                 }
@@ -643,44 +614,27 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 descendingCheckBoxFiltering.setVisible(false);
                 DefaultListModel<String> modifiedModel = new DefaultListModel<>();
 
-                booksLabel.setText(RefreshListOfAvailableBook(library) + " books available in library");
 
-                if (ListOfBorrowedBook(library).isEmpty()) {
+
+                if (AdminQueries.getAllBorrowedBooks(CurrentLibraryName).isEmpty()) {
                     list.setModel(modifiedModel);
                     ConfirmChoiceOfGivenUser.setEnabled(false);
                     returnAll.setEnabled(false);
                     UserSelectionComboBoxToReturnABook.setEnabled(false);
-                    UserSelectionComboBoxToReturnABook.setVisible(false)
-                    ;
+                    UserSelectionComboBoxToReturnABook.setVisible(false);
                     JOptionPane.showMessageDialog(null, "No borrowed books in library", "Warning", JOptionPane.WARNING_MESSAGE);
                 } else {
 
 
-                    for (Book books : ListOfBorrowedBook(library)) {
-                        modifiedModel.addElement(books.toString(true));
-                    }
+                    modifiedModel.addAll(AdminQueries.getAllBorrowedBooks(CurrentLibraryName));
                     list.setModel(modifiedModel);
                     list.setEnabled(false);
                     QuickView.setEnabled(false);
                     UserSelectionComboBoxToReturnABook.setVisible(true);
 
-                    List<String> listOfAllUserName = new ArrayList<>();
-                    for (User user : flowLibrary.getLibraryUserDataBase().getListOfUser()) {
-                        if (!user.getName().equals("Admin")) {
-                            listOfAllUserName.add(user.getName());
-                        }
-                    }
-                    List<String> listOfBorrowedUserName = new ArrayList<>();
-                    listOfBorrowedUserName.add("Select");
-                    for (String userName : listOfAllUserName) {
-                        for (Book book : ListOfBorrowedBook(library)) {
-                            if (book.getAssignedUserToBook().getName().equals(userName)) {
-                                listOfBorrowedUserName.add(userName);
-                                break;
-                            }
-                        }
-                    }
-                    String UserNameArray[] = listOfBorrowedUserName.toArray(new String[listOfBorrowedUserName.size()]);
+
+
+                    String UserNameArray[] = AdminQueries.readAllUsersAssignedToLibraryWithoutAdmin(CurrentLibraryName).toArray(new String[AdminQueries.readAllUsersAssignedToLibraryWithoutAdmin(CurrentLibraryName).size()]);
                     UserSelectionComboBoxToReturnABook.setModel(new DefaultComboBoxModel<>(UserNameArray));
                 }
             }
@@ -1145,11 +1099,6 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 listOfAuthorSurnames.add(author);
             }
         }
-
-
-
-
-
 
         ResultSet set= AdminQueries.getAllAssignedToUsers(CurrentLibraryName);
         try {

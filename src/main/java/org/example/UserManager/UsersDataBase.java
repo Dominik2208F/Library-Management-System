@@ -15,25 +15,4 @@ public class UsersDataBase {
         return listOfUser;
     }
 
-
-
-    public void addAdminDatabase() {
-        User user = new User("Admin", "admin","Admin");
-        listOfUser.add(user);
-    }
-
-
-    public User returnObjectOfUserByName(String name) {
-        for (User user : listOfUser) {
-            if (user.getName().equalsIgnoreCase(name)) {
-                return user;
-            }
-        }
-        return null;
-    }
-
-    public void createDefaultUsers() {
-        addAdminDatabase();
-    }
-
 }

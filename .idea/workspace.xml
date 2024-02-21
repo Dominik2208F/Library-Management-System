@@ -10,25 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="czyszczenie">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/0/20d7ff1beb4e709368e6570bc3d89f9765451de2" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/0/20d7ff1beb4e709368e6570bc3d89f9765451de2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/4/24faec8cac7eeaf9921a41cfbddbe756a7d3fe54" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/4/24faec8cac7eeaf9921a41cfbddbe756a7d3fe54" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/6/26618b0a4e53b14b79c7eff885d941beb25544ac" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/6/26618b0a4e53b14b79c7eff885d941beb25544ac" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/e/2e682bba8d1cb641add86bf5b614f53ba669e41b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/e/2e682bba8d1cb641add86bf5b614f53ba669e41b" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/c/4cf2018acf9b42de00f835938a522046c008bc15" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/c/4cf2018acf9b42de00f835938a522046c008bc15" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5f0b91ae7a996d48ae5aee1436627a3e4268d7bf" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5f0b91ae7a996d48ae5aee1436627a3e4268d7bf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/4/640c095562f51279fcf14202e06afe01b573d27d" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/4/640c095562f51279fcf14202e06afe01b573d27d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/6/76998923163ea64ff0942259a4ed24251851c1d5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/6/76998923163ea64ff0942259a4ed24251851c1d5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/b/7b768d99a6f38ca2261e8ff11ce2d9aa40ca7c6b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/b/7b768d99a6f38ca2261e8ff11ce2d9aa40ca7c6b" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/8251c39afc23fd07238a418a07a93aa2b02025db" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/8251c39afc23fd07238a418a07a93aa2b02025db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/5/85af08a0b48d3bf06601b7946437225825f020a5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/5/85af08a0b48d3bf06601b7946437225825f020a5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/3/d3b360b3cbf860f75ab994bcb733faf67bdd5af9" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/3/d3b360b3cbf860f75ab994bcb733faf67bdd5af9" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Manager/AdminQueries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/AdminQueries.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UserManager/UsersDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UserManager/UsersDataBase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,20 +134,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00137" summary="wybór z listy. Przed logiką do zwracania i zmienna">
-      <created>1707955998797</created>
-      <option name="number" value="00137" />
-      <option name="presentableId" value="LOCAL-00137" />
-      <option name="project" value="LOCAL" />
-      <updated>1707955998798</updated>
-    </task>
-    <task id="LOCAL-00138" summary="prawie skonczony mechanizm assign">
-      <created>1707990136832</created>
-      <option name="number" value="00138" />
-      <option name="presentableId" value="LOCAL-00138" />
-      <option name="project" value="LOCAL" />
-      <updated>1707990136832</updated>
     </task>
     <task id="LOCAL-00139" summary="zmiany regex">
       <created>1707995180888</created>
@@ -491,7 +464,21 @@
       <option name="project" value="LOCAL" />
       <updated>1708473664599</updated>
     </task>
-    <option name="localTasksCounter" value="186" />
+    <task id="LOCAL-00186" summary="wypozyczanie ksiazki za użytkownika z poziomu admina">
+      <created>1708503289169</created>
+      <option name="number" value="00186" />
+      <option name="presentableId" value="LOCAL-00186" />
+      <option name="project" value="LOCAL" />
+      <updated>1708503289169</updated>
+    </task>
+    <task id="LOCAL-00187" summary="czyszczenie">
+      <created>1708503382441</created>
+      <option name="number" value="00187" />
+      <option name="presentableId" value="LOCAL-00187" />
+      <option name="project" value="LOCAL" />
+      <updated>1708503382441</updated>
+    </task>
+    <option name="localTasksCounter" value="188" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -506,7 +493,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="sortowanie przeniesione i naprawione" />
     <MESSAGE value="przygotowanie pod wyszukiwanie książki" />
     <MESSAGE value="wyszukiwanie ksiażki działa" />
     <MESSAGE value="wyszukiwanie ksiazki z sortowaniem działa" />
@@ -530,6 +516,7 @@
     <MESSAGE value="update book + zabezpieczenie na konflikt" />
     <MESSAGE value="zabezpiecznie na dodawanie takiego samego autora w book add i generacje id zrobione" />
     <MESSAGE value="all users" />
+    <MESSAGE value="wypozyczanie ksiazki za użytkownika z poziomu admina" />
     <MESSAGE value="czyszczenie" />
     <option name="LAST_COMMIT_MESSAGE" value="czyszczenie" />
   </component>
@@ -538,37 +525,37 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>614</line>
+          <line>619</line>
           <option name="timeStamp" value="110" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>334</line>
+          <line>328</line>
           <option name="timeStamp" value="113" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>667</line>
+          <line>672</line>
           <option name="timeStamp" value="142" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>655</line>
+          <line>660</line>
           <option name="timeStamp" value="146" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>654</line>
+          <line>659</line>
           <option name="timeStamp" value="147" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>653</line>
+          <line>658</line>
           <option name="timeStamp" value="148" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>652</line>
+          <line>657</line>
           <option name="timeStamp" value="149" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -580,11 +567,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/Frames/OverViewBookJFrame.java</url>
           <line>105</line>
           <option name="timeStamp" value="151" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>483</line>
-          <option name="timeStamp" value="161" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -13,7 +13,6 @@ public class AdminQueries {
         this.connection=connection;
     }
 
-
     public static ResultSet getAllAssignedToUsers(String library){
         ResultSet resultSet=null;
         Statement statement;
@@ -30,6 +29,7 @@ public class AdminQueries {
 
         return resultSet;
     }
+
     public static List<String> getAllBookFilteredByAssignedTo(String libraryName, String userName,String direction) {
         List<String> allBooks = new ArrayList<>();
         ResultSet resultSet = null;
@@ -322,6 +322,79 @@ public class AdminQueries {
         }
         return users;
 
+    }
+
+    public static List<String> getAllBorrowedBooks(String libraryName){
+        List<String> allBooks = new ArrayList<>();
+        ResultSet resultSet = null;
+        Statement statement;
+        try {
+            String query = String.format("SELECT status, users.username,users.user_id, title, author.first_name, author.last_name,yearofproduction,genre.name  FROM public.book\n" +
+                    "LEFT JOIN author on book.author_id=author.author_id\n" +
+                    "LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
+                    "LEFT JOIN library on book.library_id= library.library_id\n" +
+                    "LEFT JOIN users on book.user_id=users.user_id\n" +
+                    "WHERE library.library_name='%s' and  book.status='BORROWED' and book.is_deleted = false ORDER BY username", libraryName);
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                String status = resultSet.getString("status");
+                String assignedTo = resultSet.getString("username");
+                if (assignedTo == null) { //zakrycie do kogo przypisane dla uzytkownika. Do zmiany dla Admina w bookInfo
+                    assignedTo = "None";
+                }
+                String title = resultSet.getString("title");
+                String author = resultSet.getString("first_name") + " " + resultSet.getString("last_name");
+                String yearOfProduction = resultSet.getString("yearofproduction");
+                String genre = resultSet.getString("name");
+
+                String bookInfo = "Status: " + status + "," + "Assigned to: " + assignedTo + "," + " Title: " + title + "," + " Author: " + author + "," + " Production date: " + yearOfProduction + "," + " Genre: " + genre;
+                allBooks.add(bookInfo);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return allBooks;
+    }
+
+    public static List<String> getAllBorrowedBooksByUserOrder(String libraryName, String userName, String permission,String order) {
+        List<String> allBooks = new ArrayList<>();
+        ResultSet resultSet = null;
+        Statement statement;
+        try {
+            String query = String.format("SELECT status, users.username,users.user_id, title, author.first_name, author.last_name,yearofproduction,genre.name  FROM public.book\n" +
+                    "LEFT JOIN author on book.author_id=author.author_id\n" +
+                    "LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
+                    "LEFT JOIN library on book.library_id= library.library_id\n" +
+                    "LEFT JOIN users on book.user_id=users.user_id\n" +
+                    "WHERE library.library_name='%s' and  book.status='BORROWED' and users.username='%s' and book.is_deleted = false ORDER BY %s", libraryName, userName,order);
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                String status = resultSet.getString("status");
+                String assignedTo = resultSet.getString("username");
+                if (assignedTo == null) { //zakrycie do kogo przypisane dla uzytkownika. Do zmiany dla Admina w bookInfo
+                    assignedTo = "None";
+                }
+                String title = resultSet.getString("title");
+                String author = resultSet.getString("first_name") + " " + resultSet.getString("last_name");
+                String yearOfProduction = resultSet.getString("yearofproduction");
+                String genre = resultSet.getString("name");
+                String bookInfo;
+                if(permission.equals("Admin")){
+                    bookInfo = "Status: " + status + "," + "Assigned to: " + assignedTo + "," + " Title: " + title + "," + " Author: " + author + "," + " Production date: " + yearOfProduction + "," + " Genre: " + genre;
+                }
+                else {
+                    bookInfo = "Status: " + status + "," + " Title: " + title + "," + " Author: " + author + "," + " Production date: " + yearOfProduction + "," + " Genre: " + genre;
+                }
+                allBooks.add(bookInfo);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return allBooks;
     }
 
 }

@@ -317,7 +317,7 @@ public class Queries {
         }
     }
 
-    public static List<String> getAllBorrowedBooksByUser(String libraryName, String userName) {
+    public static List<String> getAllBorrowedBooksByUser(String libraryName, String userName, String permission) {
         List<String> allBooks = new ArrayList<>();
         ResultSet resultSet = null;
         Statement statement;
@@ -341,8 +341,13 @@ public class Queries {
                 String author = resultSet.getString("first_name") + " " + resultSet.getString("last_name");
                 String yearOfProduction = resultSet.getString("yearofproduction");
                 String genre = resultSet.getString("name");
-
-                String bookInfo = "Status: " + status + "," + " Title: " + title + "," + " Author: " + author + "," + " Production date: " + yearOfProduction + "," + " Genre: " + genre;
+                String bookInfo;
+                if(permission.equals("Admin")){
+                    bookInfo = "Status: " + status + "," + "Assigned to: " + assignedTo + "," + " Title: " + title + "," + " Author: " + author + "," + " Production date: " + yearOfProduction + "," + " Genre: " + genre;
+                }
+                else {
+                    bookInfo = "Status: " + status + "," + " Title: " + title + "," + " Author: " + author + "," + " Production date: " + yearOfProduction + "," + " Genre: " + genre;
+                }
                 allBooks.add(bookInfo);
             }
         } catch (Exception e) {
