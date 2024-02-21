@@ -23,7 +23,7 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
     private JMenuBar menubar;
     private JMenu Options, Program;
     private JMenuItem changeUser, changeLibrary, programInfo;
-    private JButton AddBook, ReturnInfoAllBooks, ReturnInfoOfBook, DeleteBook, UpdateBook, AddUser, DeleteUser,ShowAllUsers, ReturnBookOfAGivenUser, BorrowBookOfGivenUser, ConfirmChoice, QuickView, ConfirmChoiceOfGivenUser, returnAll,borrowALL;
+    private JButton AddBook, ReturnInfoAllBooks, ReturnInfoOfBook, DeleteBook, UpdateBook, AddUser, DeleteUser,ShowAllUsers, ReturnBookOfAGivenUser, BorrowBookOfGivenUser, ConfirmChoice, QuickView, ConfirmChoiceOfGivenUser, returnAll,borrowALL,AllLogs;
 
     public JList<String> getList() {
         return list;
@@ -153,6 +153,23 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
         ReturnBookOfAGivenUser = new JButton("Return book of a given user");
         ReturnBookOfAGivenUser.setBounds(10, 220, 240, 40);
         add(ReturnBookOfAGivenUser);
+
+        AllLogs = new JButton("All transaction logs");
+        AllLogs.setBounds(10, 320, 240, 40);
+        add(AllLogs);
+
+        ImageIcon transaction = setIcon("/transaction (1).png");
+        AllLogs.setIcon(transaction);
+
+        AllLogs.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                DefaultListModel model= new DefaultListModel();
+                model.addAll(AdminQueries.getAllTransactions(CurrentLibraryName));
+                list.setModel(model);
+            }
+        });
 
         ImageIcon returnBook = setIcon("/return.png");
         ReturnBookOfAGivenUser.setIcon(returnBook);

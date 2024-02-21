@@ -397,4 +397,37 @@ public class AdminQueries {
         return allBooks;
     }
 
+    public static List<String> getAllTransactions(String libraryName) {
+        List<String> allBooks = new ArrayList<>();
+        ResultSet resultSet = null;
+        Statement statement;
+        try {
+            String query = String.format(" SELECT DATE_TRUNC('second', dateoftransaction) AS dateoftransaction,direction,users.username,title,author.first_name,author.last_name,yearofproduction,genre.name  FROM public.borrowedbooks\n" +
+                    "LEFT JOIN library ON borrowedbooks.library_id = library.library_id\n" +
+                    "LEFT JOIN book ON borrowedbooks.book_id = book.book_id\n" +
+                    "LEFT JOIN users ON borrowedbooks.user_id = users.user_id\n" +
+                    "LEFT JOIN genre ON book.genre_id = genre.genre_id\n" +
+                    "LEFT JOIN author ON book.author_id = author.author_id\n" +
+                    "WHERE library.library_name='%s' ORDER BY username DESC", libraryName);
+
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                String username= resultSet.getString("username");
+                String direction = resultSet.getString("direction");
+                String dateOFtransaction = resultSet.getString("dateoftransaction");
+                String title = resultSet.getString("title");
+                String author = resultSet.getString("first_name") + " " + resultSet.getString("last_name");
+                String bookInfo = "Username:" +username +","+"Time: " + dateOFtransaction + "," + "Direction: " + direction + "," + " Title: " + title + "," + " Author: " + author;
+                allBooks.add(bookInfo);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+        return allBooks;
+    }
+
+
+
 }
