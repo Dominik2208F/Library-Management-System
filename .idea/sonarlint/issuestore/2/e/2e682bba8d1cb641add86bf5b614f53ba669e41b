@@ -1,8 +1,2 @@
 
 {	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ê®ÐÉýÿÿÿÿ8ß¤û·Ú1
-^
-java:S1128"<Remove this unused import 'org.example.LibraryManager.Book'.(’°ïçýÿÿÿÿ8ßÞ‡¸Ú1
-M
-java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ßÞ‡¸Ú1
-M
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ßÞ‡¸Ú1

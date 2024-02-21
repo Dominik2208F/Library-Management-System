@@ -56,3 +56,7 @@ a
 1src/main/java/Frames/MyAccountOverViewJFrame.java,c\7\c71746b648a45a45b3ba53367f7dc7de1a1b808f
 ^
 .src/main/java/Frames/ChangePasswordJFrame.java,0\f\0f4a9d938c5edad4ed8d86df07964bb9b52ba24f
+c
+3src/main/java/Manager/LengthRestrictedDocument.java,b\a\baa1755b13f629dc0124c9cc7a47cf61b30719d2
+W
+'src/main/java/Manager/AdminQueries.java,7\2\72fdd73d552e5f10c7194e5ad3f18e989f021e40

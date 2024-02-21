@@ -300,4 +300,28 @@ public class AdminQueries {
         }
         return users;
     }
+
+    public static List<String> readAllUsersAssignedToLibraryWithoutAdmin(String library){
+        List<String> users = new ArrayList<>();
+        users.add("Select");
+        ResultSet resultSet = null;
+        Statement statement;
+        try {
+            String query = String.format("SELECT username FROM public.users LEFT JOIN library on users.library_Id=library.library_id WHERE library.library_name='%s' and not username='Admin' ORDER BY username ASC ", library);
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+
+            while(resultSet.next()){
+
+                String user= resultSet.getString("username");
+                users.add(user);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return users;
+
+    }
+
 }

@@ -859,6 +859,4 @@ public class Queries {
         }
         return allBooks;
     }
-
-
 }

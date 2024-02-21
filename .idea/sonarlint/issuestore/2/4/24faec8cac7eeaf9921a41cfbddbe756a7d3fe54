@@ -11,5 +11,3 @@ G	java:S106p"+Replace this use of System.err by a logger.(ÿâƒÙ8†åŸ…Û1
 k
 java:S3252"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(Õû»öşÿÿÿÿ8ŠåŸ…Û1
 p	java:S100‡"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ñé³øüÿÿÿÿ8‹åŸ…Û1
-O
-java:S1128"2Remove this unused import 'java.sql.SQLException'.(ÛïÆŸ8ÉÏš…Û1

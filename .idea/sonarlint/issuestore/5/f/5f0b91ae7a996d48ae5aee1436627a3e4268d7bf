@@ -1,30 +1,24 @@
 
 Q
-java:S3740"/Provide the parametrized type for this generic.(Î÷Ş’üÿÿÿÿ8ÌÆ­ãÚ1
-L
-java:S3740""/Provide the parametrized type for this generic.(›øéİ8ÍÆ­ãÚ1
-R
-java:S3740®"/Provide the parametrized type for this generic.(ßêı²üÿÿÿÿ8ÍÆ­ãÚ1
+java:S3740"/Provide the parametrized type for this generic.(Î÷Ş’üÿÿÿÿ8ï¹ÀÆÜ1
 c
-java:S1192»"FDefine a constant instead of duplicating this literal "Error" 7 times.(ôâr8ÍÆ­ãÚ1
+java:S1192Ö"FDefine a constant instead of duplicating this literal "Error" 8 times.(ôâr8ğ¹ÀÆÜ1
+m	java:S117V"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹Œ Ú8ğ¹ÀÆÜ1
 F
-java:S1604"(Make this anonymous inner class a lambda(èßØ8ÎÆ­ãÚ1
+java:S1604«"(Make this anonymous inner class a lambda(èßØ8ğ¹ÀÆÜ1
 F
-java:S1604—"(Make this anonymous inner class a lambda(èßØ8ÎÆ­ãÚ1
+java:S1604µ"(Make this anonymous inner class a lambda(Èú†8ğ¹ÀÆÜ1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(úÃ†ş8ó¹ÀÆÜ1
 F
-java:S1604"(Make this anonymous inner class a lambda(Èú†8ÎÆ­ãÚ1
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(úÃ†ş8ÏÆ­ãÚ1
-K
-java:S1948")Make "library" transient or serializable.(Ÿ˜Ä­ÿÿÿÿÿ8‘Ç­ãÚ1
-
-java:S1186y"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(÷—8—Ç­ãÚ1
+java:S1905V")Remove this unnecessary cast to "String".(‹Œ Ú8ÓºÀÆÜ1
+E	java:S108r")Either remove or fill this block of code.(”ı¾8ÕºÀÆÜ1
+Ÿ
+java:S1186“"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(÷—8×ºÀÆÜ1
 ¤
-java:S1186„"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(˜Â½€øÿÿÿÿ8—Ç­ãÚ1
-¤
-java:S1186™"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¼ Òşüÿÿÿÿ8™Ç­ãÚ1
+java:S1186Ÿ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(˜Â½€øÿÿÿÿ8×ºÀÆÜ1
 u
-java:S3776®"RRefactor this method to reduce its Cognitive Complexity from 27 to the 15 allowed.(ßêı²üÿÿÿÿ8›Ç­ãÚ1
-J
-java:S1068"(Remove this unused "list" private field.(Î÷Ş’üÿÿÿÿ8ŸÇ­ãÚ1
+java:S3776Æ"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(ˆÉÈßüÿÿÿÿ8İºÀÆÜ1
+:
+java:S1116ÿ"Remove this empty statement.(ôĞÈ³8„§ÑÆÜ1
 I
-java:S1068",Remove this unused "calendar" private field.(­Ã×Ê8ŸÇ­ãÚ1
+java:S1068",Remove this unused "calendar" private field.(­Ã×Ê8âºÀÆÜ1

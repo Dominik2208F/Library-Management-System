@@ -1,5 +1,5 @@
 
-b
-java:S1192)"FDefine a constant instead of duplicating this literal "Akcji" 5 times.(­…K8’‰¹êØ1
 {	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¢Ôåÿÿÿÿÿ8˜‰¹êØ1
 t	java:S116"XRename this field "NameOfLibrary" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘”Ÿ8Œ¹êØ1
+L
+java:S1128"*Remove this unused import 'Frames.Status'.(¼ÛËÎúÿÿÿÿ8„¤ÂÇÜ1
