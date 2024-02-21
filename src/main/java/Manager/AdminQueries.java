@@ -408,7 +408,7 @@ public class AdminQueries {
                     "LEFT JOIN users ON borrowedbooks.user_id = users.user_id\n" +
                     "LEFT JOIN genre ON book.genre_id = genre.genre_id\n" +
                     "LEFT JOIN author ON book.author_id = author.author_id\n" +
-                    "WHERE library.library_name='%s' ORDER BY username DESC", libraryName);
+                    "WHERE library.library_name='%s' ORDER BY username ASC, dateoftransaction DESC", libraryName);
 
             statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
