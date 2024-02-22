@@ -9,11 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="usuwanie usera ok">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/BookShop_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/BookShop_jar.xml" afterDir="false" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="bubu znalazla blad z # i science fiction">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/c/4cf2018acf9b42de00f835938a522046c008bc15" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/c/4cf2018acf9b42de00f835938a522046c008bc15" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/6/76998923163ea64ff0942259a4ed24251851c1d5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/6/76998923163ea64ff0942259a4ed24251851c1d5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/8251c39afc23fd07238a418a07a93aa2b02025db" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/8251c39afc23fd07238a418a07a93aa2b02025db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +40,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="4a5412b2c60ab6ff657dd741ddaa479430c59ee0" />
+        <entry key="$PROJECT_DIR$" value="1ff41e8368ec70eff888fa634dfddd49f89ee5d3" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -117,6 +118,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
@@ -469,12 +471,12 @@
       <option name="project" value="LOCAL" />
       <updated>1708520383395</updated>
     </task>
-    <task id="LOCAL-00193" summary="usuwanie usera ok">
-      <created>1708524287560</created>
+    <task id="LOCAL-00193" summary="bubu znalazla blad z # i science fiction">
+      <created>1708548355605</created>
       <option name="number" value="00193" />
       <option name="presentableId" value="LOCAL-00193" />
       <option name="project" value="LOCAL" />
-      <updated>1708524287560</updated>
+      <updated>1708548355606</updated>
     </task>
     <option name="localTasksCounter" value="194" />
     <servers />
@@ -491,7 +493,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="domyslne sortowanie malejąće po dacie w historii" />
     <MESSAGE value="borrow all zablokowane dla innych kategorii" />
     <MESSAGE value="filtrowanie po statusie transakcji" />
     <MESSAGE value="filtrowanie wyników historycznych po dacie działa z bazy danych" />
@@ -516,39 +517,40 @@
     <MESSAGE value="filtrowanie po userach transakcji ok" />
     <MESSAGE value="naprawa podwojnego wyswietlania listy" />
     <MESSAGE value="usuwanie usera ok" />
-    <option name="LAST_COMMIT_MESSAGE" value="usuwanie usera ok" />
+    <MESSAGE value="bubu znalazla blad z # i science fiction" />
+    <option name="LAST_COMMIT_MESSAGE" value="bubu znalazla blad z # i science fiction" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>619</line>
+          <line>626</line>
           <option name="timeStamp" value="110" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>672</line>
+          <line>679</line>
           <option name="timeStamp" value="142" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>660</line>
+          <line>667</line>
           <option name="timeStamp" value="146" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>659</line>
+          <line>666</line>
           <option name="timeStamp" value="147" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>658</line>
+          <line>665</line>
           <option name="timeStamp" value="148" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>657</line>
+          <line>664</line>
           <option name="timeStamp" value="149" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -560,20 +562,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/Frames/OverViewBookJFrame.java</url>
           <line>105</line>
           <option name="timeStamp" value="151" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>588</line>
-          <option name="timeStamp" value="176" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java</url>
-          <line>1140</line>
-          <properties class="Frames.AdminActionFrame" method="categoryFiltering">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="171" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

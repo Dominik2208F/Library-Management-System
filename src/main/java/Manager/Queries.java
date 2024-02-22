@@ -568,7 +568,7 @@ public class Queries {
                     "LEFT JOIN genre on book.genre_id=genre.genre_id\n" +
                     "LEFT JOIN library on book.library_id= library.library_id\n" +
                     "LEFT JOIN users on book.user_id=users.user_id\n" +
-                    "WHERE library.library_name='%s' AND  pages BETWEEN '%s' AND '%s' and book.is_deleted = false ORDER BY yearofproduction %s", libraryName, min, max, sortDirection);
+                    "WHERE library.library_name='%s' AND  pages BETWEEN '%s' AND '%s' and book.is_deleted = false ORDER BY pages %s", libraryName, min, max, sortDirection);
             statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
@@ -593,14 +593,20 @@ public class Queries {
         ResultSet resultSet = null;
         Statement statement;
         try {
-            String query = " SELECT status, users.username, pages, title, author.first_name, author.last_name, yearofproduction, genre.name " +
-                    "FROM public.book " +
-                    "LEFT JOIN author ON book.author_id = author.author_id " +
-                    "LEFT JOIN genre ON book.genre_id = genre.genre_id " +
-                    "LEFT JOIN library ON book.library_id = library.library_id " +
-                    "LEFT JOIN users ON book.user_id = users.user_id " +
-                    "WHERE library.library_name = '" + libraryName + "' AND LOWER(title) LIKE LOWER('" + text + "%') and book.is_deleted = false " +
-                    "ORDER BY title " + sortDirection;
+            String query = " SELECT status, users.username, pages, title, author.first_name, author.last_name, yearofproduction, genre.name FROM public.book\n" +
+                    "LEFT JOIN author ON book.author_id = author.author_id\n" +
+                    "LEFT JOIN genre ON book.genre_id = genre.genre_id\n" +
+                    "LEFT JOIN library ON book.library_id = library.library_id\n" +
+                    "LEFT JOIN users ON book.user_id = users.user_id\n" +
+                    "WHERE library.library_name = '" + libraryName + "'\n" +
+                    "AND book.is_deleted = false\n" +
+                    "AND (\n" +
+                    "    LOWER(title) LIKE LOWER('%" + text + "%')\n" +
+                    "    OR LOWER(author.first_name) LIKE LOWER('%" + text + "%')\n" +
+                    "    OR LOWER(author.last_name) LIKE LOWER('%" + text + "%')\n" +
+                    "    OR LOWER(genre.name) LIKE LOWER('%" + text + "%')\n" +
+                    ")\n" +
+                    "ORDER BY title  " + sortDirection;
 
             statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
