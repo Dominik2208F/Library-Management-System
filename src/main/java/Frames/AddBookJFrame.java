@@ -3,7 +3,6 @@ package Frames;
 import Manager.AdminQueries;
 import Manager.LengthRestrictedDocument;
 import Manager.Queries;
-import org.example.LibraryManager.Library;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -36,13 +35,13 @@ public class AddBookJFrame extends JFrame {
     private JTextField yearField = new JTextField();
     private JTextField pagesField = new JTextField();
     private JComboBox<String> genreComboBox = new JComboBox<>(new String[]{"Przygodowa", "Akcji", "ScienceFiction", "Romans", "Historyczne", "Akademickie", "Finansowe", "Dramat"});
-    private  JLabel BooksLebel;
+    private JLabel BooksLebel;
     private UserChooseIFrame userChooseIFrame;
 
-    public AddBookJFrame(Library flowLibrary, JList<String> list, JLabel book, UserChooseIFrame userChooseIFrame) {
+    public AddBookJFrame(JList<String> list, JLabel book, UserChooseIFrame userChooseIFrame) {
 
-    this.BooksLebel=book;
-    this.userChooseIFrame=userChooseIFrame;
+        this.BooksLebel = book;
+        this.userChooseIFrame = userChooseIFrame;
         setContentPane(new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -60,7 +59,7 @@ public class AddBookJFrame extends JFrame {
         });
 
 
-        JLabel imageAddBookLabel= new JLabel(setIcon("/notebook (1).png"));
+        JLabel imageAddBookLabel = new JLabel(setIcon("/notebook (1).png"));
         imageAddBookLabel.setBounds(100, 10, 200, 65);
         add(imageAddBookLabel);
         JButton addBook = new JButton("Add book");
@@ -75,7 +74,7 @@ public class AddBookJFrame extends JFrame {
         titleField.setBounds(100, 90, 200, 40);
         authorFirstNameField.setBounds(100, 140, 200, 40);
         authorLastNameField.setBounds(100, 190, 200, 40);
-        authorBirthDateField.setBounds(100, 240,  90, 40);
+        authorBirthDateField.setBounds(100, 240, 90, 40);
         authorBirthDateField.setEditable(false);
         yearField.setBounds(100, 290, 200, 40);
         genreComboBox.setBounds(100, 340, 200, 40);
@@ -170,8 +169,8 @@ public class AddBookJFrame extends JFrame {
                 yearText.isEmpty() || description.isEmpty() || pagesText.isEmpty()) {
             JOptionPane.showMessageDialog(null, "All fields are required!", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            String regex ="^[a-zA-Z][a-zA-Z ]*$";
-            String regexSurname= "^[a-zA-Z]+$";
+            String regex = "^[a-zA-Z][a-zA-Z ]*$";
+            String regexSurname = "^[a-zA-Z]+$";
             if (!Pattern.matches(regex, authorFirstName)) {
                 JOptionPane.showMessageDialog(null, "Invalid format. Name cannot have such value", "Error", JOptionPane.ERROR_MESSAGE);
             } else if (!Pattern.matches(regexSurname, authorLastName)) {
@@ -185,9 +184,8 @@ public class AddBookJFrame extends JFrame {
                 year = Integer.parseInt(yearField.getText());
                 if (year <= 0) {
                     JOptionPane.showMessageDialog(null, "Invalid year format. Year cannot have such value", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                else if(year > yearCurrent){
-                    JOptionPane.showMessageDialog(null, "Invalid year format. Year cannot be more than " +yearCurrent, "Error", JOptionPane.ERROR_MESSAGE);
+                } else if (year > yearCurrent) {
+                    JOptionPane.showMessageDialog(null, "Invalid year format. Year cannot be more than " + yearCurrent, "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(null, "Invalid year format. Type a valid number", "Error", JOptionPane.ERROR_MESSAGE);
@@ -205,7 +203,7 @@ public class AddBookJFrame extends JFrame {
             if (pages != 0 && year != 0 && Pattern.matches(regex, authorFirstName) && Pattern.matches(regexSurname, authorLastName)) {
 
 
-                AdminQueries.addBook(title,authorFirstName,authorLastName,authorBirthDate,yearText,pagesText,"AVAILABLE","null",userChooseIFrame.getLibraryManagementFrame().getSelectedLibrary(),description,false);
+                AdminQueries.addBook(title, authorFirstName, authorLastName, authorBirthDate, yearText, pagesText, "AVAILABLE", "null", userChooseIFrame.getLibraryManagementFrame().getSelectedLibrary(), description, false);
                 JOptionPane.showMessageDialog(null, "Book added successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
                 DefaultListModel<String> updatedModel = new DefaultListModel<>();
                 Queries.getAllAvailableBook(userChooseIFrame.getLibraryManagementFrame().getSelectedLibrary()).stream()
@@ -217,10 +215,11 @@ public class AddBookJFrame extends JFrame {
             }
         }
     }
-    public ImageIcon setIcon(String source){
+
+    public ImageIcon setIcon(String source) {
         URL imageUrl = getClass().getResource(source);
 
-        ImageIcon icon=null;
+        ImageIcon icon = null;
         if (imageUrl != null) {
             try (InputStream inputStream = imageUrl.openStream()) {
 

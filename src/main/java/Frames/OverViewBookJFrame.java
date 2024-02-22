@@ -2,6 +2,7 @@ package Frames;
 
 import Manager.CommonFunctions;
 import Manager.Queries;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -60,7 +61,7 @@ public class OverViewBookJFrame extends JFrame implements CommonFunctions {
         ImageIcon okIcon = setIcon("/check.png");
         button.setIcon(okIcon);
 
-        JLabel imageAddBookLabel= new JLabel(setIcon("/research.png"));
+        JLabel imageAddBookLabel = new JLabel(setIcon("/research.png"));
         imageAddBookLabel.setBounds(100, 10, 200, 65);
         add(imageAddBookLabel);
 
@@ -73,22 +74,21 @@ public class OverViewBookJFrame extends JFrame implements CommonFunctions {
         });
 
 
-
         titleField.setBounds(100, 90, 200, 40);
         authorFirstNameField.setBounds(100, 140, 200, 40);
         authorLastNameField.setBounds(100, 190, 200, 40);
-        authorBirthDateField.setBounds(100, 240,  90, 40);
+        authorBirthDateField.setBounds(100, 240, 90, 40);
         authorBirthDateField.setEditable(false);
         yearField.setBounds(100, 290, 200, 40);
         genreComboBox.setBounds(100, 340, 200, 40);
         pagesField.setBounds(100, 390, 200, 40);
-        statusField.setBounds(100,440,200,40);
+        statusField.setBounds(100, 440, 200, 40);
 
 
-       String TitleToUpdate = extractTitle((String) list.getSelectedValue());
+        String TitleToUpdate = extractTitle((String) list.getSelectedValue());
 
 
-        ResultSet resultSet=Queries.getQucikViewInfo(libraryName,TitleToUpdate);
+        ResultSet resultSet = Queries.getQucikViewInfo(libraryName, TitleToUpdate);
 
 
         String status = null;
@@ -102,20 +102,18 @@ public class OverViewBookJFrame extends JFrame implements CommonFunctions {
         try {
             while (resultSet.next()) {
 
-                 status = resultSet.getString("status");
-                 dateOfBirth = resultSet.getString("date_of_birth");
-                 title = resultSet.getString("title");
-                 authorFirstName = resultSet.getString("first_name");
-                 authorLastName=resultSet.getString("last_name");
-                 yearOfProduction = resultSet.getString("yearofproduction");
-                 genre = resultSet.getString("name");
-                 pages = resultSet.getString("pages");
-
-
+                status = resultSet.getString("status");
+                dateOfBirth = resultSet.getString("date_of_birth");
+                title = resultSet.getString("title");
+                authorFirstName = resultSet.getString("first_name");
+                authorLastName = resultSet.getString("last_name");
+                yearOfProduction = resultSet.getString("yearofproduction");
+                genre = resultSet.getString("name");
+                pages = resultSet.getString("pages");
 
 
             }
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 

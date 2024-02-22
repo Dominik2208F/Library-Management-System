@@ -3,15 +3,12 @@ package Manager;
 
 import Frames.LibraryManagementFrame;
 import com.formdev.flatlaf.FlatLightLaf;
-import org.example.LibraryManager.LibraryDataBase;
 
 
-import javax.sound.midi.Soundbank;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Date;
 
 
 public class
@@ -35,12 +32,6 @@ Main {
         UIManager.put( "ScrollBar.thumbInsets", new Insets( 2, 2, 2, 2 ) );
         UIManager.put("List.selectionBackground", new Color(0, 191, 255));
 
-        LibraryDataBase libraryDataBase = new LibraryDataBase();
-        SetUp SetUp = new SetUp(libraryDataBase);
-        SetUp.createDefaultLibrariesSetUp("Pruszkowska");
-        SetUp.createDefaultLibrariesSetUp("Warszawska");
-        new LibraryManagementFrame(libraryDataBase);
-
-
+        new LibraryManagementFrame();
     }
 }

@@ -2,7 +2,6 @@ package Frames;
 
 import Manager.CommonFunctions;
 import Manager.Queries;
-import org.example.LibraryManager.Library;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,15 +10,15 @@ import java.awt.event.*;
 public class LoginUserFrame extends JFrame implements CommonFunctions {
 
     private JPasswordField passwordField;
-    private JButton LoginButton,GoBackButton;
+    private JButton LoginButton, GoBackButton;
     private JLabel passwordLabel;
     private JLabel UserImageLebel;
     private UserChooseIFrame userChoose;
-    private Library flowLibrary;
 
-    public LoginUserFrame(UserChooseIFrame userChooseIFrame, Library library) {
+
+    public LoginUserFrame(UserChooseIFrame userChooseIFrame) {
         this.userChoose = userChooseIFrame;
-        this.flowLibrary = library;
+
 
         passwordField = new JPasswordField();
         LoginButton = new JButton("Log in");
@@ -29,7 +28,7 @@ public class LoginUserFrame extends JFrame implements CommonFunctions {
         passwordField.setBounds(100, 80, 150, 30);
         LoginButton.setBounds(100, 120, 150, 30);
         showHideButton.setBounds(255, 80, 60, 30);
-        GoBackButton =new JButton("Previous screen");
+        GoBackButton = new JButton("Previous screen");
         GoBackButton.setBounds(100, 160, 150, 30);
         ImageIcon goBackButton = setIcon("/logout.png");
         GoBackButton.setIcon(goBackButton);
@@ -42,7 +41,7 @@ public class LoginUserFrame extends JFrame implements CommonFunctions {
                 userChoose.getConfirmUser().setEnabled(true);
             }
         });
-        if(userChooseIFrame.getChoosenUserName().equals("Admin")) {
+        if (userChooseIFrame.getChoosenUserName().equals("Admin")) {
             ImageIcon iconAdmin = setIcon("/user (4).png");
             UserImageLebel = new JLabel(iconAdmin);
         } else {
@@ -56,7 +55,7 @@ public class LoginUserFrame extends JFrame implements CommonFunctions {
         LoginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                logInto(library);
+                logInto();
             }
         });
 
@@ -81,17 +80,19 @@ public class LoginUserFrame extends JFrame implements CommonFunctions {
 
         KeyListener keyListener = new KeyListener() {
             @Override
-            public void keyTyped(KeyEvent e) {}
+            public void keyTyped(KeyEvent e) {
+            }
 
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    logInto(library);
+                    logInto();
                 }
             }
 
             @Override
-            public void keyReleased(KeyEvent e) {}
+            public void keyReleased(KeyEvent e) {
+            }
         };
 
         passwordField.addKeyListener(keyListener);
@@ -110,14 +111,13 @@ public class LoginUserFrame extends JFrame implements CommonFunctions {
             public void actionPerformed(ActionEvent e) {
 
                 if (showHideButton.isSelected()) {
-                    passwordField.setEchoChar((char)0);
+                    passwordField.setEchoChar((char) 0);
                 } else {
 
                     passwordField.setEchoChar('\u2022');
                 }
             }
         });
-
 
 
         addWindowListener(new WindowListener() {
@@ -165,12 +165,12 @@ public class LoginUserFrame extends JFrame implements CommonFunctions {
         setVisible(true);
     }
 
-    public void logInto(Library library) {
+    public void logInto() {
         char[] passwordchar = passwordField.getPassword();
         String password = new String(passwordchar);
-        String UserName=userChoose.getChoosenUserName();
+        String UserName = userChoose.getChoosenUserName();
 
-        String passwordFromDB= Queries.getPasswordOfUser(UserName,userChoose.getLibraryManagementFrame().getSelectedLibrary());
+        String passwordFromDB = Queries.getPasswordOfUser(UserName, userChoose.getLibraryManagementFrame().getSelectedLibrary());
 
 
         if (passwordFromDB.equals(password)) {
@@ -180,7 +180,7 @@ public class LoginUserFrame extends JFrame implements CommonFunctions {
                 if (userChoose.getChoosenUserName().equals("Admin")) {
                     setVisible(false);
                     userChoose.setVisible(false);
-                    new AdminActionFrame(userChoose, library);
+                    new AdminActionFrame(userChoose);
                 } else {
                     setVisible(false);
                     userChoose.setVisible(false);

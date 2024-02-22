@@ -10,9 +10,10 @@ public class PasswordPopUpJFrame extends JFrame {
 
 
     private UserChooseIFrame userChooseIFrame;
-    private JLabel passwordHint,passwordHint2;
+    private JLabel passwordHint, passwordHint2;
+
     public PasswordPopUpJFrame(UserChooseIFrame userChooseIFrame) {
-        this.userChooseIFrame=userChooseIFrame;
+        this.userChooseIFrame = userChooseIFrame;
 
         setContentPane(new JPanel() {
             @Override
@@ -45,25 +46,24 @@ public class PasswordPopUpJFrame extends JFrame {
         setVisible(true);
     }
 
-    public void setHint(){
+    public void setHint() {
 
-        String name= userChooseIFrame.getSelectedUserValue();
+        String name = userChooseIFrame.getSelectedUserValue();
 
-            char[] letters =Queries.getPasswordFromUserByName(name).toCharArray();
+        char[] letters = Queries.getPasswordFromUserByName(name).toCharArray();
 
-            StringBuilder buildHint= new StringBuilder();
-            int counter=0;
-            for(char letter: letters){
-                if(counter%2==0 && counter!=0){
-                    buildHint.append("*");
-                }
-                else {
-                    buildHint.append(letter);
-                }
-                counter++;
-                }
-            passwordHint.setText(buildHint.toString());
-
+        StringBuilder buildHint = new StringBuilder();
+        int counter = 0;
+        for (char letter : letters) {
+            if (counter % 2 == 0 && counter != 0) {
+                buildHint.append("*");
+            } else {
+                buildHint.append(letter);
+            }
+            counter++;
         }
+        passwordHint.setText(buildHint.toString());
+
+    }
 
 }

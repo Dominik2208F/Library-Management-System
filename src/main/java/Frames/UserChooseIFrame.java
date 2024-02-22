@@ -2,7 +2,6 @@ package Frames;
 
 import Manager.CommonFunctions;
 import Manager.Queries;
-import org.example.LibraryManager.Library;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -23,7 +22,7 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
         return confirmUser;
     }
 
-    private JButton confirmUser,showPassword;
+    private JButton confirmUser, showPassword;
 
     public JButton getAddUser() {
         return addUser;
@@ -38,9 +37,6 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
         return ChoosenUserName;
     }
 
-    public Library getFlowLibrary() {
-        return flowLibrary;
-    }
 
     public LibraryManagementFrame getLibraryManagementFrame() {
         return libraryManagementFrame;
@@ -49,17 +45,17 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
     public JList<String> getList() {
         return list;
     }
+
     private String ChoosenUserName;
 
     private String selectedUserValue;
-    private Library flowLibrary;
     private LibraryManagementFrame libraryManagementFrame;
 
     public JComboBox getComboBoxUser() {
         return comboBoxUser;
     }
 
-    JComboBox comboBoxUser= new JComboBox<>();
+    JComboBox comboBoxUser = new JComboBox<>();
 
     private JMenuBar menubar;
     private JMenu Options;
@@ -69,25 +65,23 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
         return selectedUserValue;
     }
 
-    public UserChooseIFrame(Library library, LibraryManagementFrame libraryManagementFrame) {
-        this.flowLibrary = library;
+    public UserChooseIFrame(LibraryManagementFrame libraryManagementFrame) {
         this.libraryManagementFrame = libraryManagementFrame;
-
 
         List<String> listOfCurrentUsers = new ArrayList<String>();
 
-            ResultSet set= Queries.readUsersAssignedToLibraryByName(libraryManagementFrame.getSelectedLibrary());
-            try {
-                while (set.next()) {
+        ResultSet set = Queries.readUsersAssignedToLibraryByName(libraryManagementFrame.getSelectedLibrary());
+        try {
+            while (set.next()) {
 
-                    listOfCurrentUsers.add(set.getString("username"));
-                }
-            }catch (Exception e){
-
+                listOfCurrentUsers.add(set.getString("username"));
             }
+        } catch (Exception e) {
 
-             String[] usersArray = listOfCurrentUsers.toArray(new String[listOfCurrentUsers.size()]);
-             comboBoxUser.setModel(new DefaultComboBoxModel<>(usersArray));
+        }
+
+        String[] usersArray = listOfCurrentUsers.toArray(new String[listOfCurrentUsers.size()]);
+        comboBoxUser.setModel(new DefaultComboBoxModel<>(usersArray));
 
 
         setContentPane(new JPanel() {
@@ -107,8 +101,6 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
         });
 
 
-
-
         comboBoxUser.setBounds(100, 240, 200, 40);
         add(comboBoxUser);
 
@@ -121,8 +113,8 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
         addUser.setBounds(100, 340, 200, 40);
         add(addUser);
 
-        showPassword= new JButton(" Don't remember password?");
-        showPassword.setBounds(100,410,200,40);
+        showPassword = new JButton(" Don't remember password?");
+        showPassword.setBounds(100, 410, 200, 40);
         add(showPassword);
 
 
@@ -139,7 +131,7 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
         changeLibrary.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new LibraryManagementFrame(getLibraryManagementFrame().getLibraryDataBase());
+                new LibraryManagementFrame();
                 setVisible(false);
             }
         });
@@ -148,10 +140,9 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
             @Override
             public void actionPerformed(ActionEvent e) {
                 selectedUserValue = (String) comboBoxUser.getSelectedItem();
-                if(selectedUserValue.equals("Admin")){
+                if (selectedUserValue.equals("Admin")) {
                     JOptionPane.showMessageDialog(null, "You cannot remind password to  admin", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                else {
+                } else {
                     new PasswordPopUpJFrame(UserChooseIFrame.this).setHint();
                 }
             }
@@ -161,11 +152,11 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
             @Override
             public void actionPerformed(ActionEvent e) {
                 selectedUserValue = (String) comboBoxUser.getSelectedItem();
-                if (comboBoxUser==null || selectedUserValue.isEmpty()) {
+                if (comboBoxUser == null || selectedUserValue.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Choose at least 1 user", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
                     ChoosenUserName = selectedUserValue;
-                    new LoginUserFrame(UserChooseIFrame.this, library);
+                    new LoginUserFrame(UserChooseIFrame.this);
                     comboBoxUser.setEnabled(false);
                     addUser.setEnabled(false);
                     confirmUser.setEnabled(false);
@@ -176,7 +167,7 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
         addUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AddUserFrame addUserFrame = new AddUserFrame(UserChooseIFrame.this, library, false);
+                AddUserFrame addUserFrame = new AddUserFrame(UserChooseIFrame.this,false);
                 addUserFrame.setVisible(true);
                 comboBoxUser.setEnabled(false);
                 addUser.setEnabled(false);
@@ -189,7 +180,7 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
 
         JLabel label = null;
         if (imageUrl != null) {
-          
+
             try (InputStream inputStream = imageUrl.openStream()) {
                 Image originalImage = ImageIO.read(inputStream);
                 int newWidth = 180;
@@ -198,14 +189,13 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
                 ImageIcon scaledIcon = new ImageIcon(scaledImage);
                 label = new JLabel(scaledIcon);
                 label.setBounds(110, 20, newWidth, newHeight);
-                
+
             } catch (IOException e) {
-                e.printStackTrace(); 
+                e.printStackTrace();
             }
         } else {
             System.err.println("Nie udało się znaleźć zasobu."); // 
         }
-
 
 
         ImageIcon addUserIcon = setIcon("/add-user_8924229 (1).png");
@@ -228,13 +218,13 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
 
     public void updateListOfUsers() {
         List<String> listOfCurrentUsers = new ArrayList<String>();
-        ResultSet set= Queries.readUsersAssignedToLibraryByName(libraryManagementFrame.getSelectedLibrary());
+        ResultSet set = Queries.readUsersAssignedToLibraryByName(libraryManagementFrame.getSelectedLibrary());
         try {
             while (set.next()) {
 
                 listOfCurrentUsers.add(set.getString("username"));
             }
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
         String[] usersArray = listOfCurrentUsers.toArray(new String[listOfCurrentUsers.size()]);

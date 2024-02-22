@@ -2,8 +2,6 @@ package Frames;
 
 import Manager.CommonFunctions;
 import Manager.Queries;
-import org.example.LibraryManager.Library;
-import org.example.LibraryManager.LibraryDataBase;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -16,19 +14,12 @@ import java.net.URL;
 import java.sql.ResultSet;
 
 
-
 public class LibraryManagementFrame extends JFrame implements ActionListener, CommonFunctions {
 
-    private JLabel welcome,assign;
+    private JLabel welcome, assign;
     private JButton buttonConfirm;
     private JComboBox<String> comboBox;
 
-    public LibraryDataBase getLibraryDataBase() {
-        return libraryDataBase;
-    }
-
-    private LibraryDataBase libraryDataBase;
-    private Library flowLibrary;
 
     public String getSelectedLibrary() {
         return selectedLibrary;
@@ -37,21 +28,16 @@ public class LibraryManagementFrame extends JFrame implements ActionListener, Co
     private String selectedLibrary;
 
 
-
-    public LibraryManagementFrame(LibraryDataBase libraryDataBase) {
-
-        this.libraryDataBase = libraryDataBase;
+    public LibraryManagementFrame() {
 
         DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
 
-        // Zwraca listę bibliotek
         try {
-            ResultSet set= Queries.readAllLibraries();
+            ResultSet set = Queries.readAllLibraries();
             while (set.next()) {
                 comboBoxModel.addElement(set.getString("library_name"));
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println("No libraries in Data Base");
         }
         setContentPane(new JPanel() {
@@ -88,7 +74,7 @@ public class LibraryManagementFrame extends JFrame implements ActionListener, Co
         buttonConfirm.setBounds(100, 330, 200, 40);
         buttonConfirm.addActionListener(this);
 
-        ImageIcon confirm =setIcon("/approved.png");
+        ImageIcon confirm = setIcon("/approved.png");
         buttonConfirm.setIcon(confirm);
 
         URL imageUrl = getClass().getResource("/pngwing.com (2).png");
@@ -116,8 +102,6 @@ public class LibraryManagementFrame extends JFrame implements ActionListener, Co
         getContentPane().add(label);
 
 
-
-
         add(comboBox);
         add(buttonConfirm);
         add(welcome);
@@ -133,17 +117,11 @@ public class LibraryManagementFrame extends JFrame implements ActionListener, Co
     }
 
     public void IfButtonClicked() {
-         selectedLibrary = (String) comboBox.getSelectedItem();
+        selectedLibrary = (String) comboBox.getSelectedItem();
         if (selectedLibrary == null || selectedLibrary.isEmpty()) {
             JOptionPane.showMessageDialog(LibraryManagementFrame.this, "You have to choose at least 1 library", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            for (Library librarySpec : libraryDataBase.getListOfLibrary()) {
-                if (librarySpec.getNameOfLibrary().equalsIgnoreCase(selectedLibrary)) {
-                    flowLibrary = librarySpec;
-                    break;
-                }
-            }
-            UserChooseIFrame userChooseIFrame = new UserChooseIFrame(flowLibrary, LibraryManagementFrame.this);
+            UserChooseIFrame userChooseIFrame = new UserChooseIFrame(LibraryManagementFrame.this);
             dispose();
             userChooseIFrame.setVisible(true);
         }

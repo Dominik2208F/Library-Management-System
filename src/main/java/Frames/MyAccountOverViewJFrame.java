@@ -17,8 +17,7 @@ public class MyAccountOverViewJFrame extends JFrame implements CommonFunctions {
     private JTextField dateOfCreation = new JTextField();
     private JTextField permissionLevel = new JTextField();
 
-    public MyAccountOverViewJFrame(String libraryNameField,String username) {
-
+    public MyAccountOverViewJFrame(String libraryNameField, String username) {
 
 
         setContentPane(new JPanel() {
@@ -46,7 +45,7 @@ public class MyAccountOverViewJFrame extends JFrame implements CommonFunctions {
         ImageIcon okIcon = setIcon("/check.png");
         button.setIcon(okIcon);
 
-        JLabel imageAddBookLabel= new JLabel(setIcon("/user-avatar.png"));
+        JLabel imageAddBookLabel = new JLabel(setIcon("/user-avatar.png"));
         imageAddBookLabel.setBounds(70, 10, 200, 65);
         add(imageAddBookLabel);
 
@@ -59,21 +58,20 @@ public class MyAccountOverViewJFrame extends JFrame implements CommonFunctions {
         });
 
 
-
         userId.setBounds(100, 90, 150, 40);
         Username.setBounds(100, 140, 150, 40);
         libraryName.setBounds(100, 190, 150, 40);
-        dateOfCreation.setBounds(100, 240,  150, 40);
-        permissionLevel.setBounds(100,290,150,40);
+        dateOfCreation.setBounds(100, 240, 150, 40);
+        permissionLevel.setBounds(100, 290, 150, 40);
 
-       ResultSet resultSet = Queries.userInfo(libraryNameField,username);
+        ResultSet resultSet = Queries.userInfo(libraryNameField, username);
 
 
         String user_id = null;
         String userName = null;
         String libraryNamee = null;
         String dateofCreation = null;
-        String  permlevel= null;
+        String permlevel = null;
 
         try {
             while (resultSet.next()) {
@@ -82,11 +80,11 @@ public class MyAccountOverViewJFrame extends JFrame implements CommonFunctions {
                 userName = resultSet.getString("username");
                 libraryNamee = resultSet.getString("library_name");
                 dateofCreation = resultSet.getString("dateofcreation");
-                permlevel=resultSet.getString("permissionlevel");
+                permlevel = resultSet.getString("permissionlevel");
 
 
             }
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 

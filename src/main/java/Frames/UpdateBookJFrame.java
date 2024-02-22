@@ -19,6 +19,7 @@ import java.util.regex.Pattern;
 public class UpdateBookJFrame extends JFrame implements CommonFunctions {
     private JList list;
     private CalendarIFrame calendar;
+
     public JTextField getAuthorBirthDateField() {
         return authorBirthDateField;
     }
@@ -35,7 +36,7 @@ public class UpdateBookJFrame extends JFrame implements CommonFunctions {
     public UpdateBookJFrame(JList<String> list, UserChooseIFrame userChooseIFrame) {
 
         this.list = list;
-        this.userChooseIFrame=userChooseIFrame;
+        this.userChooseIFrame = userChooseIFrame;
 
         setContentPane(new JPanel() {
             @Override
@@ -62,14 +63,14 @@ public class UpdateBookJFrame extends JFrame implements CommonFunctions {
         button.setBounds(200, 240, 100, 40);
         add(button);
 
-        JLabel imageAddBookLabel= new JLabel(setIcon("/phonebook.png"));
+        JLabel imageAddBookLabel = new JLabel(setIcon("/phonebook.png"));
         imageAddBookLabel.setBounds(100, 10, 200, 65);
         add(imageAddBookLabel);
 
         titleField.setBounds(100, 90, 200, 40);
         authorFirstNameField.setBounds(100, 140, 200, 40);
         authorLastNameField.setBounds(100, 190, 200, 40);
-        authorBirthDateField.setBounds(100, 240,  90, 40);
+        authorBirthDateField.setBounds(100, 240, 90, 40);
         authorBirthDateField.setEditable(false);
         yearField.setBounds(100, 290, 200, 40);
         genreComboBox.setBounds(100, 340, 200, 40);
@@ -86,7 +87,7 @@ public class UpdateBookJFrame extends JFrame implements CommonFunctions {
         String TitleToUpdate = extractTitle((String) list.getSelectedValue());
 
 
-        ResultSet resultSet= Queries.getQucikViewInfo(userChooseIFrame.getLibraryManagementFrame().getSelectedLibrary(),TitleToUpdate);
+        ResultSet resultSet = Queries.getQucikViewInfo(userChooseIFrame.getLibraryManagementFrame().getSelectedLibrary(), TitleToUpdate);
 
 
         String dateOfBirth = null;
@@ -102,27 +103,25 @@ public class UpdateBookJFrame extends JFrame implements CommonFunctions {
                 dateOfBirth = resultSet.getString("date_of_birth");
                 title = resultSet.getString("title");
                 authorFirstName = resultSet.getString("first_name");
-                authorLastName=resultSet.getString("last_name");
+                authorLastName = resultSet.getString("last_name");
                 yearOfProduction = resultSet.getString("yearofproduction");
                 genre = resultSet.getString("name");
                 pages = resultSet.getString("pages");
 
 
-
-
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
 
         }
 
 
-            titleField.setText(title);
-            authorFirstNameField.setText(authorFirstName);
-            authorLastNameField.setText(authorLastName);
-            authorBirthDateField.setText(dateOfBirth);
-            yearField.setText(String.valueOf(yearOfProduction));
-            genreComboBox.setSelectedItem(genre);
-            pagesField.setText(String.valueOf(pages));
+        titleField.setText(title);
+        authorFirstNameField.setText(authorFirstName);
+        authorLastNameField.setText(authorLastName);
+        authorBirthDateField.setText(dateOfBirth);
+        yearField.setText(String.valueOf(yearOfProduction));
+        genreComboBox.setSelectedItem(genre);
+        pagesField.setText(String.valueOf(pages));
 
         add(new JLabel("Title:")).setBounds(15, 85, 100, 35);
         add(titleField);
@@ -195,8 +194,8 @@ public class UpdateBookJFrame extends JFrame implements CommonFunctions {
 
 
     }
-    public void updateBookByTitle(String titleToUpdate) {
 
+    public void updateBookByTitle(String titleToUpdate) {
 
 
         String titleText = titleField.getText();
@@ -225,10 +224,9 @@ public class UpdateBookJFrame extends JFrame implements CommonFunctions {
             int pagesStart = 0;
             try {
                 year = Integer.parseInt(yearField.getText());
-                if (year <= 0 ) {
+                if (year <= 0) {
                     JOptionPane.showMessageDialog(null, "Invalid year format. Year cannot have such value", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                else if(year> Year.now().getValue()){
+                } else if (year > Year.now().getValue()) {
                     JOptionPane.showMessageDialog(null, "Invalid year format. Year cannot be from future", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (NumberFormatException ex) {
@@ -247,12 +245,13 @@ public class UpdateBookJFrame extends JFrame implements CommonFunctions {
 
             if (pagesStart != 0 && year != 0 && year <= Year.now().getValue() && Pattern.matches(regex, authorFirstNameText) && Pattern.matches(regexSurname, authorLastNameText)) {
 
-                AdminQueries.updateBook(titleText,authorFirstNameText,authorLastNameText,authorBirthDateText,yearText,pagesText,description,titleToUpdate);
+                AdminQueries.updateBook(titleText, authorFirstNameText, authorLastNameText, authorBirthDateText, yearText, pagesText, description, titleToUpdate);
                 JOptionPane.showMessageDialog(null, "Book updated successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
                 DefaultListModel<String> updatedModel = new DefaultListModel<>();
                 Queries.getAllAvailableBook(userChooseIFrame.getLibraryManagementFrame().getSelectedLibrary()).stream()
                         .map(String::toString)
-                        .forEach(updatedModel::addElement);;
+                        .forEach(updatedModel::addElement);
+                ;
                 list.setModel(updatedModel);
                 dispose();
             }

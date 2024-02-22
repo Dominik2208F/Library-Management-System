@@ -88,11 +88,11 @@ public class CalendarIFrame extends JFrame {
     }
 
     public CalendarIFrame(JButton button, OverViewBookJFrame overViewBookJFrame) {
-        this.overViewBookJFrame=overViewBookJFrame;
+        this.overViewBookJFrame = overViewBookJFrame;
     }
 
 
-    public CalendarIFrame(UserActionFrame userActionFrame,String direction) {
+    public CalendarIFrame(UserActionFrame userActionFrame, String direction) {
         this.userActionFrame = userActionFrame;
 
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -107,10 +107,9 @@ public class CalendarIFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 Date selectedDate = calendar.getDate();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                if(direction.equals("Left")) {
+                if (direction.equals("Left")) {
                     userActionFrame.transactionLeft.setText(dateFormat.format(selectedDate));
-                }
-                else{
+                } else {
                     userActionFrame.transactionRight.setText(dateFormat.format(selectedDate));
                 }
                 dialog.dispose();
@@ -123,7 +122,7 @@ public class CalendarIFrame extends JFrame {
         dialog.add(calendar);
         dialog.add(buttonPanel, BorderLayout.SOUTH);
         dialog.pack();
-     //   dialog.setLocationRelativeTo(button);
+        //   dialog.setLocationRelativeTo(button);
         dialog.setVisible(true);
     }
 }

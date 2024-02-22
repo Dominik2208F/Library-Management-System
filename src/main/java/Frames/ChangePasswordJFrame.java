@@ -22,7 +22,6 @@ public class ChangePasswordJFrame extends JFrame implements CommonFunctions {
     public ChangePasswordJFrame(String libraryNameField, String username) {
 
 
-
         setContentPane(new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -56,7 +55,7 @@ public class ChangePasswordJFrame extends JFrame implements CommonFunctions {
         ImageIcon okIcon = setIcon("/check.png");
         button.setIcon(okIcon);
 
-        JLabel imageAddBookLabel= new JLabel(setIcon("/padlock.png"));
+        JLabel imageAddBookLabel = new JLabel(setIcon("/padlock.png"));
         imageAddBookLabel.setBounds(70, 10, 200, 65);
         add(imageAddBookLabel);
 
@@ -67,7 +66,7 @@ public class ChangePasswordJFrame extends JFrame implements CommonFunctions {
             public void actionPerformed(ActionEvent e) {
 
                 if (showHideButtonOLD.isSelected()) {
-                    OldPassword.setEchoChar((char)0);
+                    OldPassword.setEchoChar((char) 0);
                 } else {
 
                     OldPassword.setEchoChar('\u2022');
@@ -79,7 +78,7 @@ public class ChangePasswordJFrame extends JFrame implements CommonFunctions {
             public void actionPerformed(ActionEvent e) {
 
                 if (showHideButtonNEW.isSelected()) {
-                    newPassword.setEchoChar((char)0);
+                    newPassword.setEchoChar((char) 0);
                 } else {
 
                     newPassword.setEchoChar('\u2022');
@@ -95,19 +94,19 @@ public class ChangePasswordJFrame extends JFrame implements CommonFunctions {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                saveUser(libraryNameField,username);
+                saveUser(libraryNameField, username);
             }
         });
 
 
-        showHideButtonOLD.setBounds(255,190,60,40);
-        showHideButtonNEW.setBounds(255,240,60,40);
+        showHideButtonOLD.setBounds(255, 190, 60, 40);
+        showHideButtonNEW.setBounds(255, 240, 60, 40);
 
 
         userId.setBounds(100, 90, 150, 40);
         Username.setBounds(100, 140, 150, 40);
         OldPassword.setBounds(100, 190, 150, 40);
-        newPassword.setBounds(100, 240,  150, 40);
+        newPassword.setBounds(100, 240, 150, 40);
 
 
         add(showHideButtonNEW);
@@ -123,7 +122,7 @@ public class ChangePasswordJFrame extends JFrame implements CommonFunctions {
         add(newPassword);
 
 
-        ResultSet resultSet = Queries.userInfo(libraryNameField,username);
+        ResultSet resultSet = Queries.userInfo(libraryNameField, username);
 
 
         String user_id = null;
@@ -138,7 +137,7 @@ public class ChangePasswordJFrame extends JFrame implements CommonFunctions {
 
 
             }
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
         userId.setText(user_id);
@@ -155,29 +154,26 @@ public class ChangePasswordJFrame extends JFrame implements CommonFunctions {
     }
 
 
-    public void saveUser(String libraryNameField,String username) {
+    public void saveUser(String libraryNameField, String username) {
 
         char[] passwordcharOLD = OldPassword.getPassword();
         char[] passwordchar = newPassword.getPassword();
         String passwordNew = new String(passwordchar);
         String passwordOLD = new String(passwordcharOLD);
         String regex = "(?=.*[a-ząćęłńóśźż])(?=.*[A-ZĄĆĘŁŃÓŚŹŻ])(?=.*\\d)(?=.*[@$!%*?&#])[A-Za-ząćęłńóśźżĄĆĘŁŃÓŚŹŻ\\d@$!%*?&#]{8,}$";
-        String passwordFromDataBase = Queries.userPassword(libraryNameField,username);
-        if(!passwordFromDataBase.equals(passwordOLD)){
+        String passwordFromDataBase = Queries.userPassword(libraryNameField, username);
+        if (!passwordFromDataBase.equals(passwordOLD)) {
             JOptionPane.showMessageDialog(null, "Wrong current password.Try again"
                     , "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        else if(passwordFromDataBase.equals(passwordNew)){
+        } else if (passwordFromDataBase.equals(passwordNew)) {
 
             JOptionPane.showMessageDialog(null, "New password cannot be the same as current"
                     , "Error", JOptionPane.ERROR_MESSAGE);
-        }
-
-        else if (passwordchar.length == 0) {
+        } else if (passwordchar.length == 0) {
             JOptionPane.showMessageDialog(null, "Password cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
 
-            if(!Pattern.matches(regex,passwordNew) || passwordNew.toLowerCase().contains(username.toLowerCase())){
+            if (!Pattern.matches(regex, passwordNew) || passwordNew.toLowerCase().contains(username.toLowerCase())) {
                 JOptionPane.showMessageDialog(null, "Password is not strong enough.The password must meet the conditions :\n" +
                                 "* One capital letter.\n" +
                                 "* One lowercase letter.\n" +
@@ -186,10 +182,10 @@ public class ChangePasswordJFrame extends JFrame implements CommonFunctions {
                                 "* Does not contain personal data from user name.\n" +
                                 "* Uses eight characters.\n"
                         , "Error", JOptionPane.ERROR_MESSAGE);
-            }else{
+            } else {
 
-                Queries.updatePassword(passwordNew,libraryNameField,username);
-                JOptionPane.showMessageDialog(null, "New Password has been set successfully", "Message",JOptionPane.INFORMATION_MESSAGE);
+                Queries.updatePassword(passwordNew, libraryNameField, username);
+                JOptionPane.showMessageDialog(null, "New Password has been set successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
                 setVisible(false);
             }
         }

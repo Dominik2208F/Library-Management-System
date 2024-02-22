@@ -2,7 +2,6 @@ package Frames;
 
 import Manager.CommonFunctions;
 import Manager.Queries;
-import org.example.LibraryManager.Library;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -17,11 +16,10 @@ public class AddUserFrame extends JFrame implements CommonFunctions {
 
     private JTextField usernameField;
     private JPasswordField passwordField;
-    private JButton saveButton,GoBackButton;
+    private JButton saveButton, GoBackButton;
     private JLabel usernameLabel;
-    private JLabel passwordLabel,addUser;
+    private JLabel passwordLabel, addUser;
     private UserChooseIFrame userChooseIFrame;
-    private Library flowLibrary;
 
     public void setAdminActionFrame(AdminActionFrame adminActionFrame) {
         this.adminActionFrame = adminActionFrame;
@@ -29,9 +27,9 @@ public class AddUserFrame extends JFrame implements CommonFunctions {
 
     private AdminActionFrame adminActionFrame;
 
-    public AddUserFrame(UserChooseIFrame userChooseIFrame, Library library, boolean b) {
+    public AddUserFrame(UserChooseIFrame userChooseIFrame,boolean b) {
         this.userChooseIFrame = userChooseIFrame;
-        this.flowLibrary = library;
+
 
 
         setContentPane(new JPanel() {
@@ -58,7 +56,7 @@ public class AddUserFrame extends JFrame implements CommonFunctions {
         usernameLabel = new JLabel("Username:");
         passwordLabel = new JLabel("Password:");
         usernameLabel.setBounds(30, 80, 150, 30);
-        passwordLabel.setBounds(30,115 , 100, 30);
+        passwordLabel.setBounds(30, 115, 100, 30);
         usernameField.setBounds(100, 85, 150, 30);
         passwordField.setBounds(100, 120, 150, 30);
         saveButton.setBounds(100, 160, 150, 30);
@@ -66,17 +64,16 @@ public class AddUserFrame extends JFrame implements CommonFunctions {
 
         ImageIcon iconAddUser = setIcon("/following.png");
         addUser = new JLabel(iconAddUser);
-        addUser.setBounds(70,10,200,70);
+        addUser.setBounds(70, 10, 200, 70);
 
 
-
-        ImageIcon save =setIcon("/save-file.png");
+        ImageIcon save = setIcon("/save-file.png");
         saveButton.setIcon(save);
         ImageIcon qucikView = setIcon("/view.png");
         showHideButton.setIcon(qucikView);
 
 
-        GoBackButton =new JButton("Previous screen");
+        GoBackButton = new JButton("Previous screen");
         GoBackButton.setBounds(100, 200, 150, 30);
         ImageIcon goBackButton = setIcon("/logout.png");
         GoBackButton.setIcon(goBackButton);
@@ -133,7 +130,7 @@ public class AddUserFrame extends JFrame implements CommonFunctions {
             public void actionPerformed(ActionEvent e) {
 
                 if (showHideButton.isSelected()) {
-                    passwordField.setEchoChar((char)0);
+                    passwordField.setEchoChar((char) 0);
                 } else {
 
                     passwordField.setEchoChar('\u2022');
@@ -183,7 +180,6 @@ public class AddUserFrame extends JFrame implements CommonFunctions {
         });
 
 
-
         setSize(350, 300);
         setTitle("Add user");
         setLayout(null);
@@ -198,14 +194,14 @@ public class AddUserFrame extends JFrame implements CommonFunctions {
         String regex = "(?=.*[a-ząćęłńóśźż])(?=.*[A-ZĄĆĘŁŃÓŚŹŻ])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-ząćęłńóśźżĄĆĘŁŃÓŚŹŻ\\d@$!%*?&]{8,}$";
 
 
-        ResultSet set= Queries.readUsersAssignedToLibraryByName(userChooseIFrame.getLibraryManagementFrame().getSelectedLibrary());
+        ResultSet set = Queries.readUsersAssignedToLibraryByName(userChooseIFrame.getLibraryManagementFrame().getSelectedLibrary());
 
         List<String> users = new ArrayList<>();
         try {
             while (set.next()) {
                 users.add(set.getString("username"));
             }
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
         List<String> lowerCaseUserNames = users.stream()
@@ -214,36 +210,35 @@ public class AddUserFrame extends JFrame implements CommonFunctions {
 
         if (username.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Username cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
-        } else if (lowerCaseUserNames.contains(username.toLowerCase())){
+        } else if (lowerCaseUserNames.contains(username.toLowerCase())) {
             JOptionPane.showMessageDialog(null, "Such login is no more available. Please create unique login", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        else if (passwordchar.length == 0) {
+        } else if (passwordchar.length == 0) {
             JOptionPane.showMessageDialog(null, "Password cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             String password = new String(passwordchar);
-            if(!Pattern.matches(regex,password) || password.toLowerCase().contains(username.toLowerCase())){
+            if (!Pattern.matches(regex, password) || password.toLowerCase().contains(username.toLowerCase())) {
                 JOptionPane.showMessageDialog(null, "Password is not strong enough.The password must meet the conditions :\n" +
-                        "* One capital letter.\n" +
-                        "* One lowercase letter.\n" +
-                        "* One digit.\n" +
-                        "* One special character.\n" +
-                        "* Does not contain personal data from user name.\n" +
-                        "* Uses eight characters.\n"
+                                "* One capital letter.\n" +
+                                "* One lowercase letter.\n" +
+                                "* One digit.\n" +
+                                "* One special character.\n" +
+                                "* Does not contain personal data from user name.\n" +
+                                "* Uses eight characters.\n"
                         , "Error", JOptionPane.ERROR_MESSAGE);
-            }else{
+            } else {
 
-                    String idLibrary=  Queries.getIdOfLibraryByName(userChooseIFrame.getLibraryManagementFrame().getSelectedLibrary());
-                    Queries.updateDataBaseWithNewUser(username,password,idLibrary);
-                    userChooseIFrame.updateListOfUsers();
-                    JOptionPane.showMessageDialog(null, "User " + username +" has been added successfully", "Message",JOptionPane.INFORMATION_MESSAGE);
+                String idLibrary = Queries.getIdOfLibraryByName(userChooseIFrame.getLibraryManagementFrame().getSelectedLibrary());
+                Queries.updateDataBaseWithNewUser(username, password, idLibrary);
+                userChooseIFrame.updateListOfUsers();
+                JOptionPane.showMessageDialog(null, "User " + username + " has been added successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
 
 
                 userChooseIFrame.getComboBoxUser().setEnabled(true);
                 userChooseIFrame.getAddUser().setEnabled(true);
                 userChooseIFrame.getConfirmUser().setEnabled(true);
-                    setVisible(false);
-                }
+                setVisible(false);
             }
         }
+    }
 
 }
