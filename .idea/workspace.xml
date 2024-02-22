@@ -9,9 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="naprawa wyszukiwania i sortowania pages">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" afterDir="false" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="naprawa podwojnego usera na roznych bibliotekach">
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,13 +130,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00146" summary="borrow operation done">
-      <created>1708077358550</created>
-      <option name="number" value="00146" />
-      <option name="presentableId" value="LOCAL-00146" />
-      <option name="project" value="LOCAL" />
-      <updated>1708077358550</updated>
     </task>
     <task id="LOCAL-00147" summary="mechanizm zwracania i pozyczenai działa prawidłowo na oby dwóch bibliotekach">
       <created>1708083616691</created>
@@ -475,7 +467,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708595296910</updated>
     </task>
-    <option name="localTasksCounter" value="195" />
+    <task id="LOCAL-00195" summary="naprawa podwojnego usera na roznych bibliotekach">
+      <created>1708600312095</created>
+      <option name="number" value="00195" />
+      <option name="presentableId" value="LOCAL-00195" />
+      <option name="project" value="LOCAL" />
+      <updated>1708600312095</updated>
+    </task>
+    <option name="localTasksCounter" value="196" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -490,7 +489,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="filtrowanie po statusie transakcji" />
     <MESSAGE value="filtrowanie wyników historycznych po dacie działa z bazy danych" />
     <MESSAGE value="filtrowanie tylko z jadną wartością działa." />
     <MESSAGE value="poprawki do transakcji filtrowania i ikony" />
@@ -515,7 +513,8 @@
     <MESSAGE value="usuwanie usera ok" />
     <MESSAGE value="bubu znalazla blad z # i science fiction" />
     <MESSAGE value="naprawa wyszukiwania i sortowania pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="naprawa wyszukiwania i sortowania pages" />
+    <MESSAGE value="naprawa podwojnego usera na roznych bibliotekach" />
+    <option name="LAST_COMMIT_MESSAGE" value="naprawa podwojnego usera na roznych bibliotekach" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

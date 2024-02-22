@@ -24,10 +24,11 @@ public class LoginUserFrame extends JFrame implements CommonFunctions {
         passwordField = new JPasswordField();
         LoginButton = new JButton("Log in");
         passwordLabel = new JLabel("Password:");
+        JToggleButton showHideButton = new JToggleButton();
         passwordLabel.setBounds(30, 75, 100, 30);
         passwordField.setBounds(100, 80, 150, 30);
         LoginButton.setBounds(100, 120, 150, 30);
-
+        showHideButton.setBounds(255, 80, 60, 30);
         GoBackButton =new JButton("Previous screen");
         GoBackButton.setBounds(100, 160, 150, 30);
         ImageIcon goBackButton = setIcon("/logout.png");
@@ -58,6 +59,10 @@ public class LoginUserFrame extends JFrame implements CommonFunctions {
                 logInto(library);
             }
         });
+
+        ImageIcon qucikView = setIcon("/view.png");
+        showHideButton.setIcon(qucikView);
+
 
         setContentPane(new JPanel() {
             @Override
@@ -95,9 +100,25 @@ public class LoginUserFrame extends JFrame implements CommonFunctions {
         add(LoginButton);
         add(UserImageLebel);
         add(GoBackButton);
+        add(showHideButton);
         setSize(350, 250);
         setTitle("Login");
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+
+
+        showHideButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                if (showHideButton.isSelected()) {
+                    passwordField.setEchoChar((char)0);
+                } else {
+
+                    passwordField.setEchoChar('\u2022');
+                }
+            }
+        });
+
+
 
         addWindowListener(new WindowListener() {
             @Override
