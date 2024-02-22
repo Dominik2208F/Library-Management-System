@@ -274,26 +274,44 @@ public class Queries {
 
     public static void updateBookStatusByTitle(String library, String status, String value, String assignedTo) {
         Statement statement;
+
+
         try {
-            String query = String.format("UPDATE book\n" +
-                    "SET status = '%s', user_id = (SELECT user_id FROM users WHERE username = '%s')\n" +
-                    "WHERE title = '%s' AND library_id IN (SELECT library_id FROM library WHERE library_name = '%s') and book.is_deleted = false;", status, assignedTo, value, library);
             statement = connection.createStatement();
+            String takeUserId=  String.format("SELECT user_id FROM public.users LEFT JOIN library on library.library_id=users.library_id where username='%s' and library_name='%s'",assignedTo,library);
+            ResultSet set= statement.executeQuery(takeUserId);
+            String userID = null;
+            while(set.next()){
+                userID=set.getString("user_id");
+            }
+
+            String query = String.format("UPDATE book\n" +
+                    "SET status = '%s', user_id ="+userID+"\n" +
+                    "WHERE title = '%s' AND library_id IN (SELECT library_id FROM library WHERE library_name = '%s') and book.is_deleted = false;", status, value, library);
+
             statement.executeUpdate(query);
             System.out.println("Data updated");
 
         } catch (Exception e) {
-            System.out.println(e);
+           e.printStackTrace();
         }
     }
 
     public static void setAllBooksBorrowed(String library, String assignedTo, String statusOld, String statusNew) {
         Statement statement;
         try {
-            String query = String.format("UPDATE book\n" +
-                    "SET status = '%s', user_id = (SELECT user_id FROM users WHERE username = '%s')\n" +
-                    "WHERE status='%s' AND library_id IN (SELECT library_id FROM library WHERE library_name = '%s' ) and book.is_deleted = false;", statusNew, assignedTo, statusOld, library);
             statement = connection.createStatement();
+            String takeUserId=  String.format("SELECT user_id FROM public.users LEFT JOIN library on library.library_id=users.library_id where username='%s' and library_name='%s'",assignedTo,library);
+            ResultSet set= statement.executeQuery(takeUserId);
+            String userID = null;
+            while(set.next()){
+                userID=set.getString("user_id");
+            }
+
+
+            String query = String.format("UPDATE book\n" +
+                    "SET status = '%s', user_id ="+userID+"\n" +
+                    "WHERE status='%s' AND library_id IN (SELECT library_id FROM library WHERE library_name = '%s' ) and book.is_deleted = false", statusNew,statusOld, library);
             statement.executeUpdate(query);
             System.out.println("All book set as borrowed");
 
@@ -305,10 +323,19 @@ public class Queries {
     public static void setAllBooksAvailable(String library, String assignTO, String statusOld, String statusNew, String currentAssigned) {
         Statement statement;
         try {
+            statement = connection.createStatement();
+            String takeUserId=  String.format("SELECT user_id FROM public.users LEFT JOIN library on library.library_id=users.library_id where username='%s' and library_name='%s'",currentAssigned,library);
+            ResultSet set= statement.executeQuery(takeUserId);
+            String userID = null;
+            while(set.next()){
+                userID=set.getString("user_id");
+            }
+
+
             String query = String.format(String.format("UPDATE book \n" +
                     " SET status = '%s', user_id = (SELECT user_id FROM users WHERE username = '%s') \n" +
-                    " WHERE status='%s' AND library_id IN (SELECT library_id FROM library WHERE library_name = '%s') AND user_id IN (SELECT user_id FROM users WHERE username = '%s') and book.is_deleted = false", statusNew, assignTO, statusOld, library, currentAssigned));
-            statement = connection.createStatement();
+                    " WHERE status='%s' AND library_id IN (SELECT library_id FROM library WHERE library_name = '%s') AND user_id="+userID+" and book.is_deleted = false", statusNew, assignTO, statusOld, library, currentAssigned));
+
             statement.executeUpdate(query);
             System.out.println("Data updated: " + "Library " + library + " has been assigned to " + assignTO + " Old status " + statusOld + " New Status " + statusNew + " was assgined to" + currentAssigned);
 
@@ -760,19 +787,28 @@ public class Queries {
 
     public static void insertBorrowedBookToHistory(String user, String title, String library, String direction) {
 
+
         Statement statement;
         try {
+            statement = connection.createStatement();
+            String takeUserId=  String.format("SELECT user_id FROM public.users LEFT JOIN library on library.library_id=users.library_id where username='%s' and library_name='%s'",user,library);
+            ResultSet set= statement.executeQuery(takeUserId);
+            String userID = null;
+            while(set.next()){
+                userID=set.getString("user_id");
+            }
+
             String query = String.format("INSERT INTO BorrowedBooks (user_id, book_id, dateoftransaction, library_id, direction)\n" +
                     "VALUES (\n" +
-                    "    (SELECT user_id FROM Users WHERE username = '%s'),\n" +
+                    "    "+userID+",\n" +
                     "    (SELECT book_id FROM Book WHERE title = '%s'),\n" +
                     "    now(),\n" +
-                    "    (SELECT library_id FROM Library WHERE library_name = '%s'),'%s')", user, title, library, direction);
+                    "    (SELECT library_id FROM Library WHERE library_name = '%s'),'%s')",title, library, direction);
             statement = connection.createStatement();
             statement.executeUpdate(query);
             System.out.println("Book has been saved in history user: " + user + " title: " + title + " direction " + direction);
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 
