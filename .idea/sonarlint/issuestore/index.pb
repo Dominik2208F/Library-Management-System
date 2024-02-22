@@ -4,20 +4,10 @@
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-c
-3src/main/java/org/example/LibraryManager/Genre.java,8\b\8bcf415b94064ea4141a24f0f5718550b216607e
-b
-2src/main/java/org/example/LibraryManager/Book.java,8\5\85af08a0b48d3bf06601b7946437225825f020a5
-d
-4src/main/java/org/example/LibraryManager/Author.java,2\0\20d7ff1beb4e709368e6570bc3d89f9765451de2
-e
-5src/main/java/org/example/LibraryManager/Library.java,2\6\26618b0a4e53b14b79c7eff885d941beb25544ac
 _
 /src/main/java/org/example/UserManager/User.java,2\e\2e682bba8d1cb641add86bf5b614f53ba669e41b
 h
 8src/main/java/org/example/UserManager/UsersDataBase.java,6\d\6d887523fcb874ffe878974b356fb2985f6482bf
-m
-=src/main/java/org/example/LibraryManager/LibraryDataBase.java,2\6\268b15c463af7f62d6c79508ebaa7f319911c658
 V
 &src/main/java/Frames/AddUserFrame.java,7\6\76998923163ea64ff0942259a4ed24251851c1d5
 `
@@ -44,8 +34,6 @@ P
 ,src/main/java/Frames/OverViewBookJFrame.java,d\3\d3b360b3cbf860f75ab994bcb733faf67bdd5af9
 O
 src/main/java/Manager/Main.java,8\6\865db9ba086696152b412f976df2d117b108c678
-P
- src/main/java/Manager/SetUp.java,8\c\8c8348283ab014acf72f0d65eb786cccaa7e16cf
 Z
 *src/main/java/Manager/CommonFunctions.java,e\2\e2bb85aa9f4462f68dbe4b737b7a3d03b6378edd
 W
@@ -60,3 +48,5 @@ c
 3src/main/java/Manager/LengthRestrictedDocument.java,b\a\baa1755b13f629dc0124c9cc7a47cf61b30719d2
 W
 'src/main/java/Manager/AdminQueries.java,7\2\72fdd73d552e5f10c7194e5ad3f18e989f021e40
+[
++src/main/java/Frames/AddUserAdminFrame.java,2\2\22a7cef1125a95649d7d701f557d9a04b3882e0b

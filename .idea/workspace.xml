@@ -9,9 +9,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="czyszczenie kodu i usuniecie flowlibrary">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Frames/AddUserAdminFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="dodanie ramki dla admina add user">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/0/20d7ff1beb4e709368e6570bc3d89f9765451de2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/4/24faec8cac7eeaf9921a41cfbddbe756a7d3fe54" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/4/24faec8cac7eeaf9921a41cfbddbe756a7d3fe54" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/6/26618b0a4e53b14b79c7eff885d941beb25544ac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/6/268b15c463af7f62d6c79508ebaa7f319911c658" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/c/4cf2018acf9b42de00f835938a522046c008bc15" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/c/4cf2018acf9b42de00f835938a522046c008bc15" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/b/5b3686b46f6a881723c7af734b7c19d3c09f9e2f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/b/5b3686b46f6a881723c7af734b7c19d3c09f9e2f" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5f0b91ae7a996d48ae5aee1436627a3e4268d7bf" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5f0b91ae7a996d48ae5aee1436627a3e4268d7bf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/4/640c095562f51279fcf14202e06afe01b573d27d" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/4/640c095562f51279fcf14202e06afe01b573d27d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/6/76998923163ea64ff0942259a4ed24251851c1d5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/6/76998923163ea64ff0942259a4ed24251851c1d5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/b/7b768d99a6f38ca2261e8ff11ce2d9aa40ca7c6b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/b/7b768d99a6f38ca2261e8ff11ce2d9aa40ca7c6b" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/8251c39afc23fd07238a418a07a93aa2b02025db" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/8251c39afc23fd07238a418a07a93aa2b02025db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/5/85af08a0b48d3bf06601b7946437225825f020a5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/b/8bcf415b94064ea4141a24f0f5718550b216607e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/3/d3b360b3cbf860f75ab994bcb733faf67bdd5af9" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/3/d3b360b3cbf860f75ab994bcb733faf67bdd5af9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/2/e21847d94a89f15623c6a79b3d5df7055569c2ef" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/2/e21847d94a89f15623c6a79b3d5df7055569c2ef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/0/20d7ff1beb4e709368e6570bc3d89f9765451de2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/6/26618b0a4e53b14b79c7eff885d941beb25544ac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/6/268b15c463af7f62d6c79508ebaa7f319911c658" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/5/85af08a0b48d3bf06601b7946437225825f020a5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/b/8bcf415b94064ea4141a24f0f5718550b216607e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/ChangePasswordJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/ChangePasswordJFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,13 +154,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00149" summary="filtrowanie całe zrobione.">
-      <created>1708125975912</created>
-      <option name="number" value="00149" />
-      <option name="presentableId" value="LOCAL-00149" />
-      <option name="project" value="LOCAL" />
-      <updated>1708125975912</updated>
     </task>
     <task id="LOCAL-00150" summary="filtrowanie całe zrobione w połączeniu z sortowaniem+nowa funkcjonalnosc">
       <created>1708128520240</created>
@@ -475,7 +491,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708610409725</updated>
     </task>
-    <option name="localTasksCounter" value="198" />
+    <task id="LOCAL-00198" summary="dodanie ramki dla admina add user">
+      <created>1708610619220</created>
+      <option name="number" value="00198" />
+      <option name="presentableId" value="LOCAL-00198" />
+      <option name="project" value="LOCAL" />
+      <updated>1708610619220</updated>
+    </task>
+    <option name="localTasksCounter" value="199" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -490,7 +513,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="poprawki do transakcji filtrowania i ikony" />
     <MESSAGE value="formatowanie i sprzątanie kodu" />
     <MESSAGE value="naprawa quick View i borrow odświeżania listy" />
     <MESSAGE value="user overview Tab added" />
@@ -515,7 +537,8 @@
     <MESSAGE value="naprawa podwojnego usera na roznych bibliotekach" />
     <MESSAGE value="dodanie podgladu do logowania" />
     <MESSAGE value="czyszczenie kodu i usuniecie flowlibrary" />
-    <option name="LAST_COMMIT_MESSAGE" value="czyszczenie kodu i usuniecie flowlibrary" />
+    <MESSAGE value="dodanie ramki dla admina add user" />
+    <option name="LAST_COMMIT_MESSAGE" value="dodanie ramki dla admina add user" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -524,31 +547,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
           <line>651</line>
           <option name="timeStamp" value="110" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>704</line>
-          <option name="timeStamp" value="142" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>692</line>
-          <option name="timeStamp" value="146" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>691</line>
-          <option name="timeStamp" value="147" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>690</line>
-          <option name="timeStamp" value="148" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Manager/Queries.java</url>
-          <line>689</line>
-          <option name="timeStamp" value="149" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Frames/OverViewBookJFrame.java</url>
@@ -584,11 +582,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
           <line>631</line>
           <option name="timeStamp" value="158" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java</url>
-          <line>947</line>
-          <option name="timeStamp" value="159" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

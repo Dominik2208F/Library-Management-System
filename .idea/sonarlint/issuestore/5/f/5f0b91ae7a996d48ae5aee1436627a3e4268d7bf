@@ -2,23 +2,23 @@
 Q
 java:S3740"/Provide the parametrized type for this generic.(Î÷Ş’üÿÿÿÿ8ï¹ÀÆÜ1
 c
-java:S1192Ö"FDefine a constant instead of duplicating this literal "Error" 8 times.(ôâr8ğ¹ÀÆÜ1
-m	java:S117V"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹Œ Ú8ğ¹ÀÆÜ1
+java:S1192Õ"FDefine a constant instead of duplicating this literal "Error" 8 times.(ôâr8ğ¹ÀÆÜ1
+m	java:S117W"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹Œ Ú8ğ¹ÀÆÜ1
 F
-java:S1604«"(Make this anonymous inner class a lambda(èßØ8ğ¹ÀÆÜ1
+java:S1604ª"(Make this anonymous inner class a lambda(èßØ8ğ¹ÀÆÜ1
 F
-java:S1604µ"(Make this anonymous inner class a lambda(Èú†8ğ¹ÀÆÜ1
+java:S1604´"(Make this anonymous inner class a lambda(Èú†8ğ¹ÀÆÜ1
 v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(úÃ†ş8ó¹ÀÆÜ1
 F
-java:S1905V")Remove this unnecessary cast to "String".(‹Œ Ú8ÓºÀÆÜ1
-E	java:S108r")Either remove or fill this block of code.(”ı¾8ÕºÀÆÜ1
+java:S1905W")Remove this unnecessary cast to "String".(‹Œ Ú8ÓºÀÆÜ1
+E	java:S108q")Either remove or fill this block of code.(”ı¾8ÕºÀÆÜ1
 Ÿ
-java:S1186“"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(÷—8×ºÀÆÜ1
+java:S1186’"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(÷—8×ºÀÆÜ1
 ¤
-java:S1186Ÿ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(˜Â½€øÿÿÿÿ8×ºÀÆÜ1
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(˜Â½€øÿÿÿÿ8×ºÀÆÜ1
 u
 java:S3776Æ"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(ˆÉÈßüÿÿÿÿ8İºÀÆÜ1
-:
-java:S1116ÿ"Remove this empty statement.(ôĞÈ³8„§ÑÆÜ1
+?
+java:S1116ş"Remove this empty statement.(Åñ­õşÿÿÿÿ8„§ÑÆÜ1
 I
 java:S1068",Remove this unused "calendar" private field.(­Ã×Ê8âºÀÆÜ1

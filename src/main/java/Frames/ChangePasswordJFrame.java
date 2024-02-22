@@ -52,6 +52,13 @@ public class ChangePasswordJFrame extends JFrame implements CommonFunctions {
         ImageIcon goBackButton = setIcon("/logout.png");
         button2.setIcon(goBackButton);
 
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+
         ImageIcon okIcon = setIcon("/check.png");
         button.setIcon(okIcon);
 
