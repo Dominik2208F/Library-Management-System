@@ -417,10 +417,7 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                                 JOptionPane.showMessageDialog(null, "All selected books has been returned successfully", "Message", JOptionPane.INFORMATION_MESSAGE);
                                 if (!Queries.checkIfAnyBookIsInStatusBorrowed(CurrentLibraryName, UserToReturnBook)) {
                                     ConfirmChoiceOfGivenUser.setEnabled(false);
-                                    returnAll.setEnabled(false);
-                                    //   UserSelectionComboBoxToReturnABook.setEnabled(false);
-                                    //   UserSelectionComboBoxToReturnABook.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));
-
+                                    returnAll.setEnabled(false);;
                                 }
                                 if (modifiedModel.isEmpty()) {
                                     JOptionPane.showMessageDialog(null, UserToReturnBook + " does not have more book to return", "Message", JOptionPane.INFORMATION_MESSAGE);
@@ -449,8 +446,6 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                                 if (!Queries.checkIfAnyBookIsInStatusBorrowed(CurrentLibraryName, UserToReturnBook)) {
                                     ConfirmChoiceOfGivenUser.setEnabled(false);
                                     returnAll.setEnabled(false);
-                                    //   UserSelectionComboBoxToReturnABook.setEnabled(false);
-                                    //   UserSelectionComboBoxToReturnABook.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));
                                 }
                                 if (modifiedModel.isEmpty()) {
                                     JOptionPane.showMessageDialog(null, UserToReturnBook + " does not have any book to borrow", "Message", JOptionPane.INFORMATION_MESSAGE);
@@ -589,9 +584,6 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                     if (!Queries.checkIfAnyBookIsInStatusBorrowed(CurrentLibraryName, UserToReturn)) {
                         ConfirmChoiceOfGivenUser.setEnabled(false);
                         returnAll.setEnabled(false);
-                        //  UserSelectionComboBoxToReturnABook.setModel(new DefaultComboBoxModel<>(new String[]{"No users"}));
-                        //  UserSelectionComboBoxToReturnABook.setEnabled(false);
-
                     }
                 }
             }
@@ -860,7 +852,7 @@ public class AdminActionFrame extends JFrame implements CommonFunctions {
                 descendingCheckBoxFiltering.setVisible(false);
                 ConfirmChoice.setVisible(false);
                 UserSelectionComboBoxToFilterTransaction.setVisible(false);
-                AddUserFrame addUserFrame = new AddUserFrame(userChooseIFrame, true);
+                AddUserAdminFrame addUserFrame = new AddUserAdminFrame(userChooseIFrame, true);
                 addUserFrame.setVisible(true);
                 addUserFrame.setAdminActionFrame(AdminActionFrame.this);
             }

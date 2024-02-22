@@ -9,31 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="dodanie podgladu do logowania">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddBookJFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AddUserFrame.java" afterDir="false" />
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="czyszczenie kodu i usuniecie flowlibrary">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Frames/AddUserAdminFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/AdminActionFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/CalendarIFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/CalendarIFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/ChangePasswordJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/ChangePasswordJFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LibraryManagementFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/LoginUserFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/MyAccountOverViewJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/MyAccountOverViewJFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/OverViewBookJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/OverViewBookJFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/PasswordPopUpJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/PasswordPopUpJFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UpdateBookJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UpdateBookJFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserActionFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Frames/UserChooseIFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/AdminQueries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/AdminQueries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/CommonFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/CommonFunctions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/Queries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Manager/SetUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager/SetUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Author.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Book.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Genre.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/Library.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LibraryManager/LibraryDataBase.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00148" summary="genre filtering">
-      <created>1708123757713</created>
-      <option name="number" value="00148" />
-      <option name="presentableId" value="LOCAL-00148" />
-      <option name="project" value="LOCAL" />
-      <updated>1708123757713</updated>
     </task>
     <task id="LOCAL-00149" summary="filtrowanie całe zrobione.">
       <created>1708125975912</created>
@@ -497,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708600680736</updated>
     </task>
-    <option name="localTasksCounter" value="197" />
+    <task id="LOCAL-00197" summary="czyszczenie kodu i usuniecie flowlibrary">
+      <created>1708610409725</created>
+      <option name="number" value="00197" />
+      <option name="presentableId" value="LOCAL-00197" />
+      <option name="project" value="LOCAL" />
+      <updated>1708610409725</updated>
+    </task>
+    <option name="localTasksCounter" value="198" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -512,7 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="filtrowanie tylko z jadną wartością działa." />
     <MESSAGE value="poprawki do transakcji filtrowania i ikony" />
     <MESSAGE value="formatowanie i sprzątanie kodu" />
     <MESSAGE value="naprawa quick View i borrow odświeżania listy" />
@@ -537,7 +514,8 @@
     <MESSAGE value="naprawa wyszukiwania i sortowania pages" />
     <MESSAGE value="naprawa podwojnego usera na roznych bibliotekach" />
     <MESSAGE value="dodanie podgladu do logowania" />
-    <option name="LAST_COMMIT_MESSAGE" value="dodanie podgladu do logowania" />
+    <MESSAGE value="czyszczenie kodu i usuniecie flowlibrary" />
+    <option name="LAST_COMMIT_MESSAGE" value="czyszczenie kodu i usuniecie flowlibrary" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
