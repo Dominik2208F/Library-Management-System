@@ -4,10 +4,6 @@
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-_
-/src/main/java/org/example/UserManager/User.java,2\e\2e682bba8d1cb641add86bf5b614f53ba669e41b
-h
-8src/main/java/org/example/UserManager/UsersDataBase.java,6\d\6d887523fcb874ffe878974b356fb2985f6482bf
 V
 &src/main/java/Frames/AddUserFrame.java,7\6\76998923163ea64ff0942259a4ed24251851c1d5
 `
@@ -50,3 +46,5 @@ W
 'src/main/java/Manager/AdminQueries.java,7\2\72fdd73d552e5f10c7194e5ad3f18e989f021e40
 [
 +src/main/java/Frames/AddUserAdminFrame.java,2\2\22a7cef1125a95649d7d701f557d9a04b3882e0b
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d

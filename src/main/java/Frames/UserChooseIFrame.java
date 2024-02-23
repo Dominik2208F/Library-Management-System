@@ -135,7 +135,6 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
                 setVisible(false);
             }
         });
-        //zrobione
         showPassword.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -194,7 +193,7 @@ public class UserChooseIFrame extends JFrame implements CommonFunctions {
                 e.printStackTrace();
             }
         } else {
-            System.err.println("Nie udało się znaleźć zasobu."); // 
+            System.err.println("Nie udało się znaleźć zasobu.");
         }
 
 

@@ -171,7 +171,7 @@ public class Queries {
             while (resultSet.next()) {
                 String status = resultSet.getString("status");
                 String assignedTo = resultSet.getString("username");
-                if (assignedTo == null) { //zakrycie do kogo przypisane dla uzytkownika. Do zmiany dla Admina w bookInfo
+                if (assignedTo == null) {
                     assignedTo = "None";
                 }
                 String title = resultSet.getString("title");
@@ -205,7 +205,7 @@ public class Queries {
             while (resultSet.next()) {
                 String status = resultSet.getString("status");
                 String assignedTo = resultSet.getString("username");
-                if (assignedTo == null) { //zakrycie do kogo przypisane dla uzytkownika. Do zmiany dla Admina w bookInfo
+                if (assignedTo == null) {
                     assignedTo = "None";
                 }
                 String title = resultSet.getString("title");
