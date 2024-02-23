@@ -9,16 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="sprzatanie">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/e/2e682bba8d1cb641add86bf5b614f53ba669e41b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/d/6d887523fcb874ffe878974b356fb2985f6482bf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/8251c39afc23fd07238a418a07a93aa2b02025db" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/8251c39afc23fd07238a418a07a93aa2b02025db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/e/2e682bba8d1cb641add86bf5b614f53ba669e41b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/6/d/6d887523fcb874ffe878974b356fb2985f6482bf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="2014d829-3ceb-4e5d-994c-cc5ba307ce02" name="Changes" comment="czyszczenie komentarzy" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -137,13 +128,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706550883767</updated>
-    </task>
-    <task id="LOCAL-00152" summary="gotowe filtrowanie na borrow i znikanie przycisków.">
-      <created>1708137331168</created>
-      <option name="number" value="00152" />
-      <option name="presentableId" value="LOCAL-00152" />
-      <option name="project" value="LOCAL" />
-      <updated>1708137331169</updated>
     </task>
     <task id="LOCAL-00153" summary="przyciski pod production date">
       <created>1708178334124</created>
@@ -481,7 +465,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708645250428</updated>
     </task>
-    <option name="localTasksCounter" value="201" />
+    <task id="LOCAL-00201" summary="czyszczenie komentarzy">
+      <created>1708685376040</created>
+      <option name="number" value="00201" />
+      <option name="presentableId" value="LOCAL-00201" />
+      <option name="project" value="LOCAL" />
+      <updated>1708685376041</updated>
+    </task>
+    <option name="localTasksCounter" value="202" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -496,7 +487,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="user overview Tab added" />
     <MESSAGE value="zmiana hasła zakładka działa ok" />
     <MESSAGE value="poprawa walidacji nadawania nowego hasła" />
     <MESSAGE value="działa show all + filtrowanie admin" />
@@ -521,7 +511,8 @@
     <MESSAGE value="dodanie ramki dla admina add user" />
     <MESSAGE value="poprawki" />
     <MESSAGE value="sprzatanie" />
-    <option name="LAST_COMMIT_MESSAGE" value="sprzatanie" />
+    <MESSAGE value="czyszczenie komentarzy" />
+    <option name="LAST_COMMIT_MESSAGE" value="czyszczenie komentarzy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
